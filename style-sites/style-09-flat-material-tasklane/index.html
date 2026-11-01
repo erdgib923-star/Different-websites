@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taskferry — move work across, one lane at a time</title>
+  <meta name="description" content="Taskferry is a fictional project management tool built around lanes: every task crosses from Planned to Shipped, and everyone can see where it is.">
+  <meta name="theme-color" content="#F2F3F0">
+  <meta name="color-scheme" content="light">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Lucide-style icon sprite (24px grid, 2px stroke, round caps) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-lanes" viewBox="0 0 24 24"><rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="3" width="5" height="12" rx="1"/><rect x="17" y="3" width="4" height="8" rx="1"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 9a6 6 0 1 1 12 0c0 6 2.5 8 2.5 8h-17S6 15 6 9Z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5 10 17.5 19 7"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></symbol>
+  </svg>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <a class="brand" href="#top" translate="no"><svg class="icon" aria-hidden="true"><use href="#i-lanes"/></svg>Taskferry</a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--primary btn--sm" href="#start">Start Free</a>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="h-hero">
+      <div class="hero__copy">
+        <h1 id="h-hero">Move work across, one lane at a time</h1>
+        <p class="lede">Taskferry gives every project three lanes: Planned, Crossing, Shipped. Tasks only move forward when someone moves them, so the board always tells the truth.</p>
+        <p class="hero__actions"><a class="btn btn--primary" href="#start">Start Free</a> <a class="btn btn--ghost" href="#pricing">See Pricing</a></p>
+      </div>
+
+      <div class="board" data-ui aria-labelledby="board-title">
+        <h2 id="board-title" class="board__title">Try it: launch checklist <span class="tag">Sample board</span></h2>
+        <div class="lanes" id="lanes">
+          <section class="lane" data-lane="0" aria-labelledby="lane-0"><h3 id="lane-0">Planned <span class="count" data-count="0">2</span></h3><ul class="lane__list"></ul></section>
+          <section class="lane" data-lane="1" aria-labelledby="lane-1"><h3 id="lane-1">Crossing <span class="count" data-count="1">2</span></h3><ul class="lane__list"></ul></section>
+          <section class="lane" data-lane="2" aria-labelledby="lane-2"><h3 id="lane-2">Shipped <span class="count" data-count="2">1</span></h3><ul class="lane__list"></ul></section>
+        </div>
+        <!-- static fallback list, replaced by the interactive board when JS runs -->
+        <ul class="fallback" id="fallback">
+          <li><strong>Planned:</strong> Write release notes · Book launch call</li>
+          <li><strong>Crossing:</strong> Fix sign-up email · Final QA pass</li>
+          <li><strong>Shipped:</strong> New pricing page</li>
+        </ul>
+        <p class="sr-only" id="board-live" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="features" id="features" aria-labelledby="h-features">
+      <h2 id="h-features">Built for teams that ship weekly</h2>
+      <ul class="feature-list">
+        <li class="feature feature--primary">
+          <svg class="icon icon--lg" aria-hidden="true"><use href="#i-lanes"/></svg>
+          <h3>Three lanes, no more</h3>
+          <p>Planned, Crossing, Shipped. Fewer columns means fewer places for work to hide.</p>
+        </li>
+        <li class="feature">
+          <svg class="icon icon--lg" aria-hidden="true"><use href="#i-clock"/></svg>
+          <h3>Crossing time</h3>
+          <p>Every card shows how long it has been in its lane, so stuck work stands out.</p>
+        </li>
+        <li class="feature">
+          <svg class="icon icon--lg" aria-hidden="true"><use href="#i-users"/></svg>
+          <h3>One owner per card</h3>
+          <p>Cards have exactly one owner. Helpers can join, but one name answers for it.</p>
+        </li>
+        <li class="feature feature--dark">
+          <svg class="icon icon--lg" aria-hidden="true"><use href="#i-bell"/></svg>
+          <h3>A weekly digest, not a stream</h3>
+          <p>One email on Friday: what shipped, what is stuck, what is next.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="pricing" id="pricing" aria-labelledby="h-pricing">
+      <div class="pricing__head">
+        <h2 id="h-pricing">Pricing</h2>
+        <div class="billing" role="group" aria-label="Billing period">
+          <button type="button" class="billing__opt" aria-pressed="true" data-period="monthly">Monthly</button>
+          <button type="button" class="billing__opt" aria-pressed="false" data-period="yearly">Yearly, 2 months free</button>
+        </div>
+      </div>
+      <div class="tiers">
+        <article class="tier">
+          <h3>Solo</h3>
+          <p class="tier__price"><span class="amount" data-monthly="0" data-yearly="0">$0</span> <span class="per">free forever</span></p>
+          <p class="tier__for">For one person and up to 3 boards.</p>
+          <ul class="ticks">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>3 boards</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Crossing time on cards</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Mobile app</li>
+          </ul>
+          <a class="btn btn--ghost" href="#start">Start Free</a>
+        </article>
+        <article class="tier tier--featured">
+          <p class="tier__flag">Most teams pick this</p>
+          <h3>Team</h3>
+          <p class="tier__price"><span class="amount" data-monthly="8" data-yearly="80">$8</span> <span class="per" data-monthly="per user / month" data-yearly="per user / year">per user / month</span></p>
+          <p class="tier__for">For teams of 2 to 50.</p>
+          <ul class="ticks">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Unlimited boards</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Friday digest email</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Guest access for clients</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Integrations</li>
+          </ul>
+          <a class="btn btn--inverse" href="#start">Start Team Trial</a>
+        </article>
+        <article class="tier">
+          <h3>Fleet</h3>
+          <p class="tier__price"><span class="amount" data-monthly="16" data-yearly="160">$16</span> <span class="per" data-monthly="per user / month" data-yearly="per user / year">per user / month</span></p>
+          <p class="tier__for">For organisations with many teams.</p>
+          <ul class="ticks">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Everything in Team</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Single sign-on</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Audit log</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Priority support</li>
+          </ul>
+          <a class="btn btn--ghost" href="mailto:sales@example.com">Contact Sales</a>
+        </article>
+      </div>
+      <p class="fine">Sample prices for a fictional product. Prices in USD, before tax.</p>
+    </section>
+
+    <section class="faq" id="faq" aria-labelledby="h-faq">
+      <h2 id="h-faq">Questions</h2>
+      <div class="faq__list">
+        <details><summary>Can I add a fourth lane?</summary><p>No, and that is on purpose. If something needs its own stage, make it a separate board.</p></details>
+        <details><summary>Can I import from another tool?</summary><p>Yes. Upload a CSV with a title, owner and status column, and Taskferry maps statuses to lanes.</p></details>
+        <details><summary>What happens when a trial ends?</summary><p>Your boards drop to the Solo plan. Nothing is deleted; boards over the limit become read-only.</p></details>
+      </div>
+    </section>
+
+    <section class="start" id="start" aria-labelledby="h-start">
+      <h2 id="h-start">Put your next project on the ferry</h2>
+      <p>This is a demo page, so sign-up goes to an email instead of an app.</p>
+      <a class="btn btn--inverse" href="mailto:hello@example.com?subject=Taskferry%20sign-up">Start Free</a>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p translate="no">Taskferry</p>
+    <p>Taskferry is a fictional product made for a design demo. Contact: <a href="mailto:hello@example.com">hello@example.com</a>, 555-0100.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
