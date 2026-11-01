@@ -10,7 +10,7 @@ Voidline, a nine-person independent studio, announces its first game. *Null Harb
 - **Glowing thin borders:** a 1px neon border plus a soft outer glow (`--glow`) on the trailer frame, and on pillar cards on hover.
 - **Monospace labels** (JetBrains Mono), Chakra Petch for display, IBM Plex Sans for body text.
 - **Background:** a fixed, CSS-only layer of a 64px grid, 3px scanlines and a vignette.
-- **Glitch headline:** CSS only. Two offset copies are sliced with `clip-path` and play a short burst every 5 seconds. They are fully disabled under `prefers-reduced-motion`. `clip-path` is the one non-transform/opacity property animated here, because the slicing *is* the effect.
+- **Glitch headline:** CSS only. Two offset copies (in `aria-hidden` spans, so screen readers announce the title once) are sliced with `clip-path` and play a short burst every 5 seconds. They are fully disabled under `prefers-reduced-motion`. `clip-path` is the one non-transform/opacity property animated here, because the slicing *is* the effect.
 - **Roadmap:** a real `<ol>` with done, in-progress and planned states. The neon progress line is scrubbed to scroll with GSAP ScrollTrigger and drawn with `scaleY`.
 - **Motion (GSAP 3.12.5 + ScrollTrigger from cdnjs):** one hero timeline and one-time staggered section entrances. Nothing is hidden in CSS, so without JavaScript, or if the CDN fails, the page is complete. With reduced motion, GSAP is never started.
 
@@ -28,4 +28,4 @@ Open `index.html` in a browser. GSAP loads from cdnjs; without a network connect
 
 ## Notes
 - Brand-name check: no studio called "Voidline" was found. Nearby names exist (Void Labs, Voidliner on itch.io).
-- The cdnjs URLs (`gsap/3.12.5/gsap.min.js`, `ScrollTrigger.min.js`) could not be fetched from the build environment, whose network blocks cdnjs. Testing used byte-identical files from the gsap@3.12.5 npm package.
+- The cdnjs URLs (`gsap/3.12.5/gsap.min.js`, `ScrollTrigger.min.js`) could not be fetched from the build environment, whose network blocks cdnjs. Testing used the same version from the gsap@3.12.5 npm package; the cdnjs paths themselves are unverified.

@@ -73,13 +73,12 @@ a { color: var(--text); text-underline-offset: 3px; touch-action: manipulation; 
 .hero__meta p { display: grid; gap: 0.15rem; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.5rem; }
 
-/* CSS-only glitch: two offset copies clipped in slices, playing in short bursts */
+/* CSS-only glitch: two offset copies (aria-hidden spans, so screen readers hear the title once)
+   clipped in slices, playing in short bursts */
 .glitch { position: relative; display: inline-block; }
-.glitch::before, .glitch::after {
-  content: attr(data-text); position: absolute; inset: 0; pointer-events: none;
-}
-.glitch::before { color: var(--neon); transform: translateX(-2px); clip-path: inset(0 0 100% 0); animation: glitch-a 5s steps(1) infinite; }
-.glitch::after { color: #FF2E88; transform: translateX(2px); clip-path: inset(100% 0 0 0); animation: glitch-b 5s steps(1) infinite; mix-blend-mode: screen; }
+.glitch__layer { position: absolute; inset: 0; pointer-events: none; user-select: none; }
+.glitch__layer--a { color: var(--neon); transform: translateX(-2px); clip-path: inset(0 0 100% 0); animation: glitch-a 5s steps(1) infinite; }
+.glitch__layer--b { color: var(--text-2); transform: translateX(2px); clip-path: inset(100% 0 0 0); animation: glitch-b 5s steps(1) infinite; mix-blend-mode: screen; }
 @keyframes glitch-a {
   0%, 86%, 100% { clip-path: inset(0 0 100% 0); transform: none; }
   88% { clip-path: inset(10% 0 62% 0); transform: translateX(-6px); }
@@ -157,7 +156,7 @@ a { color: var(--text); text-underline-offset: 3px; touch-action: manipulation; 
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .glitch::before, .glitch::after { animation: none; display: none; }
+  .glitch__layer { animation: none; display: none; }
   .btn, .pillar { transition: none; }
   .btn--solid:hover { transform: none; }
 }
