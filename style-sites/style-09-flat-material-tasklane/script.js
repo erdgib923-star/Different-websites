@@ -69,12 +69,23 @@
 
   /* ---------- pricing toggle ---------- */
   var opts = document.querySelectorAll('.billing__opt');
+  function setPeriod(period, updateUrl) {
+    opts.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.period === period)); });
+    document.querySelectorAll('.amount').forEach(function (a) { a.textContent = '$' + a.dataset[period]; });
+    document.querySelectorAll('.per[data-monthly]').forEach(function (p) { p.textContent = p.dataset[period]; });
+    if (updateUrl) {
+      // the URL reflects the chosen billing period, so it can be shared or bookmarked
+      try {
+        var url = new URL(window.location.href);
+        if (period === 'yearly') url.searchParams.set('billing', 'yearly'); else url.searchParams.delete('billing');
+        history.replaceState(null, '', url);
+      } catch (e) { /* file:// or sandboxed: ignore */ }
+    }
+  }
   opts.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var period = btn.dataset.period;
-      opts.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
-      document.querySelectorAll('.amount').forEach(function (a) { a.textContent = '$' + a.dataset[period]; });
-      document.querySelectorAll('.per[data-monthly]').forEach(function (p) { p.textContent = p.dataset[period]; });
-    });
+    btn.addEventListener('click', function () { setPeriod(btn.dataset.period, true); });
   });
+  try {
+    if (new URLSearchParams(window.location.search).get('billing') === 'yearly') setPeriod('yearly', false);
+  } catch (e) { /* ignore */ }
 })();
