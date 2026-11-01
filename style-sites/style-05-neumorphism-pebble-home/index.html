@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pebble Home — the smart-home panel that feels like a smooth stone</title>
+  <meta name="description" content="Pebble Home is a fictional smart-home control panel: lights, climate and scenes for every room, on one soft surface.">
+  <meta name="theme-color" content="#DDE2EA">
+  <meta name="color-scheme" content="light">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#panel">Skip to the control panel</a>
+
+  <header class="top">
+    <a class="brand" href="#panel" translate="no"><span class="brand__stone" aria-hidden="true"></span>Pebble Home</a>
+    <p class="top__status"><span class="dot" aria-hidden="true"></span>Hub online <span class="sr-only">(sample status)</span></p>
+  </header>
+
+  <main id="main">
+    <section class="intro" aria-labelledby="h-intro">
+      <h1 id="h-intro">Your whole home, on one smooth stone</h1>
+      <p>Pebble Home is one panel for lights, heat and blinds in every room. Try the demo panel below: switches switch, the dial turns and scenes change everything at once.</p>
+    </section>
+
+    <section class="panel" id="panel" aria-labelledby="h-panel" tabindex="-1">
+      <h2 id="h-panel" class="sr-only">Control panel demo</h2>
+
+      <div class="rooms" role="tablist" aria-label="Rooms">
+        <button class="pill" role="tab" id="tab-living" aria-selected="true" aria-controls="room-panel" data-room="living">Living room</button>
+        <button class="pill" role="tab" id="tab-kitchen" aria-selected="false" aria-controls="room-panel" data-room="kitchen" tabindex="-1">Kitchen</button>
+        <button class="pill" role="tab" id="tab-bedroom" aria-selected="false" aria-controls="room-panel" data-room="bedroom" tabindex="-1">Bedroom</button>
+      </div>
+
+      <div class="grid" id="room-panel" role="tabpanel" aria-labelledby="tab-living">
+        <!-- Thermostat -->
+        <div class="tile tile--dial">
+          <h3 class="tile__title" id="dial-label">Thermostat</h3>
+          <div class="dial">
+            <svg class="dial__svg" viewBox="0 0 200 200" aria-hidden="true">
+              <circle class="dial__base" cx="100" cy="100" r="86"/>
+              <path class="dial__track" d=""/>
+              <path class="dial__fill" d=""/>
+              <circle class="dial__knob" r="11" cx="100" cy="14"/>
+            </svg>
+            <div class="dial__face"
+                 role="slider" tabindex="0" id="dial"
+                 aria-labelledby="dial-label"
+                 aria-valuemin="10" aria-valuemax="30" aria-valuenow="21" aria-valuetext="21.0 degrees Celsius">
+              <span class="dial__value"><span id="dial-num">21.0</span><span class="dial__unit">°C</span></span>
+              <span class="dial__mode" id="dial-mode">Holding</span>
+            </div>
+          </div>
+          <div class="dial__buttons">
+            <button class="round" type="button" id="dial-down" aria-label="Lower temperature by half a degree">−</button>
+            <p class="dial__now">Room is <strong id="room-temp">20.4</strong>°C <span class="muted">(sample)</span></p>
+            <button class="round" type="button" id="dial-up" aria-label="Raise temperature by half a degree">+</button>
+          </div>
+        </div>
+
+        <!-- Switches -->
+        <div class="tile tile--switch">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z"/></svg>
+          <h3 class="tile__title" id="sw-lights-l">Ceiling lights</h3>
+          <p class="tile__state" id="sw-lights-s">On, 70%</p>
+          <button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="sw-lights-l" aria-describedby="sw-lights-s" data-on="On, 70%" data-off="Off"><span class="switch__knob"></span></button>
+        </div>
+
+        <div class="tile tile--switch">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+          <h3 class="tile__title" id="sw-blinds-l">Blinds</h3>
+          <p class="tile__state" id="sw-blinds-s">Closed</p>
+          <button class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="sw-blinds-l" aria-describedby="sw-blinds-s" data-on="Open" data-off="Closed"><span class="switch__knob"></span></button>
+        </div>
+
+        <div class="tile tile--switch">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c0-3 1-6 4-6 2 0 3 1.5 3 3s-2 3-7 3Zm0 0c3 0 6 1 6 4 0 2-1.5 3-3 3s-3-2-3-7Zm0 0c0 3-1 6-4 6-2 0-3-1.5-3-3s2-3 7-3Zm0 0c-3 0-6-1-6-4 0-2 1.5-3 3-3s3 2 3 7Z"/></svg>
+          <h3 class="tile__title" id="sw-fan-l">Ceiling fan</h3>
+          <p class="tile__state" id="sw-fan-s">Off</p>
+          <button class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="sw-fan-l" aria-describedby="sw-fan-s" data-on="On, low" data-off="Off"><span class="switch__knob"></span></button>
+        </div>
+
+        <div class="tile tile--switch">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Zm4.5 3.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12"/></svg>
+          <h3 class="tile__title" id="sw-speaker-l">Speaker</h3>
+          <p class="tile__state" id="sw-speaker-s">Playing</p>
+          <button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="sw-speaker-l" aria-describedby="sw-speaker-s" data-on="Playing" data-off="Paused"><span class="switch__knob"></span></button>
+        </div>
+
+        <!-- Scenes -->
+        <fieldset class="tile tile--scenes">
+          <legend class="tile__title">Scene</legend>
+          <div class="scenes">
+            <label class="scene"><input type="radio" name="scene" value="morning"><span>Morning</span></label>
+            <label class="scene"><input type="radio" name="scene" value="evening" checked><span>Evening</span></label>
+            <label class="scene"><input type="radio" name="scene" value="away"><span>Away</span></label>
+            <label class="scene"><input type="radio" name="scene" value="night"><span>Night</span></label>
+          </div>
+        </fieldset>
+
+        <!-- Energy -->
+        <div class="tile tile--energy">
+          <h3 class="tile__title">Energy today</h3>
+          <p class="energy__num">6.8 <span>kWh</span></p>
+          <p class="muted">Sample data. 12% less than yesterday.</p>
+        </div>
+      </div>
+      <p class="sr-only" aria-live="polite" id="announce"></p>
+    </section>
+
+    <section class="why" aria-labelledby="h-why">
+      <h2 id="h-why">Why it feels different</h2>
+      <div class="why__grid">
+        <div class="why__item">
+          <h3>Pressed means on</h3>
+          <p>Every control sinks into the surface when it is active and rises when it is not, so you can read the room at a glance. A coloured dot and a word back up the shape.</p>
+        </div>
+        <div class="why__item">
+          <h3>Works with your hands, keys or voice</h3>
+          <p>Drag the dial, tap the buttons, or use the arrow keys. Every switch has a name a screen reader can announce.</p>
+        </div>
+        <div class="why__item">
+          <h3>One hub, no subscription</h3>
+          <p>The hub runs at home on your own network. Sample price: $149 once, with free updates.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p translate="no">Pebble Home</p>
+    <p>Pebble Home is a fictional product made for a design demo. The panel controls nothing real. Contact: <a href="mailto:hello@example.com">hello@example.com</a>, 555-0100.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
