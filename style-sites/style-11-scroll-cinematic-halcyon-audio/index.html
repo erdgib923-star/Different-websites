@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Halcyon One — noise-cancelling headphones from Halcyon Audio</title>
+  <meta name="description" content="Halcyon One, from the fictional Halcyon Audio: over-ear headphones with three layers of quiet, 40 hours of battery and a calm, kingfisher-blue finish.">
+  <meta name="theme-color" content="#0B1620">
+  <meta name="color-scheme" content="dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Familjen+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Reusable headphone drawing (one source, used in the hero and the pinned story) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="g-shell" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3FB0EA"/><stop offset="1" stop-color="#16628F"/></linearGradient>
+      <linearGradient id="g-band" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A4256"/><stop offset="1" stop-color="#132433"/></linearGradient>
+      <radialGradient id="g-driver"><stop offset="0" stop-color="#F7B27A"/><stop offset=".55" stop-color="#F08A3C"/><stop offset="1" stop-color="#9A4E16"/></radialGradient>
+    </defs>
+    <symbol id="headphones" viewBox="0 0 400 400">
+      <g class="hp-band"><path d="M92 214C92 92 308 92 308 214" fill="none" stroke="url(#g-band)" stroke-width="24" stroke-linecap="round"/><path d="M108 206C110 112 290 112 292 206" fill="none" stroke="#EAF2F7" stroke-opacity=".18" stroke-width="4" stroke-linecap="round"/></g>
+      <g class="hp-sliders" fill="#9FB4C3"><rect x="82" y="196" width="20" height="46" rx="6"/><rect x="298" y="196" width="20" height="46" rx="6"/></g>
+      <g class="hp-shell"><rect x="44" y="232" width="92" height="132" rx="40" fill="url(#g-shell)"/><rect x="264" y="232" width="92" height="132" rx="40" fill="url(#g-shell)"/></g>
+      <g class="hp-cushion" fill="#203546"><rect x="124" y="242" width="26" height="112" rx="12"/><rect x="250" y="242" width="26" height="112" rx="12"/></g>
+      <g class="hp-driver"><circle cx="90" cy="298" r="30" fill="url(#g-driver)"/><circle cx="90" cy="298" r="19" fill="none" stroke="#0B1620" stroke-opacity=".5" stroke-width="2"/><circle cx="90" cy="298" r="6" fill="#0B1620"/></g>
+      <g class="hp-mics" fill="#EAF2F7"><circle cx="310" cy="258" r="5"/><circle cx="334" cy="298" r="5"/><circle cx="310" cy="338" r="5"/></g>
+    </symbol>
+  </svg>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <a class="brand" href="#top" translate="no">Halcyon Audio</a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#quiet">Quiet</a></li>
+        <li><a href="#colours">Colours</a></li>
+        <li><a href="#specs">Specs</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--small" href="#preorder">Pre-order</a>
+  </header>
+
+  <main id="main">
+    <!-- HERO: 6 depth layers -->
+    <section class="hero scene" id="top" aria-labelledby="h-hero">
+      <div class="layer depth-0" data-depth="0" aria-hidden="true"><div class="horizon"></div></div>
+      <div class="layer depth-1" data-depth="1" aria-hidden="true"><div class="glow glow--blue"></div><div class="glow glow--amber"></div></div>
+      <div class="layer depth-2" data-depth="2" aria-hidden="true">
+        <svg class="waves" viewBox="0 0 1440 300" preserveAspectRatio="none"><g fill="none" stroke="#2E9BD6" stroke-opacity=".35" stroke-width="1.5"><path d="M0 200C240 150 480 250 720 200S1200 150 1440 200"/><path d="M0 230C240 190 480 270 720 230S1200 190 1440 230"/><path d="M0 260C240 230 480 290 720 260S1200 230 1440 260"/></g></svg>
+      </div>
+      <div class="layer depth-3" data-depth="3">
+        <svg class="hp hp--hero float-loop" role="img" aria-labelledby="hp-hero-t"><title id="hp-hero-t">Drawing of the Halcyon One headphones in kingfisher blue, with an amber driver showing through a cut-away ear cup</title><use href="#headphones"/></svg>
+      </div>
+      <div class="layer depth-4 hero__text" data-depth="4">
+        <h1 id="h-hero" class="split" aria-label="Hear the still water">Hear the still water</h1>
+        <p class="hero__lede">Halcyon One are over-ear headphones built around one idea: the quiet before the music should be as good as the music.</p>
+        <p class="hero__cta"><a class="btn" href="#preorder">Pre-order, $349</a> <a class="btn btn--ghost" href="#quiet">How the quiet works</a></p>
+      </div>
+      <div class="layer depth-5" data-depth="5" aria-hidden="true"><span class="mote m1"></span><span class="mote m2"></span><span class="mote m3"></span></div>
+    </section>
+
+    <!-- PINNED STORY: scrubbed to scroll on desktop -->
+    <section class="story" id="quiet" aria-labelledby="h-quiet">
+      <div class="story__pin">
+        <div class="story__visual" aria-hidden="true">
+          <svg class="hp hp--story" data-step="0"><use href="#headphones"/></svg>
+        </div>
+        <div class="story__text">
+          <h2 id="h-quiet">Three layers of quiet</h2>
+          <ol class="steps">
+            <li class="step" data-step="1"><h3>The shell</h3><p>A dense, two-layer ear cup seals around your ear and stops the low hum of trains and air vents before any electronics are needed.</p></li>
+            <li class="step" data-step="2"><h3>Six listening mics</h3><p>Three mics on each cup hear the noise that gets through and cancel it in under a millisecond. The noise you cannot hear is the point.</p></li>
+            <li class="step" data-step="3"><h3>The amber driver</h3><p>A 40&nbsp;mm driver tuned to sound calm at low volume, so you never need to turn it up to drown anything out.</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- HORIZONTAL GALLERY -->
+    <section class="gallery" id="colours" aria-labelledby="h-colours">
+      <div class="gallery__head">
+        <h2 id="h-colours">Five colours, all from the water’s edge</h2>
+        <p>Photo placeholders: each panel stands in for a product photograph in that finish.</p>
+      </div>
+      <div class="gallery__viewport" tabindex="0" role="region" aria-label="Colour gallery, scrolls sideways">
+        <ul class="gallery__track">
+          <li class="panel panel--kingfisher"><div class="panel__art" aria-hidden="true"><svg class="hp hp--panel"><use href="#headphones"/></svg></div><h3>Kingfisher</h3><p>Deep blue shell, amber driver.</p></li>
+          <li class="panel panel--driftwood"><div class="panel__art" aria-hidden="true"><svg class="hp hp--panel"><use href="#headphones"/></svg></div><h3>Driftwood</h3><p>Warm grey, oiled-oak sliders.</p></li>
+          <li class="panel panel--reed"><div class="panel__art" aria-hidden="true"><svg class="hp hp--panel"><use href="#headphones"/></svg></div><h3>Reed</h3><p>Sage green, cream band.</p></li>
+          <li class="panel panel--slate"><div class="panel__art" aria-hidden="true"><svg class="hp hp--panel"><use href="#headphones"/></svg></div><h3>Slate</h3><p>Matte charcoal all over.</p></li>
+          <li class="panel panel--dusk"><div class="panel__art" aria-hidden="true"><svg class="hp hp--panel"><use href="#headphones"/></svg></div><h3>Dusk</h3><p>Rose clay, copper fittings.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- COUNTERS -->
+    <section class="specs" id="specs" aria-labelledby="h-specs">
+      <h2 id="h-specs">By the numbers</h2>
+      <p class="specs__note">Sample specifications for a fictional product.</p>
+      <dl class="counters">
+        <div><dt>Hours of battery, noise cancelling on</dt><dd><span class="count" data-count="40">40</span><span class="unit">h</span></dd></div>
+        <div><dt>Weight, including cushions</dt><dd><span class="count" data-count="248">248</span><span class="unit">g</span></dd></div>
+        <div><dt>Average noise reduction</dt><dd><span class="count" data-count="32">32</span><span class="unit">dB</span></dd></div>
+        <div><dt>Minutes of charging for 5 hours of play</dt><dd><span class="count" data-count="10">10</span><span class="unit">min</span></dd></div>
+      </dl>
+    </section>
+
+    <section class="preorder" id="preorder" aria-labelledby="h-preorder">
+      <svg class="hp hp--small" aria-hidden="true"><use href="#headphones"/></svg>
+      <h2 id="h-preorder">Halcyon One, $349</h2>
+      <p>Ships in spring. Pre-orders open by email on this demo page; there is no real checkout.</p>
+      <a class="btn" href="mailto:preorder@example.com?subject=Halcyon%20One%20pre-order">Pre-order by email</a>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Halcyon Audio and Halcyon One are fictional, made for a design demo. Specifications and price are sample data. Contact: <a href="mailto:hello@example.com">hello@example.com</a>, 555-0100.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
