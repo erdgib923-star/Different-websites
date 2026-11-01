@@ -92,8 +92,8 @@ body::before {
 .stickers { position: absolute; inset: 0; pointer-events: none; }
 .sticker { position: absolute; filter: drop-shadow(4px 4px 0 rgba(0,0,0,.45)); }
 .sticker--star { width: clamp(84px, 14vw, 190px); right: 4%; top: 6%; transform: rotate(12deg); animation: spin 18s linear infinite; }
-.sticker--pill { width: clamp(110px, 16vw, 230px); right: 18%; top: 52%; transform: rotate(-9deg); }
-.sticker--heart { width: clamp(80px, 11vw, 160px); left: 52%; top: 2%; transform: rotate(-14deg); }
+.sticker--pill { width: clamp(110px, 16vw, 230px); right: 8%; top: 74%; transform: rotate(-9deg); }
+.sticker--heart { width: clamp(80px, 11vw, 160px); left: 62%; top: 4%; transform: rotate(-14deg); }
 @keyframes spin { to { transform: rotate(372deg); } }
 
 /* party */
@@ -132,7 +132,7 @@ body::before {
 .tape { display: grid; gap: 2rem; margin-top: 2rem; align-items: center; }
 .tape__shell { aspect-ratio: 1.6; max-width: 26rem; width: 100%; border-radius: 18px; background: linear-gradient(160deg, #2A2A66, #1C1C44); border: 3px solid var(--text-2); padding: 7%; display: grid; grid-template-rows: auto 1fr; gap: 6%; position: relative; }
 .tape__label { background: var(--text); color: var(--night); border-radius: 8px; padding: 0.5rem 0.75rem; display: flex; justify-content: space-between; align-items: center; font-weight: 700; gap: 0.5rem; }
-.tape__label .pixel { color: var(--pink); }
+.tape__label .pixel { color: #B8005F; } /* pink darkened for 6.6:1 on the white label */
 .tape__reels { display: flex; justify-content: space-around; align-items: center; background: rgba(0,0,0,.35); border-radius: 999px; }
 .reel { width: 26%; aspect-ratio: 1; border-radius: 50%; border: 6px dotted var(--text); animation: spin 6s linear infinite; }
 .tracks { counter-reset: t; }
@@ -172,8 +172,7 @@ body::before {
   .gb { grid-template-columns: 1fr 1.3fr; }
 }
 @media (max-width: 599px) {
-  .sticker--pill { display: none; }
-  .sticker--heart { left: auto; right: 4%; top: auto; bottom: 30%; }
+  .sticker--pill, .sticker--heart { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
