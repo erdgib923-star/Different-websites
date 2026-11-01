@@ -158,6 +158,7 @@ legend { font-weight: 600; margin-bottom: 0.5rem; }
 .plan { display: grid; gap: 1rem; align-content: start; }
 .plan h3 { margin: 0; }
 .plan__price { font-size: 2.75rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.plan__price .small { font-size: 1rem; font-weight: 400; letter-spacing: 0; color: var(--ink-2); }
 .plan ul li { padding: 0.4rem 0 0.4rem 1.6rem; position: relative; }
 .plan ul li::before { content: ""; position: absolute; left: 0; top: 0.85rem; width: 0.85rem; height: 0.45rem; border-left: 2px solid var(--ink); border-bottom: 2px solid var(--ink); transform: rotate(-45deg); }
 .plan .btn { justify-self: start; }
@@ -192,8 +193,10 @@ details p { padding-bottom: 1rem; color: var(--ink-2); max-width: 60ch; }
 }
 @media (min-width: 1040px) {
   .hero { grid-template-columns: 1.1fr 1fr; min-height: 80vh; }
-  .device { grid-template-columns: 1fr 1fr; }
-  .card--balance { grid-column: 1 / -1; }
+  .device { grid-template-columns: auto 1fr; max-width: 34rem; }
+  .card--ring { grid-column: 1; grid-row: 1; flex-direction: column; text-align: center; justify-content: center; }
+  .card--balance { grid-column: 2; grid-row: 1; align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
+  .card--list { grid-column: 1 / -1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
