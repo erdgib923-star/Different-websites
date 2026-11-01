@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brass &amp; Vinyl — record shop by day, listening bar by night</title>
+  <meta name="description" content="Brass & Vinyl is a fictional record shop and listening bar: used and new records by day, a hi-fi bar with full-album sessions by night.">
+  <meta name="theme-color" content="#2E1A0F">
+  <meta name="color-scheme" content="dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- shared SVG texture filters -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .5 0"/></filter>
+  </svg>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <a class="plate plate--logo" href="#top" translate="no">Brass &amp; Vinyl</a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a class="key key--nav" href="#crate">Crate</a></li>
+        <li><a class="key key--nav" href="#bar">Bar</a></li>
+        <li><a class="key key--nav" href="#sessions">Sessions</a></li>
+        <li><a class="key key--nav" href="#visit">Visit</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="h-hero">
+      <div class="hero__copy">
+        <h1 id="h-hero">Records by day. A hi-fi bar by night.</h1>
+        <p class="lede">Brass &amp; Vinyl sells used and new records from ten until six, then dims the lights, pours a drink and plays whole albums through a valve amp until midnight.</p>
+        <p class="hero__actions"><a class="key key--brass" href="#visit">Find the shop</a> <a class="key" href="#sessions">Tonight’s session</a></p>
+      </div>
+
+      <div class="deck" aria-labelledby="deck-title">
+        <h2 id="deck-title" class="sr-only">The house turntable</h2>
+        <div class="deck__plinth">
+          <div class="platter" id="platter">
+            <svg class="record" viewBox="0 0 200 200" role="img" aria-labelledby="rec-t">
+              <title id="rec-t">A black vinyl record with a red label reading Brass and Vinyl, house pressing</title>
+              <defs>
+                <radialGradient id="vinyl" cx="50%" cy="50%" r="50%">
+                  <stop offset="0" stop-color="#1a1a1a"/><stop offset=".6" stop-color="#0d0d0d"/><stop offset="1" stop-color="#050505"/>
+                </radialGradient>
+                <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset=".35" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".16"/><stop offset=".65" stop-color="#fff" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <circle cx="100" cy="100" r="98" fill="url(#vinyl)"/>
+              <g fill="none" stroke="#2a2a2a" stroke-width=".6">
+                <circle cx="100" cy="100" r="90"/><circle cx="100" cy="100" r="84"/><circle cx="100" cy="100" r="78"/><circle cx="100" cy="100" r="72"/>
+                <circle cx="100" cy="100" r="66"/><circle cx="100" cy="100" r="60"/><circle cx="100" cy="100" r="54"/><circle cx="100" cy="100" r="48"/><circle cx="100" cy="100" r="42"/>
+              </g>
+              <circle cx="100" cy="100" r="98" fill="url(#sheen)"/>
+              <circle cx="100" cy="100" r="32" fill="#8E2B1F"/>
+              <circle cx="100" cy="100" r="32" fill="none" stroke="#D9B26A" stroke-width="1.2"/>
+              <text x="100" y="94" text-anchor="middle" font-family="DM Serif Display, serif" font-size="9" fill="#F3E6CC">Brass &amp; Vinyl</text>
+              <text x="100" y="114" text-anchor="middle" font-family="Karla, sans-serif" font-size="5.5" fill="#F3E6CC">HOUSE PRESSING · 33⅓</text>
+              <circle cx="100" cy="100" r="2.6" fill="#D9B26A"/>
+            </svg>
+          </div>
+          <div class="tonearm" id="tonearm" aria-hidden="true"><span class="tonearm__base"></span><span class="tonearm__arm"></span><span class="tonearm__head"></span></div>
+          <div class="deck__controls">
+            <button class="key key--brass key--play" type="button" id="play" aria-pressed="false">Play</button>
+            <div class="rocker">
+              <span class="rocker__label" id="speed-l">Speed</span>
+              <button class="rocker__switch" type="button" role="switch" aria-checked="false" aria-labelledby="speed-l" id="speed"><span class="rocker__a">33</span><span class="rocker__b">45</span></button>
+            </div>
+            <p class="deck__status" id="deck-status" aria-live="polite">Stopped</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="crate" id="crate" aria-labelledby="h-crate">
+      <h2 id="h-crate">This week in the crate</h2>
+      <p class="section-lede">New arrivals, hand-picked and cleaned. Flip through like you would in the shop. Sample stock: every artist and album here is fictional.</p>
+      <div class="crate__box">
+        <ul class="sleeves" id="sleeves" aria-live="polite">
+          <li class="sleeve" data-i="0"><div class="sleeve__art sleeve__art--sun" aria-hidden="true"></div><div class="sleeve__info"><h3>Harbour Lights</h3><p>The Low Tide Orchestra · 1974 · used, VG+</p><p class="price">$28</p></div></li>
+          <li class="sleeve" data-i="1"><div class="sleeve__art sleeve__art--stripes" aria-hidden="true"></div><div class="sleeve__info"><h3>Midnight Tram</h3><p>Odessa Lark Quartet · 1961 · reissue, new</p><p class="price">$34</p></div></li>
+          <li class="sleeve" data-i="2"><div class="sleeve__art sleeve__art--rings" aria-hidden="true"></div><div class="sleeve__info"><h3>Copper Weather</h3><p>June Abernathy · 1979 · used, VG</p><p class="price">$22</p></div></li>
+          <li class="sleeve" data-i="3"><div class="sleeve__art sleeve__art--grid" aria-hidden="true"></div><div class="sleeve__info"><h3>Brass Section</h3><p>Various artists · 1966 · used, NM</p><p class="price">$40</p></div></li>
+        </ul>
+        <div class="crate__controls">
+          <button class="key" type="button" id="prev" aria-controls="sleeves">Previous record</button>
+          <p class="crate__count"><span id="crate-pos">1</span> of 4</p>
+          <button class="key" type="button" id="next" aria-controls="sleeves">Next record</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="bar" id="bar" aria-labelledby="h-bar">
+      <div class="card">
+        <h2 id="h-bar">At the bar</h2>
+        <p class="card__sub">From 6pm. Sample menu and prices.</p>
+        <div class="menu">
+          <div class="menu__col">
+            <h3>Drinks</h3>
+            <dl>
+              <div><dt>Side A Negroni</dt><dd>$13</dd></div>
+              <div><dt>Brass Old Fashioned</dt><dd>$14</dd></div>
+              <div><dt>Draught lager</dt><dd>$7</dd></div>
+              <div><dt>House red, by the glass</dt><dd>$9</dd></div>
+              <div><dt>Cold-brew tonic (no alcohol)</dt><dd>$6</dd></div>
+            </dl>
+          </div>
+          <div class="menu__col">
+            <h3>Small plates</h3>
+            <dl>
+              <div><dt>Salted almonds</dt><dd>$5</dd></div>
+              <div><dt>Cheese and pickles</dt><dd>$12</dd></div>
+              <div><dt>Toasted rye, smoked butter</dt><dd>$8</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sessions" id="sessions" aria-labelledby="h-sessions">
+      <h2 id="h-sessions">Listening sessions</h2>
+      <p class="section-lede">One album, start to finish, no talking until the needle lifts. Free with a drink. Sample schedule.</p>
+      <ol class="tickets">
+        <li class="ticket"><p class="ticket__day">Tue</p><div><h3>Jazz on side A</h3><p>Odessa Lark Quartet, <cite>Midnight Tram</cite>. 8pm.</p></div></li>
+        <li class="ticket"><p class="ticket__day">Thu</p><div><h3>Bring your own record</h3><p>Ten minutes each, first come first played. 8pm.</p></div></li>
+        <li class="ticket"><p class="ticket__day">Sat</p><div><h3>Late soul</h3><p>A full side from the shop’s own crates. 10pm.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="visit" id="visit" aria-labelledby="h-visit">
+      <div class="plaque">
+        <h2 id="h-visit">Visit</h2>
+        <address>
+          Brass &amp; Vinyl<br>
+          23 Example Arcade, Sampletown<br>
+          <a href="tel:+15550100">555-0100</a> · <a href="mailto:hello@example.com">hello@example.com</a>
+        </address>
+        <dl class="hours">
+          <div><dt>Shop</dt><dd>Tue–Sun, 10am–6pm</dd></div>
+          <div><dt>Bar</dt><dd>Tue–Sat, 6pm–midnight</dd></div>
+          <div><dt>Closed</dt><dd>Mondays</dd></div>
+        </dl>
+      </div>
+      <div class="ph" role="img" aria-label="Photo placeholder: the shop counter with record crates and a brass lamp"><span>Photo placeholder</span></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Brass &amp; Vinyl is a fictional shop and bar made for a design demo. Address, artists, prices and schedule are invented.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
