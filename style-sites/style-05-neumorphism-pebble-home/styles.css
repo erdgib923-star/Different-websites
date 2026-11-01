@@ -108,7 +108,7 @@ h1 { font-size: var(--t-h1); font-weight: 600; line-height: 1.05; letter-spacing
   background: var(--surface); box-shadow: 2px 2px 4px var(--dark), -1px -1px 3px var(--light); border: 1.5px solid var(--edge);
   transition: transform var(--ease);
 }
-.switch[aria-checked="true"] { background: var(--on); border-color: var(--on); }
+.switch[aria-checked="true"] { background: var(--on); border-color: var(--on); box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.28); }
 .switch[aria-checked="true"] .switch__knob { transform: translateX(26px); background: #fff; border-color: #fff; }
 
 /* scenes */
