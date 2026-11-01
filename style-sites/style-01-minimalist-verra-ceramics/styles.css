@@ -1,0 +1,156 @@
+/* Verra Ceramics — minimalist. All design tokens live on :root. */
+:root {
+  /* colour */
+  --paper: #F7F6F2;   /* page ground */
+  --slip:  #ECE9E2;   /* one tone step for surfaces */
+  --ink:   #22201D;   /* text */
+  --stone: #5B5752;   /* secondary text (6.6:1 on paper) */
+  --clay:  #8B5A43;   /* the one accent (5.3:1 on paper) */
+  --field: #E3DFD6;   /* the drawing's panel */
+  --glaze: #FCFBF8;   /* white slip in the drawing */
+  --bar-h: 4.5rem;
+
+  /* type */
+  --font: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --w-regular: 400;
+  --w-strong: 600;
+  --t-small: 0.9375rem;                         /* 15px */
+  --t-body: 1.125rem;                           /* 18px */
+  --t-lede: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --t-h2: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
+  --t-h1: clamp(2.5rem, 1.6rem + 3.6vw, 4.75rem);
+  --t-giant: clamp(5rem, 22vw, 22rem);
+
+  /* space */
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2rem);
+  --s-1: 0.5rem;
+  --s-2: 1rem;
+  --s-3: 1.5rem;
+  --s-4: 2.5rem;
+  --s-5: 4rem;
+  --s-section: clamp(6rem, 4rem + 10vw, 14rem);
+  --measure: 34rem;
+
+  --fade: 220ms ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: var(--w-regular) var(--t-body)/1.55 var(--font);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+h1, h2, h3, p, ul, figure, address { margin: 0; }
+ul { padding: 0; list-style: none; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--clay); outline-offset: 4px; border-radius: 2px; }
+[id] { scroll-margin-top: 5rem; }
+
+.skip {
+  position: absolute; left: var(--gutter); top: -4rem;
+  background: var(--ink); color: var(--paper); padding: var(--s-1) var(--s-2);
+  text-decoration: none; z-index: 10;
+}
+.skip:focus { top: var(--s-2); }
+
+/* bar */
+.bar {
+  min-height: var(--bar-h);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 var(--gutter);
+  position: sticky; top: 0; z-index: 5; background: var(--paper);
+}
+.wordmark { font-weight: var(--w-strong); font-size: 1.25rem; text-decoration: none; letter-spacing: -0.01em; }
+.bar ul { display: flex; gap: var(--s-3); }
+.bar a { text-decoration: none; transition: opacity var(--fade); }
+.bar a:hover { opacity: 0.55; }
+
+/* split stage */
+.stage { display: grid; grid-template-columns: 1fr; }
+.stage__object {
+  background: var(--field);
+  display: grid; place-items: center; align-content: center;
+  padding: var(--s-5) var(--gutter);
+  min-height: 70svh;
+}
+.stage__object figure { display: grid; justify-items: center; gap: var(--s-3); }
+.jar { width: min(62vw, 18rem); height: auto; }
+.stage__object figcaption { font-size: var(--t-small); color: var(--stone); }
+
+.stage__column { padding: 0 var(--gutter); }
+.stage__column > section { padding-block: var(--s-section) 0; max-width: var(--measure); }
+.stage__column > section:first-child { padding-top: var(--s-5); }
+
+h1 {
+  font-size: var(--t-h1); font-weight: var(--w-regular);
+  line-height: 1.04; letter-spacing: -0.03em; text-wrap: balance;
+  max-width: 16ch;
+}
+h2 {
+  font-size: var(--t-h2); font-weight: var(--w-regular);
+  line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;
+  margin-bottom: var(--s-3);
+}
+h3 { font-size: var(--t-body); font-weight: var(--w-strong); }
+
+.lede { font-size: var(--t-lede); line-height: 1.45; margin-top: var(--s-4); max-width: 30ch; }
+.intro .button { margin-top: var(--s-4); }
+.idea p + p { margin-top: var(--s-2); }
+.next { color: var(--stone); }
+.next strong { color: var(--ink); font-weight: var(--w-strong); }
+
+.button {
+  display: inline-block; text-decoration: none;
+  background: var(--clay); color: var(--paper);
+  padding: 0.9rem 1.5rem; font-weight: var(--w-strong);
+  transition: opacity var(--fade);
+}
+.button:hover { opacity: 0.8; }
+
+/* pieces */
+.stage__column > .pieces { max-width: 46rem; }
+.note { font-size: var(--t-small); color: var(--stone); margin-bottom: var(--s-4); }
+.pieces__list { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4) var(--s-3); }
+.piece p { font-size: var(--t-small); color: var(--stone); }
+.piece h3 { margin-top: var(--s-2); }
+.piece .price { color: var(--ink); margin-top: 0.25rem; }
+.ph {
+  aspect-ratio: 4 / 5; background: var(--slip);
+  display: grid; place-items: center;
+  color: var(--stone); font-size: var(--t-small);
+  transition: opacity var(--fade);
+}
+.piece:hover .ph { opacity: 0.75; }
+
+address { font-style: normal; margin-top: var(--s-3); line-height: 1.7; }
+address a { text-decoration-color: var(--clay); text-underline-offset: 3px; transition: opacity var(--fade); }
+address a:hover { opacity: 0.6; }
+
+/* footer */
+.foot { padding: var(--s-section) var(--gutter) var(--s-4); }
+.foot__name {
+  font-size: var(--t-giant); line-height: 0.8; letter-spacing: -0.05em;
+  color: var(--clay); font-weight: var(--w-regular);
+  margin-left: -0.04em;
+}
+.foot__small { font-size: var(--t-small); color: var(--stone); margin-top: var(--s-4); max-width: 40ch; }
+
+@media (min-width: 900px) {
+  .stage { grid-template-columns: 45fr 55fr; }
+  .stage__object {
+    position: sticky; top: var(--bar-h); height: calc(100svh - var(--bar-h)); min-height: 0;
+    align-self: start;
+  }
+  .jar { width: min(26vw, 22rem); }
+  .stage__column { padding: 0 var(--gutter) 0 clamp(2rem, 6vw, 7rem); }
+  .stage__column > section:first-child { padding-top: clamp(6rem, 18vh, 12rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+}
