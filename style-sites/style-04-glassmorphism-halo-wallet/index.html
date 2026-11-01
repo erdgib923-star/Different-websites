@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nimbra Wallet — see where your money goes, then keep more of it</title>
+  <meta name="description" content="Nimbra Wallet is a fictional personal finance app: spending at a glance, automatic round-up savings and bills that never surprise you.">
+  <meta name="theme-color" content="#8EC5FF">
+  <meta name="color-scheme" content="light">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="sky" aria-hidden="true">
+    <span class="blob blob--a"></span>
+    <span class="blob blob--b"></span>
+    <span class="blob blob--c"></span>
+    <span class="blob blob--d"></span>
+  </div>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav glass">
+    <a class="brand" href="#top" translate="no">
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="4" fill="currentColor"/></svg>
+      Nimbra
+    </a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#roundup">Round-ups</a></li>
+        <li><a href="#plans">Plans</a></li>
+        <li><a href="#faq">Questions</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--small" href="#get">Get the app</a>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="h-hero">
+      <div class="hero__copy">
+        <h1 id="h-hero">Money you can see through</h1>
+        <p class="lede">Nimbra Wallet shows every account in one clear view, rounds up your card spending into savings and warns you before a bill lands.</p>
+        <div class="hero__actions">
+          <a class="btn" href="#get">Get the app, free</a>
+          <a class="btn btn--ghost" href="#roundup">Try the round-up calculator</a>
+        </div>
+      </div>
+
+      <div class="device" role="group" aria-label="App preview with sample data">
+        <div class="glass card card--balance hero-in">
+          <p class="muted">Total balance <span class="tag">Sample</span></p>
+          <p class="balance">$4,218.60</p>
+          <p class="muted small">Across 3 accounts</p>
+        </div>
+        <div class="glass card card--ring hero-in">
+          <svg class="ring" viewBox="0 0 120 120" role="img" aria-labelledby="ring-t">
+            <title id="ring-t">Spending this month: 62 percent of a $2,000 budget used (sample data)</title>
+            <circle cx="60" cy="60" r="48" fill="none" stroke="rgba(20,33,61,.15)" stroke-width="12"/>
+            <circle cx="60" cy="60" r="48" fill="none" stroke="#14213D" stroke-width="12" stroke-linecap="round"
+                    stroke-dasharray="301.6" stroke-dashoffset="114.6" transform="rotate(-90 60 60)"/>
+          </svg>
+          <div>
+            <p class="ring__num">62%</p>
+            <p class="muted small">of this month’s budget</p>
+          </div>
+        </div>
+        <div class="glass card card--list hero-in">
+          <p class="muted small">Recent (sample)</p>
+          <ul class="tx">
+            <li><span>Corner Grocer</span><span>−$23.40</span></li>
+            <li><span>Round-up to savings</span><span>+$0.60</span></li>
+            <li><span>Metro card top-up</span><span>−$20.00</span></li>
+            <li><span>Salary, Example Co.</span><span>+$2,150.00</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features" aria-labelledby="h-features">
+      <h2 id="h-features">Three things it does well</h2>
+      <div class="bento">
+        <article class="glass panel panel--big">
+          <h3>Every account, one view</h3>
+          <p>Link current accounts, cards and savings from most banks. Nimbra sorts each payment into a category you can rename, and shows the month as one ring instead of a spreadsheet.</p>
+          <div class="bars" aria-hidden="true">
+            <span style="--h:70%"></span><span style="--h:45%"></span><span style="--h:88%"></span><span style="--h:30%"></span><span style="--h:56%"></span><span style="--h:64%"></span><span style="--h:40%"></span>
+          </div>
+        </article>
+        <article class="glass panel">
+          <h3>Round-ups that add up</h3>
+          <p>Each card payment is rounded up to the next dollar and the change moves to savings. You set the multiplier.</p>
+        </article>
+        <article class="glass panel">
+          <h3>Bills without surprises</h3>
+          <p>Nimbra spots repeating payments and tells you three days before each one, with your balance after it lands.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="roundup" id="roundup" aria-labelledby="h-roundup">
+      <div class="glass panel calc">
+        <h2 id="h-roundup">What would round-ups save you?</h2>
+        <form class="calc__form" id="calc" onsubmit="return false">
+          <label for="c-count">Card payments per week <output id="o-count" for="c-count">15</output></label>
+          <input id="c-count" name="count" type="range" min="1" max="60" value="15">
+          <fieldset>
+            <legend>Multiplier</legend>
+            <div class="seg">
+              <input type="radio" id="m1" name="mult" value="1" checked><label for="m1">1×</label>
+              <input type="radio" id="m2" name="mult" value="2"><label for="m2">2×</label>
+              <input type="radio" id="m3" name="mult" value="3"><label for="m3">3×</label>
+            </div>
+          </fieldset>
+        </form>
+        <div class="calc__result">
+          <p class="muted">Estimated savings in a year</p>
+          <p class="calc__num" id="calc-out" aria-live="polite">$390</p>
+          <p class="muted small">Assumes an average round-up of $0.50 per payment. An estimate, not a promise.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps" aria-labelledby="h-steps">
+      <h2 id="h-steps">Set up in three steps</h2>
+      <ol class="steps__list">
+        <li class="glass panel"><h3>Download Nimbra</h3><p>Free on phones and tablets. No card needed to start.</p></li>
+        <li class="glass panel"><h3>Link your accounts</h3><p>Read-only access through your bank’s own login screen. We never see your password.</p></li>
+        <li class="glass panel"><h3>Pick a savings goal</h3><p>Name it, set an amount, and round-ups start with your next card payment.</p></li>
+      </ol>
+    </section>
+
+    <section class="plans" id="plans" aria-labelledby="h-plans">
+      <h2 id="h-plans">Plans</h2>
+      <div class="plans__grid">
+        <article class="glass panel plan">
+          <h3>Free</h3>
+          <p class="plan__price">$0</p>
+          <ul>
+            <li>Up to 3 linked accounts</li>
+            <li>Spending ring and categories</li>
+            <li>Round-ups at 1×</li>
+          </ul>
+          <a class="btn btn--ghost" href="#get">Start free</a>
+        </article>
+        <article class="glass panel plan plan--plus">
+          <h3>Plus</h3>
+          <p class="plan__price">$4 <span class="small">a month</span></p>
+          <ul>
+            <li>Unlimited linked accounts</li>
+            <li>Bill alerts three days ahead</li>
+            <li>Round-ups up to 3×</li>
+            <li>Export to spreadsheet</li>
+          </ul>
+          <a class="btn" href="#get">Try Plus for 30 days</a>
+        </article>
+      </div>
+      <p class="muted small center">Sample pricing for a fictional product.</p>
+    </section>
+
+    <section class="faq" id="faq" aria-labelledby="h-faq">
+      <h2 id="h-faq">Questions</h2>
+      <div class="glass panel faq__list">
+        <details>
+          <summary>Can Nimbra move money without asking me?</summary>
+          <p>Only round-ups, and only into your own savings goal. Every other transfer needs you to confirm it in the app.</p>
+        </details>
+        <details>
+          <summary>What happens if I delete my account?</summary>
+          <p>Your linked-bank access is revoked straight away and your data is deleted within 30 days.</p>
+        </details>
+        <details>
+          <summary>Is my money held by Nimbra?</summary>
+          <p>No. It stays in your own bank accounts. Nimbra only reads balances and moves round-ups between your accounts.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="get" id="get" aria-labelledby="h-get">
+      <div class="glass panel get__panel">
+        <h2 id="h-get">Get Nimbra Wallet</h2>
+        <p>This is a demo page, so there is no real download. In a live version these would be store links.</p>
+        <p class="get__actions"><a class="btn" href="mailto:hello@example.com?subject=Nimbra%20Wallet%20early%20access">Ask for early access</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p translate="no">Nimbra Wallet</p>
+    <p>Nimbra Wallet is a fictional app made for a design demo. Not a bank. All figures are sample data. Contact: <a href="mailto:hello@example.com">hello@example.com</a>, 555-0100.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
