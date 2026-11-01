@@ -34,3 +34,9 @@ Open `index.html` in a browser. GSAP loads from cdnjs; without a network connect
 - Palette and type tokens are at the top of `styles.css`. The headphone colours are the `#g-shell`, `#g-band` and `#g-driver` gradients at the top of `index.html`.
 - Story steps are `<li class="step">` in `index.html`. If you add steps, also extend the timeline in `script.js`.
 - Counter targets are `data-count` attributes. The HTML text is the no-JavaScript fallback, so keep them equal.
+
+## Audit notes
+- `validate-layers.js` (epic-design) reports two false negatives:
+  - "no .scene": it looks for an exact `class="scene"`, and the hero uses `class="hero scene"`.
+  - "no prefers-reduced-motion": it reads only `index.html`, and the media queries live in `styles.css`.
+- The pinned story and horizontal gallery were checked in Playwright at 10%, 50% and 90% of the pin. The highlighted part changes correctly (shell → mics → driver), counters land on 40 / 248 / 32 / 10, and there is no horizontal overflow at 1440px.

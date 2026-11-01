@@ -21,7 +21,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; }
 body { margin: 0; background: var(--night); color: var(--mist); font: 400 var(--t-body)/1.6 var(--sans); overflow-x: clip; }
 h1, h2, h3, p, ul, ol, dl, dd { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
@@ -75,11 +75,16 @@ h1 { font: 400 var(--t-h1)/0.92 var(--serif); letter-spacing: -0.02em; }
 .story__pin { display: grid; gap: 2rem; }
 .story__visual { display: grid; place-items: center; }
 .hp--story { width: min(80vw, 30rem); aspect-ratio: 1; }
-/* highlight the part for the active step */
-.hp--story .hp-shell, .hp--story .hp-mics, .hp--story .hp-driver { transition: opacity 0.4s ease; }
-.hp--story[data-step="1"] .hp-mics, .hp--story[data-step="1"] .hp-driver { opacity: 0.25; }
-.hp--story[data-step="2"] .hp-shell, .hp--story[data-step="2"] .hp-driver { opacity: 0.25; }
-.hp--story[data-step="3"] .hp-shell, .hp--story[data-step="3"] .hp-mics { opacity: 0.25; }
+/* highlight the part for the active step.
+   The drawing is a <use> clone (shadow tree), so selectors can't reach its parts;
+   custom properties inherit into it instead. */
+@property --o-shell { syntax: '<number>'; inherits: true; initial-value: 1; }
+@property --o-mics { syntax: '<number>'; inherits: true; initial-value: 1; }
+@property --o-driver { syntax: '<number>'; inherits: true; initial-value: 1; }
+.hp--story { transition: --o-shell 0.4s ease, --o-mics 0.4s ease, --o-driver 0.4s ease; }
+.hp--story[data-step="1"] { --o-mics: 0.2; --o-driver: 0.2; }
+.hp--story[data-step="2"] { --o-shell: 0.2; --o-driver: 0.2; }
+.hp--story[data-step="3"] { --o-shell: 0.2; --o-mics: 0.2; }
 h2 { font: 400 var(--t-h2)/0.98 var(--serif); letter-spacing: -0.015em; text-wrap: balance; }
 .steps { display: grid; gap: 2.5rem; margin-top: 2.5rem; counter-reset: s; }
 .step { counter-increment: s; padding-left: 3.25rem; position: relative; max-width: 34rem; }
@@ -93,7 +98,7 @@ h2 { font: 400 var(--t-h2)/0.98 var(--serif); letter-spacing: -0.015em; text-wra
 .is-pinned .step { position: absolute; top: 0; left: 0; right: 0; }
 
 /* ---------- horizontal gallery ---------- */
-.gallery { padding: var(--s-section) 0 0; }
+.gallery { padding: var(--s-section) 0 0; overflow: clip; } /* the pinned track never widens the page */
 .gallery__head { padding: 0 var(--gutter); display: grid; gap: 1rem; }
 .gallery__head p { color: var(--mist-2); max-width: 46ch; }
 .gallery__viewport { margin-top: 2.5rem; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; padding: 0 var(--gutter) 1rem; scrollbar-width: thin; scrollbar-color: var(--blue) transparent; }
@@ -105,14 +110,16 @@ h2 { font: 400 var(--t-h2)/0.98 var(--serif); letter-spacing: -0.015em; text-wra
 .panel p { color: var(--mist-2); }
 .panel--kingfisher .panel__art { background: radial-gradient(circle at 50% 40%, #1E5674, #0F2536); }
 .panel--driftwood .panel__art { background: radial-gradient(circle at 50% 40%, #8A7F74, #3D3731); }
-.panel--driftwood .hp-shell { filter: grayscale(1) brightness(1.2) sepia(.35); }
+.panel--driftwood .hp { --f-shell: grayscale(1) brightness(1.2) sepia(.35); }
 .panel--reed .panel__art { background: radial-gradient(circle at 50% 40%, #7C9A7E, #2F4231); }
-.panel--reed .hp-shell { filter: hue-rotate(-70deg) saturate(.5) brightness(1.1); }
+.panel--reed .hp { --f-shell: hue-rotate(-70deg) saturate(.5) brightness(1.1); }
 .panel--slate .panel__art { background: radial-gradient(circle at 50% 40%, #4A5560, #1C2228); }
-.panel--slate .hp-shell { filter: grayscale(1) brightness(.6); }
+.panel--slate .hp { --f-shell: grayscale(1) brightness(.6); }
 .panel--dusk .panel__art { background: radial-gradient(circle at 50% 40%, #B07A6E, #4A2E29); }
-.panel--dusk .hp-shell { filter: hue-rotate(170deg) saturate(.6) brightness(1.1); }
+.panel--dusk .hp { --f-shell: hue-rotate(170deg) saturate(.6) brightness(1.1); }
 .is-horizontal .gallery__viewport { overflow: visible; scroll-snap-type: none; }
+.is-horizontal .panel { width: min(30vw, 24rem, 52vh); }
+.is-horizontal .panel__art { aspect-ratio: 1; }
 
 /* ---------- counters ---------- */
 .specs { padding: var(--s-section) var(--gutter) 0; }
@@ -142,5 +149,5 @@ h2 { font: 400 var(--t-h2)/0.98 var(--serif); letter-spacing: -0.015em; text-wra
   .float-loop { animation: none; }
   .btn { transition: none; }
   .btn:hover { transform: none; }
-  .hp--story .hp-shell, .hp--story .hp-mics, .hp--story .hp-driver { transition: none; }
+  .hp--story { transition: none; }
 }
