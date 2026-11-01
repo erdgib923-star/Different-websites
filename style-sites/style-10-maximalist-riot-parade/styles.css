@@ -69,9 +69,9 @@ button { font: inherit; touch-action: manipulation; }
 
 .shape { position: absolute; z-index: 1; pointer-events: none; }
 .shape--sun { width: clamp(140px, 34vw, 460px); right: -6vw; top: 4%; }
-.shape--burst { width: clamp(90px, 18vw, 260px); right: 22vw; top: 46%; z-index: 3; }
-.shape--zig { width: clamp(140px, 26vw, 360px); left: 4vw; bottom: 5%; }
-.shape--blob { width: clamp(120px, 22vw, 320px); right: 3vw; bottom: -6%; }
+.shape--burst { width: clamp(70px, 14vw, 220px); right: 24vw; top: 10%; z-index: 3; } /* overlaps the sun and the headline edge, never body text */
+.shape--zig { width: clamp(140px, 26vw, 360px); left: 4vw; bottom: 5%; display: none; }
+.shape--blob { width: clamp(120px, 20vw, 300px); right: -2vw; bottom: -6%; }
 
 /* marquee bands: clipped by their own wrapper, so the page never scrolls sideways */
 .band { overflow: hidden; background: var(--ink); color: var(--sun); padding: 0.85rem 0; transform: rotate(-2deg); margin: 1rem -2vw; position: relative; z-index: 4; }
@@ -133,10 +133,16 @@ button { font: inherit; touch-action: manipulation; }
   .lineup { grid-template-columns: 1fr; }
 }
 @media (min-width: 1100px) {
+  .shape--zig { display: block; }
   .hero__when { grid-column: 1 / 4; }
   .hero__lede { grid-column: 4 / 7; grid-row: 2; align-self: end; }
   .hero__cta { grid-column: 4 / 7; grid-row: 3; }
   .info__grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 759px) {
+  .shape--burst { right: 2vw; top: 1%; }
+  .shape--blob { bottom: -3%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
