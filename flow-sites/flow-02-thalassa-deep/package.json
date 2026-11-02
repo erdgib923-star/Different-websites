@@ -1,0 +1,39 @@
+{
+  "name": "flow-02-thalassa-deep",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --port 4173 --strictPort",
+    "check:continuity": "tsx scripts/check-continuity.ts",
+    "check:contrast": "tsx scripts/check-contrast.mjs",
+    "check:smoke": "node scripts/smoke.mjs",
+    "verify": "npm run check:continuity && npm run check:contrast && npm run build && npm run check:smoke"
+  },
+  "dependencies": {
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.2",
+    "@react-three/postprocessing": "3.2.2",
+    "gsap": "3.15.0",
+    "lenis": "1.3.27",
+    "postprocessing": "6.39.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "three": "0.187.0",
+    "zustand": "5.0.16"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/three": "0.187.0",
+    "@vitejs/plugin-react": "5.2.0",
+    "axe-core": "4.14.0",
+    "pngjs": "7.0.0",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vite": "7.3.7"
+  }
+}
