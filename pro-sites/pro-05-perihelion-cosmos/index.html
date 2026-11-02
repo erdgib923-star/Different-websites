@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Halcyra — explore a fictional star system</title>
+    <meta name="description" content="Fly past the five worlds of Halcyra, a fictional star system rendered with procedural shaders. All data is sample data." />
+    <meta name="theme-color" content="#030409" />
+    <script>
+      (function (d) {
+        var h = d.documentElement;
+        h.classList.add('js');
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('reduced');
+        try { if (localStorage.getItem('halcyra-low-power') === '1') h.classList.add('low-power'); } catch (e) {}
+        setTimeout(function () {
+          if (!h.classList.contains('motion-ready')) h.classList.remove('js');
+        }, 6000);
+      })(document);
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <canvas id="space" aria-hidden="true"></canvas>
+
+    <div class="loader" id="loader" aria-hidden="true">
+      <p class="loader__brand">Halcyra</p>
+      <p class="loader__pct"><span id="loader-n">0</span>%</p>
+      <p class="loader__label" id="loader-label">Plotting the system</p>
+      <div class="loader__bar"><span id="loader-bar"></span></div>
+    </div>
+
+    <header class="topbar">
+      <a class="topbar__logo" href="#top"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="currentColor" /><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="currentColor" stroke-width="1.2" transform="rotate(-18 12 12)" /></svg>Halcyra</a>
+      <nav aria-label="Worlds">
+        <ol class="worlds">
+          <li><a href="#vey">I</a></li>
+          <li><a href="#orrin">II</a></li>
+          <li><a href="#selk">III</a></li>
+          <li><a href="#mauna-rel">IV</a></li>
+          <li><a href="#isk">V</a></li>
+        </ol>
+      </nav>
+      <button class="power" id="power" type="button" aria-pressed="false">Low power</button>
+    </header>
+
+    <main id="main">
+      <section class="intro" id="top" aria-labelledby="title">
+        <p class="kicker" data-fade>A fictional star system · 5 worlds</p>
+        <h1 id="title" class="intro__title" data-split="intro">Halcyra</h1>
+        <p class="intro__lede" data-fade>Fall inward past five procedurally generated worlds around a quiet orange star. Scroll to fly the route.</p>
+        <p class="intro__cue" data-fade>Begin the descent <span aria-hidden="true">↓</span></p>
+      </section>
+
+      <section class="flight" id="flight" aria-label="The five worlds">
+        <article class="chapter" id="vey" data-planet="0">
+          <div class="card">
+            <figure class="media planet-fig" data-slot="planet-vey" role="img" aria-label="Illustration of Vey, a molten world" style="--ar: 1 / 1; --pl-dark: var(--planet-1-dark); --pl-mid: var(--planet-1); --pl-light: var(--planet-1-light); --dominant: var(--bg); --duo-dark: var(--neutral-950); --duo-light: var(--planet-1-light)"><div class="media__art planet planet--lava"></div></figure>
+            <p class="card__kicker">World I · lava</p>
+            <h2 data-split="scroll">Vey</h2>
+            <p>Close enough to the star that its day side never cools. Basalt plates drift on a molten mantle, splitting along glowing seams.</p>
+            <dl class="facts"><div><dt>Distance</dt><dd>0.31 AU</dd></div><div><dt>Year</dt><dd>41 days</dd></div><div><dt>Surface</dt><dd>690 K</dd></div><div><dt>Gravity</dt><dd>0.8 g</dd></div></dl>
+          </div>
+        </article>
+        <article class="chapter" id="orrin" data-planet="1">
+          <div class="card">
+            <figure class="media planet-fig" data-slot="planet-orrin" role="img" aria-label="Illustration of Orrin, a dusty desert world" style="--ar: 1 / 1; --pl-dark: var(--planet-2-dark); --pl-mid: var(--planet-2); --pl-light: var(--planet-2-light); --dominant: var(--bg); --duo-dark: var(--neutral-950); --duo-light: var(--planet-2-light)"><div class="media__art planet planet--desert"></div></figure>
+            <p class="card__kicker">World II · desert</p>
+            <h2 data-split="scroll">Orrin</h2>
+            <p>A dry, sulphur-dusted world of long dunes. Its thin air keeps the sky pale and the nights very cold.</p>
+            <dl class="facts"><div><dt>Distance</dt><dd>0.72 AU</dd></div><div><dt>Year</dt><dd>180 days</dd></div><div><dt>Surface</dt><dd>310 K</dd></div><div><dt>Gravity</dt><dd>0.9 g</dd></div></dl>
+          </div>
+        </article>
+        <article class="chapter" id="selk" data-planet="2">
+          <div class="card">
+            <figure class="media planet-fig" data-slot="planet-selk" role="img" aria-label="Illustration of Selk, an ocean world" style="--ar: 1 / 1; --pl-dark: var(--planet-3-dark); --pl-mid: var(--planet-3); --pl-light: var(--planet-3-light); --dominant: var(--bg); --duo-dark: var(--neutral-950); --duo-light: var(--planet-3-light)"><div class="media__art planet planet--ocean"></div></figure>
+            <p class="card__kicker">World III · ocean</p>
+            <h2 data-split="scroll">Selk</h2>
+            <p>Nine-tenths ocean, with scattered archipelagos under fast weather. In this system it is the only world with liquid water at the surface.</p>
+            <dl class="facts"><div><dt>Distance</dt><dd>1.12 AU</dd></div><div><dt>Year</dt><dd>351 days</dd></div><div><dt>Surface</dt><dd>288 K</dd></div><div><dt>Gravity</dt><dd>1.1 g</dd></div></dl>
+          </div>
+        </article>
+        <article class="chapter" id="mauna-rel" data-planet="3">
+          <div class="card">
+            <figure class="media planet-fig" data-slot="planet-mauna-rel" role="img" aria-label="Illustration of Mauna Rel, a ringed gas giant" style="--ar: 1 / 1; --pl-dark: var(--planet-4-dark); --pl-mid: var(--planet-4); --pl-light: var(--planet-4-light); --dominant: var(--bg); --duo-dark: var(--neutral-950); --duo-light: var(--planet-4-light)"><div class="media__art planet planet--gas"></div></figure>
+            <p class="card__kicker">World IV · gas giant</p>
+            <h2 data-split="scroll">Mauna Rel</h2>
+            <p>A banded giant with a wide, dusty ring. Storms the size of Selk drift along its equator for decades.</p>
+            <dl class="facts"><div><dt>Distance</dt><dd>5.4 AU</dd></div><div><dt>Year</dt><dd>11.8 years</dd></div><div><dt>Cloud tops</dt><dd>128 K</dd></div><div><dt>Gravity</dt><dd>2.3 g</dd></div></dl>
+          </div>
+        </article>
+        <article class="chapter" id="isk" data-planet="4">
+          <div class="card">
+            <figure class="media planet-fig" data-slot="planet-isk" role="img" aria-label="Illustration of Isk, a cracked ice dwarf" style="--ar: 1 / 1; --pl-dark: var(--planet-5-dark); --pl-mid: var(--planet-5); --pl-light: var(--planet-5-light); --dominant: var(--bg); --duo-dark: var(--neutral-950); --duo-light: var(--planet-5-light)"><div class="media__art planet planet--ice"></div></figure>
+            <p class="card__kicker">World V · ice dwarf</p>
+            <h2 data-split="scroll">Isk</h2>
+            <p>A small, cracked ice dwarf at the edge of the system. Faint violet frost forms where sunlight barely reaches.</p>
+            <dl class="facts"><div><dt>Distance</dt><dd>31 AU</dd></div><div><dt>Year</dt><dd>172 years</dd></div><div><dt>Surface</dt><dd>41 K</dd></div><div><dt>Gravity</dt><dd>0.2 g</dd></div></dl>
+          </div>
+        </article>
+        <div class="flight__end" aria-hidden="true"></div>
+      </section>
+
+      <section class="sheet" id="sheet" aria-labelledby="sheet-title">
+        <div class="sheet__inner">
+          <h2 id="sheet-title" data-split="scroll">System data sheet</h2>
+          <p class="note" data-fade>Halcyra is a K2 orange dwarf, about 4,950 K and 6.1 billion years old. Everything below is fictional sample data.</p>
+          <div class="table-wrap" data-fade>
+            <table>
+              <caption class="sr-only">The five worlds of Halcyra (fictional sample data)</caption>
+              <thead><tr><th scope="col">World</th><th scope="col">Type</th><th scope="col">Distance</th><th scope="col">Year</th><th scope="col">Surface</th><th scope="col">Gravity</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><span class="swatch" style="--c: var(--planet-1)"></span>I · Vey</th><td>Lava</td><td>0.31 AU</td><td>41 days</td><td>690 K</td><td>0.8 g</td></tr>
+                <tr><th scope="row"><span class="swatch" style="--c: var(--planet-2)"></span>II · Orrin</th><td>Desert</td><td>0.72 AU</td><td>180 days</td><td>310 K</td><td>0.9 g</td></tr>
+                <tr><th scope="row"><span class="swatch" style="--c: var(--planet-3)"></span>III · Selk</th><td>Ocean</td><td>1.12 AU</td><td>351 days</td><td>288 K</td><td>1.1 g</td></tr>
+                <tr><th scope="row"><span class="swatch" style="--c: var(--planet-4)"></span>IV · Mauna Rel</th><td>Gas giant</td><td>5.4 AU</td><td>11.8 years</td><td>128 K</td><td>2.3 g</td></tr>
+                <tr><th scope="row"><span class="swatch" style="--c: var(--planet-5)"></span>V · Isk</th><td>Ice dwarf</td><td>31 AU</td><td>172 years</td><td>41 K</td><td>0.2 g</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ul class="sheet__stats">
+            <li data-pop><span class="v">5</span><span>worlds</span></li>
+            <li data-pop><span class="v">1</span><span>with surface water</span></li>
+            <li data-pop><span class="v">31 AU</span><span>to the outermost world</span></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <aside class="hud" id="hud" aria-hidden="true">
+      <p class="hud__kicker" id="hud-kicker">World I</p>
+      <p class="hud__name" id="hud-name">Vey</p>
+      <dl class="hud__grid">
+        <div><dt>Distance</dt><dd id="hud-au">0.31 AU</dd></div>
+        <div><dt>Year</dt><dd id="hud-period">41 days</dd></div>
+        <div><dt>Surface</dt><dd id="hud-temp">690 K</dd></div>
+        <div><dt>Gravity</dt><dd id="hud-g">0.8 g</dd></div>
+      </dl>
+      <svg class="hud__orbits" viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="4" class="o-star" />
+        <circle cx="60" cy="60" r="14" /><circle cx="60" cy="60" r="22" /><circle cx="60" cy="60" r="31" /><circle cx="60" cy="60" r="44" /><circle cx="60" cy="60" r="56" />
+        <circle id="hud-dot" cx="74" cy="60" r="3.5" class="o-dot" />
+      </svg>
+      <p class="hud__note">Sample data</p>
+    </aside>
+    <div class="tip" id="tip" hidden></div>
+    <p class="toast" id="toast" role="status"></p>
+
+    <footer class="footer">
+      <p>Halcyra and its worlds are fictional. Every value on this page is sample data, and the planets are generated by shaders. Contact: observatory@example.com · 555-0100.</p>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
