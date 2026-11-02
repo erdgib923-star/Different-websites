@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inkpress Collective · Risograph print studio</title>
+  <meta name="description" content="A community risograph studio printing in fluorescent pink, federal blue and sunflower yellow. A fictional studio for a design demo." />
+  <meta name="theme-color" content="#f5eedb" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='13' cy='14' r='10' fill='%23ff4fa0' opacity='.9'/%3E%3Ccircle cx='19' cy='18' r='10' fill='%232f4fb3' opacity='.85'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js'); }, 4000);
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
+    <defs>
+      <pattern id="dots-y" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(15)"><circle cx="4.5" cy="4.5" r="3.4" /></pattern>
+      <pattern id="dots-p" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><circle cx="4" cy="4" r="2.6" /></pattern>
+      <pattern id="dots-b" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(75)"><circle cx="3.5" cy="3.5" r="1.7" /></pattern>
+      <linearGradient id="fade-down" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" /><stop offset="1" stop-color="#fff" stop-opacity="0" /></linearGradient>
+      <radialGradient id="fade-out"><stop offset="0.35" stop-color="#fff" /><stop offset="1" stop-color="#fff" stop-opacity="0" /></radialGradient>
+      <mask id="m-down"><rect width="600" height="800" fill="url(#fade-down)" /></mask>
+      <mask id="m-blob" maskContentUnits="objectBoundingBox"><circle cx="0.5" cy="0.5" r="0.5" fill="url(#fade-out)" /></mask>
+      <symbol id="reg" viewBox="-20 -20 40 40"><circle r="11" fill="none" stroke-width="2" /><path d="M-18 0H18M0 -18V18" stroke-width="2" /></symbol>
+    </defs>
+  </svg>
+
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="Inkpress Collective home">
+      <span class="logo__word" aria-hidden="true"><span class="logo__p">INKPRESS</span><span class="logo__b">INKPRESS</span></span>
+      <span class="logo__sub">Collective</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#studio">Studio</a></li>
+        <li><a href="#inks">Inks</a></li>
+        <li><a href="#lab">Poster lab</a></li>
+        <li><a href="#runs">Print runs</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--pink btn--sm" href="#runs">Book press time</a>
+  </header>
+
+  <main id="main">
+    <!-- HERO: three ink passes slide into registration (pinned scrub) -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__copy">
+        <p class="eyebrow" data-pop="up">Community risograph studio · Example City</p>
+        <h1 id="hero-title" class="misreg" data-split>Three inks. One gentle miss.</h1>
+        <p class="hero__lead" data-pop="up" style="--pop-delay: 420ms">Inkpress Collective prints zines, posters and small books in fluorescent pink, federal blue and sunflower yellow. One drum at a time, with the tiny slips that make riso look alive.</p>
+        <div class="hero__ctas" data-pop="up" style="--pop-delay: 560ms">
+          <a class="btn btn--blue" href="#lab">Make a poster</a>
+          <a class="btn btn--ghost" href="#runs">See print runs</a>
+        </div>
+      </div>
+      <figure class="fig hero__fig" data-slot="hero-poster" data-photo="" data-alt="A risograph poster pinned to the studio wall" style="--ar: 3 / 4; --fig-radius: 2px; --fig-placeholder: var(--stock)">
+        <div class="fig__art" role="img" aria-label="Poster artwork in three overprinted inks: a yellow halftone sun, the word RISO in pink, and blue rings and small type. The layers start out of register and slide into place as you scroll.">
+          <svg class="poster" viewBox="0 0 600 800" aria-hidden="true">
+            <rect width="600" height="800" class="poster__stock" />
+            <g class="ink ink--y" data-ink="y">
+              <circle cx="390" cy="250" r="190" fill="url(#dots-y)" />
+              <circle cx="390" cy="250" r="118" />
+              <rect x="0" y="650" width="600" height="70" />
+              <use href="#reg" x="22" y="22" width="40" height="40" class="regmark" />
+              <use href="#reg" x="538" y="738" width="40" height="40" class="regmark" />
+            </g>
+            <g class="ink ink--p" data-ink="p" transform="translate(2 1)">
+              <g mask="url(#m-blob)"><rect x="40" y="150" width="320" height="320" fill="url(#dots-p)" /></g>
+              <text x="34" y="590" class="poster__big">RISO</text>
+              <rect x="0" y="690" width="600" height="14" />
+              <use href="#reg" x="22" y="22" width="40" height="40" class="regmark" />
+              <use href="#reg" x="538" y="738" width="40" height="40" class="regmark" />
+            </g>
+            <g class="ink ink--b" data-ink="b" transform="translate(-1 2)">
+              <circle cx="390" cy="250" r="150" class="ring" />
+              <circle cx="390" cy="250" r="175" class="ring ring--thin" />
+              <text x="44" y="96" class="poster__kicker">OPEN PRESS NIGHT · THURSDAYS</text>
+              <text x="44" y="640" class="poster__small">Inkpress Collective · 3 inks · 1 drum each</text>
+              <text x="470" y="96" class="poster__kicker">Nº 07</text>
+              <g mask="url(#m-down)"><rect x="300" y="430" width="300" height="200" fill="url(#dots-b)" /></g>
+              <use href="#reg" x="22" y="22" width="40" height="40" class="regmark" />
+              <use href="#reg" x="538" y="738" width="40" height="40" class="regmark" />
+            </g>
+          </svg>
+        </div>
+        <span class="pass pass--y" data-pass="y">Pass 1 · Sunflower</span>
+        <span class="pass pass--p" data-pass="p">Pass 2 · Flamingo</span>
+        <span class="pass pass--b" data-pass="b">Pass 3 · Federal</span>
+        <span class="stamp" data-stamp>In register</span>
+      </figure>
+    </section>
+
+    <!-- STUDIO / HOW -->
+    <section class="studio" id="studio" aria-labelledby="studio-title">
+      <span class="disc disc--p" data-scrub="parallax" data-speed="-0.45" aria-hidden="true"></span>
+      <span class="disc disc--y" data-scrub="parallax" data-speed="0.35" aria-hidden="true"></span>
+      <header class="section-head">
+        <p class="eyebrow" data-pop="up">How riso works</p>
+        <h2 id="studio-title" class="misreg" data-split>Like screen printing, but faster and messier.</h2>
+      </header>
+      <ol class="steps" data-pop-group>
+        <li class="card" data-pop>
+          <svg class="step-art" viewBox="0 0 120 90" aria-hidden="true"><rect x="14" y="10" width="76" height="66" class="sa-b" /><rect x="28" y="20" width="76" height="62" fill="url(#dots-p)" /></svg>
+          <h3>1. Burn a master</h3><p>The machine burns your artwork as tiny holes into a thin stencil, one master for each ink.</p>
+        </li>
+        <li class="card" data-pop>
+          <svg class="step-art" viewBox="0 0 120 90" aria-hidden="true"><circle cx="45" cy="45" r="32" class="sa-y" /><circle cx="78" cy="45" r="32" fill="url(#dots-b)" /></svg>
+          <h3>2. One drum per ink</h3><p>Ink pushes through the stencil from a spinning drum. Swap the drum, swap the colour.</p>
+        </li>
+        <li class="card" data-pop>
+          <svg class="step-art" viewBox="0 0 120 90" aria-hidden="true"><rect x="18" y="14" width="70" height="62" class="sa-y" /><rect x="26" y="10" width="70" height="62" class="sa-p" /><rect x="34" y="18" width="70" height="62" class="sa-b sa-thin" /></svg>
+          <h3>3. Stack the passes</h3><p>Each sheet goes through once per ink. The paper never lands in exactly the same spot, and that is the charm.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- INKS -->
+    <section class="inks" id="inks" aria-labelledby="inks-title">
+      <header class="section-head">
+        <p class="eyebrow" data-pop="up">The inks</p>
+        <h2 id="inks-title" class="misreg" data-split>Three drums. Seven colours.</h2>
+        <p class="section-head__lead" data-pop="up">Riso inks are translucent, so where two overlap you get a third colour for free. These are our three house inks and the mixes they make.</p>
+      </header>
+      <div class="inks__grid">
+        <ul class="swatches" data-pop-group>
+          <li data-pop><span class="swatch swatch--p" aria-hidden="true"></span><div><h3>Flamingo</h3><p>Fluorescent pink. Glows under daylight, unforgiving on skin tones.</p></div></li>
+          <li data-pop><span class="swatch swatch--b" aria-hidden="true"></span><div><h3>Federal</h3><p>Deep blue. Our workhorse for type and line art.</p></div></li>
+          <li data-pop><span class="swatch swatch--y" aria-hidden="true"></span><div><h3>Sunflower</h3><p>Warm yellow. Best as a base pass under the other two.</p></div></li>
+        </ul>
+        <figure class="venn" data-pop>
+          <svg viewBox="0 0 400 380" role="img" aria-labelledby="venn-title">
+            <title id="venn-title">Overprint chart: pink and blue overlap to make grape purple, pink and yellow make coral red, blue and yellow make moss green, and all three make near-black.</title>
+            <g class="venn__inks">
+              <circle cx="150" cy="140" r="110" class="v-p" />
+              <circle cx="250" cy="140" r="110" class="v-b" />
+              <circle cx="200" cy="230" r="110" class="v-y" />
+            </g>
+            <g class="venn__labels" aria-hidden="true">
+              <text x="200" y="104">Grape</text>
+              <text x="134" y="222">Coral</text>
+              <text x="266" y="222">Moss</text>
+            </g>
+          </svg>
+          <figcaption>Overprints, previewed with <code>mix-blend-mode: multiply</code>, which is how stacked translucent inks behave.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- POSTER LAB (p5.js) -->
+    <section class="lab" id="lab" aria-labelledby="lab-title">
+      <header class="section-head">
+        <p class="eyebrow" data-pop="up">Poster lab</p>
+        <h2 id="lab-title" class="misreg" data-split>Print a poster without the mess.</h2>
+        <p class="section-head__lead" data-pop="up">Pick your inks and a pattern, nudge the registration, and download it. Every poster is drawn from a seed, so the same settings always give the same print.</p>
+      </header>
+      <div class="lab__grid">
+        <form class="lab__controls card" data-lab-form>
+          <fieldset>
+            <legend>Inks</legend>
+            <label class="check"><input type="checkbox" name="ink" value="y" checked /><span class="check__box check__box--y" aria-hidden="true"></span>Sunflower</label>
+            <label class="check"><input type="checkbox" name="ink" value="p" checked /><span class="check__box check__box--p" aria-hidden="true"></span>Flamingo</label>
+            <label class="check"><input type="checkbox" name="ink" value="b" checked /><span class="check__box check__box--b" aria-hidden="true"></span>Federal</label>
+          </fieldset>
+          <div class="ctl">
+            <label for="lab-shape">Pattern</label>
+            <select id="lab-shape" name="shape">
+              <option value="orbits">Orbits</option>
+              <option value="stripes">Stripes</option>
+              <option value="blobs">Blobs</option>
+              <option value="grid">Grid</option>
+            </select>
+          </div>
+          <div class="ctl"><label for="lab-miss">Misregistration <output for="lab-miss" data-o="miss">6 px</output></label><input id="lab-miss" name="miss" type="range" min="0" max="24" value="6" /></div>
+          <div class="ctl"><label for="lab-dot">Halftone pitch <output for="lab-dot" data-o="dot">9 px</output></label><input id="lab-dot" name="dot" type="range" min="5" max="18" value="9" /></div>
+          <div class="ctl"><label for="lab-title">Poster title</label><input id="lab-title" name="title" type="text" maxlength="18" value="OPEN PRESS" autocomplete="off" /></div>
+          <div class="lab__btns">
+            <button class="btn btn--blue" type="button" data-lab-seed>New seed <span class="seed" data-seed>#4021</span></button>
+            <button class="btn btn--pink" type="button" data-lab-save>Download PNG</button>
+          </div>
+          <p class="lab__status" role="status" data-lab-status></p>
+        </form>
+        <div class="lab__stage">
+          <div class="lab__canvas" data-lab-canvas role="img" aria-label="Generated poster preview."></div>
+          <p class="lab__fallback" data-lab-fallback>The poster lab draws with JavaScript and canvas. With them off, the hero poster above shows the same three-ink look.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RUNS -->
+    <section class="runs" id="runs" aria-labelledby="runs-title">
+      <header class="section-head">
+        <p class="eyebrow" data-pop="up">Print runs</p>
+        <h2 id="runs-title" class="misreg" data-split>Small runs, honest prices.</h2>
+        <p class="section-head__lead" data-pop="up">Sample prices for a fictional studio, in US dollars, including paper.</p>
+      </header>
+      <div class="runs__grid" data-pop-group>
+        <article class="run card" data-pop><p class="run__ink" aria-hidden="true"><i class="i-p"></i><i class="i-b"></i></p><h3>Zine run</h3><p class="run__price">$180</p><p>100 copies, A5, 16 pages, two inks, folded and stapled.</p></article>
+        <article class="run card run--pick" data-pop><span class="sticker" data-pop="badge" style="--pop-delay: 450ms">Most booked</span><p class="run__ink" aria-hidden="true"><i class="i-y"></i><i class="i-p"></i><i class="i-b"></i></p><h3>Poster run</h3><p class="run__price">$240</p><p>50 posters, A3, three inks, on 120 gsm natural stock.</p></article>
+        <article class="run card" data-pop><p class="run__ink" aria-hidden="true"><i class="i-b"></i></p><h3>Open press night</h3><p class="run__price">$25<small>/hour</small></p><p>Thursdays 6–10 pm. Bring artwork, we help with masters and drums.</p></article>
+      </div>
+      <div class="visit card" data-pop="up">
+        <h3>Visit the studio</h3>
+        <p>Unit 4, 18 Mill Yard, Example City · Wednesday to Saturday, 11 am–6 pm</p>
+        <p><a href="mailto:press@example.com">press@example.com</a> · (555) 555-0100</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Inkpress Collective</strong> is a fictional studio. Ink names, prices, address and phone number are invented for a design demo.</p>
+  </footer>
+</body>
+</html>
