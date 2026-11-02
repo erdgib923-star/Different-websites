@@ -1,0 +1,94 @@
+/* Motion tokens + pop-in / split / scrub styles. Pairs with src/lib/motion.ts. */
+:root {
+  --dur-quick: 0.4s;
+  --dur-base: 0.7s;
+  --dur-slow: 1s;
+  --dur-cinematic: 1.2s;
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-power3: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --stagger: 75ms;
+  --pop-y: 24px;
+  --pop-blur: 8px;
+}
+
+/* ---- Pop presets (time-based, triggered once) ---- */
+@keyframes pop {
+  0% { opacity: 0; transform: translateY(var(--pop-y)) scale(0.9); filter: blur(var(--pop-blur)); }
+  60% { opacity: 1; transform: translateY(0) scale(1.02); filter: blur(0); }
+  100% { opacity: 1; transform: none; filter: none; }
+}
+@keyframes pop-up {
+  from { opacity: 0; transform: translateY(var(--pop-y)); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pop-badge {
+  0% { opacity: 0; transform: scale(0.4) rotate(-12deg); }
+  55% { opacity: 1; transform: scale(1.12) rotate(3deg); }
+  80% { transform: scale(0.97) rotate(-1deg); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes pop-clip {
+  from { clip-path: inset(0 0 100% 0); transform: translateY(12px); }
+  to { clip-path: inset(0 0 0 0); transform: none; }
+}
+@keyframes pop-left {
+  from { opacity: 0; transform: translateX(-32px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pop-right {
+  from { opacity: 0; transform: translateX(32px); }
+  to { opacity: 1; transform: none; }
+}
+
+html.js [data-pop]:not(.is-in) { opacity: 0; }
+html.js [data-pop="clip"]:not(.is-in) { opacity: 1; clip-path: inset(0 0 100% 0); }
+html.js [data-pop].is-in {
+  animation: var(--pop-name, pop) var(--pop-dur, var(--dur-base)) var(--pop-ease, var(--ease-expo)) both;
+  animation-delay: calc(var(--i, 0) * var(--stagger) + var(--pop-delay, 0ms));
+}
+html.js [data-pop].is-in.pop-done { animation: none; }
+[data-pop="up"] { --pop-name: pop-up; }
+[data-pop="badge"] { --pop-name: pop-badge; --pop-dur: var(--dur-slow); --pop-ease: var(--ease-power3); }
+[data-pop="clip"] { --pop-name: pop-clip; --pop-dur: var(--dur-slow); }
+[data-pop="left"] { --pop-name: pop-left; }
+[data-pop="right"] { --pop-name: pop-right; }
+
+/* ---- Split text (words/chars rise from a mask) ---- */
+.split-w { display: inline-block; overflow: clip; overflow-clip-margin: 0.12em; vertical-align: top; padding-block: 0.06em; margin-block: -0.06em; }
+.split-i { display: inline-block; }
+html.js [data-split]:not(.is-in) .split-i { transform: translateY(110%); }
+html.js [data-split].is-in .split-i {
+  animation: split-rise var(--dur-slow) var(--ease-expo) both;
+  animation-delay: calc(var(--i, 0) * 45ms + var(--split-delay, 0ms));
+}
+@keyframes split-rise { from { transform: translateY(110%); } to { transform: none; } }
+
+/* ---- Scrubbed effects: CSS scroll-driven when supported (html.sda), GSAP otherwise ---- */
+@keyframes scrub-parallax {
+  from { transform: translateY(calc(var(--speed) * -160px)); }
+  to { transform: translateY(calc(var(--speed) * 160px)); }
+}
+@keyframes scrub-clip { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0% 0); } }
+@keyframes scrub-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    html.sda [data-scrub="parallax"] { animation: scrub-parallax linear both; animation-timeline: view(); }
+    html.sda [data-scrub="clip"] { animation: scrub-clip linear both; animation-timeline: view(); animation-range: entry 5% cover 45%; }
+    html.sda [data-scrub="progress"] { transform-origin: 0 50%; animation: scrub-progress linear both; animation-timeline: scroll(root block); }
+  }
+}
+[data-scrub="progress"] { transform-origin: 0 50%; }
+
+/* ---- Reduced motion: final states, no movement ---- */
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-pop], html.js [data-pop]:not(.is-in) { opacity: 1; clip-path: none; animation: none !important; transform: none; }
+  html.js [data-split] .split-i { transform: none !important; animation: none !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Grand Meridian · A 1920s-style grand hotel</title>
+  <meta name="description" content="A 1920s-style grand hotel with an emerald bar, a ballroom and a rooftop above the city. A fictional hotel for a design demo." />
+  <meta name="theme-color" content="#0f0f14" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23101016'/%3E%3Cpath d='M16 3l13 13-13 13L3 16z' fill='none' stroke='%23d5b25c' stroke-width='2'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js'); }, 4000);
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
+    <defs>
+      <pattern id="chevron" width="24" height="16" patternUnits="userSpaceOnUse"><path d="M0 12l12-8 12 8" fill="none" stroke-width="1.4" /></pattern>
+      <pattern id="checker" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="20" height="20" /><rect x="20" y="20" width="20" height="20" /></pattern>
+      <linearGradient id="gold-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="gs1" /><stop offset="0.45" class="gs2" /><stop offset="0.6" class="gs3" /><stop offset="1" class="gs2" /></linearGradient>
+    </defs>
+  </svg>
+
+  <header class="site-header">
+    <a class="monogram" href="#top" aria-label="The Grand Meridian home"><span aria-hidden="true">GM</span></a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#floors">The floors</a></li>
+        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="#reserve">Reserve</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--outline btn--sm" href="#reserve">Reserve</a>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero grain" id="top" aria-labelledby="hero-title">
+      <div class="sunburst" aria-hidden="true"></div>
+      <svg class="skyline" data-scrub="parallax" data-speed="0.25" viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <path d="M0 260V170h60v-30h40v-50h30v-40h20v40h30v50h40v30h50V120h30V80h20V40h10V0h4v40h10v40h20v40h30v130h40V150h60v-40h30v-30h40v30h30v40h60v110h40V100h20V70h30V40h14V10h4v30h14v30h30v30h20v160h50V160h40v-40h50v40h40v100h40V130h30v-30h30v30h30v130h60V180h50v-40h40v40h60v80z" class="sky-a" />
+        <path d="M0 260v-40h120v-30h80v30h140v-50h70v50h200v-60h60v60h180v-40h90v40h160v-30h100v30h240v40z" class="sky-b" />
+      </svg>
+      <div class="hero__frame">
+        <svg class="frame-line draw-now" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M8 0H92V4H96V8H100V92H96V96H92V100H8V96H4V92H0V8H4V4H8Z" /><path pathLength="1" d="M10 3H90V6H94V10H97V90H94V94H90V97H10V94H6V90H3V10H6V6H10Z" class="thin" /></svg>
+        <p class="eyebrow" data-pop="up">Est. MCMXXVI · Meridian Square</p>
+        <h1 id="hero-title" class="hero__title" data-split="chars">The Grand Meridian</h1>
+        <p class="hero__lead" data-pop="up" style="--pop-delay: 900ms">Twelve floors of brass, velvet and late-night jazz at the edge of the century. Ride the gilded lift from the emerald bar to the roof, then sleep beneath a ceiling of painted stars.</p>
+        <div class="hero__ctas" data-pop="up" style="--pop-delay: 1050ms">
+          <a class="btn btn--gold" href="#reserve">Reserve a room</a>
+          <a class="btn btn--outline" href="#floors">Take the lift</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLOORS: elevator doors + dial (pinned) -->
+    <section class="floors" id="floors" aria-labelledby="floors-title">
+      <header class="section-head">
+        <p class="eyebrow" data-pop="up">Going up</p>
+        <h2 id="floors-title" data-split>Every floor, a different evening.</h2>
+      </header>
+      <div class="lift" data-lift>
+        <div class="lift__dial" aria-hidden="true">
+          <svg viewBox="0 0 200 110">
+            <path d="M14 100a86 86 0 01172 0" class="dial-arc" />
+            <g class="dial-ticks"><text x="22" y="92">I</text><text x="44" y="46">IV</text><text x="94" y="26">VII</text><text x="146" y="46">X</text><text x="168" y="92">XII</text></g>
+            <g class="needle" data-needle><path d="M100 100L100 26" /><circle cx="100" cy="100" r="7" /></g>
+          </svg>
+        </div>
+        <div class="lift__car">
+          <div class="lift__scene" data-scene>
+            <!-- Lobby -->
+            <figure class="floor floor--1" data-floor="0">
+              <svg viewBox="0 0 800 500" role="img" aria-labelledby="fl1"><title id="fl1">The lobby: tall gold arches, fan lamps and a checkerboard marble floor around a central clock.</title>
+                <rect width="800" height="500" class="f-bg" />
+                <path d="M0 360h800v140H0z" fill="url(#checker)" class="f-floor" />
+                <g class="f-gold"><path d="M90 360V160a70 70 0 01140 0v200M330 360V120a70 70 0 01140 0v240M570 360V160a70 70 0 01140 0v200" /><circle cx="400" cy="210" r="34" /><path d="M400 210v-22M400 210l14 8" /><path d="M60 360h680" /></g>
+                <g class="f-fan"><path d="M160 120l-30-40h60zM640 120l-30-40h60z" /></g>
+              </svg>
+              <figcaption>Floor I · The Lobby</figcaption>
+            </figure>
+            <!-- Emerald bar -->
+            <figure class="floor floor--2" data-floor="1">
+              <svg viewBox="0 0 800 500" role="img" aria-labelledby="fl2"><title id="fl2">The Emerald Bar: a long curved counter, glowing bottle shelves and fan-shaped sconces on emerald walls.</title>
+                <rect width="800" height="500" class="f-bg f-bg--emerald" />
+                <g class="f-gold"><path d="M80 120h640M80 180h640M80 240h640" /><path d="M60 330c120-30 560-30 680 0v40H60z" /><path d="M120 370v130M680 370v130" /></g>
+                <g class="f-bottles"><rect x="110" y="86" width="14" height="34" /><rect x="140" y="80" width="12" height="40" /><rect x="220" y="146" width="16" height="34" /><rect x="300" y="88" width="12" height="32" /><rect x="420" y="140" width="14" height="40" /><rect x="520" y="84" width="16" height="36" /><rect x="610" y="146" width="12" height="34" /><rect x="660" y="206" width="14" height="34" /><rect x="180" y="206" width="12" height="34" /><rect x="380" y="200" width="16" height="40" /></g>
+                <g class="f-fan"><path d="M40 300l-26-40h52zM760 300l-26-40h52z" /></g>
+              </svg>
+              <figcaption>Floor IV · The Emerald Bar</figcaption>
+            </figure>
+            <!-- Ballroom -->
+            <figure class="floor floor--3" data-floor="2">
+              <svg viewBox="0 0 800 500" role="img" aria-labelledby="fl3"><title id="fl3">The Ballroom: a tiered gold chandelier above a stepped stage arch and a polished dance floor.</title>
+                <rect width="800" height="500" class="f-bg" />
+                <path d="M0 400h800v100H0z" fill="url(#chevron)" class="f-floor-chev" />
+                <g class="f-gold"><path d="M200 400V170h40v-40h40v-40h240v40h40v40h40v230" /><path d="M250 400V200h30v-40h30v-30h180v30h30v40h30v200" /><path d="M400 0v60" /><ellipse cx="400" cy="70" rx="90" ry="14" /><ellipse cx="400" cy="92" rx="60" ry="10" /><ellipse cx="400" cy="110" rx="30" ry="7" /></g>
+              </svg>
+              <figcaption>Floor VII · The Ballroom</figcaption>
+            </figure>
+            <!-- Rooftop -->
+            <figure class="floor floor--4" data-floor="3">
+              <svg viewBox="0 0 800 500" role="img" aria-labelledby="fl4"><title id="fl4">The Rooftop: a gold railing before a stepped city skyline under a crescent moon and stars.</title>
+                <rect width="800" height="500" class="f-bg f-bg--night" />
+                <g class="f-stars"><circle cx="80" cy="60" r="2" /><circle cx="180" cy="110" r="1.5" /><circle cx="300" cy="50" r="2" /><circle cx="460" cy="90" r="1.5" /><circle cx="560" cy="40" r="2" /><circle cx="700" cy="120" r="1.5" /></g>
+                <path d="M640 70a40 40 0 1 0 30 70 34 34 0 1 1-30-70z" class="f-moon" />
+                <path d="M0 400V300h60v-50h40v-60h20v60h40v50h80V220h30v-40h10v-50h4v50h10v40h30v180h80V260h50v-40h40v40h50v140h70V280h40v-50h20v-30h4v30h20v50h40v170z" class="f-city" />
+                <g class="f-gold"><path d="M0 400h800M0 440h800" /><path d="M40 400v100M120 400v100M200 400v100M280 400v100M360 400v100M440 400v100M520 400v100M600 400v100M680 400v100M760 400v100" /></g>
+              </svg>
+              <figcaption>Floor XII · The Rooftop</figcaption>
+            </figure>
+          </div>
+          <div class="door door--l" aria-hidden="true"></div>
+          <div class="door door--r" aria-hidden="true"></div>
+          <span class="floor-badge" data-floor-badge aria-hidden="true">I</span>
+        </div>
+        <ol class="lift__notes">
+          <li class="note"><h3>I · The Lobby</h3><p>Marble, brass and a clock that has never been fast. Afternoon tea from three, piano from five.</p></li>
+          <li class="note"><h3>IV · The Emerald Bar</h3><p>Green velvet booths and a cocktail list written in 1926, updated only once.</p></li>
+          <li class="note"><h3>VII · The Ballroom</h3><p>A stepped stage and a sprung dance floor. Swing band every Friday and Saturday.</p></li>
+          <li class="note"><h3>XII · The Rooftop</h3><p>Open until the last guest leaves. On clear nights you can see the river lights from here.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ROOMS -->
+    <section class="rooms" id="rooms" aria-labelledby="rooms-title">
+      <header class="section-head section-head--center">
+        <p class="eyebrow" data-pop="up">Rooms &amp; suites</p>
+        <h2 id="rooms-title" data-split>Rest beneath the stars.</h2>
+        <p class="lead" data-pop="up">Sample nightly rates in US dollars, breakfast included. All rooms are fictional, and so is the view.</p>
+      </header>
+      <div class="room-cards" data-pop-group>
+        <article class="room-card" data-pop>
+          <svg class="frame-line draw-view" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M8 0H92V4H96V8H100V92H96V96H92V100H8V96H4V92H0V8H4V4H8Z" /></svg>
+          <div class="room-card__art art-1" aria-hidden="true"></div>
+          <p class="room-card__num">Nº I</p>
+          <h3>Meridian Room</h3>
+          <p>Queen bed, walnut panelling and a writing desk by the window. Twenty-eight square metres.</p>
+          <p class="room-card__price">$240 <span>per night</span></p>
+        </article>
+        <article class="room-card room-card--feature" data-pop>
+          <svg class="frame-line draw-view" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M8 0H92V4H96V8H100V92H96V96H92V100H8V96H4V92H0V8H4V4H8Z" /></svg>
+          <span class="ribbon" data-pop="badge" style="--pop-delay: 600ms">Guest favourite</span>
+          <div class="room-card__art art-2" aria-hidden="true"></div>
+          <p class="room-card__num">Nº II</p>
+          <h3>Emerald Suite</h3>
+          <p>A separate salon in green velvet, a deep tub and a gramophone with a stack of records.</p>
+          <p class="room-card__price">$420 <span>per night</span></p>
+        </article>
+        <article class="room-card" data-pop>
+          <svg class="frame-line draw-view" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M8 0H92V4H96V8H100V92H96V96H92V100H8V96H4V92H0V8H4V4H8Z" /></svg>
+          <div class="room-card__art art-3" aria-hidden="true"></div>
+          <p class="room-card__num">Nº III</p>
+          <h3>Fan Penthouse</h3>
+          <p>The twelfth floor's corner, with a sunburst window, a terrace and a piano nobody minds you playing.</p>
+          <p class="room-card__price">$980 <span>per night</span></p>
+        </article>
+      </div>
+      <p class="ribbon-note">“Guest favourite” is the most-booked room in this demo's made-up booking data, not a review.</p>
+    </section>
+
+    <!-- RESERVE -->
+    <section class="reserve" id="reserve" aria-labelledby="reserve-title">
+      <div class="reserve__panel">
+        <figure class="fig reserve__fig" data-slot="facade" data-photo="" data-alt="The hotel facade at night" style="--ar: 3 / 4; --fig-radius: 0; --fig-placeholder: var(--emerald-deep)" data-pop>
+          <div class="fig__art facade" role="img" aria-label="Illustration: a stepped Art Deco tower with gold vertical lines and lit windows against the night sky.">
+            <svg viewBox="0 0 300 400" aria-hidden="true">
+              <rect width="300" height="400" class="fa-sky" />
+              <path d="M70 400V140h20v-30h20V80h20V40h40v40h20v30h20v30h20v260z" class="fa-tower" />
+              <g class="fa-lines"><path d="M120 400V90M150 400V50M180 400V90M100 400V150M200 400V150" /></g>
+              <g class="fa-win"><rect x="128" y="180" width="8" height="12" /><rect x="164" y="210" width="8" height="12" /><rect x="128" y="260" width="8" height="12" /><rect x="186" y="300" width="8" height="12" /><rect x="106" y="330" width="8" height="12" /><rect x="164" y="350" width="8" height="12" /></g>
+            </svg>
+          </div>
+        </figure>
+        <div class="reserve__body">
+          <h2 id="reserve-title" data-split>Reserve a room</h2>
+          <p class="reserve__sub" data-pop="up">A demo form: it checks your dates and prices the stay, but sends nothing.</p>
+          <form class="reserve__form" data-reserve novalidate>
+            <div class="field"><label for="r-in">Arrival</label><input id="r-in" name="in" type="date" required /></div>
+            <div class="field"><label for="r-out">Departure</label><input id="r-out" name="out" type="date" required /></div>
+            <div class="field"><label for="r-room">Room</label>
+              <select id="r-room" name="room" required>
+                <option value="240">Meridian Room · $240</option>
+                <option value="420" selected>Emerald Suite · $420</option>
+                <option value="980">Fan Penthouse · $980</option>
+              </select>
+            </div>
+            <div class="field"><label for="r-guests">Guests</label>
+              <select id="r-guests" name="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option></select>
+            </div>
+            <p class="summary" aria-live="polite" data-summary>Choose your dates to see the total.</p>
+            <p class="form-error" role="alert" data-error></p>
+            <button class="btn btn--gold" type="submit">Request reservation</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-rule" aria-hidden="true"></div>
+    <p>The Grand Meridian · 1 Meridian Square, Example City · (555) 555-0100 · concierge@example.com</p>
+    <p class="fine">A fictional hotel created for a design demo. Rooms, rates and history are invented.</p>
+  </footer>
+</body>
+</html>
