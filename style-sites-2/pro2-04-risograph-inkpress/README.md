@@ -96,6 +96,20 @@ npm run contrast
 ## Swap in your own photos
 The hero poster is an image slot (`data-slot="hero-poster"`, 3:4). Set `data-photo="assets/images/<file>"` to show a photo of a real print instead. The ink-registration animation only applies to the SVG artwork. See [`public/assets/README.md`](public/assets/README.md).
 
+## Verification (what was actually run)
+- `npm run build` passes; `npm run contrast`: 14/14 pairs pass.
+- Headless Chromium at 375, 768 and 1440 px, with screenshots at 0/25/50/75/100%:
+  - no console errors or warnings, no failed or external requests, one h1, no horizontal scroll;
+  - axe-core: 0 violations;
+  - reduced-motion, no-JS and `?nosda` passes: nothing left hidden.
+- Poster-lab probe: the orbits, blobs, stripes and grid patterns all render with all three inks; a redraw takes about 120 ms in headless Chromium. The status text and `aria-label` describe each poster.
+- Bugs found and fixed during the audit:
+  - The first build's lab silently drew only the first ink: `p5.Graphics.remove()` throws in p5 1.11 instance mode, and my `catch` hid it. The lab now reuses two buffers and logs any start-up failure.
+  - Chrome warned about repeated `getImageData` readback; the master buffer is now created with `willReadFrequently`.
+  - Titles were hard to read over stripes; every ink now has a knockout band behind the title.
+  - A kit bug left content hidden if the main thread was busy while it scrolled past (IntersectionObserver missed it). Pop-ins now sweep up anything already scrolled past.
+- **Not tested:** Safari and Firefox, the PNG download in a real browser (`saveCanvas` was not exercised headlessly), touch devices, and screen readers.
+
 ## Notes and decisions
 - Built in `style-sites-2/` of `erdgib923-star/different-websites` instead of its own repo: `gh` was not authenticated and repo creation was unavailable. Split later with `publish-repos.sh`.
 - Brand check (web search, 2026-11-02): no "Inkpress Collective" found.

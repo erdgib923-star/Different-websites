@@ -35,7 +35,8 @@ export function initLab() {
     try {
       const [{ default: P5 }] = await Promise.all([import('p5'), document.fonts?.load('700 80px "Space Grotesk"'), document.fonts?.load('400 16px "Space Mono"')]);
       start(P5, host, form);
-    } catch {
+    } catch (err) {
+      console.error('Poster lab failed to start', err);
       fallback.classList.add('is-shown');
     }
   }, { rootMargin: '600px' });
@@ -61,9 +62,22 @@ function start(P5: any, host: HTMLElement, form: HTMLFormElement) {
     };
   };
 
+  // Two reusable offscreen buffers (created once): the greyscale master and the screened ink.
+  let master: any, layer: any;
   const sketch = (p: any) => {
     p.setup = () => {
       p.pixelDensity(Math.min(2, window.devicePixelRatio || 1));
+      // The master is read back with getImageData for every ink, so its 2D context should be
+      // created with willReadFrequently. p5 1.x has no option for that; shim getContext only
+      // for this one createGraphics call.
+      const orig = HTMLCanvasElement.prototype.getContext;
+      HTMLCanvasElement.prototype.getContext = function (this: HTMLCanvasElement, type: string, attrs?: object) {
+        return orig.call(this, type as '2d', type === '2d' ? { ...attrs, willReadFrequently: true } : attrs);
+      } as typeof orig;
+      try { master = p.createGraphics(W, H); } finally { HTMLCanvasElement.prototype.getContext = orig; }
+      master.pixelDensity(1);
+      layer = p.createGraphics(W, H);
+      layer.pixelDensity(1);
       const c = p.createCanvas(W, H);
       c.parent(host);
       c.elt.setAttribute('aria-hidden', 'true');
@@ -111,17 +125,20 @@ function start(P5: any, host: HTMLElement, form: HTMLFormElement) {
     const order: Ink[] = (['y', 'p', 'b'] as Ink[]).filter((k) => s.inks.includes(k));
     const typeInk = order.includes('b') ? 'b' : order.at(-1)!;
     order.forEach((ink, k) => {
-      const master = pp.createGraphics(W, H);
-      master.pixelDensity(1);
+      master.push();
+      master.blendMode(master.BLEND);
       master.background(255);
       drawMaster(pp, master, s.shape, k, order.length);
-      const layer = pp.createGraphics(W, H);
-      layer.pixelDensity(1);
+      master.pop();
       layer.clear();
       layer.noStroke();
       const col = rgb(INK_TOKEN[ink]);
       layer.fill(...col);
       screen(master, layer, s.dot, ANGLE[ink]);
+      // Knockout band behind the title in every ink, as a riso designer would separate it.
+      layer.erase();
+      layer.rect(0, H - 214, W, 186);
+      layer.noErase();
       if (ink === typeInk) drawType(layer, s, col);
       // uneven ink: tiny random drop-outs
       layer.erase();
@@ -137,8 +154,6 @@ function start(P5: any, host: HTMLElement, form: HTMLFormElement) {
       pp.rotate(rot);
       pp.image(layer, -W / 2, -H / 2);
       pp.pop();
-      master.remove();
-      layer.remove();
     });
     pp.blendMode(pp.BLEND);
     const names = order.map((k) => INK_NAME[k]);

@@ -25,3 +25,4 @@ All brands, people, addresses, phone numbers and data are fictional.
 | 1 | `pro2-01-bento-quillstack` | Quillstack, notes and writing app |
 | 2 | `pro2-02-claymorphism-mochi-money` | Mochi Money, kids' savings app |
 | 3 | `pro2-03-papercut-fernfold` | Fernfold Journeys, woodland tours |
+| 4 | `pro2-04-risograph-inkpress` | Inkpress Collective, risograph print studio |
