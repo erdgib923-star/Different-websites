@@ -21,7 +21,7 @@ export function initGlyphs() {
   const big = document.querySelector<HTMLElement>('#glyph-big')!;
   const name = document.querySelector<HTMLElement>('#glyph-name')!;
   const chars = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&@?!€%()→ßÆø'];
-  grid.innerHTML = chars.map((c) => `<div role="listitem"><button type="button" class="glyph" data-c="${c}" aria-label="${nameOf(c)}, ${code(c)}">${c}</button></div>`).join('');
+  grid.innerHTML = chars.map((c) => `<div role="listitem"><button type="button" class="glyph" data-c="${c}" aria-label="${c}: ${nameOf(c)}, ${code(c)}">${c}</button></div>`).join('');
   // the cells are list items whose child is a button; the list items are the grid cells visually
   grid.querySelectorAll('div[role="listitem"]').forEach((d) => d.classList.add('glyph-cell'));
   const w = { v: 400 };

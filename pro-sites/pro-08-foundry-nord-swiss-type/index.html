@@ -46,8 +46,8 @@
           <p class="hero__word" id="hero-word">NORD</p>
         </div>
         <div class="g hero__axes" aria-hidden="true">
-          <p>wght <span id="ax-wght">100</span></p>
-          <p>wdth <span id="ax-wdth">25</span></p>
+          <p>wght <span id="ax-wght">250</span></p>
+          <p>wdth <span id="ax-wdth">50</span></p>
           <p>opsz <span id="ax-opsz">144</span></p>
           <p class="hero__scroll">Scroll ↓ to change the axes</p>
         </div>
@@ -85,7 +85,7 @@
             <p class="family__spec family__spec--mono" data-sweep>{code: true}</p>
           </li>
         </ol>
-        <p class="g standin">Foundry Nord and its families are fictional. The specimens are set in open-source Google Fonts used as stand-ins: Roboto Flex, Anybody and Recursive (SIL Open Font License), self-hosted.</p>
+        <div class="g"><p class="standin">Foundry Nord and its families are fictional. The specimens are set in open-source Google Fonts used as stand-ins: Roboto Flex, Anybody and Recursive (SIL Open Font License), self-hosted.</p></div>
       </section>
 
       <!-- ============ KINETIC MARQUEE ============ -->
@@ -110,6 +110,7 @@
               <label><input type="radio" name="family" value="mono" /> Mono Kasual</label>
             </fieldset>
             <div class="axes" id="axes"></div>
+            <noscript><p>The axis sliders need JavaScript.</p></noscript>
             <label class="axis">
               <span>Size <output id="size-out">96 px</output></span>
               <input type="range" id="size" min="16" max="180" value="96" />
@@ -140,6 +141,7 @@
             <p class="glyph-preview__name" id="glyph-name">U+0052 · Latin capital letter R</p>
           </div>
           <div class="glyph-grid" id="glyph-grid" role="list"></div>
+          <noscript><p>The glyph inspector needs JavaScript. The character set covers A–Z, a–z, 0–9 and common punctuation.</p></noscript>
         </div>
       </section>
 

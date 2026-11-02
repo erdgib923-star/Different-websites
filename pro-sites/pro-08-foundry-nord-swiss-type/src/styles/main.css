@@ -177,6 +177,7 @@ h3 {
   margin: 1.5rem 0 0;
 }
 @media (max-width: 760px) {
+  .hero__index,
   .hero__title,
   .hero__lede,
   .h2 {
@@ -188,10 +189,11 @@ h3 {
   margin: 2rem auto 0;
 }
 .hero__word {
+  display: inline-block;
   margin: 0;
   font-size: 20vw;
   line-height: 0.82;
-  font-variation-settings: 'wght' 100, 'wdth' 25, 'opsz' 144;
+  font-variation-settings: 'wght' 250, 'wdth' 50, 'opsz' 144;
   color: var(--text);
   white-space: nowrap;
   letter-spacing: -0.02em;

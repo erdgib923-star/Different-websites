@@ -44,7 +44,7 @@ gridBtn.addEventListener('click', () => {
 /* ---------- hero: wght / wdth / opsz scrub with scroll; the word is fitted at its widest state ---------- */
 const word = document.querySelector<HTMLElement>('#hero-word')!;
 const out = { wght: document.querySelector('#ax-wght')!, wdth: document.querySelector('#ax-wdth')!, opsz: document.querySelector('#ax-opsz')! };
-const axes = { wght: 100, wdth: 25, opsz: 144 };
+const axes = { wght: 250, wdth: 50, opsz: 144 };
 const apply = () => {
   word.style.fontVariationSettings = `'wght' ${axes.wght.toFixed(0)}, 'wdth' ${axes.wdth.toFixed(0)}, 'opsz' ${axes.opsz.toFixed(0)}`;
   out.wght.textContent = axes.wght.toFixed(0);
@@ -55,7 +55,7 @@ const fit = () => {
   const saved = word.style.fontVariationSettings;
   word.style.fontVariationSettings = `'wght' 1000, 'wdth' 151, 'opsz' 144`;
   word.style.fontSize = '100px';
-  const w = word.scrollWidth;
+  const w = word.getBoundingClientRect().width;
   word.style.fontSize = `${Math.floor((word.parentElement!.clientWidth / w) * 100 * 0.98)}px`;
   word.style.fontVariationSettings = saved;
 };

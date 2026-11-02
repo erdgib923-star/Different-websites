@@ -89,7 +89,7 @@ export function initTester() {
   });
   document.querySelector('#reset')!.addEventListener('click', () => {
     Object.entries(FAMILIES).forEach(([k, f]) => (values[k] = Object.fromEntries(f.axes.map((a) => [a.tag, a.value]))));
-    size.value = '96';
+    size.value = window.innerWidth < 700 ? '44' : '96';
     sample.textContent = 'Quiet fjords, bright signage, big zinc quays.';
     buildSliders();
     render();
@@ -109,6 +109,8 @@ export function initTester() {
     const text = e.clipboardData?.getData('text/plain') ?? '';
     document.execCommand('insertText', false, text);
   });
+  // phones start at a size where a few words fit on a line
+  if (window.innerWidth < 700) size.value = '44';
   buildSliders();
   render();
 }
