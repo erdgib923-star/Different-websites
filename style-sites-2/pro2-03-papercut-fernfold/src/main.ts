@@ -44,12 +44,18 @@ function initDive(host: HTMLElement) {
       defaults: { ease: 'none' },
       scrollTrigger: { trigger: hero, start: 'top top', end: '+=120%', pin: true, scrub: 0.6, invalidateOnRefresh: true },
     });
+    // If keyboard focus lands in the faded hero copy, scroll back so it is visible.
+    const copy = hero.querySelector<HTMLElement>('.hero__copy')!;
+    const onFocus = () => { if (parseFloat(getComputedStyle(copy).opacity) < 0.6) window.scrollTo({ top: 0 }); };
+    copy.addEventListener('focusin', onFocus);
     layers.forEach((l) => {
       const d = parseFloat(l.style.getPropertyValue('--depth')) || 0;
       tl.to(l, { scale: 1 + d * d * 1.3, yPercent: d * d * 38, duration: 1 }, 0);
     });
-    tl.to('.hero__copy', { yPercent: -30, autoAlpha: 0, duration: 0.45 }, 0)
+    // Opacity only (not visibility): the h1 must stay in the accessibility tree.
+    tl.to('.hero__copy', { yPercent: -30, opacity: 0, duration: 0.45 }, 0)
       .to('.hero__caption', { autoAlpha: 1, duration: 0.25 }, 0.5);
+    return () => copy.removeEventListener('focusin', onFocus);
   });
   return mm;
 }

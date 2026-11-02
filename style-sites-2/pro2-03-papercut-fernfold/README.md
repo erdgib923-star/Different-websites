@@ -25,7 +25,7 @@ A small-group woodland walking company, told as a **paper diorama**:
   - **cream** paper (0.965 0.022 90).
 - **Harmony:** analogous greens with a warm mustard counterpoint. Teal is the cool neighbour of forest, used for illustration and focus only, never for text.
 - **60 / 30 / 10:** 60% cream paper, 30% forest (text, illustration, booking band), 10% mustard.
-- **Seasons:** spring, summer, autumn and winter each define eight layer colours (sky, far, mid, back, water, front, leaf, sun) in `palette.config.mjs`. They become OKLCH tokens with hex fallbacks, and `seasons.ts` reads them from CSS and interpolates them. Without OKLCH support the page simply stays in spring.
+- **Seasons:** spring, summer, autumn and winter each define eight layer colours (sky, far, mid, back, water, front, leaf, sun) in `palette.config.mjs`. That one file generates the static tokens (with hex fallbacks) and is also imported by `seasons.ts`, which gamut-maps the values the same way and interpolates them at runtime. Without OKLCH support the page simply stays in spring.
 - **Contrast with moving colours:** the shifting colours are illustration only. Text colours are fixed. The one place text sits on a seasonal colour (the hero title and lead on the sky) is checked against all four skies.
 
 All colours are OKLCH custom properties with `@supports` hex fallbacks:
@@ -95,6 +95,20 @@ To change the forest, edit the seeds or parameters in `HERO_LAYERS` and `cardLay
 
 ## Swap in your own photos
 Each walk card is an image slot (`data-slot="walk-spring"` and so on). Put a photo in `public/assets/images/` and set `data-photo="assets/images/<file>"`; it replaces the diorama. See [`public/assets/README.md`](public/assets/README.md). The hero valley is an interactive scene, not an image slot.
+
+## Verification (what was actually run)
+- `npm run build` passes; `npm run contrast`: 19/19 pairs pass.
+- Headless Chromium at 375, 768 and 1440 px with screenshots at 0/25/50/75/100%:
+  - no console errors, no failed or external requests, one h1, no horizontal scroll;
+  - axe-core: 0 violations;
+  - reduced-motion, no-JS and `?nosda` passes: nothing left hidden.
+- Season probe: scrolling each walk to the viewport centre set `--s-front` to the spring, summer, autumn and winter values in turn. The season nav's `aria-current` and `html[data-season]` followed.
+- Problems found and fixed during the audit:
+  - The first build painted too slowly to screenshot: eight full-screen SVG layers with blur `drop-shadow` filters. Shadows are now offset copies of each path, with no blur.
+  - The season interpolation silently never ran: Chromium serializes colour custom properties as `lab()`, so reading them back from CSS failed. Season values are now imported from the config.
+  - axe found the h1 hidden after the hero dive (`visibility: hidden`). The hero copy now fades with opacity only, and focusing it scrolls back up.
+  - On phones: the form inputs overflowed the panel, the header wrapped, and the sun sat behind the buttons.
+- **Not tested:** Safari and Firefox (Firefox has no `animation-timeline`, so it would use the GSAP fold fallback; I only exercised that path in Chromium with `?nosda`), real devices, and screen readers. Scroll performance was not measured on a real GPU.
 
 ## Notes and decisions
 - Built in `erdgib923-star/different-websites/style-sites-2/` instead of its own repo: `gh` was not authenticated and repo creation was unavailable. `style-sites-2/publish-repos.sh` can split it out.

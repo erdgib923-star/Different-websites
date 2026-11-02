@@ -1,8 +1,11 @@
 import { ScrollTrigger } from './lib/motion';
+import palette from '../palette.config.mjs';
+import { gamutMap } from '../scripts/color.mjs';
 
 /**
  * Four seasons, interpolated in OKLCH as the page scrolls. The season colours are defined once,
- * in palette.config.mjs, as --spring-sky, --summer-far, … This module reads them from CSS,
+ * in palette.config.mjs (which also generates --spring-sky, --summer-far, … in tokens.css).
+ * This module imports the same numbers, gamut-maps them exactly like the token generator,
  * interpolates L, C and H (shortest way round the hue circle) between the two nearest seasons,
  * and writes the result to --s-sky, --s-far, … on :root. Each season "holds" near its own
  * section (smoothstep), then blends into the next.
@@ -11,9 +14,9 @@ const SEASONS = ['spring', 'summer', 'autumn', 'winter'] as const;
 const KEYS = ['sky', 'far', 'mid', 'back', 'water', 'front', 'leaf', 'sun'] as const;
 type LCH = [number, number, number];
 
-function parse(v: string): LCH | null {
-  const m = v.trim().match(/^oklch\(\s*([\d.]+)\s+([\d.]+)\s+([\d.]+)/i);
-  return m ? [parseFloat(m[1]), parseFloat(m[2]), parseFloat(m[3])] : null;
+function lookup(name: string): LCH {
+  const [L, C, H] = palette.colors[name];
+  return [L, gamutMap(L, C, H), H];
 }
 const smoothstep = (t: number) => t * t * (3 - 2 * t);
 function mix(a: LCH, b: LCH, t: number): string {
@@ -27,10 +30,9 @@ function mix(a: LCH, b: LCH, t: number): string {
 
 export function initSeasons() {
   const root = document.documentElement;
-  const cs = getComputedStyle(root);
-  const table = SEASONS.map((s) => KEYS.map((k) => parse(cs.getPropertyValue(`--${s}-${k}`))));
-  // Browsers without OKLCH get the hex fallbacks, which this module cannot parse: keep spring.
-  if (table.some((row) => row.some((c) => !c))) return;
+  // Browsers without OKLCH keep the static spring palette (hex fallbacks in tokens.css).
+  if (!CSS.supports('color', 'oklch(0.5 0.1 150)')) return;
+  const table = SEASONS.map((s) => KEYS.map((k) => lookup(`${s}-${k}`)));
   const sections = SEASONS.map((s) => document.getElementById(s));
   const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-season-nav] a')];
   let centers: number[] = [];
@@ -47,7 +49,7 @@ export function initSeasons() {
       t = i + smoothstep((y - centers[i]) / (centers[i + 1] - centers[i]));
     }
     const a = Math.floor(t), b = Math.min(3, a + 1), f = t - a;
-    KEYS.forEach((k, ki) => root.style.setProperty(`--s-${k}`, mix(table[a][ki]!, table[b][ki]!, f)));
+    KEYS.forEach((k, ki) => root.style.setProperty(`--s-${k}`, mix(table[a][ki], table[b][ki], f)));
     const nearest = Math.round(t);
     if (nearest !== current) {
       current = nearest;

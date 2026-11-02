@@ -145,6 +145,15 @@ export function buildLayer(l: Layer, H: number): SVGSVGElement {
     : ferns(r, H, l.count!, l.scale!);
   path.setAttribute('d', d);
   path.style.fill = l.fill;
+  // Cut-paper cast shadow without a blur filter (cheap to paint while layers move):
+  // two offset copies of the same path in a tinted, translucent shade.
+  for (const [dy, cls] of [[14, 'cast cast--far'], [5, 'cast cast--near']] as const) {
+    const sh = document.createElementNS(NS, 'path');
+    sh.setAttribute('d', d);
+    sh.setAttribute('class', cls);
+    sh.setAttribute('transform', `translate(0 ${dy})`);
+    svg.appendChild(sh);
+  }
   svg.appendChild(path);
   return svg;
 }
