@@ -137,17 +137,25 @@ em {
   text-transform: none;
 }
 @media (max-width: 760px) {
+  /* phones: wordmark on its own row, the four links in one row beneath it */
   .masthead__inner {
-    grid-template-columns: 1fr auto;
-  }
-  .masthead__links:not(.masthead__links--end) {
-    display: none;
-  }
-  .masthead__links--end {
-    gap: 1rem;
+    grid-template-columns: auto auto;
+    grid-template-areas: 'mark mark' 'a b';
+    justify-content: center;
+    column-gap: 1.1rem;
   }
   .wordmark {
+    grid-area: mark;
+    justify-self: center;
     letter-spacing: 0.18em;
+  }
+  .masthead__links {
+    gap: 1.1rem;
+  }
+  .masthead__links a {
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    min-height: 40px;
   }
 }
 
@@ -157,7 +165,7 @@ em {
   display: grid;
   align-items: end;
   gap: 2rem;
-  padding-block: 7.5rem 4rem;
+  padding-block: 8.5rem 4rem;
   position: relative;
 }
 @media (min-width: 900px) {

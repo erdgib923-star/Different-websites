@@ -47,10 +47,14 @@ export function initReveals(root: ParentNode = document) {
 
   q('[data-split]').forEach((el) => {
     const intro = el.dataset.split === 'intro';
+    // headings get an aria-label from SplitText; other elements (e.g. <p>) must not, so their
+    // split words stay readable as plain text
+    const heading = /^H[1-6]$/.test(el.tagName);
     SplitText.create(el, {
       type: 'lines,words',
       mask: 'lines',
       autoSplit: true,
+      aria: heading ? 'auto' : 'none',
       onSplit(self) {
         gsap.set(el, { visibility: 'visible' });
         return gsap.from(self.words, {
