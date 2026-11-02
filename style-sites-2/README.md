@@ -29,3 +29,4 @@ All brands, people, addresses, phone numbers and data are fictional.
 | 5 | `pro2-05-doodle-scribble-sprout` | Scribble & Sprout, kids' drawing classes |
 | 6 | `pro2-06-wabisabi-yugure-tea` | Yugure Tea Atelier |
 | 7 | `pro2-07-hygge-lumi-and-lind` | Lumi & Lind, Scandinavian home goods |
+| 8 | `pro2-08-artdeco-grand-meridian` | The Grand Meridian, 1920s-style hotel |

@@ -99,6 +99,16 @@ npm run contrast
 ## Swap in your own photos
 `facade` (3:4) in the reservation panel is the photo slot. Set `data-photo="assets/images/<file>"`. See [`public/assets/README.md`](public/assets/README.md). The floor scenes and room art are part of the deco system; to show photos there, add `.fig` slots in their place.
 
+## Verification (what was actually run)
+- `npm run build` passes; `npm run contrast`: 15/15 pairs pass.
+- Headless Chromium at 375, 768 and 1440 px, with screenshots at 0/25/50/75/100%:
+  - no console errors, no failed or external requests, one h1, no horizontal scroll;
+  - axe-core: 0 violations;
+  - reduced-motion, no-JS and `?nosda` passes: nothing left hidden.
+- Lift probe at 1440 px, halfway through the pin: the doors were open, the dial needle was at IV, the badge read "IV", and the Emerald Bar scene and note were showing.
+- The audit found nothing that needed fixing.
+- **Not tested:** the booking form's date validation in Safari (native date pickers differ), Firefox (uses the GSAP fallbacks), real devices, and screen readers.
+
 ## Notes and decisions
 - Built in `style-sites-2/` of `erdgib923-star/different-websites` instead of its own repo: `gh` was not authenticated and repo creation was unavailable. Split later with `publish-repos.sh`.
 - Brand check (web search, 2026-11-02): a small budget "Hotel Grand Meridian" exists in Katni, India. It is not a well-known brand, and this demo is a fictional 1920s grand hotel, so the name was kept. Rename it before any public use.
