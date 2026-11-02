@@ -41,7 +41,7 @@ h2 { font-size: clamp(1.9rem, 4.2vw, 3rem); }
 .hero h1 { font-size: clamp(2.3rem, 5.6vw, 4.3rem); max-width: 13ch; }
 .hero__lead { margin-top: 1.6rem; color: var(--text-muted); max-width: 30rem; }
 .vertical { position: absolute; top: 7rem; right: calc(var(--gutter) - 0.5rem); writing-mode: vertical-rl; font-family: var(--font-display); font-size: clamp(1.1rem, 2vw, 1.5rem); letter-spacing: 0.5em; color: var(--text-muted); }
-@media (max-width: 899px) { .vertical { top: 6.5rem; } .hero__fig { width: min(78%, 420px); } }
+@media (max-width: 899px) { .vertical { top: 6.5rem; } .hero__fig { width: min(78%, 420px); } .seal--hero { bottom: auto; top: 15.5rem; width: 38px; height: 38px; font-size: 1.35rem; } }
 
 .ink-art { width: 100%; height: 100%; overflow: visible; }
 .enso { fill: none; stroke: var(--ink); stroke-width: 24; stroke-linecap: round; filter: url(#sumi); }
@@ -51,6 +51,7 @@ html.js .enso:not(.enso--ghost) { stroke-dasharray: 1; stroke-dashoffset: 1; ani
 .mist path { filter: url(#mist); }
 .m1 { fill: var(--ink-wash); opacity: 0.22; }
 .m2 { fill: var(--ink); opacity: 0.16; }
+.hero .ink-art { -webkit-mask-image: linear-gradient(#000 70%, transparent); mask-image: linear-gradient(#000 70%, transparent); }
 
 /* Ink-wash reveal: a turbulence-edged blot grows through the mask (see main.ts). */
 [data-pop='wash'] { --pop-name: pop-up; --pop-dur: 1.4s; }
@@ -102,7 +103,7 @@ section.menu, section.pour, section.visit { padding-block: clamp(4.5rem, 10vw, 8
 .kintsugi { fill: none; stroke: var(--brand-400); stroke-width: 3; stroke-linecap: round; }
 .tea-fill { fill: var(--moss-500); opacity: 0.75; transform-box: fill-box; transform-origin: 50% 100%; }
 .steam path { fill: none; stroke: var(--ink-wash); stroke-width: 2.5; stroke-linecap: round; opacity: 0.55; }
-.temp { position: absolute; right: 4%; top: 38%; font-family: var(--font-display); font-size: 1.1rem; color: var(--text); border-bottom: 1px solid var(--border-strong); padding-bottom: 0.1rem; }
+.temp { position: absolute; right: -6%; top: 28%; font-family: var(--font-display); font-size: 1.1rem; color: var(--text); border-bottom: 1px solid var(--border-strong); padding-bottom: 0.1rem; }
 .pour__steps { list-style: none; padding: 0; display: grid; gap: 2.2rem; }
 .step { display: grid; grid-template-columns: 2.4rem 1fr; gap: 1rem; }
 .step__n { font-family: var(--font-display); font-size: 1.5rem; color: var(--brand-text); line-height: 1.5; }

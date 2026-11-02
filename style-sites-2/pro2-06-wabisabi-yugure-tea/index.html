@@ -28,6 +28,9 @@
         <feComposite in="bent" in2="speckle" operator="in" result="dry" />
         <feGaussianBlur in="dry" stdDeviation="0.8" />
       </filter>
+      <linearGradient id="fade-x-g" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0" /><stop offset="0.38" stop-color="#fff" /><stop offset="0.68" stop-color="#fff" /><stop offset="1" stop-color="#fff" stop-opacity="0" /></linearGradient>
+      <linearGradient id="fade-y-g" x1="0" x2="0" y1="0" y2="1"><stop offset="0.55" stop-color="#fff" /><stop offset="1" stop-color="#fff" stop-opacity="0" /></linearGradient>
+      <mask id="mist-fade" maskContentUnits="objectBoundingBox"><rect width="1" height="1" fill="url(#fade-x-g)" /></mask>
       <filter id="mist" x="-20%" y="-40%" width="140%" height="180%">
         <feTurbulence type="fractalNoise" baseFrequency="0.008 0.03" numOctaves="3" seed="11" result="warp" />
         <feDisplacementMap in="SourceGraphic" in2="warp" scale="40" xChannelSelector="R" yChannelSelector="G" result="bent" />
@@ -57,11 +60,13 @@
       <figure class="fig hero__fig" data-slot="hero-ink" data-photo="" data-alt="Steam rising from a tea bowl in low evening light" data-pop="wash" style="--ar: 1 / 1; --fig-radius: 0; --fig-placeholder: transparent">
         <div class="fig__art" role="img" aria-label="Ink-wash brush circle (ensō) above a misty sumi-e mountain range.">
           <svg viewBox="0 0 600 600" class="ink-art" aria-hidden="true">
+            <g mask="url(#mist-fade)">
             <g class="mist">
               <path d="M-20 470c80-40 120-90 190-70s110 60 170 30 120-90 280-40v220H-20z" class="m1" />
             </g>
             <g class="mist">
               <path d="M-20 520c90-30 150-20 220 0s140 30 200 0 120-50 220-20v120H-20z" class="m2" />
+            </g>
             </g>
             <path class="enso" pathLength="1" d="M318 92c-96-8-190 52-206 150-16 98 48 186 146 200 98 14 188-46 204-142 12-74-26-140-92-176" />
             <path class="enso enso--ghost" d="M330 100c-90-4-170 54-182 146" />

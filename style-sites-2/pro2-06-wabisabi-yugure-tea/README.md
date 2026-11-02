@@ -93,6 +93,19 @@ npm run contrast
 ## Swap in your own photos
 Two slots: `hero-ink` (1:1) and `atelier-room` (4:5). Set `data-photo="assets/images/<file>"`, and the photo ink-washes in like the artwork. See [`public/assets/README.md`](public/assets/README.md).
 
+## Verification (what was actually run)
+- `npm run build` passes; `npm run contrast`: 11/11 pairs pass.
+- Headless Chromium at 375, 768 and 1440 px, with screenshots at 0/25/50/75/100%:
+  - no console errors, no failed or external requests, one h1, no horizontal scroll;
+  - axe-core: 0 violations;
+  - reduced-motion, no-JS and `?nosda` passes: nothing left hidden.
+- Tabs probe: the current season (autumn in November) was selected on load; ArrowRight moved focus and selection to Winter and hid the Autumn panel.
+- Fixed after the first audit:
+  - The mist hills ended in hard rectangular edges; they now fade out at the sides and bottom.
+  - The hero seal overlapped the lead text on phones.
+  - The "80 °C" label collided with the bowl rim.
+- **Not tested:** Safari and Firefox (Firefox uses the GSAP fallback for the scrubbed rules), real devices, and screen readers. The ink-wash mask reveal was only seen in Chromium.
+
 ## Notes and decisions
 - Built in `style-sites-2/` of `erdgib923-star/different-websites` instead of its own repo: `gh` was not authenticated and repo creation was unavailable. Split later with `publish-repos.sh`.
 - Brand check (web search, 2026-11-02): no "Yugure Tea" found. Similar names exist (Yugen Tea in Vilnius and Melbourne), so the name was kept.

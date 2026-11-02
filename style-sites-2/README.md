@@ -27,3 +27,4 @@ All brands, people, addresses, phone numbers and data are fictional.
 | 3 | `pro2-03-papercut-fernfold` | Fernfold Journeys, woodland tours |
 | 4 | `pro2-04-risograph-inkpress` | Inkpress Collective, risograph print studio |
 | 5 | `pro2-05-doodle-scribble-sprout` | Scribble & Sprout, kids' drawing classes |
+| 6 | `pro2-06-wabisabi-yugure-tea` | Yugure Tea Atelier |
