@@ -25,8 +25,12 @@ export function initYear() {
   amount.textContent = `$${GOAL}`;
 
   const mm = gsap.matchMedia();
-  mm.add('(prefers-reduced-motion: no-preference)', () => {
-    sec.classList.add('is-pinned');
+  // Desktop: pinned and scrubbed. Phones: the same scrub without pinning, so the jar never sits
+  // below the fold while the page is held still.
+  mm.add({ wide: '(min-width: 900px)', motion: '(prefers-reduced-motion: no-preference)' }, (ctx) => {
+    const { wide, motion } = ctx.conditions as { wide: boolean; motion: boolean };
+    if (!motion) return;
+    if (wide) sec.classList.add('is-pinned');
     gsap.set(badges, { autoAlpha: 0, scale: 0.3, y: 20 });
     const shown = badges.map(() => false);
     const update = (p: number) => {
@@ -46,10 +50,9 @@ export function initYear() {
     };
     update(0);
     gsap.timeline({
-      scrollTrigger: {
-        trigger: pin, start: 'top top+=90', end: '+=220%', pin: true, scrub: 0.5,
-        onUpdate: (self) => update(self.progress),
-      },
+      scrollTrigger: wide
+        ? { trigger: pin, start: 'top top+=90', end: '+=220%', pin: true, scrub: 0.5, onUpdate: (self) => update(self.progress) }
+        : { trigger: sec.querySelector('.year__stage'), start: 'top 85%', end: 'bottom 25%', scrub: 0.5, onUpdate: (self) => update(self.progress) },
     });
     return () => {
       sec.classList.remove('is-pinned');

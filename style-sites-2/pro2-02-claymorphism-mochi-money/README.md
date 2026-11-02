@@ -81,7 +81,7 @@ The shared tokens (durations 0.4/0.7/1.0/1.2 s, expo and power3 easing, 75 ms st
 | Hero | Split-text h1 (word rise), a bouncy "For savers" label, and two goal chips that **pop at 0.8 s and 1.0 s**. **Parallax:** three blurred background blobs at three speeds. Gentle idle float on the coins and a "breathing" mochi (off under reduced motion). |
 | How it works | Three clay cards pop in staggered; the middle one is offset for rhythm. |
 | Simulator | Panels pop up; coins drop with `bounce.out`; the jar fill springs. |
-| Year | **Pinned and scrubbed** (220% of scroll). Badges **pop at specific scroll positions**, the points where the sample story crosses $10, $60 and $120. |
+| Year | **Pinned and scrubbed** at 900px and wider (220% of scroll). On phones the same scrub runs without pinning, so the jar is never held below the fold. Badges **pop at specific scroll positions**, the points where the sample story crosses $10, $60 and $120. |
 | Grown-ups | Split-text heading, phone figure pop, and feature cards staggered in a zig-zag. |
 | Get the app | Split-text heading and staggered buttons. |
 
@@ -111,6 +111,17 @@ npm run contrast   # check pairs, refresh the table above
 
 ## Swap in your own photos
 Put images in `public/assets/images/` and set `data-photo="assets/images/<file>"` on a `.fig` slot in `index.html`. See [`public/assets/README.md`](public/assets/README.md). Slots fade in from a blur over a candy placeholder colour. The duotone overlay (`--fig-duo`) keeps photos in the candy palette; set it to `0` for natural colour.
+
+## Verification (what was actually run)
+- `npm run build`: passes. `npm run contrast`: all 26 pairs pass.
+- Headless Chromium at 375, 768 and 1440 px, with screenshots at 0/25/50/75/100% scroll:
+  - no console errors, no failed or external requests, one h1;
+  - no horizontal scroll, after one fix: the blurred hero blobs overflowed at 375 and 768 px, and are now clipped inside the hero;
+  - axe-core (WCAG 2.2 AA plus best-practice): 0 violations;
+  - reduced-motion, no-JS and `?nosda` passes: nothing left hidden, no errors.
+- Simulator probe at 375 px: two coin drops, then the match toggle, gave $8.00 saved, $5.00 a week and 4 weeks to the $25 kite. That matches the maths, and the live region announced the same sentence.
+- Mobile year probe: the scrub (unpinned) reached July · $72 with the first two badges popped.
+- **Not tested:** Safari, Firefox, real touch devices (squish on touch is untested beyond pointer events), and screen readers.
 
 ## Notes and decisions
 - Built as a folder in `erdgib923-star/different-websites`, not its own repo: `gh` was not authenticated and repo creation was unavailable in this session. Use `style-sites-2/publish-repos.sh` to split it out later.

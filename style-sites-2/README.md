@@ -23,3 +23,4 @@ All brands, people, addresses, phone numbers and data are fictional.
 | # | Folder | Brand |
 |---|---|---|
 | 1 | `pro2-01-bento-quillstack` | Quillstack, notes and writing app |
+| 2 | `pro2-02-claymorphism-mochi-money` | Mochi Money, kids' savings app |

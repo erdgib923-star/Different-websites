@@ -8,7 +8,7 @@ function readyAround(weeks: number) {
   if (weeks <= 0) return 'Ready now!';
   const d = new Date(Date.now() + weeks * 7 * 864e5);
   const part = d.getDate() <= 10 ? 'early' : d.getDate() <= 20 ? 'mid' : 'late';
-  return `${part}-${d.toLocaleDateString('en-US', { month: 'long' })}`;
+  return `${part} ${d.toLocaleDateString('en-US', { month: 'long' })}`;
 }
 
 /** Coin-jar simulator: weeks to goal from allowance, share and optional grown-up match. */
