@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trattoria Fioraliso — handmade pasta and a wood oven, Exampleton</title>
+  <meta name="description" content="Trattoria Fioraliso is a fictional family trattoria: fresh pasta made each morning, a wood oven, and a short menu that changes with the market.">
+  <meta name="theme-color" content="#F6EEDF">
+  <meta name="color-scheme" content="light">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Pinyon+Script&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="cornflower" viewBox="0 0 100 100">
+      <g fill="#3E63B8">
+        <path d="M50 50 44 22 50 8 56 22Z"/><path d="M50 50 44 22 50 8 56 22Z" transform="rotate(40 50 50)"/><path d="M50 50 44 22 50 8 56 22Z" transform="rotate(80 50 50)"/>
+        <path d="M50 50 44 22 50 8 56 22Z" transform="rotate(120 50 50)"/><path d="M50 50 44 22 50 8 56 22Z" transform="rotate(160 50 50)"/><path d="M50 50 44 22 50 8 56 22Z" transform="rotate(200 50 50)"/>
+        <path d="M50 50 44 22 50 8 56 22Z" transform="rotate(240 50 50)"/><path d="M50 50 44 22 50 8 56 22Z" transform="rotate(280 50 50)"/><path d="M50 50 44 22 50 8 56 22Z" transform="rotate(320 50 50)"/>
+      </g>
+      <circle cx="50" cy="50" r="9" fill="#6E1423"/>
+    </symbol>
+  </svg>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <a class="brand" href="#top" translate="no"><svg class="brand__flower" aria-hidden="true"><use href="#cornflower"/></svg>Trattoria Fioraliso</a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#visit">Hours &amp; address</a></li>
+        <li><a class="nav-reserve" href="#reserve">Reserve</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="h-hero">
+      <div class="hero__text">
+        <p class="script" lang="it">Benvenuti a tavola</p>
+        <h1 id="h-hero">Trattoria Fioraliso</h1>
+        <p class="lede">Pasta rolled by hand every morning, bread from a wood oven, and a short menu that follows the market. A family table on Placeholder Street since 1987.</p>
+        <p class="hero__actions"><a class="btn" href="#reserve">Reserve a table</a> <a class="link" href="#menu">See tonight’s menu</a></p>
+      </div>
+      <div class="hero__photos">
+        <div class="ph ph--a" role="img" aria-label="Photo placeholder: fresh tagliatelle drying on a wooden board"><span>Photo placeholder</span></div>
+        <div class="ph ph--b" role="img" aria-label="Photo placeholder: the dining room with checked tablecloths in the evening"><span>Photo placeholder</span></div>
+        <svg class="hero__flower" aria-hidden="true"><use href="#cornflower"/></svg>
+      </div>
+    </section>
+
+    <section class="menu" id="menu" aria-labelledby="h-menu">
+      <header class="menu__head">
+        <p class="script" lang="it">Il menù</p>
+        <h2 id="h-menu">Tonight’s menu</h2>
+        <p class="note">Sample menu. Dishes change with the market; prices in USD.</p>
+      </header>
+      <div class="menu__cols">
+        <div class="menu__col">
+          <h3>Antipasti</h3>
+          <ul class="dishes">
+            <li><span class="dish">Burrata, roasted peppers, basil</span><span class="dots" aria-hidden="true"></span><span class="price">$14</span></li>
+            <li><span class="dish">Fried courgette flowers, ricotta and lemon</span><span class="dots" aria-hidden="true"></span><span class="price">$12</span></li>
+            <li><span class="dish">Wood-oven focaccia, rosemary, sea salt</span><span class="dots" aria-hidden="true"></span><span class="price">$7</span></li>
+          </ul>
+          <h3>Primi</h3>
+          <ul class="dishes">
+            <li><span class="dish">Tagliatelle al ragù, eight-hour beef and pork</span><span class="dots" aria-hidden="true"></span><span class="price">$22</span></li>
+            <li><span class="dish">Cacio e pepe, hand-rolled pici</span><span class="dots" aria-hidden="true"></span><span class="price">$19</span></li>
+            <li><span class="dish">Ravioli of spinach and ricotta, sage butter <span class="tag">V</span></span><span class="dots" aria-hidden="true"></span><span class="price">$21</span></li>
+          </ul>
+        </div>
+        <div class="menu__col">
+          <h3>Secondi</h3>
+          <ul class="dishes">
+            <li><span class="dish">Chicken alla cacciatora, olives, rosemary</span><span class="dots" aria-hidden="true"></span><span class="price">$27</span></li>
+            <li><span class="dish">Sea bream from the wood oven, salsa verde</span><span class="dots" aria-hidden="true"></span><span class="price">$31</span></li>
+            <li><span class="dish">Aubergine parmigiana <span class="tag">V</span></span><span class="dots" aria-hidden="true"></span><span class="price">$20</span></li>
+          </ul>
+          <h3>Dolci</h3>
+          <ul class="dishes">
+            <li><span class="dish">Tiramisù, made at noon</span><span class="dots" aria-hidden="true"></span><span class="price">$10</span></li>
+            <li><span class="dish">Panna cotta, cornflower honey</span><span class="dots" aria-hidden="true"></span><span class="price">$9</span></li>
+            <li><span class="dish">Affogato</span><span class="dots" aria-hidden="true"></span><span class="price">$7</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="note">V: vegetarian. Tell us about allergies when you book and we will cook around them.</p>
+    </section>
+
+    <section class="visit" id="visit" aria-labelledby="h-visit">
+      <div class="visit__text">
+        <p class="script" lang="it">Orari</p>
+        <h2 id="h-visit">Hours and address</h2>
+        <dl class="hours">
+          <div><dt>Tuesday to Thursday</dt><dd>5:30pm–10pm</dd></div>
+          <div><dt>Friday and Saturday</dt><dd>12pm–3pm, 5:30pm–11pm</dd></div>
+          <div><dt>Sunday</dt><dd>12pm–4pm, family lunch</dd></div>
+          <div><dt>Monday</dt><dd>Closed</dd></div>
+        </dl>
+        <address>
+          Trattoria Fioraliso<br>
+          48 Placeholder Street, Exampleton EX4 0ZZ<br>
+          <a href="tel:+15550100">555-0100</a> · <a href="mailto:tavola@example.com">tavola@example.com</a>
+        </address>
+      </div>
+      <div class="ph ph--map" role="img" aria-label="Map placeholder: the trattoria on the corner of Placeholder Street and Sample Lane"><span>Map placeholder</span></div>
+    </section>
+
+    <section class="reserve" id="reserve" aria-labelledby="h-reserve">
+      <p class="script" lang="it">Prenota</p>
+      <h2 id="h-reserve">Reserve a table</h2>
+      <p class="reserve__intro">We hold tables for 15 minutes. For groups larger than 8, please call.</p>
+      <form class="form" id="reserve-form" novalidate>
+        <div class="field">
+          <label for="r-date">Date</label>
+          <input id="r-date" name="date" type="date" required>
+        </div>
+        <div class="field">
+          <label for="r-time">Time</label>
+          <select id="r-time" name="time" required>
+            <option value="">Choose a time…</option>
+            <option>12:30pm</option><option>1:30pm</option><option>6:00pm</option><option>7:00pm</option><option>8:00pm</option><option>9:00pm</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="r-size">Guests</label>
+          <select id="r-size" name="size" required>
+            <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option>
+          </select>
+        </div>
+        <div class="field field--wide">
+          <label for="r-name">Your name</label>
+          <input id="r-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field field--wide">
+          <label for="r-phone">Phone</label>
+          <input id="r-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="555-0100…" required>
+        </div>
+        <div class="field field--wide">
+          <label for="r-notes">Allergies or notes <span class="optional">(optional)</span></label>
+          <textarea id="r-notes" name="notes" rows="3"></textarea>
+        </div>
+        <p class="form__error" id="form-error" role="alert" hidden></p>
+        <button class="btn" type="submit">Send booking request</button>
+        <p class="form__help">This demo has no booking system: the button opens an email with your details filled in.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <svg class="foot__flower" aria-hidden="true"><use href="#cornflower"/></svg>
+    <p class="foot__name" translate="no">Trattoria Fioraliso</p>
+    <p>Trattoria Fioraliso is a fictional restaurant made for a design demo. Address, menu, prices and phone number are placeholders.</p>
+  </footer>
+
+  <a class="sticky-reserve" id="sticky-reserve" href="#reserve">Reserve a table</a>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
