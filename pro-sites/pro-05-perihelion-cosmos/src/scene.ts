@@ -38,9 +38,9 @@ void main() {
   vec3 albedo; vec3 emissive = vec3(0.0);
   if (uKind < 0.5) {            // lava
     float n = fbm(p * 1.6);
-    float seams = 1.0 - smoothstep(0.02, 0.07, abs(fbm(p * 3.2 + n) - 0.5));
-    albedo = mix(uDark * 0.7, uMid * 0.6, n);
-    emissive = uLight * seams * 1.6;
+    float seams = 1.0 - smoothstep(0.0, 0.03, abs(fbm(p * 3.2 + n) - 0.5));
+    albedo = mix(uDark * 0.6, uMid * 0.55, n);
+    emissive = mix(uMid, uLight, 0.4) * seams * 1.3;
   } else if (uKind < 1.5) {     // desert
     float n = fbm(p * 1.4 + fbm(p * 2.0));
     float dunes = sin(vObjN.y * 40.0 + n * 9.0) * 0.06;
@@ -146,7 +146,7 @@ export async function createScene(canvas: HTMLCanvasElement, onProgress: (p: num
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(48, 1, 0.1, 2000);
-  const clock = new THREE.Clock();
+  const timer = new THREE.Timer();
   const v3 = (a: number[]) => new THREE.Vector3(a[0], a[1], a[2]);
   onProgress(0.4, 'Seeding the star field');
 
@@ -252,7 +252,8 @@ export async function createScene(canvas: HTMLCanvasElement, onProgress: (p: num
     const p = planets[i];
     const out = m.position.clone().normalize();
     const side = new THREE.Vector3(-out.z, 0, out.x);
-    way.push(m.position.clone().add(out.multiplyScalar(p.radius * 3.2)).add(side.multiplyScalar(p.radius * 2.4)).add(new THREE.Vector3(0, p.radius * 1.1, 0)));
+    // approach from the sunward side so the lit hemisphere (a gibbous phase) faces the camera
+    way.push(m.position.clone().add(out.multiplyScalar(-p.radius * 2.0)).add(side.multiplyScalar(p.radius * 3.0)).add(new THREE.Vector3(0, p.radius * 1.2, 0)));
     look.push(m.position.clone());
   });
   const last = meshes[meshes.length - 1].position.clone();
@@ -273,16 +274,21 @@ export async function createScene(canvas: HTMLCanvasElement, onProgress: (p: num
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.fov = w < 700 ? 62 : 48;
+    // phones: shift the frame so the target planet sits in the upper part, above the text cards
+    if (w < 700) camera.setViewOffset(w, h, 0, h * 0.2, w, h);
+    else camera.setViewOffset(w, h, -w * 0.12, 0, w, h); // desktop: planet sits right of the left-hand cards
     camera.updateProjectionMatrix();
   };
   setSize();
 
   onProgress(0.85, 'Compiling shaders');
-  await renderer.compileAsync(scene, camera);
+  renderer.compile(scene, camera);
 
   const frame = () => {
-    const el = clock.getElapsedTime();
-    tSmooth += (t - tSmooth) * 0.08;
+    timer.update();
+    const el = timer.getElapsed();
+    const dt = Math.min(0.5, timer.getDelta());
+    tSmooth += (t - tSmooth) * (1 - Math.exp(-dt * 5)); // frame-rate independent easing
     place(tSmooth);
     starMat.uniforms.uTime.value = el;
     starsMat.uniforms.uTime.value = el;

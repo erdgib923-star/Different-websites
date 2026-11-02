@@ -145,8 +145,9 @@ async function boot3D() {
     if (!probe) throw new Error('WebGL unavailable');
     const { createScene } = await import('./scene');
     progress(0.3, 'Plotting the system');
+    html.classList.add('mode-3d'); // the canvas must be displayed before the renderer measures it
     scene = await createScene(canvas, progress);
-    html.classList.add('mode-3d');
+    scene.setSize();
     measure();
     scene.setProgress(RM ? 0 : tFromScroll());
     scene.renderOnce(); // reduced motion: this single frame is all we draw
@@ -164,6 +165,7 @@ async function boot3D() {
     }
   } catch (e) {
     console.warn('3D view unavailable, using the static view.', e);
+    html.classList.remove('mode-3d');
     html.classList.add('no-webgl');
   }
   done();
