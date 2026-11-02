@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>root@vesper · Developer portfolio</title>
+  <meta name="description" content="The developer portfolio of Vesper Marlowe, presented as a working terminal with a plain-HTML alternative. A fictional person for a design demo." />
+  <meta name="theme-color" content="#0e1416" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230e1416'/%3E%3Cpath d='M7 10l6 6-6 6' fill='none' stroke='%2366f07a' stroke-width='3'/%3E%3Crect x='15' y='20' width='10' height='3' fill='%2366f07a'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var d = document.documentElement, t = null, v = null;
+      try { t = localStorage.getItem('vesper-theme'); v = localStorage.getItem('vesper-view'); } catch (e) {}
+      if (t === 'amber') d.setAttribute('data-theme', 'amber');
+      if (v === 'plain') d.setAttribute('data-view', 'plain');
+      d.classList.add('js');
+      setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js'); }, 4000);
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#readme">Skip to the plain-text portfolio</a>
+  <div class="crt-overlay" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="prompt-logo" href="#top"><span class="pl-user">root</span>@<span class="pl-host">vesper</span>:<span class="pl-path">~</span>$</a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#readme">readme</a></li>
+        <li><a href="#projects">projects</a></li>
+        <li><a href="#log">log</a></li>
+        <li><a href="#contact">contact</a></li>
+      </ul>
+    </nav>
+    <div class="toggles">
+      <button type="button" class="tbtn" data-view-toggle aria-pressed="false">[ plain view ]</button>
+      <button type="button" class="tbtn" data-theme-toggle aria-pressed="false">[ amber ]</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- TERMINAL -->
+    <section class="term" id="top" aria-labelledby="hero-title">
+      <h1 id="hero-title" class="title"><span class="title__line" data-split="chars">Vesper Marlowe</span> <span class="title__sub" data-pop="up" style="--pop-delay: 500ms">developer tools · terminals · tiny sharp utilities</span></h1>
+      <div class="crt" data-crt>
+        <div class="crt__bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span>vesper — zsh — 80×24</span><button type="button" class="tbtn tbtn--sm" data-skip>[ skip boot ]</button></div>
+        <div class="crt__screen" data-screen>
+          <div class="log" role="log" aria-live="polite" aria-label="Terminal output" data-log></div>
+          <form class="line" data-form autocomplete="off">
+            <label for="cmd" class="prompt"><span class="pl-user">root</span>@<span class="pl-host">vesper</span>:<span class="pl-path">~</span>$<span class="visually-hidden"> command</span></label>
+            <input id="cmd" name="cmd" class="cmd" type="text" spellcheck="false" autocapitalize="off" aria-describedby="cmd-hint" data-input disabled />
+            <span class="caret" aria-hidden="true"></span>
+          </form>
+        </div>
+        <p id="cmd-hint" class="hint">Try <kbd>help</kbd>, <kbd>about</kbd>, <kbd>projects</kbd>, <kbd>contact</kbd>, <kbd>theme amber</kbd>, <kbd>clear</kbd>. <kbd>Tab</kbd> completes, <kbd>↑</kbd> <kbd>↓</kbd> recall history. Prefer reading? Use the plain view.</p>
+      </div>
+      <noscript><p class="noscript-note">The terminal needs JavaScript. Everything it can show is in the plain-text portfolio below.</p></noscript>
+    </section>
+
+    <!-- PLAIN VIEW: the accessible alternate, always in the page -->
+    <section class="readme" id="readme" aria-labelledby="readme-title">
+      <pre class="ascii ascii--a" data-scrub="parallax" data-speed="-0.4" aria-hidden="true">  ____
+ / __ \
+| |  | |
+| |__| |
+ \____/  </pre>
+      <pre class="ascii ascii--b" data-scrub="parallax" data-speed="0.35" aria-hidden="true">+--+--+
+|  |##|
++--+--+
+|##|  |
++--+--+</pre>
+      <p class="path" data-pop="up">~/README.md</p>
+      <h2 id="readme-title" data-split>Hi, I'm Vesper.</h2>
+      <div class="readme__body" data-pop="up">
+        <p>I build small, sharp developer tools: command-line apps, terminal UIs and the glue that keeps teams' dotfiles, docs and builds in sync. Seven years in, I still think the best interface is often a well-named flag.</p>
+        <p>Right now I'm looking for a team that cares about tooling as a product. I work remotely from Example City, UTC+1.</p>
+      </div>
+    </section>
+
+    <section class="projects" id="projects" aria-labelledby="projects-title">
+      <p class="path" data-pop="up">~/projects</p>
+      <h2 id="projects-title" data-split>Selected projects</h2>
+      <ul class="panes" data-pop-group>
+        <li class="pane" data-pop><div class="pane__bar"><span>tidepool</span><span class="ok" data-pop="badge">[ OK ]</span></div><p>Syncs dotfiles across machines with a three-way merge you can actually read.</p><p class="meta">rust · 2024 · 2.1k stars (sample)</p></li>
+        <li class="pane" data-pop><div class="pane__bar"><span>lanternfish</span><span class="ok" data-pop="badge">[ OK ]</span></div><p>A tiny static-site generator for zines and changelogs. One binary, zero config.</p><p class="meta">typescript · 2025 · v1.0</p></li>
+        <li class="pane" data-pop><div class="pane__bar"><span>quietbus</span><span class="ok ok--warn" data-pop="badge">[ BETA ]</span></div><p>A linter for terminal UIs: colour contrast, focus order and screen-reader output.</p><p class="meta">go · 2026 · in progress</p></li>
+        <li class="pane" data-pop><div class="pane__bar"><span>orbit-notes</span><span class="ok" data-pop="badge">[ OK ]</span></div><p>Local-first notes with conflict-free sync, built on a small CRDT engine.</p><p class="meta">typescript · 2023</p></li>
+      </ul>
+    </section>
+
+    <section class="gitlog" id="log" aria-labelledby="log-title">
+      <p class="path" data-pop="up">~/career $ git log --graph --oneline</p>
+      <h2 id="log-title" data-split>Commit history</h2>
+      <div class="graph" data-graph>
+        <span class="graph__line" aria-hidden="true"><span class="graph__fill" data-graph-fill></span></span>
+        <ol class="commits">
+          <li class="commit" data-commit><span class="node" aria-hidden="true"></span><code>a1f9c2e</code> <strong>HEAD → main</strong> 2026 · open to work: looking for a tooling team <span class="tag" data-tag>open</span></li>
+          <li class="commit" data-commit><span class="node" aria-hidden="true"></span><code>7d03b41</code> 2025 · release: lanternfish v1.0 <span class="tag" data-tag>v1.0</span></li>
+          <li class="commit" data-commit><span class="node" aria-hidden="true"></span><code>5e2a8f0</code> 2023 · refactor: moved from product to developer tools at Example Systems</li>
+          <li class="commit" data-commit><span class="node" aria-hidden="true"></span><code>3b77c19</code> 2021 · feat: led the design-system CLI and its docs</li>
+          <li class="commit" data-commit><span class="node" aria-hidden="true"></span><code>0c41d5a</code> 2019 · init: first job, front-end engineer at Example Systems</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <p class="path" data-pop="up">~/contact</p>
+      <h2 id="contact-title" data-split>Say hello</h2>
+      <dl class="kv" data-pop-group>
+        <div data-pop><dt>email</dt><dd><a href="mailto:vesper@example.com">vesper@example.com</a></dd></div>
+        <div data-pop><dt>phone</dt><dd>(555) 555-0100</dd></div>
+        <div data-pop><dt>code</dt><dd><a href="https://example.com/vesper">example.com/vesper</a></dd></div>
+        <div data-pop><dt>timezone</dt><dd>UTC+1, remote</dd></div>
+      </dl>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Vesper Marlowe is a fictional developer, and every project, number and date on this page is made up for a design demo. <span aria-hidden="true">exit 0</span></p>
+  </footer>
+</body>
+</html>
