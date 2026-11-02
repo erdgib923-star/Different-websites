@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" preserveAspectRatio="xMidYMid slice">
+<defs>
+<filter id="f" x="-500" y="-500" width="1800" height="2000" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse"><feTurbulence type="fractalNoise" baseFrequency="0.055" numOctaves="3" seed="113" result="n"/>
+  <feTurbulence type="turbulence" baseFrequency="0.09" numOctaves="2" seed="116" result="n2"/>
+  <feDisplacementMap in="n" in2="n2" scale="26" xChannelSelector="R" yChannelSelector="B" result="loops"/>
+  <feDiffuseLighting in="loops" surfaceScale="7" diffuseConstant="1.15" lighting-color="#b85560" result="lit"><feDistantLight azimuth="225" elevation="44"/></feDiffuseLighting>
+  <feTurbulence type="fractalNoise" baseFrequency="0.0032 0.0021" numOctaves="2" seed="120" result="drapeN"/>
+  <feDisplacementMap in="lit" in2="drapeN" scale="30" xChannelSelector="R" yChannelSelector="G" result="draped"/>
+  <feDiffuseLighting in="drapeN" surfaceScale="22" diffuseConstant="1.05" lighting-color="#ffffff" result="folds"><feDistantLight azimuth="225" elevation="58"/></feDiffuseLighting>
+  <feBlend in="draped" in2="folds" mode="multiply"/>
+</filter>
+<linearGradient id="key" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+  <stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/>
+  <stop offset="1" stop-color="#0f0d0a" stop-opacity="0.34"/>
+</linearGradient>
+</defs>
+<rect width="800" height="1000" fill="#b85560"/>
+<rect x="-90" y="-90" width="980" height="1180" filter="url(#f)"/>
+<rect width="800" height="1000" fill="url(#key)"/>
+</svg>

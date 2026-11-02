@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" preserveAspectRatio="xMidYMid slice">
+<defs>
+<filter id="f" x="-500" y="-500" width="1800" height="2000" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse"><feTurbulence type="fractalNoise" baseFrequency="0.0028 0.0045" numOctaves="3" seed="80" result="n"/>
+  <feFlood flood-color="#7c333b" result="base"/>
+  <feDiffuseLighting in="n" surfaceScale="24" diffuseConstant="1.15" lighting-color="#ffffff" result="shade"><feDistantLight azimuth="225" elevation="34"/></feDiffuseLighting>
+  <feBlend in="base" in2="shade" mode="multiply" result="body"/>
+  <feSpecularLighting in="n" surfaceScale="24" specularConstant="0.55" specularExponent="6" lighting-color="#e68690" result="spec"><feDistantLight azimuth="225" elevation="30"/></feSpecularLighting>
+  <feComposite in="spec" in2="body" operator="arithmetic" k1="0" k2="0.6" k3="1" k4="0" result="v"/>
+  <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="81" result="pile"/>
+  <feColorMatrix in="pile" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.08 0" result="pileA"/>
+  <feComposite in="pileA" in2="v" operator="over"/>
+</filter>
+<linearGradient id="key" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+  <stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/>
+  <stop offset="1" stop-color="#0f0d0a" stop-opacity="0.34"/>
+</linearGradient>
+</defs>
+<rect width="800" height="1000" fill="#7c333b"/>
+<rect x="-90" y="-90" width="980" height="1180" filter="url(#f)"/>
+<rect width="800" height="1000" fill="url(#key)"/>
+</svg>

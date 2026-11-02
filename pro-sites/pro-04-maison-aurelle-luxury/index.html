@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Maison Aurelle — Automne–Hiver 2026 (fictional demo)</title>
+    <meta name="description" content="The autumn collection of Maison Aurelle, a fictional fashion house. A design demo with generative fabric imagery." />
+    <meta name="theme-color" content="#f9f6f2" />
+    <script>
+      (function (d) {
+        var h = d.documentElement;
+        h.classList.add('js');
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('reduced');
+        setTimeout(function () {
+          if (!h.classList.contains('motion-ready')) h.classList.remove('js');
+        }, 4000);
+      })(document);
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="masthead">
+      <nav class="wrap masthead__inner" aria-label="Primary">
+        <ul class="masthead__links">
+          <li><a href="#lookbook">Lookbook</a></li>
+          <li><a href="#index">Collection</a></li>
+        </ul>
+        <a class="wordmark" href="#top" aria-label="Maison Aurelle, back to top">Maison <em>Aurelle</em></a>
+        <ul class="masthead__links masthead__links--end">
+          <li><a href="#atelier">Atelier</a></li>
+          <li><a href="#visit">Appointments</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- ================= HERO ================= -->
+      <section class="hero wrap" id="top" aria-labelledby="hero-title">
+        <div class="hero__text" data-speed="-0.35">
+          <p class="eyebrow" data-fade>Automne–Hiver 2026 · Collection N° 14</p>
+          <h1 id="hero-title" class="hero__title" data-split="intro">The weight <em>of autumn</em></h1>
+          <p class="hero__lede" data-fade>Twelve pieces cut from wool, silk and velvet, made slowly in a single atelier.</p>
+          <a class="link-arrow" href="#lookbook" data-fade>Enter the lookbook <span aria-hidden="true">→</span></a>
+        </div>
+        <figure class="media hero__media" data-slot="hero" data-clip="up" data-speed="0.18" role="img" aria-label="Draped champagne silk, procedural fabric study" style="--ar: 4 / 5; --dominant: var(--accent-300); --duo-dark: var(--neutral-900); --duo-light: var(--accent-100)">
+          <img class="media__art" src="/fabrics/champagne-silk.svg" alt="" width="800" height="1000" fetchpriority="high" />
+        </figure>
+        <p class="hero__caption" data-fade>Look 05 · Champagne silk</p>
+      </section>
+
+      <!-- ================= MANIFESTO ================= -->
+      <section class="manifesto wrap" aria-label="Manifesto">
+        <p class="manifesto__text" data-split="scroll">We begin with the cloth, not the sketch. Every piece this season started as a length of fabric on the cutting table, turned in the light until it told us what it wanted to become.</p>
+        <span class="rule" aria-hidden="true"></span>
+      </section>
+
+      <!-- ================= LOOKBOOK (pinned horizontal) ================= -->
+      <section class="lookbook" id="lookbook" aria-labelledby="lookbook-title">
+        <div class="lookbook__head wrap">
+          <h2 id="lookbook-title" class="h2" data-split="scroll">Lookbook</h2>
+          <p class="lookbook__count" aria-hidden="true"><span id="look-now">01</span> / 08</p>
+        </div>
+        <div class="lookbook__viewport">
+          <ol class="lookbook__track">
+            <li class="look" id="look-01">
+              <figure class="media" data-slot="look-01" role="img" aria-label="Ivory bouclé, procedural fabric study" style="--ar: 3 / 4; --dominant: var(--neutral-100); --duo-dark: var(--neutral-800); --duo-light: var(--neutral-50)"><img class="media__art" src="/fabrics/ivory-boucle.svg" alt="" width="800" height="1000" loading="lazy" /></figure>
+              <p class="look__n">Look 01</p><h3 class="look__name">The Bouclé Jacket</h3><p class="look__mat">Ivory wool bouclé · horn buttons</p>
+            </li>
+            <li class="look" id="look-02">
+              <figure class="media" data-slot="look-02" role="img" aria-label="Ink wool twill, procedural fabric study" style="--ar: 3 / 4; --dominant: var(--neutral-700); --duo-dark: var(--neutral-950); --duo-light: var(--neutral-300)"><img class="media__art" src="/fabrics/ink-twill.svg" alt="" width="800" height="1000" loading="lazy" /></figure>
+              <p class="look__n">Look 02</p><h3 class="look__name">Ink Twill Trouser</h3><p class="look__mat">Wool twill · high waist, pressed crease</p>
+            </li>
+            <li class="look" id="look-03">
+              <figure class="media" data-slot="look-03" role="img" aria-label="Camel cashmere, procedural fabric study" style="--ar: 3 / 4; --dominant: var(--accent-300); --duo-dark: var(--neutral-900); --duo-light: var(--accent-100)"><img class="media__art" src="/fabrics/camel-cashmere.svg" alt="" width="800" height="1000" loading="lazy" /></figure>
+              <p class="look__n">Look 03</p><h3 class="look__name">Camel Wrap Coat</h3><p class="look__mat">Double-faced cashmere · hand-sewn edges</p>
+            </li>
+            <li class="look" id="look-04">
+              <figure class="media" data-slot="look-04" role="img" aria-label="Oat herringbone, procedural fabric study" style="--ar: 3 / 4; --dominant: var(--neutral-100); --duo-dark: var(--neutral-800); --duo-light: var(--neutral-50)"><img class="media__art" src="/fabrics/oat-herringbone.svg" alt="" width="800" height="1000" loading="lazy" /></figure>
+              <p class="look__n">Look 04</p><h3 class="look__name">Herringbone Blazer</h3><p class="look__mat">Oat wool herringbone · soft shoulder</p>
+            </li>
+            <li class="look" id="look-05">
+              <figure class="media" data-slot="look-05" role="img" aria-label="Champagne silk, procedural fabric study" style="--ar: 3 / 4; --dominant: var(--accent-300); --duo-dark: var(--neutral-900); --duo-light: var(--accent-100)"><img class="media__art" src="/fabrics/champagne-silk.svg" alt="" width="800" height="1000" loading="lazy" /></figure>
+              <p class="look__n">Look 05</p><h3 class="look__name">Champagne Slip Dress</h3><p class="look__mat">Silk charmeuse · bias cut</p>
+            </li>
+            <li class="look" id="look-06">
+              <figure class="media" data-slot="look-06" role="img" aria-label="Charcoal tweed with gold flecks, procedural fabric study" style="--ar: 3 / 4; --dominant: var(--neutral-600); --duo-dark: var(--neutral-950); --duo-light: var(--accent-200)"><img class="media__art" src="/fabrics/charcoal-tweed.svg" alt="" width="800" height="1000" loading="lazy" /></figure>
+              <p class="look__n">Look 06</p><h3 class="look__name">Tweed Car Coat</h3><p class="look__mat">Charcoal tweed with champagne fleck</p>
+            </li>
+            <li class="look" id="look-07">
+              <figure class="media" data-slot="look-07" role="img" aria-label="Bordeaux velvet, procedural fabric study" style="--ar: 3 / 4; --dominant: var(--brand-700); --duo-dark: var(--brand-950); --duo-light: var(--brand-200)"><img class="media__art" src="/fabrics/bordeaux-velvet.svg" alt="" width="800" height="1000" loading="lazy" /></figure>
+              <p class="look__n">Look 07</p><h3 class="look__name">Bordeaux Evening Coat</h3><p class="look__mat">Silk velvet · satin lining</p>
+            </li>
+            <li class="look" id="look-08">
+              <figure class="media" data-slot="look-08" role="img" aria-label="Ivory gabardine, procedural fabric study" style="--ar: 3 / 4; --dominant: var(--neutral-100); --duo-dark: var(--neutral-800); --duo-light: var(--neutral-50)"><img class="media__art" src="/fabrics/ivory-gabardine.svg" alt="" width="800" height="1000" loading="lazy" /></figure>
+              <p class="look__n">Look 08</p><h3 class="look__name">Gabardine Trench</h3><p class="look__mat">Cotton gabardine · storm flap</p>
+            </li>
+          </ol>
+        </div>
+        <div class="wrap lookbook__progress" aria-hidden="true"><span id="look-bar"></span></div>
+      </section>
+
+      <!-- ================= THE BORDEAUX MOMENT ================= -->
+      <section class="bordeaux" aria-labelledby="bordeaux-title">
+        <div class="wrap bordeaux__inner">
+          <figure class="media bordeaux__media" data-slot="bordeaux" data-clip="center" role="img" aria-label="Bordeaux silk velvet, procedural fabric study" style="--ar: 4 / 5; --dominant: var(--brand-700); --duo-dark: var(--brand-950); --duo-light: var(--brand-200)">
+            <img class="media__art" src="/fabrics/bordeaux-velvet.svg" alt="" width="800" height="1000" loading="lazy" />
+          </figure>
+          <div class="bordeaux__text">
+            <p class="eyebrow eyebrow--gold" data-fade>Look 07</p>
+            <h2 id="bordeaux-title" class="bordeaux__title" data-split="scroll">Bordeaux, <em>once</em></h2>
+            <p data-fade>There is one colour this season that is not ivory, ink or gold. We used it for a single coat: silk velvet, cut long and lined in satin, made to be worn after dark.</p>
+            <p class="bordeaux__note" data-fade>Numbered edition of 40 · available by appointment</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= COLLECTION INDEX ================= -->
+      <section class="index" id="index" aria-labelledby="index-title">
+        <div class="wrap">
+          <div class="index__head">
+            <h2 id="index-title" class="h2" data-split="scroll">The collection</h2>
+            <p class="index__hint" data-fade>Twelve pieces. Hover or focus a row to see its cloth.</p>
+          </div>
+          <ol class="index__list">
+            <li data-pop><a class="row" href="#look-01" data-fabric="ivory-boucle"><span class="row__n">01</span><span class="row__name">The Bouclé Jacket</span><span class="row__mat">Wool bouclé</span><span class="row__look">Look 01</span><img class="row__thumb" src="/fabrics/ivory-boucle.svg" alt="" loading="lazy" /></a></li>
+            <li data-pop><a class="row" href="#look-02" data-fabric="ink-twill"><span class="row__n">02</span><span class="row__name">Ink Twill Trouser</span><span class="row__mat">Wool twill</span><span class="row__look">Look 02</span><img class="row__thumb" src="/fabrics/ink-twill.svg" alt="" loading="lazy" /></a></li>
+            <li data-pop><a class="row" href="#look-03" data-fabric="camel-cashmere"><span class="row__n">03</span><span class="row__name">Camel Wrap Coat</span><span class="row__mat">Cashmere</span><span class="row__look">Look 03</span><img class="row__thumb" src="/fabrics/camel-cashmere.svg" alt="" loading="lazy" /></a></li>
+            <li data-pop><a class="row" href="#look-04" data-fabric="oat-herringbone"><span class="row__n">04</span><span class="row__name">Herringbone Blazer</span><span class="row__mat">Wool herringbone</span><span class="row__look">Look 04</span><img class="row__thumb" src="/fabrics/oat-herringbone.svg" alt="" loading="lazy" /></a></li>
+            <li data-pop><a class="row" href="#look-05" data-fabric="champagne-silk"><span class="row__n">05</span><span class="row__name">Champagne Slip Dress</span><span class="row__mat">Silk charmeuse</span><span class="row__look">Look 05</span><img class="row__thumb" src="/fabrics/champagne-silk.svg" alt="" loading="lazy" /></a></li>
+            <li data-pop><a class="row" href="#look-06" data-fabric="charcoal-tweed"><span class="row__n">06</span><span class="row__name">Tweed Car Coat</span><span class="row__mat">Tweed</span><span class="row__look">Look 06</span><img class="row__thumb" src="/fabrics/charcoal-tweed.svg" alt="" loading="lazy" /></a></li>
+            <li data-pop><a class="row" href="#look-07" data-fabric="bordeaux-velvet"><span class="row__n">07</span><span class="row__name">Bordeaux Evening Coat</span><span class="row__mat">Silk velvet</span><span class="row__look">Look 07</span><img class="row__thumb" src="/fabrics/bordeaux-velvet.svg" alt="" loading="lazy" /></a></li>
+            <li data-pop><a class="row" href="#look-08" data-fabric="ivory-gabardine"><span class="row__n">08</span><span class="row__name">Gabardine Trench</span><span class="row__mat">Cotton gabardine</span><span class="row__look">Look 08</span><img class="row__thumb" src="/fabrics/ivory-gabardine.svg" alt="" loading="lazy" /></a></li>
+            <li data-pop><a class="row" href="#look-03" data-fabric="oat-cashmere"><span class="row__n">09</span><span class="row__name">Oat Cashmere Rollneck</span><span class="row__mat">Cashmere knit</span><span class="row__look">Look 03</span><img class="row__thumb" src="/fabrics/oat-cashmere.svg" alt="" loading="lazy" /></a></li>
+            <li data-pop><a class="row" href="#look-05" data-fabric="ink-silk"><span class="row__n">10</span><span class="row__name">Ink Silk Blouse</span><span class="row__mat">Silk crêpe</span><span class="row__look">Look 05</span><img class="row__thumb" src="/fabrics/ink-silk.svg" alt="" loading="lazy" /></a></li>
+            <li data-pop><a class="row" href="#look-07" data-fabric="bordeaux-boucle"><span class="row__n">11</span><span class="row__name">Bordeaux Bouclé Scarf</span><span class="row__mat">Mohair bouclé</span><span class="row__look">Look 07</span><img class="row__thumb" src="/fabrics/bordeaux-boucle.svg" alt="" loading="lazy" /></a></li>
+            <li data-pop><a class="row" href="#look-02" data-fabric="champagne-twill"><span class="row__n">12</span><span class="row__name">Champagne Twill Waistcoat</span><span class="row__mat">Silk-wool twill</span><span class="row__look">Look 02</span><img class="row__thumb" src="/fabrics/champagne-twill.svg" alt="" loading="lazy" /></a></li>
+          </ol>
+        </div>
+        <!-- cursor-follow preview (decorative; the same cloth is listed in each row) -->
+        <div class="preview" id="preview" aria-hidden="true">
+          <svg class="preview__defs" width="0" height="0"><filter id="ripple"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.03" numOctaves="2" seed="4" /><feDisplacementMap in="SourceGraphic" scale="0" xChannelSelector="R" yChannelSelector="G" /></filter></svg>
+          <img class="preview__img" alt="" />
+        </div>
+      </section>
+
+      <!-- ================= ATELIER ================= -->
+      <section class="atelier wrap" id="atelier" aria-labelledby="atelier-title">
+        <h2 id="atelier-title" class="h2" data-split="scroll">In the atelier</h2>
+        <ol class="atelier__steps">
+          <li>
+            <figure class="media" data-slot="atelier-spin" data-clip="up" role="img" aria-label="Oat cashmere detail, procedural fabric study" style="--ar: 1 / 1; --dominant: var(--neutral-100); --duo-dark: var(--neutral-800); --duo-light: var(--neutral-50)"><img class="media__art" src="/fabrics/oat-cashmere.svg" alt="" width="800" height="1000" loading="lazy" /></figure>
+            <h3>Spun near home</h3>
+            <p>Wool and cashmere come from three mills within a day’s drive of the atelier.</p>
+          </li>
+          <li>
+            <figure class="media" data-slot="atelier-weave" data-clip="up" role="img" aria-label="Champagne twill detail, procedural fabric study" style="--ar: 1 / 1; --dominant: var(--accent-200); --duo-dark: var(--neutral-900); --duo-light: var(--accent-100)"><img class="media__art" src="/fabrics/champagne-twill.svg" alt="" width="800" height="1000" loading="lazy" /></figure>
+            <h3>Woven slowly</h3>
+            <p>The twills run at half speed on old shuttle looms, which keeps the cloth soft and dense.</p>
+          </li>
+          <li>
+            <figure class="media" data-slot="atelier-finish" data-clip="up" role="img" aria-label="Bordeaux bouclé detail, procedural fabric study" style="--ar: 1 / 1; --dominant: var(--brand-500); --duo-dark: var(--brand-950); --duo-light: var(--brand-200)"><img class="media__art" src="/fabrics/bordeaux-boucle.svg" alt="" width="800" height="1000" loading="lazy" /></figure>
+            <h3>Finished by hand</h3>
+            <p>Buttonholes, hems and linings are hand-sewn and every coat is numbered.</p>
+          </li>
+        </ol>
+        <ul class="figures" aria-label="Atelier figures (sample data)">
+          <li data-pop><span class="figures__v">26 h</span><span>to hand-finish one coat</span></li>
+          <li data-pop><span class="figures__v">3</span><span>mills within a day’s drive</span></li>
+          <li data-pop><span class="figures__v">40</span><span>numbered bordeaux coats</span></li>
+        </ul>
+        <p class="fine">Figures are sample data for a fictional house.</p>
+      </section>
+
+      <!-- ================= APPOINTMENTS ================= -->
+      <section class="visit" id="visit" aria-labelledby="visit-title">
+        <div class="wrap visit__inner">
+          <h2 id="visit-title" class="visit__title" data-split="scroll">Private viewings, <em>by appointment</em></h2>
+          <div class="visit__details" data-fade>
+            <p>Atelier Aurelle<br />12 Quai des Tisseurs, Lyonne</p>
+            <p><a href="mailto:atelier@example.com">atelier@example.com</a><br /><a href="tel:5550100">555-0100</a></p>
+            <a class="btn" href="mailto:atelier@example.com?subject=Private%20viewing">Request a viewing</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <p>Maison Aurelle is a fictional fashion house created for a design demo. The collection, atelier, address, figures and contact details are sample content. Fabric images are generated from SVG filters.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

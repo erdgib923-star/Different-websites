@@ -1,0 +1,25 @@
+{
+  "name": "pro-04-maison-aurelle-luxury",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Maison Aurelle — fictional fashion house autumn collection with generative SVG fabric imagery (demo).",
+  "scripts": {
+    "tokens": "node scripts/build-tokens.mjs",
+    "fabrics": "node scripts/build-fabrics.mjs",
+    "contrast": "node scripts/check-contrast.mjs",
+    "dev": "npm run tokens && npm run fabrics && vite",
+    "build": "npm run tokens && npm run fabrics && tsc --noEmit && vite build",
+    "preview": "node scripts/serve.mjs dist 4173"
+  },
+  "dependencies": {
+    "@fontsource-variable/bodoni-moda": "5.3.0",
+    "@fontsource-variable/hanken-grotesk": "5.3.0",
+    "gsap": "3.15.0",
+    "lenis": "1.3.27"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "vite": "8.3.5"
+  }
+}
