@@ -112,6 +112,18 @@ To edit art, change the string arrays in `src/pixel.ts`. Each letter is a palett
 ## Swap in your own photos
 Two screenshot slots (`screenshot-farm`, `screenshot-night`, 16:9) show code-drawn scenes by default. Set `data-photo="assets/images/<file>"` to use real game screenshots. See [`public/assets/README.md`](public/assets/README.md). For crisp pixels, export screenshots at an exact multiple of the game resolution.
 
+## Verification (what was actually run)
+- `npm run build` passes; `npm run contrast`: 13/13 pairs pass.
+- Headless Chromium at 375, 768 and 1440 px, with screenshots at 0/25/50/75/100%:
+  - no console errors, no failed or external requests, one h1, no horizontal scroll;
+  - axe-core: 0 violations;
+  - reduced-motion pass: nothing hidden, and the landscape reported `static` (no idle loop);
+  - no-JS and `?nosda` passes: nothing left hidden.
+- Landscape probe at 1440 px: morning, a dithered sunset and a starry night at 0%, 50% and 97% scroll, with trees and house palette-swapped.
+- Game probe at 375 px: Start, then holding → and ← moved the farmer; 2 seeds were caught and missed seeds sprouted. Pause updated the button ("Resume") and the live region ("Paused.").
+- Fixed after the first audit: on portrait phones the canvas was stretched (non-square pixels). Canvas dimensions now come from the viewport aspect.
+- **Not tested:** the game with real touch input (the press-and-hold buttons use pointer events), Safari and Firefox, and screen readers. The game itself is inherently visual; the HUD and announcements are text.
+
 ## Notes and decisions
 - Built in `style-sites-2/` of `erdgib923-star/different-websites` instead of its own repo: `gh` was not authenticated and repo creation was unavailable. Split later with `publish-repos.sh`.
 - Brand check (web search, 2026-11-02): no game called "Pixel Hollow" found.

@@ -1,6 +1,7 @@
 /**
- * The fixed pixel landscape behind the page. A 180-pixel-tall canvas (width follows the viewport
- * aspect) is scaled up with image-rendering: pixelated.
+ * The fixed pixel landscape behind the page. A low-resolution canvas (180 px tall on landscape
+ * screens, 200 px wide on portrait ones, so pixels stay square) is scaled up with
+ * image-rendering: pixelated.
  *
  * - Scroll position drives a day → sunset → night cycle. The sky blends between palette colours
  *   with 4 × 4 Bayer dithering, so it never leaves the 16-colour palette.
@@ -12,7 +13,7 @@
 import { CHICKEN, CLOUD, FARMER, FENCE, HOUSE, MOON, SUN, TREE, CROP, bayer, draw, mulberry32, rgb } from './pixel';
 import { prefersReduced } from './lib/motion';
 
-const H = 180;
+let H = 180;
 type Phase = { top: string; mid: string; bottom: string; hills: string; far: string; swap: string };
 const PHASES: Phase[] = [
   { top: 'b', mid: 'i', bottom: 'i', hills: 'G', far: 'B', swap: 'day' },
@@ -30,7 +31,10 @@ export function initLandscape(canvas: HTMLCanvasElement) {
   let W = 320, t = 0, frame = 0, tick = 0, img: ImageData | null = null;
 
   const resize = () => {
-    W = Math.max(200, Math.min(480, Math.round((H * innerWidth) / Math.max(1, innerHeight))));
+    // Keep pixels square: derive both dimensions from the viewport aspect.
+    const aspect = innerWidth / Math.max(1, innerHeight);
+    if (aspect >= 1.1) { H = 180; W = Math.round(H * aspect); if (W > 480) { W = 480; H = Math.round(W / aspect); } }
+    else { W = 200; H = Math.round(W / aspect); }
     canvas.width = W; canvas.height = H;
     ctx.imageSmoothingEnabled = false;
     img = ctx.createImageData(W, Math.round(H * 0.72));

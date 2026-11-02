@@ -32,3 +32,4 @@ All brands, people, addresses, phone numbers and data are fictional.
 | 8 | `pro2-08-artdeco-grand-meridian` | The Grand Meridian, 1920s-style hotel |
 | 9 | `pro2-09-bauhaus-primar-institute` | Primar Institute, design school exhibition |
 | 10 | `pro2-10-memphis-terrazzo-lab` | Terrazzo Lab, pattern studio |
+| 11 | `pro2-11-pixel-hollow-game` | Pixel Hollow, cozy farming game |
