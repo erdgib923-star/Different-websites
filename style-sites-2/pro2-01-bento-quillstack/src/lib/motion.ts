@@ -109,10 +109,19 @@ export function splitText(el: HTMLElement, mode: 'words' | 'chars' = 'words') {
   const build = (from: Node, into: Node) => {
     from.childNodes.forEach((child) => {
       if (child.nodeType === Node.TEXT_NODE) {
-        for (const part of (child.textContent ?? '').split(/(\s+)/)) {
-          if (!part) continue;
-          into.appendChild(/^\s+$/.test(part) ? document.createTextNode(' ') : word(part));
-        }
+        (child.textContent ?? '').split(/(\s+)/).forEach((part, idx) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { into.appendChild(document.createTextNode(' ')); return; }
+          const w = word(part);
+          // Punctuation glued to a preceding inline element ("<em>stack</em>,") must not wrap apart.
+          const prev = into.lastChild;
+          if (idx === 0 && prev instanceof HTMLElement && !prev.classList.contains('split-w')) {
+            const keep = document.createElement('span');
+            keep.style.whiteSpace = 'nowrap';
+            into.replaceChild(keep, prev);
+            keep.append(prev, w);
+          } else into.appendChild(w);
+        });
       } else if (child.nodeType === Node.ELEMENT_NODE) {
         const clone = (child as Element).cloneNode(false);
         build(child, clone);

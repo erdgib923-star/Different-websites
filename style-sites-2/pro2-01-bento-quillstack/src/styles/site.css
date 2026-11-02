@@ -299,8 +299,9 @@ html:not(.vt) .detail[open] { animation: detail-in 0.55s var(--ease-expo) both; 
 .step p { color: var(--text-muted); font-size: 1.1rem; max-width: 30rem; }
 .flow__dots { display: none; }
 /* Static (no JS, reduced motion): show the finished state, no scraps. */
-.flow:not(.is-pinned) .scrap { display: none; }
-.flow:not(.is-pinned) .outline { inset: 18% 42% auto 8%; }
+.flow:not(.is-pinned) :is(.scrap, .links, .linkchip) { display: none; }
+.flow:not(.is-pinned) .note { aspect-ratio: 4 / 3; }
+.flow:not(.is-pinned) .outline { inset: 16% 10% auto 8%; }
 /* Pinned mode: one step at a time, stacked in the same cell. */
 .flow.is-pinned .flow__pin { min-height: calc(100svh - 120px); align-content: center; }
 .flow.is-pinned .flow__steps { display: grid; }
