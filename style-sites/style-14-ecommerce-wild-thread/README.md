@@ -35,3 +35,16 @@ Open `index.html` in a browser. To test the URL-synced filters and deep links, s
 
 ## Notes
 - Brand-name check: no outdoor brand called exactly "Wild Thread" was found. Similar names exist (Wild Things, Wildbird Threads).
+
+## Audit results
+- accesslint (`@accesslint/cli` 0.21.0, 94 rules): 0 violations on the initial page.
+- axe-core 4.10 with the product dialog, cart dialog and mobile drawer each open: 0 violations.
+- Vercel guidelines review: cart removal was immediate, so an **Undo** was added (focus moves to it; it restores the line).
+- Playwright interaction test passed:
+  - filters (including combined filters, sort, reset and URL sync);
+  - the deep link `#p=canvas-cap`;
+  - size validation;
+  - cart add, quantity, remove and undo;
+  - persistence across a reload;
+  - the mobile drawer focus and `inert` behaviour;
+  - a simulated blocked `localStorage` (no errors, honest message).

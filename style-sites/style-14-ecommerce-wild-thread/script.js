@@ -94,12 +94,29 @@
     if (act === 'inc') cart[idx].qty += 1;
     if (act === 'dec') cart[idx].qty -= 1;
     var removed = act === 'remove' || cart[idx].qty <= 0;
-    if (removed) cart.splice(idx, 1);
+    if (removed) {
+      var gone = cart.splice(idx, 1)[0];
+      if (gone.qty <= 0) gone.qty = 1;
+      lastRemoved = { line: gone, idx: idx };
+      $('#cart-undo-text').textContent = 'Removed ' + PRODUCTS[gone.id].name + ', size ' + gone.size + '.';
+      $('#cart-undo').hidden = false;
+    }
     saveCart(); updateCount(false); renderCart();
     // keep focus somewhere sensible
-    var next = removed ? ($('.cart__item [data-act="inc"]', cartList) || $('#cart [data-close]')) : $('.cart__item[data-idx="' + idx + '"] [data-act="' + act + '"]', cartList);
+    var next = removed ? $('#cart-undo-btn') : $('.cart__item[data-idx="' + idx + '"] [data-act="' + act + '"]', cartList);
     if (next) next.focus();
   });
+  // undo for removals (destructive actions get an undo window)
+  var lastRemoved = null;
+  $('#cart-undo-btn').addEventListener('click', function () {
+    if (!lastRemoved) return;
+    cart.splice(Math.min(lastRemoved.idx, cart.length), 0, lastRemoved.line);
+    lastRemoved = null; $('#cart-undo').hidden = true;
+    saveCart(); updateCount(false); renderCart();
+    var restored = $('.cart__item [data-act="inc"]', cartList); if (restored) restored.focus();
+  });
+  cartDlg.addEventListener('close', function () { lastRemoved = null; $('#cart-undo').hidden = true; });
+
   $('#checkout').addEventListener('click', function (e) {
     e.preventDefault();
     var note = $('#checkout-note');
