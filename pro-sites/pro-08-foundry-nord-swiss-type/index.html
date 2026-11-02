@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Foundry Nord — independent type foundry (fictional demo)</title>
+    <meta name="description" content="Foundry Nord is a fictional Swiss-style type foundry. A design demo with a live variable-font tester. Specimens are set in open-source Google Fonts stand-ins." />
+    <meta name="theme-color" content="#fffbfa" />
+    <script>
+      (function (d) {
+        var h = d.documentElement;
+        h.classList.add('js');
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('reduced');
+        setTimeout(function () {
+          if (!h.classList.contains('motion-ready')) h.classList.remove('js');
+        }, 4000);
+      })(document);
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="gridlines" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+    <header class="header">
+      <div class="g header__inner">
+        <a class="logo" href="#top">Foundry<br />Nord</a>
+        <nav class="nav" aria-label="Primary">
+          <a href="#families">Families</a>
+          <a href="#tester">Tester</a>
+          <a href="#glyphs">Glyphs</a>
+          <a href="#licences">Licences</a>
+        </nav>
+        <button type="button" class="grid-toggle" id="grid-toggle" aria-pressed="false">Grid</button>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ============ HERO: variable axes animate with scroll ============ -->
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="g">
+          <p class="hero__index" data-fade>Nº 01<br />Independent type<br />Est. 2014</p>
+          <h1 id="hero-title" class="hero__title" data-split="intro">Type with a north.</h1>
+          <p class="hero__lede" data-fade>Three variable families, drawn for screens and street signs. Every weight, width and optical size lives in a single file.</p>
+        </div>
+        <div class="hero__word-wrap" aria-hidden="true">
+          <p class="hero__word" id="hero-word">NORD</p>
+        </div>
+        <div class="g hero__axes" aria-hidden="true">
+          <p>wght <span id="ax-wght">100</span></p>
+          <p>wdth <span id="ax-wdth">25</span></p>
+          <p>opsz <span id="ax-opsz">144</span></p>
+          <p class="hero__scroll">Scroll ↓ to change the axes</p>
+        </div>
+      </section>
+
+      <!-- ============ FAMILIES ============ -->
+      <section class="families" id="families" aria-labelledby="families-title">
+        <div class="g">
+          <h2 id="families-title" class="h2" data-split="scroll">Three families</h2>
+          <p class="families__note" data-fade>Each family is one variable font. Scroll past a specimen and watch it travel its weight axis.</p>
+        </div>
+        <ol class="family-list">
+          <li class="family g" data-pop>
+            <p class="family__n">01</p>
+            <div class="family__head">
+              <h3>Nord Grotesk Flex</h3>
+              <p>13 axes · 100–1000 weight · 25–151 width · optical sizes 8–144</p>
+            </div>
+            <p class="family__spec family__spec--flex" data-sweep>Harbour lights</p>
+          </li>
+          <li class="family g" data-pop>
+            <p class="family__n">02</p>
+            <div class="family__head">
+              <h3>Nord Breit</h3>
+              <p>2 axes · 100–900 weight · 50–150 width</p>
+            </div>
+            <p class="family__spec family__spec--breit" data-sweep>Wide Stations</p>
+          </li>
+          <li class="family g" data-pop>
+            <p class="family__n">03</p>
+            <div class="family__head">
+              <h3>Nord Mono Kasual</h3>
+              <p>5 axes · 300–1000 weight · casual · mono · slant · cursive</p>
+            </div>
+            <p class="family__spec family__spec--mono" data-sweep>{code: true}</p>
+          </li>
+        </ol>
+        <p class="g standin">Foundry Nord and its families are fictional. The specimens are set in open-source Google Fonts used as stand-ins: Roboto Flex, Anybody and Recursive (SIL Open Font License), self-hosted.</p>
+      </section>
+
+      <!-- ============ KINETIC MARQUEE ============ -->
+      <section class="kinetic" aria-label="Kinetic type">
+        <div class="kinetic__row" data-dir="1"><p class="kinetic__track"><span>Gothic</span> <span>Neue</span> <span>Breit</span> <span>Kasual</span> <span>Flex</span> <span>Gothic</span> <span>Neue</span> <span>Breit</span> <span>Kasual</span> <span>Flex</span></p></div>
+        <div class="kinetic__row kinetic__row--red" data-dir="-1"><p class="kinetic__track"><span>Weight</span> <span>Width</span> <span>Slant</span> <span>Optical</span> <span>Grade</span> <span>Weight</span> <span>Width</span> <span>Slant</span> <span>Optical</span> <span>Grade</span></p></div>
+        <div class="g kinetic__ctrl"><button type="button" class="link-btn" id="kinetic-pause" aria-pressed="false">Pause motion</button></div>
+      </section>
+
+      <!-- ============ TYPE TESTER ============ -->
+      <section class="tester" id="tester" aria-labelledby="tester-title">
+        <div class="g">
+          <h2 id="tester-title" class="h2" data-split="scroll">Type tester</h2>
+          <p class="tester__hint" data-fade>Type anywhere in the sample. Every axis is live.</p>
+        </div>
+        <div class="g tester__body" data-pop>
+          <form class="tester__controls" id="tester-controls" aria-label="Type tester controls">
+            <fieldset class="family-pick">
+              <legend>Family</legend>
+              <label><input type="radio" name="family" value="flex" checked /> Grotesk Flex</label>
+              <label><input type="radio" name="family" value="breit" /> Breit</label>
+              <label><input type="radio" name="family" value="mono" /> Mono Kasual</label>
+            </fieldset>
+            <div class="axes" id="axes"></div>
+            <label class="axis">
+              <span>Size <output id="size-out">96 px</output></span>
+              <input type="range" id="size" min="16" max="180" value="96" />
+            </label>
+            <div class="tester__btns">
+              <button type="button" class="link-btn" id="invert" aria-pressed="false">Invert</button>
+              <button type="button" class="link-btn" id="reset">Reset</button>
+              <button type="button" class="link-btn" id="copy">Copy CSS</button>
+            </div>
+            <p class="copy-status" id="copy-status" role="status"></p>
+          </form>
+          <div class="tester__stage" id="stage">
+            <div class="tester__text" id="sample" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Editable sample text" spellcheck="false">Quiet fjords, bright signage, big zinc quays.</div>
+            <pre class="tester__css" id="css-out" aria-label="Current CSS settings"></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ GLYPHS ============ -->
+      <section class="glyphs" id="glyphs" aria-labelledby="glyphs-title">
+        <div class="g">
+          <h2 id="glyphs-title" class="h2" data-split="scroll">Glyphs</h2>
+          <p class="glyphs__hint" data-fade>Hover or focus a cell to inspect it. Shown in Nord Grotesk Flex (Roboto Flex stand-in).</p>
+        </div>
+        <div class="g glyphs__body">
+          <div class="glyph-preview" aria-live="polite">
+            <p class="glyph-preview__char" id="glyph-big" aria-hidden="true">R</p>
+            <p class="glyph-preview__name" id="glyph-name">U+0052 · Latin capital letter R</p>
+          </div>
+          <div class="glyph-grid" id="glyph-grid" role="list"></div>
+        </div>
+      </section>
+
+      <!-- ============ LICENCES ============ -->
+      <section class="licences" id="licences" aria-labelledby="lic-title">
+        <div class="g">
+          <h2 id="lic-title" class="h2" data-split="scroll">Licences</h2>
+          <div class="lic-scope" role="group" aria-label="Price for">
+            <button type="button" class="seg" aria-pressed="true" data-scope="family">One family</button>
+            <button type="button" class="seg" aria-pressed="false" data-scope="all">All three families</button>
+          </div>
+        </div>
+        <div class="g">
+          <div class="table-wrap" data-pop>
+            <table class="lic-table">
+              <caption class="sr-only">Licence tiers and prices in euros (sample prices for a fictional foundry)</caption>
+              <thead>
+                <tr><th scope="col">Tier</th><th scope="col">Covers</th><th scope="col">Users / traffic</th><th scope="col">Price</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Trial</th><td>Mock-ups and pitches, not for publishing</td><td>Unlimited</td><td><span class="price" data-family="0" data-all="0">€0</span></td></tr>
+                <tr><th scope="row">Desktop</th><td>Print, logos, documents</td><td>Up to 5 users</td><td><span class="price" data-family="180" data-all="420">€180</span></td></tr>
+                <tr class="is-hot"><th scope="row">Web</th><td>Self-hosted web fonts</td><td>Up to 250k views a month</td><td><span class="price" data-family="240" data-all="560">€240</span></td></tr>
+                <tr><th scope="row">App</th><td>Embedded in one app or game</td><td>One title, all platforms</td><td><span class="price" data-family="600" data-all="1400">€600</span></td></tr>
+                <tr><th scope="row">Enterprise</th><td>Everything above, organisation-wide</td><td>Unlimited</td><td><span class="price price--text" data-family="Quote" data-all="Quote">Quote</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="fine" id="lic-note" aria-live="polite">Prices per family, excluding VAT. Sample prices for a fictional foundry.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="g">
+        <p class="logo">Foundry<br />Nord</p>
+        <p>Studio 3, Kaiplatz 9, Nordhaven<br />type@example.com · 555-0100</p>
+        <p class="fine">Foundry Nord, its families, prices and address are fictional sample content for a design demo. Specimens use the open-source fonts Roboto Flex, Anybody and Recursive (SIL OFL) as stand-ins.</p>
+      </div>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
