@@ -34,3 +34,18 @@ Open `index.html` in a browser. Chart.js loads from cdnjs; offline, the data tab
 ## How to change colours and copy
 - UI and chart colours are custom properties at the top of `styles.css`, once for light and once for dark (`--series-1`, `--series-2`). If you change chart colours, re-run the dataviz validator.
 - Chart numbers are the `#line-data` and `#bar-data` tables in `index.html`. Edit the tables and the charts follow.
+
+## Audit results
+- **Fixed after the audit:**
+  - The page `h1` was `display: none` on mobile (axe `page-has-heading-one`). It is now visually hidden but still present.
+  - The sidebar close button no longer shows on desktop.
+  - The City column is left-aligned like its header.
+- **accesslint** (`@accesslint/cli` 0.21.0, 94 rules): 0 violations. Its Chrome could not reach cdnjs, so it scanned the no-Chart.js fallback state (data tables open).
+- **axe-core 4.10 in Playwright** with Chart.js loaded (from the same version's npm package): 0 violations at 375px and 1440px.
+- **Playwright interaction test passed:**
+  - sort by text and number, both directions (including values with a unicode minus);
+  - search, plus the empty state;
+  - the theme toggle and its persistence across a reload;
+  - the mobile nav drawer focus and `inert` behaviour;
+  - the CDN-blocked fallback.
+- **Not verified:** the cdnjs path `Chart.js/4.4.1/chart.umd.js` (cdnjs is blocked in the build environment), and Windows High Contrast / forced-colors rendering.

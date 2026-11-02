@@ -66,7 +66,7 @@ button { font: inherit; color: inherit; touch-action: manipulation; -webkit-tap-
 .nav a:hover { background: var(--surface-2); color: var(--text); }
 .nav a[aria-current="page"] { background: var(--accent); color: var(--on-accent); }
 .sidebar__note { margin-top: auto; font-size: var(--t-xs); color: var(--text-2); }
-.sidebar__close { display: none; }
+.sidebar .sidebar__close { display: none; }
 
 .shell { min-width: 0; display: flex; flex-direction: column; }
 .topbar { position: sticky; top: 0; z-index: 20; height: var(--topbar-h); display: flex; align-items: center; gap: var(--s3); padding: 0 var(--s5); background: var(--bg); border-bottom: 1px solid var(--border); }
@@ -122,7 +122,6 @@ th, td { text-align: left; padding: 10px var(--s3); border-bottom: 1px solid var
 thead th { color: var(--text-2); font-weight: 600; font-size: var(--t-xs); }
 tbody th { font-weight: 600; }
 .num { text-align: right; }
-td:not(:first-child), th.num { text-align: right; }
 #line-data td, #bar-data td { text-align: right; }
 
 /* sortable table */
@@ -148,9 +147,9 @@ td:not(:first-child), th.num { text-align: right; }
 @media (max-width: 899px) {
   .js-nav .sidebar { position: fixed; z-index: 50; inset: 0 auto 0 0; width: min(84vw, 280px); transform: translateX(-102%); visibility: hidden; transition: transform 0.22s ease, visibility 0s linear 0.22s; overscroll-behavior: contain; }
   .js-nav .sidebar.is-open { transform: none; visibility: visible; transition: transform 0.22s ease; }
-  .js-nav .sidebar__close { display: inline-grid; }
+  .js-nav .sidebar .sidebar__close { display: inline-grid; }
   .topbar { padding: 0 var(--s4); }
-  .topbar__title { display: none; }
+  .topbar__title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } /* visually hidden, still the page h1 */
   main { padding: var(--s4); }
   .avatar { display: none; }
 }
