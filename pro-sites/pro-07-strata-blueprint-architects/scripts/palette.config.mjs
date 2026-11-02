@@ -1,0 +1,55 @@
+// Plinthwell Architects: colour system.
+// Neutrals: blue-tinted concrete greys (h 245, chroma 0.012). Brand: blueprint blue (h 258) for the
+// one blueprint section and line drawings. Accent: safety orange (h 48), only for marks that need
+// attention: dimension callouts, the slider handle, active filters, CTAs.
+export default {
+  out: 'src/styles/tokens.css',
+  ramps: {
+    neutral: { hue: 245, chroma: 0.012, lMax: 0.975, lMin: 0.17, flat: true },
+    brand: { hue: 258, chroma: 0.15, lMax: 0.95, lMin: 0.2 },
+    accent: { hue: 48, chroma: 0.19, lMax: 0.95, lMin: 0.3, hueShift: -6 },
+  },
+  p3: { 'safety-hi': [0.7, 0.23, 46] },
+  semantic: {
+    bg: 'neutral-100',
+    surface: 'neutral-50',
+    'surface-2': 'neutral-200',
+    text: 'neutral-950',
+    'text-muted': 'neutral-700',
+    border: 'neutral-300',
+    'border-strong': 'neutral-500',
+    line: 'neutral-800',
+    accent: 'accent-400',
+    mark: 'accent-600',
+    'accent-text': 'accent-700',
+    'accent-contrast': 'neutral-950',
+    focus: 'brand-600',
+    // blueprint section
+    blueprint: 'brand-800',
+    'blueprint-2': 'brand-700',
+    'blueprint-line': 'brand-100',
+    'blueprint-text': 'neutral-50',
+    'blueprint-muted': 'brand-200',
+    'blueprint-accent': 'accent-300',
+  },
+  pairs: [
+    ['text', 'bg', 4.5, 'Text on concrete'],
+    ['text-muted', 'bg', 4.5, 'Muted text on concrete'],
+    ['text', 'surface', 4.5, 'Text on card'],
+    ['text-muted', 'surface', 4.5, 'Muted text on card'],
+    ['text-muted', 'surface-2', 4.5, 'Muted text on darker panel'],
+    ['accent-text', 'bg', 4.5, 'Orange labels on concrete'],
+    ['accent-text', 'surface', 4.5, 'Orange labels on card'],
+    ['accent-contrast', 'accent', 4.5, 'Label on safety-orange button / callout'],
+    ['mark', 'bg', 3, 'Orange dimension marks on concrete (graphic)'],
+    ['mark', 'surface', 3, 'Orange dimension marks on card (graphic)'],
+    ['line', 'surface', 3, 'Drawing line weight (graphic)'],
+    ['focus', 'bg', 3, 'Focus ring (UI)'],
+    ['border-strong', 'bg', 3, 'Control outlines (UI)'],
+    ['blueprint-text', 'blueprint', 4.5, 'Text on blueprint'],
+    ['blueprint-muted', 'blueprint', 4.5, 'Muted text on blueprint'],
+    ['blueprint-line', 'blueprint', 3, 'Plan lines on blueprint (graphic)'],
+    ['blueprint-accent', 'blueprint', 4.5, 'Orange dimensions on blueprint'],
+    ['blueprint-text', 'blueprint-2', 4.5, 'Text on blueprint card'],
+  ],
+};

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Plinthwell Architects — buildings that start at the ground (fictional demo)</title>
+    <meta name="description" content="Plinthwell Architects is a fictional practice. A design demo with plans and elevations that draw themselves as you scroll." />
+    <meta name="theme-color" content="#d6dde4" />
+    <script>
+      (function (d) {
+        var h = d.documentElement;
+        h.classList.add('js');
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('reduced');
+        setTimeout(function () {
+          if (!h.classList.contains('motion-ready')) h.classList.remove('js');
+        }, 4000);
+      })(document);
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="header">
+      <div class="wrap header__inner">
+        <a class="logo" href="#top"><span class="logo__mark" aria-hidden="true"></span>Plinthwell <span class="logo__sub">Architects</span></a>
+        <nav aria-label="Primary">
+          <ul class="nav">
+            <li><a href="#plan">Drawings</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ================= HERO ================= -->
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero__grid" aria-hidden="true" data-speed="-0.25"></div>
+        <div class="wrap hero__inner">
+          <div class="hero__text">
+            <p class="label" data-fade>Architecture · Restoration · Since 2009</p>
+            <h1 id="hero-title" class="hero__title" data-split="intro">Buildings that start at the ground.</h1>
+            <p class="hero__lede" data-fade>We are a practice of fourteen architects. We design housing, civic buildings and workplaces from the plinth up, and we give old structures a second working life.</p>
+            <a class="btn" href="#work" data-fade>See the work</a>
+          </div>
+          <figure class="hero__drawing drawing" data-speed="0.12" role="img" aria-label="Line drawing: front elevation of a four-storey building with dimensions">
+            <!--ELEV:5:clean:dims:pitch-->
+            <figcaption class="caption">Kiln Street Studios · south elevation · 1:200</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ================= PRACTICE ================= -->
+      <section class="practice wrap" aria-labelledby="practice-title">
+        <h2 id="practice-title" class="h2" data-split="scroll">Measured twice, built once</h2>
+        <p class="practice__text" data-fade>Every project starts with a survey drawn by hand: what the ground is doing, where the light comes from and what the neighbours need. The drawings that follow are the contract we keep with the site.</p>
+        <ul class="stats">
+          <li data-pop><span class="stats__v">27</span><span>buildings completed</span></li>
+          <li data-pop><span class="stats__v">9</span><span>restorations of listed structures</span></li>
+          <li data-pop><span class="stats__v">1:50</span><span>scale of our first site sketch</span></li>
+        </ul>
+        <p class="fine">Figures are sample data for a fictional practice.</p>
+      </section>
+
+      <!-- ================= BLUEPRINT: plan draws on scroll (pinned + scrubbed) ================= -->
+      <section class="blueprint" id="plan" aria-labelledby="plan-title">
+        <div class="wrap blueprint__inner">
+          <div class="blueprint__text">
+            <p class="label label--bp">Drawing 04 · ground floor</p>
+            <h2 id="plan-title" class="h2">The plan, drawn as you scroll</h2>
+            <p>Walls first, then openings, then the stair, rooms and dimensions. It is the same order we draw them in at the studio.</p>
+            <ol class="plan-steps" aria-label="Drawing order">
+              <li data-plan-step="0">Walls</li>
+              <li data-plan-step="1">Doors and windows</li>
+              <li data-plan-step="2">Stair and fit-out</li>
+              <li data-plan-step="3">Rooms and dimensions</li>
+            </ol>
+          </div>
+          <figure class="blueprint__plan drawing">
+            <!--PLAN-->
+          </figure>
+        </div>
+      </section>
+
+      <!-- ================= PROCESS: pinned walkthrough with synced captions ================= -->
+      <section class="walk" id="process" aria-labelledby="walk-title">
+        <div class="wrap walk__inner">
+          <div class="walk__captions">
+            <h2 id="walk-title" class="h2">From site to facade</h2>
+            <ol class="walk__steps">
+              <li class="walk__step is-active" data-step="0"><span class="walk__n">01</span><h3>Site</h3><p>We map the plot, the trees we keep and the path people already walk across it.</p></li>
+              <li class="walk__step" data-step="1"><span class="walk__n">02</span><h3>Massing</h3><p>Two volumes: a tall block for the studios and a low wing that steps down to the street.</p></li>
+              <li class="walk__step" data-step="2"><span class="walk__n">03</span><h3>Structure</h3><p>A 6 m timber column grid with one braced bay, so floors can be reconfigured later.</p></li>
+              <li class="walk__step" data-step="3"><span class="walk__n">04</span><h3>Facade</h3><p>Deep window reveals for shade, with the entrance marked in safety orange.</p></li>
+            </ol>
+            <div class="walk__progress" aria-hidden="true"><span></span></div>
+          </div>
+          <div class="walk__stage drawing">
+            <figure class="walk__frame media" data-slot="walk-site" data-frame="0" role="img" aria-label="Isometric drawing: the empty site with trees and a footpath" style="--ar: 40 / 26; --dominant: var(--surface)"><div class="media__art"><!--AXO:site--></div></figure>
+            <figure class="walk__frame media" data-slot="walk-massing" data-frame="1" role="img" aria-label="Isometric drawing: two building volumes on the site" style="--ar: 40 / 26; --dominant: var(--surface)"><div class="media__art"><!--AXO:massing--></div></figure>
+            <figure class="walk__frame media" data-slot="walk-structure" data-frame="2" role="img" aria-label="Isometric drawing: timber column grid, floor slabs and one braced bay" style="--ar: 40 / 26; --dominant: var(--surface)"><div class="media__art"><!--AXO:structure--></div></figure>
+            <figure class="walk__frame media" data-slot="walk-facade" data-frame="3" role="img" aria-label="Isometric drawing: finished building with window bands and an orange entrance" style="--ar: 40 / 26; --dominant: var(--surface)"><div class="media__art"><!--AXO:facade--></div></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= BEFORE / AFTER ================= -->
+      <section class="compare wrap" aria-labelledby="compare-title">
+        <div class="compare__head">
+          <h2 id="compare-title" class="h2" data-split="scroll">Kiln Street Depot, restored</h2>
+          <p data-fade>A 1962 bus depot, sealed for a decade. We kept the frame and the facade, repaired every window and gave the building back to the street. Drag the handle to compare.</p>
+        </div>
+        <div class="ba" data-pop style="--pos: 50%">
+          <figure class="media ba__after" data-slot="depot-after" role="img" aria-label="After: the restored facade with repaired windows and orange frames" style="--ar: 16 / 10; --dominant: var(--surface)"><div class="media__art drawing"><!--ELEV:21:restored:nodims:saw--></div></figure>
+          <figure class="media ba__before" data-slot="depot-before" role="img" aria-label="Before: the weathered facade with cracks and boarded windows" style="--ar: 16 / 10; --dominant: var(--surface-2)"><div class="media__art drawing"><!--ELEV:21:weathered:nodims:saw--></div></figure>
+          <span class="ba__tag ba__tag--before" aria-hidden="true">Before · 2016</span>
+          <span class="ba__tag ba__tag--after" aria-hidden="true">After · 2026</span>
+          <span class="ba__handle" aria-hidden="true"><span>‹ ›</span></span>
+          <label class="sr-only" for="ba-range">Compare before and after: percentage of the before image shown</label>
+          <input class="ba__range" id="ba-range" type="range" min="0" max="100" value="50" />
+        </div>
+      </section>
+
+      <!-- ================= PROJECT INDEX (filterable) ================= -->
+      <section class="work wrap" id="work" aria-labelledby="work-title">
+        <div class="work__head">
+          <h2 id="work-title" class="h2" data-split="scroll">Selected projects</h2>
+          <div class="filters" role="group" aria-label="Filter projects by type">
+            <button type="button" class="filter" aria-pressed="true" data-filter="all">All</button>
+            <button type="button" class="filter" aria-pressed="false" data-filter="housing">Housing</button>
+            <button type="button" class="filter" aria-pressed="false" data-filter="civic">Civic</button>
+            <button type="button" class="filter" aria-pressed="false" data-filter="workplace">Workplace</button>
+            <button type="button" class="filter" aria-pressed="false" data-filter="restoration">Restoration</button>
+          </div>
+        </div>
+        <p class="work__count" id="work-count" aria-live="polite">Showing all 9 projects</p>
+        <ul class="projects">
+          <li class="project" data-type="workplace" data-pop><figure class="media drawing" data-slot="project-kiln-street-studios" role="img" aria-label="Elevation of Kiln Street Studios" style="--ar: 4 / 3; --dominant: var(--surface)"><div class="media__art"><!--ELEV:5:clean:nodims:pitch--></div></figure><h3>Kiln Street Studios</h3><p>Workplace · Eastwold · 2026</p></li>
+          <li class="project" data-type="housing" data-pop><figure class="media drawing" data-slot="project-sallow-quay" role="img" aria-label="Elevation of Sallow Quay Housing" style="--ar: 4 / 3; --dominant: var(--surface)"><div class="media__art"><!--ELEV:8:clean:nodims:flat--></div></figure><h3>Sallow Quay Housing</h3><p>Housing · Sallow · 2025</p></li>
+          <li class="project" data-type="civic" data-pop><figure class="media drawing" data-slot="project-brackenford-library" role="img" aria-label="Elevation of Brackenford Library" style="--ar: 4 / 3; --dominant: var(--surface)"><div class="media__art"><!--ELEV:14:clean:nodims:saw--></div></figure><h3>Brackenford Library</h3><p>Civic · Brackenford · 2024</p></li>
+          <li class="project" data-type="restoration" data-pop><figure class="media drawing" data-slot="project-kiln-street-depot" role="img" aria-label="Elevation of Kiln Street Depot" style="--ar: 4 / 3; --dominant: var(--surface)"><div class="media__art"><!--ELEV:21:restored:nodims:saw--></div></figure><h3>Kiln Street Depot</h3><p>Restoration · Eastwold · 2026</p></li>
+          <li class="project" data-type="housing" data-pop><figure class="media drawing" data-slot="project-ropewalk-flats" role="img" aria-label="Elevation of The Ropewalk Flats" style="--ar: 4 / 3; --dominant: var(--surface)"><div class="media__art"><!--ELEV:31:clean:nodims:flat--></div></figure><h3>The Ropewalk Flats</h3><p>Housing · Sallow · 2023</p></li>
+          <li class="project" data-type="civic" data-pop><figure class="media drawing" data-slot="project-eastwold-fire-station" role="img" aria-label="Elevation of Eastwold Fire Station" style="--ar: 4 / 3; --dominant: var(--surface)"><div class="media__art"><!--ELEV:37:clean:nodims:flat--></div></figure><h3>Eastwold Fire Station</h3><p>Civic · Eastwold · 2022</p></li>
+          <li class="project" data-type="workplace" data-pop><figure class="media drawing" data-slot="project-mill-lane-offices" role="img" aria-label="Elevation of Mill Lane Offices" style="--ar: 4 / 3; --dominant: var(--surface)"><div class="media__art"><!--ELEV:43:clean:nodims:saw--></div></figure><h3>Mill Lane Offices</h3><p>Workplace · Brackenford · 2021</p></li>
+          <li class="project" data-type="restoration" data-pop><figure class="media drawing" data-slot="project-granary-rooms" role="img" aria-label="Elevation of The Granary Rooms" style="--ar: 4 / 3; --dominant: var(--surface)"><div class="media__art"><!--ELEV:47:restored:nodims:pitch--></div></figure><h3>The Granary Rooms</h3><p>Restoration · Sallow · 2023</p></li>
+          <li class="project" data-type="housing" data-pop><figure class="media drawing" data-slot="project-tallis-row" role="img" aria-label="Elevation of Tallis Row Terraces" style="--ar: 4 / 3; --dominant: var(--surface)"><div class="media__art"><!--ELEV:53:clean:nodims:pitch--></div></figure><h3>Tallis Row Terraces</h3><p>Housing · Eastwold · 2020</p></li>
+        </ul>
+      </section>
+
+      <!-- ================= CONTACT ================= -->
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <div class="wrap contact__inner">
+          <h2 id="contact-title" class="h2" data-split="scroll">Bring us a site</h2>
+          <div data-fade>
+            <p>Plinthwell Architects<br />4 Foundry Yard, Eastwold</p>
+            <p><a href="mailto:studio@example.com">studio@example.com</a> · <a href="tel:5550100">555-0100</a></p>
+            <a class="btn" href="mailto:studio@example.com?subject=New%20project">Start a conversation</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <p>Plinthwell Architects is a fictional practice created for a design demo. The projects, places, people, figures and contact details are sample content, and every drawing is generated in code.</p>
+      </div>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
