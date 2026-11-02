@@ -38,6 +38,7 @@ export default {
     ['text', 'surface', 4.5, 'Text on card'],
     ['text-muted', 'surface', 4.5, 'Muted text on card'],
     ['text-muted', 'surface-2', 4.5, 'Muted text on darker panel'],
+    ['text', 'surface-2', 4.5, 'Text and links on contact panel'],
     ['accent-text', 'bg', 4.5, 'Orange labels on concrete'],
     ['accent-text', 'surface', 4.5, 'Orange labels on card'],
     ['accent-contrast', 'accent', 4.5, 'Label on safety-orange button / callout'],

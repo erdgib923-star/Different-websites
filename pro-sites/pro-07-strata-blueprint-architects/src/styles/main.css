@@ -712,7 +712,10 @@ html:not(.js) .walk__frame,
   }
 }
 .contact a:not(.btn) {
-  color: var(--accent-text);
+  color: var(--text);
+  text-decoration-color: var(--mark);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }
 .footer {
   padding-block: 2rem;

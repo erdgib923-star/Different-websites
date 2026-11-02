@@ -5,6 +5,7 @@
 | Text on card | `--text` #0b1014 | `--surface` #f0f8ff | 17.80:1 | 4.5:1 | pass |
 | Muted text on card | `--text-muted` #464c51 | `--surface` #f0f8ff | 8.16:1 | 4.5:1 | pass |
 | Muted text on darker panel | `--text-muted` #464c51 | `--surface-2` #bcc3ca | 4.92:1 | 4.5:1 | pass |
+| Text and links on contact panel | `--text` #0b1014 | `--surface-2` #bcc3ca | 10.74:1 | 4.5:1 | pass |
 | Orange labels on concrete | `--accent-text` #9e4200 | `--bg` #d6dde4 | 4.74:1 | 4.5:1 | pass |
 | Orange labels on card | `--accent-text` #9e4200 | `--surface` #f0f8ff | 6.05:1 | 4.5:1 | pass |
 | Label on safety-orange button / callout | `--accent-contrast` #0b1014 | `--accent` #f36f00 | 6.45:1 | 4.5:1 | pass |
