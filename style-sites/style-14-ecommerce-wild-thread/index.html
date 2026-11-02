@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wild Thread — small-batch outdoor clothing</title>
+  <meta name="description" content="Wild Thread is a fictional small-batch outdoor clothing shop: eight pieces, made in runs of two hundred, built to be repaired.">
+  <meta name="theme-color" content="#F2EFE9">
+  <meta name="color-scheme" content="light">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Garment drawings (100×100), coloured with currentColor -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="g-jacket" viewBox="0 0 100 100"><path d="M30 20 44 14Q50 24 56 14L70 20 88 72 78 76 70 46V86H30V46L22 76 12 72Z" fill="currentColor"/><path d="M50 22V86M40 14Q50 6 60 14" fill="none" stroke="#24221F" stroke-opacity=".45" stroke-width="2"/><path d="M36 58h8M56 58h8" stroke="#24221F" stroke-opacity=".35" stroke-width="2"/></symbol>
+    <symbol id="g-shirt" viewBox="0 0 100 100"><path d="M32 18 44 14 50 22 56 14 68 18 84 34 76 42 68 34V86H32V34L24 42 16 34Z" fill="currentColor"/><path d="M50 22V86" stroke="#24221F" stroke-opacity=".35" stroke-width="1.5"/><g fill="#24221F" fill-opacity=".45"><circle cx="50" cy="34" r="1.6"/><circle cx="50" cy="48" r="1.6"/><circle cx="50" cy="62" r="1.6"/><circle cx="50" cy="76" r="1.6"/></g><path d="M38 44h8v8h-8z" fill="none" stroke="#24221F" stroke-opacity=".35" stroke-width="1.5"/></symbol>
+    <symbol id="g-fleece" viewBox="0 0 100 100"><path d="M30 20 44 15Q50 20 56 15L70 20 88 72 78 76 70 46V86H30V46L22 76 12 72Z" fill="currentColor"/><path d="M50 18V48" stroke="#24221F" stroke-opacity=".5" stroke-width="2"/><path d="M30 80h40" stroke="#24221F" stroke-opacity=".25" stroke-width="4"/></symbol>
+    <symbol id="g-vest" viewBox="0 0 100 100"><path d="M34 16 44 14Q50 22 56 14L66 16 72 36V86H28V36Z" fill="currentColor"/><path d="M50 22V86" stroke="#24221F" stroke-opacity=".45" stroke-width="2"/><g stroke="#24221F" stroke-opacity=".2" stroke-width="1.5"><path d="M28 46h44M28 58h44M28 70h44"/></g></symbol>
+    <symbol id="g-base" viewBox="0 0 100 100"><path d="M36 16 45 14Q50 19 55 14L64 16 82 74 74 76 64 40V86H36V40L26 76 18 74Z" fill="currentColor"/><path d="M45 14Q50 19 55 14" fill="none" stroke="#24221F" stroke-opacity=".45" stroke-width="2"/></symbol>
+    <symbol id="g-pants" viewBox="0 0 100 100"><path d="M32 14H68L72 86H55L50 40 45 86H28Z" fill="currentColor"/><path d="M32 22H68" stroke="#24221F" stroke-opacity=".35" stroke-width="2"/><path d="M36 50h8M58 50h8" stroke="#24221F" stroke-opacity=".3" stroke-width="2"/></symbol>
+    <symbol id="g-cap" viewBox="0 0 100 100"><path d="M22 62Q22 30 50 30Q78 30 78 62Z" fill="currentColor"/><path d="M62 60 92 66Q86 72 74 70Z" fill="currentColor"/><path d="M50 30V62M36 34Q40 48 38 62" fill="none" stroke="#24221F" stroke-opacity=".3" stroke-width="1.5"/><circle cx="50" cy="30" r="3" fill="#24221F" fill-opacity=".4"/></symbol>
+    <symbol id="g-socks" viewBox="0 0 100 100"><path d="M40 14H58V58L74 70Q80 80 70 86H46Q38 82 40 70Z" fill="currentColor"/><path d="M40 22H58M40 28H58" stroke="#24221F" stroke-opacity=".3" stroke-width="2"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  </svg>
+
+  <a class="skip" href="#products">Skip to products</a>
+
+  <header class="top" id="top">
+    <a class="brand" href="#top" translate="no">Wild Thread</a>
+    <p class="top__note">Made in runs of 200</p>
+    <button class="cart-btn" type="button" id="cart-open" aria-haspopup="dialog" aria-controls="cart">
+      <svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg>
+      <span>Cart</span>
+      <span class="cart-count" id="cart-count" aria-live="polite"><span class="sr-only">items in cart:</span> 0</span>
+    </button>
+  </header>
+
+  <main id="main">
+    <section class="intro" aria-labelledby="h-intro">
+      <h1 id="h-intro">Eight pieces for wet hills and long walks</h1>
+      <p>Small-batch outdoor clothing, sewn in runs of two hundred and built to be repaired. When a run sells out, it is gone until next season.</p>
+    </section>
+
+    <div class="shop">
+      <button class="filter-btn" type="button" id="filter-open" aria-expanded="false" aria-controls="filters" hidden>
+        <svg class="icon" aria-hidden="true"><use href="#i-filter"/></svg> Filters <span id="filter-badge"></span>
+      </button>
+
+      <aside class="filters" id="filters" aria-labelledby="h-filters">
+        <div class="filters__head">
+          <h2 id="h-filters">Filters</h2>
+          <button class="icon-btn filters__close" type="button" id="filter-close" aria-label="Close filters"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+        </div>
+        <form id="filter-form" class="filters__form">
+          <fieldset>
+            <legend>Category</legend>
+            <label><input type="checkbox" name="cat" value="jackets"> Jackets</label>
+            <label><input type="checkbox" name="cat" value="tops"> Tops</label>
+            <label><input type="checkbox" name="cat" value="bottoms"> Bottoms</label>
+            <label><input type="checkbox" name="cat" value="accessories"> Accessories</label>
+          </fieldset>
+          <fieldset>
+            <legend>Colour</legend>
+            <div class="swatches">
+              <label class="swatch"><input type="checkbox" name="color" value="moss"><span><i style="background:#5B6B43"></i>Moss</span></label>
+              <label class="swatch"><input type="checkbox" name="color" value="clay"><span><i style="background:#A8654A"></i>Clay</span></label>
+              <label class="swatch"><input type="checkbox" name="color" value="slate"><span><i style="background:#4A5560"></i>Slate</span></label>
+              <label class="swatch"><input type="checkbox" name="color" value="sand"><span><i style="background:#C9B48F"></i>Sand</span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Price</legend>
+            <label for="f-price">Up to <output id="f-price-out" for="f-price">$200</output></label>
+            <input id="f-price" name="price" type="range" min="25" max="200" step="5" value="200">
+          </fieldset>
+          <fieldset>
+            <legend>Sort</legend>
+            <label for="f-sort" class="sr-only">Sort products</label>
+            <select id="f-sort" name="sort">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price, low to high</option>
+              <option value="price-desc">Price, high to low</option>
+            </select>
+          </fieldset>
+          <div class="filters__actions">
+            <button class="btn btn--ghost" type="reset">Clear filters</button>
+            <button class="btn filters__done" type="button" id="filter-done">Show results</button>
+          </div>
+        </form>
+      </aside>
+      <div class="backdrop" id="filter-backdrop" hidden></div>
+
+      <section class="results" id="products" aria-labelledby="h-products" tabindex="-1">
+        <div class="results__head">
+          <h2 id="h-products">All pieces</h2>
+          <p class="results__count" id="results-count" aria-live="polite">8 pieces</p>
+        </div>
+        <ul class="grid" id="grid">
+          <li class="card" data-id="ridge-shell" data-cat="jackets" data-color="moss" data-price="189" data-order="1">
+            <div class="card__art" style="color:#5B6B43"><svg class="garment" role="img" aria-label="Drawing of the Ridge Shell Jacket in moss green"><use href="#g-jacket"/></svg></div>
+            <h3 class="card__name">Ridge Shell Jacket</h3>
+            <p class="card__meta">Moss · Waterproof three-layer shell</p>
+            <p class="card__price">$189</p>
+            <button class="btn btn--small card__view" type="button" data-view="ridge-shell" hidden>View details</button>
+          </li>
+          <li class="card" data-id="fieldwork-shirt" data-cat="tops" data-color="clay" data-price="78" data-order="2">
+            <div class="card__art" style="color:#A8654A"><svg class="garment" role="img" aria-label="Drawing of the Fieldwork Shirt in clay red"><use href="#g-shirt"/></svg></div>
+            <h3 class="card__name">Fieldwork Shirt</h3>
+            <p class="card__meta">Clay · Heavy cotton twill</p>
+            <p class="card__price">$78</p>
+            <button class="btn btn--small card__view" type="button" data-view="fieldwork-shirt" hidden>View details</button>
+          </li>
+          <li class="card" data-id="basecamp-fleece" data-cat="tops" data-color="sand" data-price="112" data-order="3">
+            <div class="card__art" style="color:#C9B48F"><svg class="garment" role="img" aria-label="Drawing of the Basecamp Fleece in sand"><use href="#g-fleece"/></svg></div>
+            <h3 class="card__name">Basecamp Fleece</h3>
+            <p class="card__meta">Sand · Recycled half-zip fleece</p>
+            <p class="card__price">$112</p>
+            <button class="btn btn--small card__view" type="button" data-view="basecamp-fleece" hidden>View details</button>
+          </li>
+          <li class="card" data-id="trail-pants" data-cat="bottoms" data-color="slate" data-price="96" data-order="4">
+            <div class="card__art" style="color:#4A5560"><svg class="garment" role="img" aria-label="Drawing of the Trail Pants in slate grey"><use href="#g-pants"/></svg></div>
+            <h3 class="card__name">Trail Pants</h3>
+            <p class="card__meta">Slate · Stretch canvas, gusseted</p>
+            <p class="card__price">$96</p>
+            <button class="btn btn--small card__view" type="button" data-view="trail-pants" hidden>View details</button>
+          </li>
+          <li class="card" data-id="merino-base" data-cat="tops" data-color="slate" data-price="68" data-order="5">
+            <div class="card__art" style="color:#4A5560"><svg class="garment" role="img" aria-label="Drawing of the Merino Base Layer in slate grey"><use href="#g-base"/></svg></div>
+            <h3 class="card__name">Merino Base Layer</h3>
+            <p class="card__meta">Slate · 200 g merino wool</p>
+            <p class="card__price">$68</p>
+            <button class="btn btn--small card__view" type="button" data-view="merino-base" hidden>View details</button>
+          </li>
+          <li class="card" data-id="canvas-cap" data-cat="accessories" data-color="clay" data-price="32" data-order="6">
+            <div class="card__art" style="color:#A8654A"><svg class="garment" role="img" aria-label="Drawing of the Canvas Cap in clay red"><use href="#g-cap"/></svg></div>
+            <h3 class="card__name">Canvas Cap</h3>
+            <p class="card__meta">Clay · Waxed cotton</p>
+            <p class="card__price">$32</p>
+            <button class="btn btn--small card__view" type="button" data-view="canvas-cap" hidden>View details</button>
+          </li>
+          <li class="card" data-id="wool-socks" data-cat="accessories" data-color="moss" data-price="28" data-order="7">
+            <div class="card__art" style="color:#5B6B43"><svg class="garment" role="img" aria-label="Drawing of the Hiking Socks in moss green"><use href="#g-socks"/></svg></div>
+            <h3 class="card__name">Hiking Socks, 3 pack</h3>
+            <p class="card__meta">Moss · Cushioned wool blend</p>
+            <p class="card__price">$28</p>
+            <button class="btn btn--small card__view" type="button" data-view="wool-socks" hidden>View details</button>
+          </li>
+          <li class="card" data-id="packable-vest" data-cat="jackets" data-color="sand" data-price="124" data-order="8">
+            <div class="card__art" style="color:#C9B48F"><svg class="garment" role="img" aria-label="Drawing of the Packable Vest in sand"><use href="#g-vest"/></svg></div>
+            <h3 class="card__name">Packable Vest</h3>
+            <p class="card__meta">Sand · Synthetic insulation</p>
+            <p class="card__price">$124</p>
+            <button class="btn btn--small card__view" type="button" data-view="packable-vest" hidden>View details</button>
+          </li>
+        </ul>
+        <p class="empty" id="empty" hidden>No pieces match these filters. <button class="link-btn" type="button" id="empty-clear">Clear filters</button></p>
+        <noscript><p class="note">Turn on JavaScript to filter, see details and add to cart. To order without it, email <a href="mailto:shop@example.com">shop@example.com</a>.</p></noscript>
+        <p class="note">Sample catalogue: products, prices and stock are fictional; drawings stand in for product photos.</p>
+      </section>
+    </div>
+  </main>
+
+  <!-- product detail -->
+  <dialog class="sheet sheet--product" id="product" aria-labelledby="pd-name">
+    <div class="pd">
+      <button class="icon-btn sheet__close" type="button" data-close aria-label="Close product details"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+      <div class="pd__art" id="pd-art"><svg class="garment" aria-hidden="true"><use id="pd-use" href="#g-jacket"/></svg></div>
+      <div class="pd__info">
+        <h2 id="pd-name">Product</h2>
+        <p class="pd__price" id="pd-price"></p>
+        <p class="pd__desc" id="pd-desc"></p>
+        <fieldset class="sizes">
+          <legend>Size</legend>
+          <div class="sizes__opts" id="pd-sizes"></div>
+        </fieldset>
+        <p class="pd__error" id="pd-error" role="alert" hidden>Choose a size first.</p>
+        <button class="btn btn--wide" type="button" id="pd-add">Add to cart</button>
+        <p class="pd__status" id="pd-status" aria-live="polite"></p>
+        <ul class="pd__facts" id="pd-facts"></ul>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- cart drawer -->
+  <dialog class="sheet sheet--cart" id="cart" aria-labelledby="cart-title">
+    <div class="cart">
+      <div class="cart__head">
+        <h2 id="cart-title">Your cart</h2>
+        <button class="icon-btn" type="button" data-close aria-label="Close cart"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+      </div>
+      <ul class="cart__list" id="cart-list"></ul>
+      <p class="cart__empty" id="cart-empty">Your cart is empty. Pick a piece and choose a size to add it.</p>
+      <div class="cart__foot" id="cart-foot">
+        <p class="cart__total"><span>Subtotal</span> <strong id="cart-total">$0</strong></p>
+        <a class="btn btn--wide" href="#checkout" id="checkout">Go to checkout</a>
+        <p class="cart__note" id="checkout-note">Demo shop: checkout is not connected. Your cart is saved in this browser only.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <footer class="foot">
+    <p class="foot__name" translate="no">Wild Thread</p>
+    <p>Wild Thread is a fictional brand made for a design demo. Workshop: 3 Example Yard, Sampleton · <a href="mailto:shop@example.com">shop@example.com</a> · 555-0100</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
