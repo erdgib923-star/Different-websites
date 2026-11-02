@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Harbor Gazette · Fictional news from a fictional harbor</title>
+  <meta name="description" content="The Harbor Gazette, a fictional broadsheet newspaper. Every story, name and place is invented for a design demo." />
+  <meta name="theme-color" content="#f2efe4" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f2efe4'/%3E%3Ctext x='16' y='24' text-anchor='middle' font-family='Georgia,serif' font-size='22' font-weight='700' fill='%23231f1a'%3EG%3C/text%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js'); }, 4000);
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the stories</a>
+  <p class="fiction-banner">Every story, name and place in this newspaper is fictional. It is a design demo.</p>
+
+  <header class="masthead" id="top">
+    <div class="masthead__top">
+      <p class="edition" data-edition>Monday, November 2, 2026</p>
+      <p class="edition">Vol. CXII · No. 306</p>
+      <div class="weather" aria-label="Weather: harbor fog, clearing by noon, high of 52 degrees Fahrenheit">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 14h14M5 18h12M7 10a5 5 0 019.5-1.5A3.5 3.5 0 0119 15" /></svg>
+        <span>Fog, clearing · 52°F</span>
+      </div>
+    </div>
+    <p class="flag">The Harbor Gazette</p>
+    <p class="tagline">“All the harbor’s news, and some of its gossip” · Price 50¢</p>
+    <nav aria-label="Sections" class="sections">
+      <ul>
+        <li><a href="#front">Front page</a></li>
+        <li><a href="#extra">Extra</a></li>
+        <li><a href="#tides">Tides</a></li>
+        <li><a href="#opinion">Opinion</a></li>
+        <li><a href="#classifieds">Classifieds</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="ticker" data-ticker>
+    <p class="ticker__label">Latest</p>
+    <div class="ticker__viewport">
+      <ul class="ticker__track" data-track>
+        <li>Harbor council approves lighthouse plan, 5–2</li>
+        <li>Ferries running 40 minutes late in fog</li>
+        <li>Co-op posts record herring week</li>
+        <li>Library adds Sunday hours from December</li>
+        <li>Pier 4 seawall repairs begin Tuesday</li>
+        <li>Youth regatta moved to Saturday</li>
+      </ul>
+    </div>
+    <button type="button" class="ticker__toggle" data-ticker-toggle aria-pressed="false">Pause ticker</button>
+  </div>
+
+  <main id="main">
+    <!-- FRONT PAGE -->
+    <section class="front" id="front" aria-labelledby="lead-title">
+      <article class="lead">
+        <p class="kicker">Harbor council</p>
+        <h1 id="lead-title" class="headline headline--xl" data-split>Harbor Council Votes to Relight the Old North Lighthouse</h1>
+        <p class="deck" data-pop="up">After 41 years dark, the keeper’s cottage will reopen as a museum next spring. Residents are split over the cost.</p>
+        <p class="byline" data-pop="up">By Mara Ellison, Harbor Desk</p>
+        <figure class="fig photo" data-slot="lead-lighthouse" data-photo="" data-alt="The Old North Lighthouse at dusk" style="--ar: 16 / 9; --fig-radius: 0; --fig-placeholder: var(--newsprint-2)" data-pop>
+          <div class="fig__art halftone" data-halftone="lighthouse" role="img" aria-label="Halftone photo: the lighthouse on its rocks, its beam crossing the evening sky over a dark sea."></div>
+          <figcaption class="caption">The Old North Lighthouse, unlit since 1985, photographed from the ferry pier on Sunday. <span>Gazette photo</span></figcaption>
+        </figure>
+        <div class="columns">
+          <p class="dropcap">The lamp at the top of the Old North Lighthouse has not turned since the autumn of 1985. On Thursday night, by a vote of five to two, the harbor council agreed it should turn again.</p>
+          <p>The plan, two years in the drafting, restores the lantern room with an electric light that mimics the old rotating beam, repairs the iron gallery and converts the keeper’s cottage into a small museum of the harbor’s fishing history.</p>
+          <p>“It is the first thing anyone sees from the water,” said council member Ruth Okafor, who proposed the motion. Opponents pointed to the price, which the council’s own estimate puts at $1.8 million spread over three years, and asked whether the money would be better spent on the Pier 4 seawall.</p>
+          <p>Work is expected to begin in February. If the schedule holds, the light will be switched on for the first time in four decades on the evening of the spring tide in April.</p>
+        </div>
+      </article>
+
+      <div class="side">
+        <article class="story">
+          <p class="kicker">Transport</p>
+          <h2 class="headline" data-split>Fog Delays Morning Ferries for a Third Day</h2>
+          <figure class="fig photo photo--small" data-slot="ferry-fog" data-photo="" data-alt="A ferry in heavy fog" style="--ar: 4 / 3; --fig-radius: 0; --fig-placeholder: var(--newsprint-2)" data-pop>
+            <div class="fig__art halftone" data-halftone="ferry" role="img" aria-label="Halftone photo: a ferry's outline half-lost in thick fog."></div>
+          </figure>
+          <p>Thick fog held the 7:10 and 7:50 ferries at the dock again on Monday. The harbormaster expects the bank to lift by noon on Tuesday.</p>
+        </article>
+        <article class="story">
+          <p class="kicker">Fishing</p>
+          <h2 class="headline" data-split>Co-op Reports Its Best Herring Week on Record</h2>
+          <p>The Fishermen’s Co-op landed 212 tonnes last week, beating a record set in 2009. Members credit colder water and a new shared ice plant.</p>
+          <span class="callout" data-pop="badge">212 t in a week</span>
+        </article>
+        <aside class="briefs" aria-labelledby="briefs-title">
+          <h2 id="briefs-title" class="briefs__title">In brief</h2>
+          <ul data-pop-group>
+            <li data-pop><b>Library.</b> Sunday hours return in December, noon to 4 p.m.</li>
+            <li data-pop><b>Seawall.</b> Pier 4 repairs start Tuesday; expect one lane on Quay Road.</li>
+            <li data-pop><b>Regatta.</b> The youth regatta is moved to Saturday after the fog.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- EXTRA (pinned): stop the presses -->
+    <section class="extra" id="extra" aria-labelledby="extra-title">
+      <div class="extra__pin" data-extra>
+        <div class="extra__copy">
+          <p class="kicker">Late edition</p>
+          <h2 id="extra-title" class="headline headline--xl extra__hed"><span class="visually-hidden">Extra: the lighthouse will shine again</span><span class="typeset" aria-hidden="true" data-typeset>The light will shine again</span></h2>
+          <ol class="press-steps">
+            <li class="press-step"><b>9:40 p.m.</b> The vote comes in. The night editor pulls the front page.</li>
+            <li class="press-step"><b>10:15 p.m.</b> The headline is set, letter by letter.</li>
+            <li class="press-step"><b>10:50 p.m.</b> The photo plate is screened into dots and the presses roll.</li>
+          </ol>
+        </div>
+        <div class="extra__plate">
+          <div class="plate" data-plate role="img" aria-label="Halftone photo of the lighthouse, resolving from coarse dots to fine as the plate is made."></div>
+          <span class="stamp" data-stamp aria-hidden="true">Extra</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIDES -->
+    <section class="tides" id="tides" aria-labelledby="tides-title">
+      <div class="box">
+        <h2 id="tides-title" class="box__title">Harbor tides today</h2>
+        <figure class="tide-chart">
+          <svg viewBox="0 0 480 160" role="img" aria-labelledby="tide-desc" data-tide><title id="tide-desc">Tide height over today: high water at 4:12 a.m. (4.1 m) and 4:37 p.m. (4.3 m), low water at 10:24 a.m. (0.6 m) and 10:51 p.m. (0.8 m).</title></svg>
+          <figcaption>Height in metres above chart datum. Sample data. The red dot marks the current time.</figcaption>
+        </figure>
+        <table class="tide-table">
+          <caption class="visually-hidden">Today's tide times</caption>
+          <thead><tr><th scope="col">Tide</th><th scope="col">Time</th><th scope="col">Height</th></tr></thead>
+          <tbody>
+            <tr><td>High</td><td>4:12 a.m.</td><td>4.1 m</td></tr>
+            <tr><td>Low</td><td>10:24 a.m.</td><td>0.6 m</td></tr>
+            <tr><td>High</td><td>4:37 p.m.</td><td>4.3 m</td></tr>
+            <tr><td>Low</td><td>10:51 p.m.</td><td>0.8 m</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- OPINION -->
+    <section class="opinion" id="opinion" aria-labelledby="op-title">
+      <p class="kicker">Opinion · The Gazette’s view</p>
+      <h2 id="op-title" class="headline headline--lg" data-split>A Light Is Worth More Than Its Cost</h2>
+      <div class="columns columns--3" data-pop="up">
+        <p class="dropcap">Lighthouses stopped being necessary long before they stopped being loved. Satellite navigation does the old keeper’s job better than any lamp. So why spend $1.8 million to relight one?</p>
+        <p>Because a harbor is more than its traffic. The Old North light is on the town seal, the school crest and half the postcards in the chandlery. It is how this town tells strangers who it is.</p>
+        <p>The seawall matters too, and the council should not let the lighthouse crowd it out of next year’s budget. But a town that only fixes what is broken forgets what it is for. Turn the light back on.</p>
+      </div>
+    </section>
+
+    <!-- CLASSIFIEDS -->
+    <section class="classifieds" id="classifieds" aria-labelledby="cl-title">
+      <span class="gull gull--a" data-scrub="parallax" data-speed="-0.5" aria-hidden="true"></span>
+      <span class="gull gull--b" data-scrub="parallax" data-speed="0.4" aria-hidden="true"></span>
+      <h2 id="cl-title" class="headline headline--lg" data-split>Classifieds</h2>
+      <ul class="ads" data-pop-group>
+        <li class="ad" data-pop><b>FOR SALE.</b> Dinghy, 9 ft, clinker built, oars included. Some paint required. Call 555-0100.</li>
+        <li class="ad" data-pop><b>WANTED.</b> Choir tenor for the harbor carol night. Must hold a note in a sea breeze.</li>
+        <li class="ad" data-pop><b>LOST.</b> Grey cat answering to “Captain”. Last seen supervising the herring boats.</li>
+        <li class="ad ad--boxed" data-pop><b>LIGHTHOUSE VOLUNTEERS</b> needed to paint the keeper’s cottage, spring weekends. Tea and biscuits provided.</li>
+        <li class="ad" data-pop><b>FREE.</b> Lobster pots, well used, three. Collect from Quay Road.</li>
+        <li class="ad" data-pop><b>LESSONS.</b> Knot tying for beginners, Thursdays at the sailing club.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>The Harbor Gazette · 1 Quay Road, Example Harbor · (555) 555-0100 · newsroom@example.com</p>
+    <p><strong>This newspaper is entirely fictional.</strong> Every story, person, place, figure and quotation is invented for a design demo.</p>
+  </footer>
+</body>
+</html>
