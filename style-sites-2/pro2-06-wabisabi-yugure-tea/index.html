@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yugure Tea Atelier · Tea for the hour before evening</title>
+  <meta name="description" content="A small tea atelier serving seasonal Japanese-style teas at dusk. A fictional atelier for a design demo." />
+  <meta name="theme-color" content="#f3f0ea" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='4' width='24' height='24' rx='3' fill='%23b4472f'/%3E%3Cpath d='M10 22c4-10 8-12 12-12' stroke='%23f3f0ea' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js'); }, 4000);
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="sumi" x="-25%" y="-25%" width="150%" height="150%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.016" numOctaves="4" seed="7" result="warp" />
+        <feDisplacementMap in="SourceGraphic" in2="warp" scale="26" xChannelSelector="R" yChannelSelector="G" result="bent" />
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="2" result="grain" />
+        <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.4 1.25" result="speckle" />
+        <feComposite in="bent" in2="speckle" operator="in" result="dry" />
+        <feGaussianBlur in="dry" stdDeviation="0.8" />
+      </filter>
+      <filter id="mist" x="-20%" y="-40%" width="140%" height="180%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.008 0.03" numOctaves="3" seed="11" result="warp" />
+        <feDisplacementMap in="SourceGraphic" in2="warp" scale="40" xChannelSelector="R" yChannelSelector="G" result="bent" />
+        <feGaussianBlur in="bent" stdDeviation="5" />
+      </filter>
+    </defs>
+  </svg>
+
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="Yugure Tea Atelier home">
+      <span class="seal seal--sm" aria-hidden="true" lang="ja">夕</span>
+      <span class="logo__name">Yugure <span class="logo__sub">Tea Atelier</span></span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#menu">Teas</a></li>
+        <li><a href="#pour">The pour</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- HERO: generous ma, ink ensō, vertical title -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <p class="vertical" lang="ja" aria-hidden="true" data-pop="up" style="--pop-delay: 900ms">夕暮れの茶</p>
+      <figure class="fig hero__fig" data-slot="hero-ink" data-photo="" data-alt="Steam rising from a tea bowl in low evening light" data-pop="wash" style="--ar: 1 / 1; --fig-radius: 0; --fig-placeholder: transparent">
+        <div class="fig__art" role="img" aria-label="Ink-wash brush circle (ensō) above a misty sumi-e mountain range.">
+          <svg viewBox="0 0 600 600" class="ink-art" aria-hidden="true">
+            <g class="mist">
+              <path d="M-20 470c80-40 120-90 190-70s110 60 170 30 120-90 280-40v220H-20z" class="m1" />
+            </g>
+            <g class="mist">
+              <path d="M-20 520c90-30 150-20 220 0s140 30 200 0 120-50 220-20v120H-20z" class="m2" />
+            </g>
+            <path class="enso" pathLength="1" d="M318 92c-96-8-190 52-206 150-16 98 48 186 146 200 98 14 188-46 204-142 12-74-26-140-92-176" />
+            <path class="enso enso--ghost" d="M330 100c-90-4-170 54-182 146" />
+          </svg>
+        </div>
+      </figure>
+      <div class="hero__copy">
+        <p class="eyebrow" data-pop="up">A tea atelier · Open at dusk</p>
+        <h1 id="hero-title" data-split>Tea for the hour before evening.</h1>
+        <p class="hero__lead" data-pop="up" style="--pop-delay: 600ms">Eight seats, one long cedar counter, and the teas of the season, poured slowly as the light goes amber. Nothing here is perfect. That is the point.</p>
+      </div>
+      <span class="seal seal--hero" aria-hidden="true" lang="ja" data-pop="up" style="--pop-delay: 1400ms">茶</span>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="ma" aria-labelledby="ma-title">
+      <h2 id="ma-title" class="visually-hidden">Our approach</h2>
+      <div class="ma__item" data-pop="up"><span class="ma__num">一</span><p>We buy small lots from four growers and roast our hōjicha in a cast-iron pan, a few hundred grams at a time.</p></div>
+      <div class="ma__rule" data-scrub="clip" aria-hidden="true"></div>
+      <div class="ma__item ma__item--right" data-pop="up"><span class="ma__num">二</span><p>The bowls are second-hand, mended with lacquer where they cracked. A seam of repair is a part of the bowl's story.</p></div>
+      <div class="ma__rule" data-scrub="clip" aria-hidden="true"></div>
+      <div class="ma__item" data-pop="up"><span class="ma__num">三</span><p>Each tea changes with the season. When a tin is empty, it is gone until next year.</p></div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu" id="menu" aria-labelledby="menu-title">
+      <header class="section-head">
+        <p class="eyebrow" data-pop="up">Seasonal menu</p>
+        <h2 id="menu-title" data-split>What we pour this season.</h2>
+        <p class="lead" data-pop="up">All teas are fictional blends invented for this demo. Prices in US dollars for 50 g of loose leaf.</p>
+      </header>
+      <div class="tabs" role="tablist" aria-label="Seasons" data-tabs hidden>
+        <button role="tab" type="button" id="tab-spring" aria-controls="p-spring" aria-selected="false" tabindex="-1">Spring <span lang="ja">春</span></button>
+        <button role="tab" type="button" id="tab-summer" aria-controls="p-summer" aria-selected="false" tabindex="-1">Summer <span lang="ja">夏</span></button>
+        <button role="tab" type="button" id="tab-autumn" aria-controls="p-autumn" aria-selected="true">Autumn <span lang="ja">秋</span></button>
+        <button role="tab" type="button" id="tab-winter" aria-controls="p-winter" aria-selected="false" tabindex="-1">Winter <span lang="ja">冬</span></button>
+      </div>
+      <div class="panels">
+        <div class="panel" id="p-spring" role="tabpanel" aria-labelledby="tab-spring">
+          <h3 class="panel__season">Spring</h3>
+          <ul class="teas">
+            <li class="tea"><div><h4>First Light</h4><p class="tea__kind">Shincha sencha</p><p>Grassy and sweet, like snapped pea pods, with a cool finish.</p></div><p class="tea__price">$24</p></li>
+            <li class="tea"><div><h4>Plum Shade <span class="limited" data-pop="up">Limited · 20 tins</span></h4><p class="tea__kind">Kabusecha</p><p>Shaded for three weeks. Deep, savoury and faintly plum.</p></div><p class="tea__price">$28</p></li>
+          </ul>
+        </div>
+        <div class="panel" id="p-summer" role="tabpanel" aria-labelledby="tab-summer">
+          <h3 class="panel__season">Summer</h3>
+          <ul class="teas">
+            <li class="tea"><div><h4>River Stone</h4><p class="tea__kind">Cold-brewed sencha</p><p>Brewed overnight. Melon rind, wet slate, very clean.</p></div><p class="tea__price">$22</p></li>
+            <li class="tea"><div><h4>Long Dusk</h4><p class="tea__kind">Roasted barley</p><p>Toasted grain and a little cocoa. No caffeine, served cold.</p></div><p class="tea__price">$14</p></li>
+          </ul>
+        </div>
+        <div class="panel" id="p-autumn" role="tabpanel" aria-labelledby="tab-autumn">
+          <h3 class="panel__season">Autumn</h3>
+          <ul class="teas">
+            <li class="tea"><div><h4>Ember Leaf <span class="limited" data-pop="up">Limited · pan-roasted weekly</span></h4><p class="tea__kind">Hōjicha</p><p>Roasted chestnut and cocoa husk. Gentle enough for evening.</p></div><p class="tea__price">$20</p></li>
+            <li class="tea"><div><h4>Late Persimmon</h4><p class="tea__kind">Genmaicha</p><p>Green tea with toasted rice. Warm, nutty, a hint of orchard.</p></div><p class="tea__price">$18</p></li>
+          </ul>
+        </div>
+        <div class="panel" id="p-winter" role="tabpanel" aria-labelledby="tab-winter">
+          <h3 class="panel__season">Winter</h3>
+          <ul class="teas">
+            <li class="tea"><div><h4>Snow Lantern <span class="limited" data-pop="up">Limited · 12 tins</span></h4><p class="tea__kind">Aged sencha</p><p>Rested for a year. Honey, dried apricot, a long quiet finish.</p></div><p class="tea__price">$30</p></li>
+            <li class="tea"><div><h4>Hearth</h4><p class="tea__kind">Kukicha</p><p>Twig tea. Creamy and low in caffeine, made for cold hands.</p></div><p class="tea__price">$16</p></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE POUR (pinned) -->
+    <section class="pour" id="pour" aria-labelledby="pour-title">
+      <header class="section-head">
+        <p class="eyebrow" data-pop="up">The pour</p>
+        <h2 id="pour-title" data-split>Four slow steps.</h2>
+      </header>
+      <div class="pour__pin" data-pour>
+        <div class="pour__art" aria-hidden="true">
+          <svg viewBox="0 0 400 360">
+            <defs><clipPath id="bowl-in"><path d="M64 150c8 96 66 150 136 150s128-54 136-150z" /></clipPath></defs>
+            <g class="steam"><path pathLength="1" d="M170 120c-14-20 12-30 0-52s10-30 2-46" /><path pathLength="1" d="M214 126c-12-22 14-34 2-56s12-28 4-44" /><path pathLength="1" d="M252 124c-10-18 10-26 0-44" /></g>
+            <g clip-path="url(#bowl-in)"><rect x="40" y="150" width="320" height="160" class="tea-fill" data-tea /></g>
+            <path class="bowl" d="M56 146c8 104 70 160 144 160s136-56 144-160" />
+            <path class="bowl bowl--rim" d="M50 146c90-12 210-12 300 0" />
+            <path class="kintsugi" d="M120 230c18 6 22 22 40 20s24-18 38-10" />
+            <path class="bowl bowl--foot" d="M150 306c4 14 12 20 50 20s46-6 50-20" />
+          </svg>
+          <span class="temp" data-temp>80 °C</span>
+        </div>
+        <ol class="pour__steps">
+          <li class="step"><span class="step__n" lang="ja">一</span><div><h3>Warm the bowl</h3><p>Hot water swirls once around the bowl and is poured away. Cold ceramic steals the tea's sweetness.</p></div></li>
+          <li class="step"><span class="step__n" lang="ja">二</span><div><h3>Measure the leaf</h3><p>Five grams, weighed by eye. The leaf is shown to you before it meets the water.</p></div></li>
+          <li class="step"><span class="step__n" lang="ja">三</span><div><h3>Pour at eighty degrees</h3><p>Boiled water rests in a cooling bowl until it falls to around 80 °C, then meets the leaf.</p></div></li>
+          <li class="step"><span class="step__n" lang="ja">四</span><div><h3>Wait one breath</h3><p>Sixty seconds, no more. We pour the last drops too; they are the richest.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- VISIT -->
+    <section class="visit" id="visit" aria-labelledby="visit-title">
+      <figure class="fig visit__fig" data-slot="atelier-room" data-photo="" data-alt="The atelier's cedar counter at dusk" data-pop="wash" style="--ar: 4 / 5; --fig-radius: 0; --fig-placeholder: var(--washi-2)">
+        <div class="fig__art" role="img" aria-label="Ink-wash sketch of a low counter beneath a paper sliding screen, with one round lamp.">
+          <svg viewBox="0 0 400 500" class="ink-art" aria-hidden="true">
+            <rect x="0" y="0" width="400" height="500" class="room" />
+            <g class="shoji"><path d="M60 40v300M140 40v300M220 40v300M300 40v300M40 120h300M40 200h300M40 280h300" /></g>
+            <circle cx="300" cy="150" r="46" class="lamp" />
+            <path d="M0 380c120-12 280-12 400 0v120H0z" class="counter" />
+            <path d="M80 360c10-14 40-14 50 0" class="cup" />
+          </svg>
+        </div>
+      </figure>
+      <div class="visit__copy">
+        <p class="eyebrow" data-pop="up">Visit</p>
+        <h2 id="visit-title" data-split>Come at dusk.</h2>
+        <dl class="visit__facts" data-pop-group>
+          <div data-pop="up"><dt>Address</dt><dd>3 Lantern Lane, Example City</dd></div>
+          <div data-pop="up"><dt>Hours</dt><dd>Thursday to Sunday, 4 pm until the light is gone</dd></div>
+          <div data-pop="up"><dt>Seats</dt><dd>Eight, at one counter. Walk-ins welcome; small groups please write ahead.</dd></div>
+          <div data-pop="up"><dt>Write</dt><dd><a href="mailto:seats@example.com">seats@example.com</a> · (555) 555-0100</dd></div>
+        </dl>
+      </div>
+      <svg class="stroke-float stroke-float--a" data-scrub="parallax" data-speed="-0.5" viewBox="0 0 300 60" aria-hidden="true"><path d="M10 40c60-26 160-30 280-12" /></svg>
+      <svg class="stroke-float stroke-float--b" data-scrub="parallax" data-speed="0.4" viewBox="0 0 300 60" aria-hidden="true"><path d="M10 30c80 14 180 12 280-10" /></svg>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Yugure Tea Atelier is a fictional place created for a design demo. Its teas, prices and address are invented.</p>
+  </footer>
+</body>
+</html>
