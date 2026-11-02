@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mochi Money · Savings kids can squish</title>
+  <meta name="description" content="Mochi Money turns pocket money into clay savings jars kids can see grow. A fictional app for a design demo." />
+  <meta name="theme-color" content="#f6f1f7" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cellipse cx='16' cy='18' rx='14' ry='12' fill='%23f2b8d4'/%3E%3Ccircle cx='11' cy='17' r='1.8' fill='%23331530'/%3E%3Ccircle cx='21' cy='17' r='1.8' fill='%23331530'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js'); }, 4000);
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="Mochi Money home">
+      <span class="logo__blob" aria-hidden="true"><i></i><i></i></span>
+      <span>Mochi Money</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#jar">Jar simulator</a></li>
+        <li><a href="#parents">For grown-ups</a></li>
+      </ul>
+    </nav>
+    <a class="clay-btn clay-btn--sm" href="#get" data-squish>Get the app</a>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__blobs" aria-hidden="true">
+        <span class="bg-blob bg-blob--a" data-scrub="parallax" data-speed="-0.35"></span>
+        <span class="bg-blob bg-blob--b" data-scrub="parallax" data-speed="0.25"></span>
+        <span class="bg-blob bg-blob--c" data-scrub="parallax" data-speed="-0.15"></span>
+      </div>
+      <div class="hero__copy">
+        <p class="pill-label" data-pop="badge">For savers aged 6 to 12</p>
+        <h1 id="hero-title" class="hero__title" data-split>Little savings, big <span class="squish-word">squish</span>.</h1>
+        <p class="hero__lead" data-pop="up" style="--pop-delay: 420ms">Mochi Money turns pocket money into clay savings jars kids can actually see. Coins drop in with a soft plop, goals puff up as they fill, and grown-ups approve every cent.</p>
+        <div class="hero__ctas" data-pop="up" style="--pop-delay: 560ms">
+          <a class="clay-btn" href="#jar" data-squish>Try the jar simulator</a>
+          <a class="clay-btn clay-btn--soft" href="#parents" data-squish>For grown-ups</a>
+        </div>
+      </div>
+
+      <figure class="fig hero__fig" data-slot="hero-mochi" data-photo="" data-alt="A child holding a round savings jar" style="--ar: 1 / 1; --fig-radius: 56px; --fig-placeholder: var(--candy-bubble)">
+        <div class="fig__art scene" role="img" aria-label="Illustration: a round pink clay mochi character with a happy face sits on a big coin, surrounded by floating coins and goal cards.">
+          <div class="scene__floor"></div>
+          <div class="coin coin--big"><span>$</span></div>
+          <div class="mochi">
+            <span class="mochi__eye mochi__eye--l"></span><span class="mochi__eye mochi__eye--r"></span>
+            <span class="mochi__blush mochi__blush--l"></span><span class="mochi__blush mochi__blush--r"></span>
+            <span class="mochi__mouth"></span>
+          </div>
+          <div class="coin coin--f1 float"><span>$</span></div>
+          <div class="coin coin--f2 float float--slow"><span>$</span></div>
+          <div class="coin coin--f3 float"><span>$</span></div>
+        </div>
+        <div class="goal-chip goal-chip--a" data-pop="badge" style="--pop-delay: 800ms"><span class="dot" style="--c: var(--candy-sky)"></span>Kite · 80%</div>
+        <div class="goal-chip goal-chip--b" data-pop="badge" style="--pop-delay: 1000ms"><span class="dot" style="--c: var(--candy-mint)"></span>+ $4 this week</div>
+      </figure>
+    </section>
+
+    <!-- HOW -->
+    <section class="how" id="how" aria-labelledby="how-title">
+      <div class="section-head">
+        <p class="pill-label" data-pop="badge">How it works</p>
+        <h2 id="how-title" data-split>Three squishy steps.</h2>
+      </div>
+      <ol class="steps" data-pop-group>
+        <li class="clay-card" style="--c: var(--candy-sky); --rim: var(--rim-sky)" data-pop>
+          <span class="orb" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 6l5 11 12 1-9 8 3 12-11-7-11 7 3-12-9-8 12-1z" /></svg></span>
+          <h3>Pick a goal</h3>
+          <p>A kite, an art kit, a bike. Each goal becomes its own clay jar with a picture and a price.</p>
+        </li>
+        <li class="clay-card" style="--c: var(--candy-apricot); --rim: var(--rim-apricot)" data-pop>
+          <span class="orb" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="15" /><path d="M24 15v18M19 19h8a3 3 0 010 6h-6a3 3 0 000 6h8" /></svg></span>
+          <h3>Drop the coins</h3>
+          <p>Pocket money and chore rewards land in the jar you choose. Every coin makes a little plop.</p>
+        </li>
+        <li class="clay-card" style="--c: var(--candy-mint); --rim: var(--rim-mint)" data-pop>
+          <span class="orb" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M8 34l10-10 7 7 15-15" /><path d="M30 16h10v10" /></svg></span>
+          <h3>Watch it puff up</h3>
+          <p>The jar swells as it fills. When it's full, a grown-up taps approve and the goal is yours.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- SIMULATOR -->
+    <section class="sim" id="jar" aria-labelledby="sim-title">
+      <div class="section-head">
+        <p class="pill-label" data-pop="badge">Coin-jar simulator</p>
+        <h2 id="sim-title" data-split>How long until it's yours?</h2>
+        <p class="section-head__lead" data-pop="up">Pick a goal, set the weekly pocket money, and choose how much goes in the jar. Sample numbers, in US dollars, just for play.</p>
+      </div>
+
+      <div class="sim__grid">
+        <form class="sim__form clay-panel" data-sim data-pop="up">
+          <fieldset class="goals">
+            <legend>1. Pick a goal</legend>
+            <label class="goal" style="--c: var(--candy-sky); --rim: var(--rim-sky)"><input type="radio" name="goal" value="25" data-name="kite" checked /><span class="goal__face"><b>Kite</b><span>$25</span></span></label>
+            <label class="goal" style="--c: var(--candy-grape); --rim: var(--rim-grape)"><input type="radio" name="goal" value="40" data-name="art kit" /><span class="goal__face"><b>Art kit</b><span>$40</span></span></label>
+            <label class="goal" style="--c: var(--candy-mint); --rim: var(--rim-mint)"><input type="radio" name="goal" value="120" data-name="bike" /><span class="goal__face"><b>Bike</b><span>$120</span></span></label>
+          </fieldset>
+
+          <div class="field">
+            <label for="allowance">2. Weekly pocket money <output for="allowance" data-out="allowance">$8</output></label>
+            <input id="allowance" name="allowance" type="range" min="1" max="20" step="1" value="8" />
+          </div>
+          <div class="field">
+            <label for="share">3. Share that goes in the jar <output for="share" data-out="share">50%</output></label>
+            <input id="share" name="share" type="range" min="10" max="100" step="5" value="50" />
+          </div>
+          <label class="toggle">
+            <input type="checkbox" name="match" />
+            <span class="toggle__track" aria-hidden="true"><span class="toggle__thumb"></span></span>
+            <span>Grown-up match: +$1 for every $4 saved</span>
+          </label>
+        </form>
+
+        <div class="sim__result clay-panel" data-pop="up" style="--pop-delay: 120ms">
+          <div class="jar-wrap">
+            <svg class="jar" viewBox="0 0 200 240" aria-hidden="true">
+              <defs><clipPath id="jar-clip"><path d="M44 70c-14 10-22 30-22 64 0 56 26 90 78 90s78-34 78-90c0-34-8-54-22-64z" /></clipPath></defs>
+              <rect x="62" y="22" width="76" height="30" rx="14" class="jar__lid" />
+              <path d="M44 70c-14 10-22 30-22 64 0 56 26 90 78 90s78-34 78-90c0-34-8-54-22-64z" class="jar__glass" />
+              <g clip-path="url(#jar-clip)">
+                <rect x="0" y="0" width="200" height="240" class="jar__fill" data-jar-fill />
+                <g data-coins></g>
+              </g>
+              <path d="M44 70c-14 10-22 30-22 64 0 56 26 90 78 90s78-34 78-90c0-34-8-54-22-64z" class="jar__rim" />
+              <path d="M52 96c-6 14-8 30-6 48" class="jar__shine" />
+              <rect x="54" y="52" width="92" height="22" rx="11" class="jar__neck" />
+            </svg>
+            <p class="jar__label" data-jar-label>$0 of $25</p>
+          </div>
+          <dl class="readout" data-readout>
+            <div><dt>Into the jar each week</dt><dd data-r="weekly">$4.00</dd></div>
+            <div><dt>Weeks to the kite</dt><dd data-r="weeks">7</dd></div>
+            <div><dt>Ready around</dt><dd data-r="date">mid-December</dd></div>
+          </dl>
+          <div class="sim__btns">
+            <button class="clay-btn" type="button" data-drop data-squish>Drop this week's coins</button>
+            <button class="clay-btn clay-btn--soft" type="button" data-reset data-squish>Empty the jar</button>
+          </div>
+          <p class="visually-hidden" aria-live="polite" data-announce></p>
+          <noscript><p class="noscript-note">The simulator needs JavaScript. Example: $8 a week with half saved fills a $25 kite jar in 7 weeks.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- YEAR (pinned, scrubbed) -->
+    <section class="year" id="year" aria-labelledby="year-title">
+      <div class="year__pin" data-year>
+        <div class="year__copy">
+          <p class="pill-label">A year in the jar</p>
+          <h2 id="year-title">Twelve months, one bike.</h2>
+          <p class="year__lead">Scroll to fast-forward Pip's year: $2 a week, plus $20 of birthday money in May. Sample story, made-up numbers.</p>
+          <p class="year__month" aria-hidden="true"><span data-month>January</span> · <strong data-amount>$0</strong></p>
+          <ol class="year__milestones">
+            <li><b>February</b> · First $10 in the jar.</li>
+            <li><b>May</b> · Halfway to the bike, thanks to birthday money.</li>
+            <li><b>December</b> · Bike day!</li>
+          </ol>
+        </div>
+        <div class="year__stage" aria-hidden="true">
+          <div class="big-jar">
+            <div class="big-jar__fill" data-big-fill></div>
+            <div class="big-jar__shine"></div>
+          </div>
+          <span class="year-badge year-badge--1" style="--c: var(--candy-apricot)">First $10!</span>
+          <span class="year-badge year-badge--2" style="--c: var(--candy-sky)">Halfway!</span>
+          <span class="year-badge year-badge--3" style="--c: var(--candy-mint)">Bike day!</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARENTS -->
+    <section class="parents" id="parents" aria-labelledby="parents-title">
+      <div class="parents__grid">
+        <div>
+          <p class="pill-label" data-pop="badge">For grown-ups</p>
+          <h2 id="parents-title" data-split>Soft on the outside, strict on the inside.</h2>
+          <p class="section-head__lead" data-pop="up">Kids get a toy-box of jars. You get the controls: approvals, limits and a clear history of every coin.</p>
+          <figure class="fig parents__fig" data-slot="parents-phone" data-photo="" data-alt="A parent and child looking at the Mochi Money app together" style="--ar: 4 / 3; --fig-radius: 40px; --fig-placeholder: var(--candy-grape)" data-pop>
+            <div class="fig__art phone-scene" role="img" aria-label="Illustration: a clay phone showing the grown-up approval screen with an Approve button.">
+              <div class="phone">
+                <p class="phone__title">Approve?</p>
+                <p class="phone__row">Pip wants to move <b>$5</b> to <b>Bike</b></p>
+                <span class="phone__btn">Approve</span>
+              </div>
+            </div>
+          </figure>
+        </div>
+        <ul class="features" data-pop-group>
+          <li class="clay-card" style="--c: var(--candy-cherry); --rim: var(--rim-cherry)" data-pop><h3>Approve every move</h3><p>Nothing leaves a jar without a grown-up's tap on their own phone.</p></li>
+          <li class="clay-card" style="--c: var(--candy-grape); --rim: var(--rim-grape)" data-pop><h3>Chore rewards</h3><p>Set a price for helping out. Tick it off and the coins appear.</p></li>
+          <li class="clay-card" style="--c: var(--candy-bubble); --rim: var(--rim-bubble)" data-pop><h3>No ads, no shop</h3><p>Mochi Money never sells anything to kids. There is nothing to buy inside.</p></li>
+          <li class="clay-card" style="--c: var(--candy-sky); --rim: var(--rim-sky)" data-pop><h3>Gentle lessons</h3><p>Two-minute stories about waiting, choosing and sharing, read aloud.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- GET -->
+    <section class="get" id="get" aria-labelledby="get-title">
+      <div class="get__card grain">
+        <h2 id="get-title" data-split>Ready for a first jar?</h2>
+        <p data-pop="up">Mochi Money is a pretend app made for a design demo, so these buttons lead to a placeholder page.</p>
+        <div class="get__btns" data-pop-group>
+          <a class="clay-btn" data-pop data-squish href="https://example.com/mochi-money/ios">Get it for iPhone</a>
+          <a class="clay-btn" data-pop data-squish href="https://example.com/mochi-money/android">Get it for Android</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Mochi Money</strong> is a fictional brand. It is not a bank and holds no real money. All prices, savings stories and numbers on this page are sample data.</p>
+    <address>hello@example.com · (555) 555-0100 · 7 Marshmallow Row, Example Town</address>
+  </footer>
+</body>
+</html>
