@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lumi &amp; Lind · Home goods for long evenings</title>
+  <meta name="description" content="Linen, wool, ceramics and candlelight for slow Scandinavian-style homes. A fictional shop for a design demo." />
+  <meta name="theme-color" content="#f7f4ee" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='11' y='14' width='10' height='14' rx='2' fill='%23e9e2d4' stroke='%23384050' stroke-width='1.5'/%3E%3Cpath d='M16 4c3 4 3 7 0 9-3-2-3-5 0-9z' fill='%23e7b24a'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js'); }, 4000);
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="Lumi and Lind home">
+      <span class="logo__flame" aria-hidden="true"></span>
+      <span>Lumi <em>&amp;</em> Lind</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#day">A day at home</a></li>
+        <li><a href="#made">Made slowly</a></li>
+      </ul>
+    </nav>
+    <a class="bag" href="#shop" aria-label="Bag, 0 items" data-bag-link><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 016 0v2" /></svg><span data-bag-count>0</span></a>
+    <p class="visually-hidden" role="status" data-bag-status></p>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__copy">
+        <p class="eyebrow" data-pop="up">Home goods · Autumn collection</p>
+        <h1 id="hero-title" data-split>Light, linen and <em>long</em> evenings.</h1>
+        <p class="hero__lead" data-pop="up" style="--pop-delay: 480ms">Wool throws, stoneware and slow-burning candles, made in small batches for rooms that are lived in. Scroll down and the page drifts from morning light to candlelight.</p>
+        <div class="hero__ctas" data-pop="up" style="--pop-delay: 600ms">
+          <a class="btn btn--sage" href="#shop">Shop the collection</a>
+          <a class="btn btn--ghost" href="#day">Spend a day at home</a>
+        </div>
+      </div>
+      <figure class="fig hero__fig" data-slot="hero-still-life" data-photo="" data-alt="A linen throw, a ceramic mug and a birch branch on a windowsill" style="--ar: 4 / 5; --fig-radius: 200px 200px 24px 24px" data-pop>
+        <div class="fig__art still" role="img" aria-label="Illustration: a tall vase with a birch branch, a folded striped throw and a sage mug on a pale wooden sill, lit from a window.">
+          <div class="still__window"></div>
+          <div class="still__sill"></div>
+          <div class="still__vase"><span class="branch b1"></span><span class="branch b2"></span><span class="branch b3"></span></div>
+          <div class="still__throw"></div>
+          <div class="still__mug"><span></span></div>
+        </div>
+        <span class="tag tag--hero" data-pop="badge" style="--pop-delay: 900ms">New · Snölätt throw</span>
+      </figure>
+    </section>
+
+    <!-- SHOP -->
+    <section class="shop" id="shop" aria-labelledby="shop-title">
+      <header class="section-head">
+        <p class="eyebrow" data-pop="up">The collection</p>
+        <h2 id="shop-title" data-split>Six things for a softer home.</h2>
+        <p class="lead" data-pop="up">Sample products and prices, in US dollars. The bag is a demo and keeps nothing.</p>
+      </header>
+      <ul class="products" data-pop-group>
+        <li class="product" data-pop>
+          <figure class="fig product__fig" data-slot="product-throw" data-photo="" data-alt="Snölätt wool throw" style="--ar: 1 / 1; --fig-radius: 18px">
+            <div class="fig__art art art--throw" role="img" aria-label="A folded wool throw with fine sage stripes."><i></i><i></i><i></i></div>
+          </figure>
+          <div class="product__info"><h3>Snölätt throw</h3><p>Brushed lambswool, 130 × 180 cm</p><p class="price">$148</p></div>
+          <button class="add" type="button" data-add="Snölätt throw">Add to bag</button>
+        </li>
+        <li class="product" data-pop>
+          <figure class="fig product__fig" data-slot="product-candles" data-photo="" data-alt="Kvällsljus candle trio" style="--ar: 1 / 1; --fig-radius: 18px">
+            <div class="fig__art art art--candles" role="img" aria-label="Three cream pillar candles of different heights, lit."><i></i><i></i><i></i></div>
+          </figure>
+          <div class="product__info"><h3>Kvällsljus candles</h3><p>Rapeseed wax, set of three, 40 h each</p><p class="price">$36</p></div>
+          <button class="add" type="button" data-add="Kvällsljus candles">Add to bag</button>
+        </li>
+        <li class="product" data-pop>
+          <figure class="fig product__fig" data-slot="product-mug" data-photo="" data-alt="Mossgrön stoneware mug" style="--ar: 1 / 1; --fig-radius: 18px">
+            <div class="fig__art art art--mug" role="img" aria-label="A sage-green stoneware mug with a pale rim and a rounded handle."><i></i></div>
+          </figure>
+          <div class="product__info"><h3>Mossgrön mug</h3><p>Hand-thrown stoneware, 300 ml</p><p class="price">$28</p></div>
+          <button class="add" type="button" data-add="Mossgrön mug">Add to bag</button>
+        </li>
+        <li class="product" data-pop>
+          <figure class="fig product__fig" data-slot="product-cushion" data-photo="" data-alt="Linnehav linen cushion" style="--ar: 1 / 1; --fig-radius: 18px">
+            <div class="fig__art art art--cushion" role="img" aria-label="A plump dusty-blue linen cushion with a soft centre button."><i></i></div>
+          </figure>
+          <div class="product__info"><h3>Linnehav cushion</h3><p>Washed linen, 50 × 50 cm, feather insert</p><p class="price">$64</p></div>
+          <button class="add" type="button" data-add="Linnehav cushion">Add to bag</button>
+        </li>
+        <li class="product" data-pop>
+          <figure class="fig product__fig" data-slot="product-board" data-photo="" data-alt="Björkbräda birch serving board" style="--ar: 1 / 1; --fig-radius: 18px">
+            <div class="fig__art art art--board" role="img" aria-label="A long birch serving board with a rounded handle and visible grain."><i></i></div>
+          </figure>
+          <div class="product__info"><h3>Björkbräda board</h3><p>Solid birch, oiled, 60 cm</p><p class="price">$52</p></div>
+          <button class="add" type="button" data-add="Björkbräda board">Add to bag</button>
+        </li>
+        <li class="product" data-pop>
+          <figure class="fig product__fig" data-slot="product-lamp" data-photo="" data-alt="Glimta table lamp" style="--ar: 1 / 1; --fig-radius: 18px">
+            <div class="fig__art art art--lamp" role="img" aria-label="A small table lamp with a pleated paper shade glowing warm amber."><i></i><i></i></div>
+          </figure>
+          <div class="product__info"><h3>Glimta lamp</h3><p>Pleated paper shade, oak base</p><p class="price">$118</p></div>
+          <button class="add" type="button" data-add="Glimta lamp">Add to bag</button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- A DAY AT HOME (pinned room) -->
+    <section class="day" id="day" aria-labelledby="day-title">
+      <header class="section-head">
+        <p class="eyebrow" data-pop="up">A day at home</p>
+        <h2 id="day-title" data-split>From first coffee to the last candle.</h2>
+      </header>
+      <div class="day__pin" data-day>
+        <div class="room" aria-hidden="true" data-room>
+          <div class="room__wall"></div>
+          <div class="room__window"><div class="room__sky"><span class="room__sun"></span><span class="room__moon"></span></div><i></i><i></i></div>
+          <div class="room__shelf"><i></i><i></i><i></i><i></i></div>
+          <div class="room__lamp"><span class="shade"></span><span class="pole"></span><span class="beam"></span></div>
+          <div class="room__floor"></div>
+          <div class="room__rug"></div>
+          <div class="room__sofa"><span class="back"></span><span class="seat"></span><span class="arm arm--l"></span><span class="arm arm--r"></span><span class="cushion"></span><span class="throw"></span></div>
+          <div class="room__table"><span class="top"></span><span class="leg"></span><span class="mug"></span><span class="candle c1"><b></b></span><span class="candle c2"><b></b></span></div>
+          <div class="room__plant"><span class="pot"></span><span class="leaf l1"></span><span class="leaf l2"></span><span class="leaf l3"></span></div>
+          <div class="room__dusk"></div>
+          <p class="room__clock" data-clock>21:00</p>
+          <span class="pin pin--mug" data-pin="0">Mossgrön mug · $28</span>
+          <span class="pin pin--cushion" data-pin="1">Linnehav cushion · $64</span>
+          <span class="pin pin--lamp" data-pin="2">Glimta lamp · $118</span>
+          <span class="pin pin--candle" data-pin="3">Kvällsljus candles · $36</span>
+        </div>
+        <ol class="day__steps">
+          <li class="step"><p class="step__time">07:30</p><h3>Coffee by the window</h3><p>Cold floor, warm mug. The first light is blue and quiet; the throw is still folded on the sofa arm.</p></li>
+          <li class="step"><p class="step__time">13:00</p><h3>Light through linen</h3><p>Midday sun slides across the wall. A linen cushion softens it all and asks for a short nap.</p></li>
+          <li class="step"><p class="step__time">17:30</p><h3>The blue hour</h3><p>The window turns amber, then blue. One lamp goes on and the room shrinks to the size of a conversation.</p></li>
+          <li class="step"><p class="step__time">21:00</p><h3>Candles, then quiet</h3><p>Two candles on the side table, the throw unfolded at last. The most Scandinavian hour of the day.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- MADE SLOWLY -->
+    <section class="made" id="made" aria-labelledby="made-title">
+      <span class="swatch-float swatch-float--a" data-scrub="parallax" data-speed="-0.4" aria-hidden="true"></span>
+      <span class="swatch-float swatch-float--b" data-scrub="parallax" data-speed="0.35" aria-hidden="true"></span>
+      <header class="section-head">
+        <p class="eyebrow" data-pop="up">Made slowly</p>
+        <h2 id="made-title" data-split>Fewer things, made to last.</h2>
+      </header>
+      <div class="values" data-pop-group>
+        <article class="value" data-pop><p class="value__n">01</p><h3>Small batches</h3><p>We order a few hundred of each piece at a time and only reorder what people actually keep.</p></article>
+        <article class="value" data-pop><p class="value__n">02</p><h3>Natural materials</h3><p>Wool, linen, birch, stoneware and plant wax. Nothing that sheds plastic in the wash.</p></article>
+        <article class="value" data-pop><p class="value__n">03</p><h3>Repairs for life</h3><p>Send back a frayed throw or a chipped mug and our workshop will mend it, free.</p></article>
+      </div>
+    </section>
+
+    <!-- EVENING BAND -->
+    <section class="evening" aria-labelledby="evening-title">
+      <div class="evening__inner">
+        <h2 id="evening-title" data-split>Thursday evenings at the shop.</h2>
+        <p data-pop="up">Candles lit, tea poured, everything a little cheaper after six. 12 Linden Row, Example City · (555) 555-0100.</p>
+        <a class="btn btn--glow" href="mailto:hej@example.com" data-pop="up">Write to us</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Lumi &amp; Lind</strong> is a fictional shop made for a design demo. Products, prices and the address are invented.</p>
+  </footer>
+</body>
+</html>

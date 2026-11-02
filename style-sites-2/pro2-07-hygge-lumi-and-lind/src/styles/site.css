@@ -1,0 +1,192 @@
+/* Lumi & Lind: Scandinavian calm. The page drifts from day to evening as you scroll:
+   --p (0 → 1) is a registered number driven by a scroll timeline, and every shifting colour is
+   color-mix(in oklch, day, evening) so the interpolation happens in OKLCH. */
+@property --p { syntax: '<number>'; inherits: true; initial-value: 0; }
+@property --t { syntax: '<number>'; inherits: true; initial-value: 0.9; }
+:root {
+  --font-display: 'Newsreader', Georgia, serif;
+  --font-body: 'Figtree', system-ui, sans-serif;
+  --wrap: 1200px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --radius: 18px;
+  --shadow-soft: 0 1px 2px color-mix(in oklch, var(--shadow-color) 6%, transparent), 0 18px 40px -20px color-mix(in oklch, var(--shadow-color) 30%, transparent);
+  --bg-now: color-mix(in oklch, var(--birch-day), var(--birch-evening) calc(var(--p) * 100%));
+  --card-now: color-mix(in oklch, var(--card-day), var(--card-evening) calc(var(--p) * 100%));
+}
+@keyframes dayshift { to { --p: 1; } }
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    html.sda { animation: dayshift linear both; animation-timeline: scroll(root); }
+  }
+}
+
+body { background: var(--bg); background: var(--bg-now); color: var(--text); font-family: var(--font-body); font-size: 1.0625rem; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.01em; }
+h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.05; }
+em { font-style: italic; color: var(--brand-text); }
+.eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 1rem; }
+.lead { margin-top: 1rem; color: var(--text-muted); font-size: 1.1rem; max-width: 36rem; }
+
+/* Candle-glow cursor: a soft amber disc that follows the pointer, stronger toward evening. */
+.glow { position: fixed; left: 0; top: 0; z-index: 1; width: 560px; height: 560px; margin: -280px 0 0 -280px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, color-mix(in oklch, var(--glow) 55%, transparent), transparent 65%);
+  opacity: calc(0.12 + var(--p) * 0.5); transform: translate(var(--gx, -999px), var(--gy, -999px)); display: none; }
+html.has-glow .glow { display: block; }
+.site-header, main, .site-footer { position: relative; z-index: 2; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 1.5rem; border-radius: 999px; font-weight: 600; text-decoration: none; border: 1.5px solid transparent; transition: transform 0.25s var(--ease-expo), background-color 0.3s, box-shadow 0.3s; }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
+.btn:active { transform: scale(0.98); }
+.btn--sage { background: var(--brand); color: var(--brand-contrast); }
+.btn--ghost { border-color: var(--border-strong); color: var(--text); }
+.btn--glow { background: var(--accent); color: var(--accent-contrast); }
+
+/* Header */
+.site-header { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; gap: 1rem; padding: 0.7rem var(--gutter);
+  background: color-mix(in oklch, var(--bg-now) 88%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.logo { display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--font-display); font-size: 1.5rem; text-decoration: none; min-height: 44px; }
+.logo em { font-size: 0.9em; }
+.logo__flame { width: 12px; height: 18px; border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%; background: radial-gradient(circle at 50% 70%, var(--glow), var(--accent-500)); box-shadow: 0 0 calc(6px + var(--p) * 14px) color-mix(in oklch, var(--glow) 80%, transparent); }
+.nav { list-style: none; padding: 0; display: none; gap: 0.25rem; margin-left: auto; }
+.nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 0.9rem; text-decoration: none; color: var(--text-muted); font-weight: 500; border-radius: 999px; }
+.nav a:hover { color: var(--text); background: color-mix(in oklch, var(--card-now) 80%, transparent); }
+.bag { margin-left: auto; display: inline-flex; align-items: center; gap: 0.35rem; min-height: 44px; min-width: 44px; padding: 0 0.7rem; border-radius: 999px; text-decoration: none; font-weight: 600; border: 1.5px solid var(--border-strong); }
+.bag svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; }
+.bag.is-bumped { animation: pop 0.6s var(--ease-expo); }
+@media (min-width: 820px) { .nav { display: flex; } .bag { margin-left: 0.5rem; } }
+
+.hero, .shop, .day, .made, .site-footer { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+section { padding-block: clamp(4rem, 9vw, 7.5rem); position: relative; }
+.section-head { max-width: 42rem; margin-bottom: clamp(2rem, 5vw, 3.25rem); }
+
+/* Hero */
+.hero { display: grid; gap: clamp(2.5rem, 6vw, 4rem); align-items: center; padding-top: clamp(2.5rem, 6vw, 4.5rem); }
+@media (min-width: 920px) { .hero { grid-template-columns: 1.1fr 0.9fr; } }
+.hero h1 { font-size: clamp(3rem, 8vw, 5.8rem); line-height: 0.98; letter-spacing: -0.02em; }
+.hero__lead { margin-top: 1.5rem; max-width: 32rem; color: var(--text-muted); font-size: clamp(1.05rem, 1.8vw, 1.2rem); }
+.hero__ctas { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
+.hero__fig { width: min(100%, 440px); justify-self: center; overflow: visible; box-shadow: var(--shadow-soft); }
+.tag { position: absolute; z-index: 3; padding: 0.45rem 0.85rem; border-radius: 999px; background: var(--accent); color: var(--accent-contrast); font-size: 0.85rem; font-weight: 600; box-shadow: var(--shadow-soft); white-space: nowrap; }
+.tag--hero { left: -14px; bottom: 22%; }
+@media (max-width: 520px) { .tag--hero { left: 8px; } }
+
+/* Still life (CSS shapes) */
+.still { border-radius: inherit; overflow: hidden; background: var(--linen); }
+.still__window { position: absolute; inset: 8% 12% 38%; border-radius: 160px 160px 6px 6px; background: linear-gradient(180deg, var(--sky-day), var(--card-day)); background: linear-gradient(in oklch 180deg, color-mix(in oklch, var(--sky-day), var(--sky-dusk) calc(var(--p) * 100%)), var(--card-day)); box-shadow: inset 0 0 0 10px var(--card-day); }
+.still__sill { position: absolute; left: 0; right: 0; top: 62%; height: 6%; background: var(--wood); box-shadow: 0 10px 18px -8px color-mix(in oklch, var(--shadow-color) 40%, transparent); }
+.still__vase { position: absolute; left: 18%; bottom: 38%; width: 16%; height: 22%; border-radius: 40% 40% 30% 30% / 20% 20% 40% 40%; background: linear-gradient(90deg, var(--blue-200), var(--blue-400)); }
+.branch { position: absolute; bottom: 90%; left: 50%; width: 3px; background: var(--neutral-700); transform-origin: bottom; border-radius: 2px; }
+.b1 { height: 150%; rotate: -14deg; } .b2 { height: 190%; rotate: 6deg; } .b3 { height: 120%; rotate: 24deg; }
+.branch::after { content: ''; position: absolute; top: 10%; left: -5px; width: 10px; height: 14px; border-radius: 0 70% 0 70%; background: var(--brand-400); }
+.still__throw { position: absolute; left: 42%; right: 8%; bottom: 38%; height: 14%; border-radius: 10px; background: repeating-linear-gradient(90deg, var(--linen) 0 16px, var(--brand-300) 16px 19px); box-shadow: 0 -10px 0 -2px var(--neutral-200), 0 8px 14px -8px color-mix(in oklch, var(--shadow-color) 40%, transparent); }
+.still__mug { position: absolute; left: 50%; bottom: 52%; width: 14%; height: 10%; border-radius: 4px 4px 12px 12px; background: var(--brand-400); }
+.still__mug span { position: absolute; right: -36%; top: 18%; width: 40%; height: 50%; border: 5px solid var(--brand-400); border-left: 0; border-radius: 0 50% 50% 0; }
+
+/* Products */
+.products { list-style: none; padding: 0; display: grid; gap: 1.5rem; }
+@media (min-width: 620px) { .products { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .products { grid-template-columns: repeat(3, 1fr); } }
+.product { display: grid; gap: 0.9rem; padding: 0.9rem 0.9rem 1.2rem; border-radius: calc(var(--radius) + 8px); background: var(--surface); background: var(--card-now); box-shadow: var(--shadow-soft); transition: transform 0.4s var(--ease-expo); }
+.product:hover { transform: translateY(-4px); }
+.product__info h3 { font-size: 1.45rem; }
+.product__info p { color: var(--text-muted); font-size: 0.95rem; }
+.product__info .price { color: var(--text); font-weight: 600; font-size: 1.05rem; margin-top: 0.3rem; }
+.add { justify-self: start; min-height: 44px; padding: 0 1.1rem; border-radius: 999px; border: 1.5px solid var(--border-strong); background: transparent; font-weight: 600; transition: background-color 0.25s, color 0.25s; }
+.add:hover { background: var(--brand); color: var(--brand-contrast); border-color: var(--brand); }
+.add.is-added { background: var(--accent); color: var(--accent-contrast); border-color: var(--accent); }
+.product__fig { --fig-placeholder: var(--linen); }
+.art { display: grid; place-items: center; background: radial-gradient(circle at 30% 20%, var(--card-day), var(--linen) 70%); }
+.art i { position: absolute; display: block; }
+.art--throw i { left: 18%; right: 18%; height: 16%; border-radius: 10px; background: repeating-linear-gradient(90deg, var(--card-day) 0 14px, var(--brand-300) 14px 17px); box-shadow: 0 10px 16px -10px color-mix(in oklch, var(--shadow-color) 45%, transparent); }
+.art--throw i:nth-child(1) { top: 52%; } .art--throw i:nth-child(2) { top: 40%; left: 22%; right: 14%; } .art--throw i:nth-child(3) { top: 28%; left: 20%; right: 20%; }
+.art--candles i { bottom: 22%; width: 15%; border-radius: 6px 6px 4px 4px; background: linear-gradient(90deg, var(--card-day), var(--linen) 60%, var(--neutral-200)); box-shadow: 0 10px 14px -10px color-mix(in oklch, var(--shadow-color) 40%, transparent); }
+.art--candles i::before { content: ''; position: absolute; left: 50%; top: -26px; width: 12px; height: 20px; margin-left: -6px; border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%; background: radial-gradient(circle at 50% 70%, var(--glow), var(--accent-500)); box-shadow: 0 0 18px 6px color-mix(in oklch, var(--glow) 55%, transparent); }
+.art--candles i:nth-child(1) { left: 26%; height: 42%; } .art--candles i:nth-child(2) { left: 43%; height: 30%; } .art--candles i:nth-child(3) { left: 60%; height: 36%; }
+.art--mug i { width: 36%; height: 38%; top: 32%; left: 26%; border-radius: 8px 8px 22px 22px; background: linear-gradient(90deg, var(--brand-300), var(--brand-500)); box-shadow: inset 0 8px 0 var(--brand-200), 0 14px 18px -12px color-mix(in oklch, var(--shadow-color) 50%, transparent); }
+.art--mug i::after { content: ''; position: absolute; right: -30%; top: 22%; width: 34%; height: 46%; border: 8px solid var(--brand-500); border-left: 0; border-radius: 0 50% 50% 0; }
+.art--cushion i { width: 56%; aspect-ratio: 1; border-radius: 28% 30% 26% 32%; background: radial-gradient(circle at 40% 35%, var(--blue-200), var(--blue-400) 80%); box-shadow: inset -8px -10px 18px color-mix(in oklch, var(--blue-700) 30%, transparent), 0 16px 22px -14px color-mix(in oklch, var(--shadow-color) 50%, transparent); }
+.art--cushion i::after { content: ''; position: absolute; left: 50%; top: 50%; width: 9%; aspect-ratio: 1; margin: -4.5% 0 0 -4.5%; border-radius: 50%; background: var(--blue-600); }
+.art--board i { width: 70%; height: 26%; border-radius: 40px 14px 14px 40px; background: repeating-linear-gradient(176deg, var(--wood) 0 9px, color-mix(in oklch, var(--wood), var(--card-day) 22%) 9px 12px); box-shadow: 0 16px 20px -14px color-mix(in oklch, var(--shadow-color) 50%, transparent); rotate: -8deg; }
+.art--board i::after { content: ''; position: absolute; left: 7%; top: 38%; width: 7%; aspect-ratio: 1; border-radius: 50%; background: var(--linen); }
+.art--lamp i:nth-child(1) { top: 20%; left: 30%; width: 40%; height: 34%; clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%); background: repeating-linear-gradient(90deg, var(--glow) 0 8px, color-mix(in oklch, var(--glow), var(--accent-600) 25%) 8px 10px); filter: drop-shadow(0 0 22px color-mix(in oklch, var(--glow) 70%, transparent)); }
+.art--lamp i:nth-child(2) { top: 54%; left: 46%; width: 8%; height: 24%; border-radius: 3px; background: var(--wood); box-shadow: -26px 46px 0 -2px var(--wood), 26px 46px 0 -2px var(--wood); }
+
+/* A day at home: the room (CSS shapes), driven by --t */
+.day__pin { display: grid; gap: 2.5rem; align-items: center; }
+@media (min-width: 900px) { .day__pin { grid-template-columns: 1.25fr 0.75fr; } }
+.room { --sky: color-mix(in oklch, color-mix(in oklch, var(--sky-day), var(--sky-dusk) calc(min(var(--t) * 2, 1) * 100%)), var(--sky-night) calc(max(var(--t) * 2 - 1, 0) * 100%));
+  position: relative; aspect-ratio: 4 / 3; border-radius: 28px; overflow: hidden; box-shadow: var(--shadow-soft); background: var(--linen); }
+.room > * { position: absolute; }
+.room__wall { inset: 0 0 26% 0; background: color-mix(in oklch, var(--linen), var(--sky-dusk) calc(min(var(--t), 0.6) * 30%)); }
+.room__window { left: 8%; top: 9%; width: 30%; height: 46%; border-radius: 10px; box-shadow: 0 0 0 10px var(--card-day), 0 18px 30px -18px color-mix(in oklch, var(--shadow-color) 50%, transparent); overflow: hidden; }
+.room__sky { position: absolute; inset: 0; background: var(--sky); }
+.room__window > i { position: absolute; background: var(--card-day); }
+.room__window > i:nth-of-type(1) { left: 50%; top: 0; bottom: 0; width: 6px; margin-left: -3px; }
+.room__window > i:nth-of-type(2) { top: 50%; left: 0; right: 0; height: 6px; margin-top: -3px; }
+.room__sun { position: absolute; left: 60%; top: 18%; width: 22%; aspect-ratio: 1; border-radius: 50%; background: var(--glow); transform: translateY(calc(var(--t) * 260%)); opacity: calc(1 - var(--t) * 1.25); }
+.room__moon { position: absolute; left: 22%; top: 16%; width: 14%; aspect-ratio: 1; border-radius: 50%; background: var(--card-day); box-shadow: inset -6px -2px 0 var(--neutral-300); opacity: calc((var(--t) - 0.7) * 3.4); }
+.room__shelf { right: 9%; top: 16%; width: 26%; height: 3%; background: var(--wood); }
+.room__shelf i { position: absolute; bottom: 100%; width: 12%; border-radius: 2px 2px 0 0; }
+.room__shelf i:nth-child(1) { left: 6%; height: 260%; background: var(--brand-400); } .room__shelf i:nth-child(2) { left: 20%; height: 320%; background: var(--blue-400); }
+.room__shelf i:nth-child(3) { left: 34%; height: 220%; background: var(--accent-300); } .room__shelf i:nth-child(4) { left: 62%; width: 20%; height: 180%; border-radius: 40% 40% 10% 10%; background: var(--neutral-300); }
+.room__lamp { right: 12%; bottom: 26%; width: 14%; height: 52%; }
+.room__lamp .shade { position: absolute; top: 0; left: 0; right: 0; height: 22%; clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%); background: color-mix(in oklch, var(--linen), var(--glow) calc(clamp(0, (var(--t) - 0.55) * 4, 1) * 100%)); }
+.room__lamp .pole { position: absolute; left: 48%; top: 22%; bottom: 0; width: 4%; background: var(--neutral-700); }
+.room__lamp .beam { position: absolute; left: -60%; right: -60%; top: 18%; height: 140%; background: radial-gradient(ellipse at 50% 0, color-mix(in oklch, var(--glow) 60%, transparent), transparent 60%); opacity: clamp(0, (var(--t) - 0.55) * 4, 1); }
+.room__floor { left: 0; right: 0; bottom: 0; height: 26%; background: repeating-linear-gradient(90deg, var(--wood) 0 80px, color-mix(in oklch, var(--wood), var(--card-day) 12%) 80px 82px); }
+.room__rug { left: 18%; right: 22%; bottom: 6%; height: 12%; border-radius: 50%; background: repeating-radial-gradient(ellipse, var(--card-day) 0 8px, var(--brand-200) 8px 12px); opacity: 0.9; }
+.room__sofa { left: 30%; bottom: 14%; width: 44%; height: 30%; }
+.room__sofa .back { position: absolute; left: 6%; right: 6%; top: 0; height: 58%; border-radius: 18px 18px 6px 6px; background: var(--blue-300); }
+.room__sofa .seat { position: absolute; left: 4%; right: 4%; top: 52%; height: 30%; border-radius: 10px; background: var(--blue-400); }
+.room__sofa .arm { position: absolute; top: 30%; width: 12%; height: 56%; border-radius: 14px; background: var(--blue-500); }
+.room__sofa .arm--l { left: 0; } .room__sofa .arm--r { right: 0; }
+.room__sofa .cushion { position: absolute; left: 20%; top: 16%; width: 20%; height: 36%; border-radius: 26%; background: var(--card-day); rotate: -8deg; box-shadow: inset -4px -5px 8px color-mix(in oklch, var(--shadow-color) 15%, transparent); }
+.room__sofa .throw { position: absolute; right: 8%; top: 28%; width: 22%; height: calc(14% + var(--t) * 36%); border-radius: 8px; background: repeating-linear-gradient(90deg, var(--linen) 0 10px, var(--brand-300) 10px 12px); }
+.room__table { left: 9%; bottom: 14%; width: 15%; height: 22%; }
+.room__table .top { position: absolute; left: 0; right: 0; top: 30%; height: 10%; border-radius: 6px; background: var(--wood); }
+.room__table .leg { position: absolute; left: 45%; width: 10%; top: 38%; bottom: 0; background: var(--wood); }
+.room__table .mug { position: absolute; left: 12%; top: 6%; width: 22%; height: 24%; border-radius: 3px 3px 8px 8px; background: var(--brand-400); opacity: calc(1 - var(--t) * 1.2); }
+.room__table .candle { position: absolute; bottom: 70%; width: 14%; background: var(--card-day); border-radius: 3px 3px 0 0; }
+.room__table .c1 { left: 52%; height: 28%; } .room__table .c2 { left: 72%; height: 20%; }
+.room__table .candle b { position: absolute; left: 50%; top: -60%; width: 90%; aspect-ratio: 3 / 5; translate: -50% 0; border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%; background: radial-gradient(circle at 50% 70%, var(--glow), var(--accent-500)); box-shadow: 0 0 22px 10px color-mix(in oklch, var(--glow) 55%, transparent); opacity: clamp(0, (var(--t) - 0.82) * 8, 1); }
+.room__plant { right: 30%; bottom: 22%; width: 7%; height: 22%; }
+.room__plant .pot { position: absolute; bottom: 0; left: 10%; right: 10%; height: 34%; border-radius: 4px 4px 12px 12px; background: var(--neutral-200); }
+.room__plant .leaf { position: absolute; bottom: 30%; left: 40%; width: 34%; height: 56%; border-radius: 0 100% 0 100%; background: var(--brand-500); transform-origin: bottom left; }
+.room__plant .l1 { rotate: -30deg; } .room__plant .l2 { rotate: 10deg; } .room__plant .l3 { rotate: 40deg; height: 40%; }
+.room__dusk { inset: 0; background: var(--night); mix-blend-mode: multiply; opacity: clamp(0, (var(--t) - 0.45) * 0.75, 0.42); pointer-events: none; }
+.room__clock { right: 4%; top: 4%; font-family: var(--font-display); font-size: clamp(1.2rem, 2.6vw, 2rem); color: var(--card-day); background: color-mix(in oklch, var(--night) 70%, transparent); padding: 0.1rem 0.7rem; border-radius: 999px; font-variant-numeric: tabular-nums; }
+.pin { z-index: 3; padding: 0.35rem 0.7rem; border-radius: 999px; background: var(--card-day); color: var(--text); font-size: clamp(0.7rem, 1.4vw, 0.85rem); font-weight: 600; box-shadow: var(--shadow-soft); white-space: nowrap; }
+.pin::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-600); margin-right: 0.4rem; vertical-align: 1px; }
+.pin--mug { left: 4%; bottom: 40%; } .pin--cushion { left: 34%; bottom: 46%; } .pin--lamp { right: 4%; top: 22%; } .pin--candle { left: 14%; bottom: 46%; }
+.day__steps { list-style: none; padding: 0; display: grid; gap: 1.6rem; }
+.step__time { font-family: var(--font-display); font-style: italic; color: var(--accent-text); font-size: 1.15rem; }
+.step h3 { font-size: 1.7rem; margin: 0.1rem 0 0.4rem; }
+.step p:last-child { color: var(--text-muted); }
+.day.is-pinned .day__pin { min-height: calc(100svh - 110px); }
+.day.is-pinned .day__steps { display: grid; }
+.day.is-pinned .step { grid-area: 1 / 1; }
+
+/* Made slowly */
+.made { overflow: clip; }
+.swatch-float { position: absolute; z-index: -1; border-radius: 22px; width: clamp(110px, 16vw, 200px); aspect-ratio: 3 / 4; box-shadow: var(--shadow-soft); }
+.swatch-float--a { right: 4%; top: 8%; rotate: 8deg; background: repeating-linear-gradient(45deg, var(--linen) 0 6px, var(--brand-200) 6px 8px); }
+.swatch-float--b { left: 2%; bottom: 6%; rotate: -10deg; background: repeating-linear-gradient(0deg, var(--blue-200) 0 5px, var(--card-day) 5px 9px); }
+.values { display: grid; gap: 1.5rem; }
+@media (min-width: 860px) { .values { grid-template-columns: repeat(3, 1fr); } }
+.value { padding: 1.6rem; border-radius: var(--radius); background: var(--surface); background: var(--card-now); box-shadow: var(--shadow-soft); }
+.value__n { font-family: var(--font-display); font-style: italic; color: var(--brand-text); font-size: 1.4rem; }
+.value h3 { font-size: 1.6rem; margin: 0.3rem 0 0.5rem; }
+.value p:last-child { color: var(--text-muted); }
+
+/* Evening band */
+.evening { max-width: none; padding-inline: var(--gutter); }
+.evening__inner { max-width: var(--wrap); margin-inline: auto; padding: clamp(3rem, 8vw, 5.5rem); border-radius: 36px; color: var(--night-text); display: grid; gap: 1.25rem; justify-items: start;
+  background: radial-gradient(circle at 85% 20%, var(--night-2), var(--night) 60%);
+  background: radial-gradient(in oklch circle at 85% 20%, color-mix(in oklch, var(--night-2), var(--accent-700) 18%), var(--night) 60%);
+  box-shadow: 0 40px 70px -40px color-mix(in oklch, var(--night) 90%, transparent); }
+.evening__inner h2 { max-width: 16ch; }
+.evening__inner p { color: var(--night-muted); max-width: 34rem; font-size: 1.1rem; }
+.evening :focus-visible { outline-color: var(--accent); }
+
+.site-footer { padding-block: 2.5rem 3.5rem; color: var(--text-muted); font-size: 0.95rem; }
+.site-footer strong { color: var(--text); }
