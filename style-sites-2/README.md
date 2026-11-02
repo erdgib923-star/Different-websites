@@ -30,3 +30,4 @@ All brands, people, addresses, phone numbers and data are fictional.
 | 6 | `pro2-06-wabisabi-yugure-tea` | Yugure Tea Atelier |
 | 7 | `pro2-07-hygge-lumi-and-lind` | Lumi & Lind, Scandinavian home goods |
 | 8 | `pro2-08-artdeco-grand-meridian` | The Grand Meridian, 1920s-style hotel |
+| 9 | `pro2-09-bauhaus-primar-institute` | Primar Institute, design school exhibition |

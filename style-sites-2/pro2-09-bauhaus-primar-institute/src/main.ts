@@ -51,10 +51,11 @@ function initAssembly() {
     const q = gsap.utils.selector(hero);
     const shapes = [...hero.querySelectorAll<SVGGElement>('[data-shape]')];
     const tags = q('[data-tag]');
-    const scatter = [[-260, 260, -160], [240, -220, 200], [200, 240, -240], [-200, -260, 90], [-280, -60, 270], [260, 160, -120], [180, -280, 180]];
+    // Start scattered but visible inside the board, so the hero never opens on a blank frame.
+    const scatter = [[-90, 120, -160], [110, -90, 200], [-60, 30, -240], [-40, 170, 90], [140, -170, 270], [-310, -240, -120], [-200, 260, 180]];
     shapes.forEach((s, i) => {
       const [x, y, r] = scatter[i % scatter.length];
-      gsap.set(s, { x, y, rotation: r, scale: 0.35, autoAlpha: 0.0, svgOrigin: '300 300' });
+      gsap.set(s, { x, y, rotation: r, scale: 0.55, svgOrigin: '300 300' });
     });
     gsap.set(tags, { autoAlpha: 0, scale: 0.4 });
     const tl = gsap.timeline({
@@ -64,7 +65,7 @@ function initAssembly() {
         : { trigger: q('.hero__art')[0], start: 'top 85%', end: 'bottom 45%', scrub: 0.6 },
     });
     shapes.forEach((s, i) => {
-      tl.to(s, { x: 0, y: 0, rotation: 0, scale: 1, autoAlpha: 1, duration: 1 }, i * 0.32);
+      tl.to(s, { x: 0, y: 0, rotation: 0, scale: 1, duration: 1 }, i * 0.32);
     });
     tags.forEach((t: Element) => {
       const i = Number((t as HTMLElement).dataset.tag);

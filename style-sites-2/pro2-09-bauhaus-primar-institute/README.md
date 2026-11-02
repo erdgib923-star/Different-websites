@@ -96,6 +96,16 @@ npm run contrast
 ## Swap in your own photos
 The six study tiles are image slots (`study-01` … `study-06`, 1:1, 4:5 and 5:4). Set `data-photo="assets/images/<file>"` to show photos of real student work instead of generated studies. See [`public/assets/README.md`](public/assets/README.md).
 
+## Verification (what was actually run)
+- `npm run build` passes; `npm run contrast`: 16/16 pairs pass.
+- Headless Chromium at 375, 768 and 1440 px, with screenshots at 0/25/50/75/100%:
+  - no console errors, no failed or external requests, one h1, no horizontal scroll;
+  - axe-core: 0 violations;
+  - reduced-motion, no-JS and `?nosda` passes: nothing left hidden.
+- Studio probe: I picked blue, added a triangle, moved it with ArrowRight and Shift+ArrowUp, and rotated it with R ("Rotated to 45 degrees" was announced, and focus stayed on "blue triangle"). Export SVG downloaded `primar-composition.svg`, a standalone SVG with real hex fills.
+- Fixed after the first audit: the hero opened on an empty board, because every shape started invisible. Shapes now start visible but scattered and spun inside the board, then assemble.
+- **Not tested:** touch dragging on a real device, Safari and Firefox, and screen readers. The shapes are announced as buttons with their colour and name, but I have not verified that with a real screen reader.
+
 ## Notes and decisions
 - Built in `style-sites-2/` of `erdgib923-star/different-websites` instead of its own repo: `gh` was not authenticated and repo creation was unavailable. Split later with `publish-repos.sh`.
 - Brand check (web search, 2026-11-02): no "Primar Institute" found; the nearest name is "Primo Institute of Design" in Hyderabad.
