@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terrazzo Lab · Patterns with a sense of humour</title>
+  <meta name="description" content="A pattern studio making seeded terrazzo and squiggle patterns. Generate your own seamless tile and export it as SVG. A fictional studio for a design demo." />
+  <meta name="theme-color" content="#f7f4ea" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f7f4ea'/%3E%3Cpath d='M6 9l7-3 3 6-6 4z' fill='%2311a3a8'/%3E%3Cpath d='M18 18l8-2 1 7-7 3z' fill='%23f25c9a'/%3E%3Cpath d='M4 24c3-3 5 3 8 0s5 3 8 0' stroke='%23222' stroke-width='2' fill='none'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js'); }, 4000);
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="Terrazzo Lab home">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 10l11-5 5 9-10 6z" class="lg1" /><path d="M22 22l12-3 2 11-11 5z" class="lg2" /><path d="M4 30c4-5 7 5 11 0s7 5 11 0" class="lg3" /></svg>
+      <span>Terrazzo<b>Lab</b></span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#generator">Generator</a></li>
+        <li><a href="#process">How it works</a></li>
+        <li><a href="#library">Library</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--pink btn--sm" href="#samples">Order samples</a>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__shapes" aria-hidden="true">
+        <svg class="mshape ms-1" data-pop="spin" style="--i: 0" data-scrub="parallax" data-speed="-0.4" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" /></svg>
+        <svg class="mshape ms-2" data-pop="spin" style="--i: 1" viewBox="0 0 120 40"><path d="M6 20c12-18 24 18 36 0s24 18 36 0 24 18 36 0" /></svg>
+        <svg class="mshape ms-3" data-pop="spin" style="--i: 2" data-scrub="parallax" data-speed="0.35" viewBox="0 0 100 100"><path d="M50 6L94 90H6z" /></svg>
+        <svg class="mshape ms-4" data-pop="spin" style="--i: 3" viewBox="0 0 100 50"><path d="M4 48a46 46 0 0192 0z" /></svg>
+        <svg class="mshape ms-5" data-pop="spin" style="--i: 4" viewBox="0 0 100 100"><g><circle cx="12" cy="12" r="5" /><circle cx="38" cy="12" r="5" /><circle cx="64" cy="12" r="5" /><circle cx="90" cy="12" r="5" /><circle cx="12" cy="38" r="5" /><circle cx="38" cy="38" r="5" /><circle cx="64" cy="38" r="5" /><circle cx="90" cy="38" r="5" /><circle cx="12" cy="64" r="5" /><circle cx="38" cy="64" r="5" /><circle cx="64" cy="64" r="5" /><circle cx="90" cy="64" r="5" /></g></svg>
+        <svg class="mshape ms-6" data-pop="spin" style="--i: 5" viewBox="0 0 80 80"><path d="M8 20l26-12 22 30-28 26z" /></svg>
+      </div>
+      <div class="hero__copy">
+        <p class="sticker" data-pop="badge">Pattern studio · since 2019</p>
+        <h1 id="hero-title" data-split>Chips, squiggles &amp; happy accidents.</h1>
+        <p class="hero__lead" data-pop="up" style="--pop-delay: 420ms">Terrazzo Lab designs loud, cheerful repeat patterns for floors, fabric and packaging. Every pattern starts from a seed number, so you can grow your own below and take it home as a seamless SVG tile.</p>
+        <div class="hero__ctas" data-pop="up" style="--pop-delay: 560ms">
+          <a class="btn btn--teal" href="#generator">Grow a pattern</a>
+          <a class="btn btn--plain" href="#library">Browse the library</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GENERATOR -->
+    <section class="gen" id="generator" aria-labelledby="gen-title">
+      <header class="section-head">
+        <p class="sticker sticker--yellow" data-pop="badge">Generator</p>
+        <h2 id="gen-title" data-split>Grow a seamless tile.</h2>
+        <p class="lead" data-pop="up">Change the seed and the knobs, then export one 400 × 400 tile as SVG. The preview repeats it so you can check the seams yourself.</p>
+      </header>
+      <div class="gen__grid">
+        <form class="gen__controls" data-gen>
+          <div class="ctl ctl--seed">
+            <label for="g-seed">Seed</label>
+            <div class="seed-row"><input id="g-seed" name="seed" type="number" min="1" max="999999" value="2047" inputmode="numeric" /><button type="button" class="btn btn--yellow btn--sm" data-shuffle>Shuffle</button></div>
+          </div>
+          <div class="ctl"><label for="g-density">Chips <output data-o="density">46</output></label><input id="g-density" name="density" type="range" min="8" max="90" value="46" /></div>
+          <div class="ctl"><label for="g-size">Chip size <output data-o="size">1.0×</output></label><input id="g-size" name="size" type="range" min="0.5" max="2" step="0.1" value="1" /></div>
+          <div class="ctl"><label for="g-squiggles">Squiggles <output data-o="squiggles">6</output></label><input id="g-squiggles" name="squiggles" type="range" min="0" max="16" value="6" /></div>
+          <div class="ctl"><label for="g-confetti">Confetti <output data-o="confetti">40</output></label><input id="g-confetti" name="confetti" type="range" min="0" max="120" value="40" /></div>
+          <fieldset class="ctl">
+            <legend>Palette</legend>
+            <div class="pals">
+              <label class="pal"><input type="radio" name="palette" value="house" checked /><span>House</span></label>
+              <label class="pal"><input type="radio" name="palette" value="sorbet" /><span>Sorbet</span></label>
+              <label class="pal"><input type="radio" name="palette" value="night" /><span>Night</span></label>
+              <label class="pal"><input type="radio" name="palette" value="mono" /><span>Mono</span></label>
+            </div>
+          </fieldset>
+          <div class="ctl"><label for="g-zoom">Preview tile size <output data-o="zoom">200 px</output></label><input id="g-zoom" name="zoom" type="range" min="100" max="400" step="20" value="200" /></div>
+          <label class="check"><input type="checkbox" name="seams" /><span>Show tile edges</span></label>
+          <div class="gen__actions"><button type="button" class="btn btn--pink" data-export>Export SVG tile</button></div>
+          <p class="gen__status" role="status" data-gen-status></p>
+        </form>
+        <div class="gen__preview" data-preview role="img" aria-label="Pattern preview">
+          <div class="seams" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS (pinned build) -->
+    <section class="process" id="process" aria-labelledby="proc-title">
+      <header class="section-head">
+        <p class="sticker sticker--teal" data-pop="badge">How it works</p>
+        <h2 id="proc-title" data-split>From one seed to a whole floor.</h2>
+      </header>
+      <div class="process__pin" data-process>
+        <div class="build" aria-hidden="true">
+          <svg viewBox="0 0 400 400" data-build><g data-world><g id="build-core"><rect width="400" height="400" data-b-bg /><g data-b-chips></g><g data-b-squiggles></g><g data-b-confetti></g></g></g></svg>
+          <span class="callout callout--seed" data-callout="0">seed #2047</span>
+          <span class="callout callout--seam" data-callout="1">Seamless ✓</span>
+        </div>
+        <ol class="process__steps">
+          <li class="step"><span class="step__n">1</span><h3>Scatter the chips</h3><p>Stones are dropped one by one and kept only if they don't touch a neighbour, even across the tile's edge.</p></li>
+          <li class="step"><span class="step__n">2</span><h3>Draw the squiggles</h3><p>Wavy strokes land on top at random angles. They're allowed to overlap; that's the Memphis bit.</p></li>
+          <li class="step"><span class="step__n">3</span><h3>Throw confetti</h3><p>Dots, rings and tiny triangles fill the gaps so the eye never rests too long.</p></li>
+          <li class="step"><span class="step__n">4</span><h3>Tile it forever</h3><p>Anything that crosses an edge is mirrored on the opposite side, so the tile repeats with no seams.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- LIBRARY -->
+    <section class="library" id="library" aria-labelledby="lib-title">
+      <header class="section-head">
+        <p class="sticker sticker--pink" data-pop="badge">Library</p>
+        <h2 id="lib-title" data-split>Six house favourites.</h2>
+        <p class="lead" data-pop="up">Each tile below is grown from its seed on the spot, and you can load any of them into the generator. Prices are sample prices per square metre, in US dollars.</p>
+      </header>
+      <ul class="lib" data-pop-group>
+        <li class="lib__item" data-pop="spin"><figure class="fig tile" data-slot="pattern-gelato" data-photo="" data-alt="Gelato Floor pattern" style="--ar: 1 / 1; --fig-radius: 0"><div class="fig__art tile__art" data-pattern="1021,house,40,1,4,30" role="img" aria-label="Gelato Floor: teal, pink and yellow chips with black squiggles on off-white."></div></figure><div class="lib__meta"><h3>Gelato Floor</h3><p>Seed 1021 · House · $86 / m²</p><button type="button" class="link-btn" data-load="1021,house,40,1,4,30">Load in generator</button></div></li>
+        <li class="lib__item" data-pop="spin"><figure class="fig tile" data-slot="pattern-disco" data-photo="" data-alt="Disco Lobby pattern" style="--ar: 1 / 1; --fig-radius: 0"><div class="fig__art tile__art" data-pattern="5150,night,52,0.8,8,70" role="img" aria-label="Disco Lobby: bright chips and yellow squiggles on black."></div></figure><div class="lib__meta"><h3>Disco Lobby</h3><p>Seed 5150 · Night · $94 / m²</p><button type="button" class="link-btn" data-load="5150,night,52,0.8,8,70">Load in generator</button></div></li>
+        <li class="lib__item" data-pop="spin"><figure class="fig tile" data-slot="pattern-sorbet" data-photo="" data-alt="Sorbet Kitchen pattern" style="--ar: 1 / 1; --fig-radius: 0"><div class="fig__art tile__art" data-pattern="777,sorbet,34,1.3,3,24" role="img" aria-label="Sorbet Kitchen: soft pastel chips on blush pink."></div></figure><div class="lib__meta"><h3>Sorbet Kitchen</h3><p>Seed 777 · Sorbet · $82 / m²</p><button type="button" class="link-btn" data-load="777,sorbet,34,1.3,3,24">Load in generator</button></div></li>
+        <li class="lib__item" data-pop="spin"><figure class="fig tile" data-slot="pattern-gravel" data-photo="" data-alt="Gallery Gravel pattern" style="--ar: 1 / 1; --fig-radius: 0"><div class="fig__art tile__art" data-pattern="3203,mono,80,0.6,0,60" role="img" aria-label="Gallery Gravel: fine grey chips on off-white, no squiggles."></div></figure><div class="lib__meta"><h3>Gallery Gravel</h3><p>Seed 3203 · Mono · $78 / m²</p><button type="button" class="link-btn" data-load="3203,mono,80,0.6,0,60">Load in generator</button></div></li>
+        <li class="lib__item" data-pop="spin"><figure class="fig tile" data-slot="pattern-picnic" data-photo="" data-alt="Picnic Blanket pattern" style="--ar: 1 / 1; --fig-radius: 0"><div class="fig__art tile__art" data-pattern="88,house,22,1.8,12,10" role="img" aria-label="Picnic Blanket: big chunky chips and lots of squiggles."></div></figure><div class="lib__meta"><h3>Picnic Blanket</h3><p>Seed 88 · House · $88 / m²</p><button type="button" class="link-btn" data-load="88,house,22,1.8,12,10">Load in generator</button></div></li>
+        <li class="lib__item" data-pop="spin"><figure class="fig tile" data-slot="pattern-midnight" data-photo="" data-alt="Midnight Pool pattern" style="--ar: 1 / 1; --fig-radius: 0"><div class="fig__art tile__art" data-pattern="4096,night,30,1.1,2,110" role="img" aria-label="Midnight Pool: sparse chips and dense confetti on black."></div></figure><div class="lib__meta"><h3>Midnight Pool</h3><p>Seed 4096 · Night · $92 / m²</p><button type="button" class="link-btn" data-load="4096,night,30,1.1,2,110">Load in generator</button></div></li>
+      </ul>
+    </section>
+
+    <!-- SAMPLES -->
+    <section class="samples" id="samples" aria-labelledby="samples-title">
+      <div class="samples__band">
+        <h2 id="samples-title" data-split>Hold a sample in your hand.</h2>
+        <p data-pop="up">Six 10 cm tiles in a box with a squiggle on the lid, $24 (sample price). Terrazzo Lab is a pretend studio, so this button opens an email to a placeholder address.</p>
+        <a class="btn btn--plain" href="mailto:samples@example.com?subject=Sample%20box" data-pop="up">Email samples@example.com</a>
+        <span class="burst" data-pop="spin" aria-hidden="true">NEW!</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Terrazzo Lab</strong> is a fictional pattern studio for a design demo. 3 Chip Street, Example City · (555) 555-0100 · hello@example.com. Patterns, prices and dates are invented.</p>
+  </footer>
+</body>
+</html>
