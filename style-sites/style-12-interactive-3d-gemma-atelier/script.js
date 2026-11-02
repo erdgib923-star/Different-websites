@@ -104,6 +104,16 @@
       if (dragging) { var dx = e.clientX - lastX; spin += dx * 0.01; velocity = dx * 0.01; lastX = e.clientX; }
       if (!running) renderOnce();
     });
+    // keyboard alternative to dragging (web-design-guidelines: gestures need keyboard alternatives)
+    canvas.tabIndex = 0;
+    canvas.setAttribute('aria-label', 'A brilliant-cut gemstone. Use the left and right arrow keys, or drag, to turn it.');
+    canvas.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        spin += (e.key === 'ArrowRight' ? 1 : -1) * Math.PI / 16; // one facet per key press
+        e.preventDefault();
+        if (!running) renderOnce();
+      }
+    });
     canvas.addEventListener('pointerdown', function (e) { dragging = true; lastX = e.clientX; canvas.setPointerCapture(e.pointerId); });
     canvas.addEventListener('pointerup', function () { dragging = false; });
     canvas.addEventListener('pointercancel', function () { dragging = false; });
