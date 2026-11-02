@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Shoalreach Atlas: a coastline that moves (fictional, sample data)</title>
+    <meta name="description" content="A scrollytelling atlas of Shoalreach, a fictional coastline. Every map and number on this page is synthetic sample data." />
+    <meta name="theme-color" content="#0d2239" />
+    <script>
+      (function (d) {
+        var h = d.documentElement;
+        h.classList.add('js');
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('reduced');
+        setTimeout(function () {
+          if (!h.classList.contains('motion-ready')) h.classList.remove('js');
+        }, 4000);
+      })(document);
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="masthead">
+      <div class="wrap masthead__inner">
+        <a href="#top" class="masthead__logo">Shoalreach <span>Atlas</span></a>
+        <p class="masthead__note">Fictional place · synthetic data</p>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ============ HERO (deep sea) ============ -->
+      <section class="hero" id="top" aria-labelledby="title">
+        <svg class="hero__waves" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
+          <path data-speed="-0.5" class="w1" d="M0 140 C 240 90 480 190 720 140 S 1200 90 1440 140 V400 H0Z" />
+          <path data-speed="-0.25" class="w2" d="M0 210 C 260 170 520 260 760 205 S 1220 170 1440 215 V400 H0Z" />
+          <path data-speed="0" class="w3" d="M0 285 C 280 250 560 320 820 280 S 1240 250 1440 290 V400 H0Z" />
+        </svg>
+        <div class="wrap hero__inner">
+          <p class="kicker" data-fade>An atlas in six chapters</p>
+          <h1 id="title" class="hero__title" data-split="intro">The Shoalreach Atlas</h1>
+          <p class="hero__lede" data-fade>A coastline that moves: its depths, its tides, its warming water and the shore it keeps giving back to the sea.</p>
+          <p class="hero__disclaimer" data-fade>Shoalreach is a fictional place. Every map, chart and number here is synthetic sample data, generated in code.</p>
+        </div>
+      </section>
+
+      <!-- ============ INTRO ============ -->
+      <section class="intro wrap" aria-label="Introduction">
+        <p class="intro__lede" data-fade>
+          Shoalreach runs for thirty kilometres between Gannet Point and the sands at Ravel. Halfway along, the Kessock Water cuts down from the hills and spreads into a shallow estuary. Three islands sit offshore. Scroll on, and the map beside the text will change as each chapter needs it to.
+        </p>
+        <figure class="media intro__fig" data-slot="field-gannet-point" data-clip="up" role="img" aria-label="Field print: low sun over layered headlands and a calm sea (procedural artwork)" style="--ar: 16 / 9; --dominant: var(--brand-600); --duo-dark: var(--brand-900); --duo-light: var(--brand-100)">
+          <div class="media__art art"><!--FIELD:3:Field print, Gannet Point--></div>
+        </figure>
+      </section>
+
+      <!-- ============ SCROLLY ============ -->
+      <section class="scrolly" aria-label="The atlas">
+        <div class="panel" aria-live="off">
+          <div class="panel__frame">
+            <div class="panel__map"><!--BASEMAP--></div>
+            <div class="panel__legend" id="legend" aria-hidden="true"></div>
+            <div class="panel__year" id="year" aria-hidden="true"></div>
+            <div class="panel__inset" id="inset" aria-hidden="true"></div>
+          </div>
+          <div class="tooltip" id="tooltip" role="status" hidden></div>
+        </div>
+
+        <div class="steps">
+          <!-- Chapter 1 -->
+          <article class="step" data-state="intro">
+            <div class="step__card">
+              <p class="chapter">Chapter 1</p>
+              <h2 data-split="scroll">The reach</h2>
+              <p>Most of the shore faces south. The towns sit back from the water: Saltmere on the west bank of the estuary, Cairnhead on a rise to the east. Between them the land drops gently, then all at once.</p>
+            </div>
+          </article>
+          <article class="step" data-state="places">
+            <div class="step__card">
+              <p>The Kessock Water is the reason the reach exists. It carries silt from the hills and drops it where the current slows, building the banks that give Shoalreach its name.</p>
+              <p class="note">Annotations on the map mark the estuary mouth and the oldest quay.</p>
+            </div>
+          </article>
+
+          <!-- Chapter 2 -->
+          <article class="step" data-state="depth">
+            <div class="step__card">
+              <p class="chapter">Chapter 2</p>
+              <h2 data-split="scroll">Depth</h2>
+              <p>The colour of the water now shows depth, from five metres at the lightest blue to more than twenty-nine in the darkest. The shelf runs shallow for a long way, then drops toward the open sea past the islands.</p>
+              <p class="note">One hue, light to dark: darker always means deeper.</p>
+            </div>
+          </article>
+
+          <!-- Chapter 3 -->
+          <article class="step" data-state="tide">
+            <div class="step__card">
+              <p class="chapter">Chapter 3</p>
+              <h2 data-split="scroll">The tide</h2>
+              <p>The shoreline you just saw becomes the tide gauge at Saltmere Quay. Twice a day the sea climbs about four metres and falls back again. Over this sample weekend the range is <strong>{{STAT:RANGE}} m</strong>.</p>
+            </div>
+          </article>
+          <article class="step" data-state="tide-detail">
+            <div class="step__card">
+              <p>High waters arrive about 50 minutes later each day. Hover or touch the chart to read any moment. The full list of highs and lows is in the data tables at the end of the atlas.</p>
+            </div>
+          </article>
+
+          <!-- Chapter 4 -->
+          <article class="step" data-state="temp">
+            <div class="step__card">
+              <p class="chapter">Chapter 4</p>
+              <h2 data-split="scroll">Warming water</h2>
+              <p>Each hexagon is a patch of sea, coloured by how far its surface temperature sits from a fictional 1991–2020 baseline. Blue is cooler, coral is warmer, and grey is within ±0.3 °C.</p>
+              <p>Across {{STAT:ZONES}} zones, the mean anomaly is <strong>+{{STAT:ANOM}} °C</strong>, highest in the shallow eastern bay.</p>
+            </div>
+          </article>
+
+          <!-- Chapter 5: scrubbed timeline -->
+          <article class="step step--long" data-state="shore">
+            <div class="step__card step__card--sticky">
+              <p class="chapter">Chapter 5</p>
+              <h2 data-split="scroll">A shore in retreat</h2>
+              <p>Keep scrolling to move the year from 1950 to 2025. The dashed coral line is where the shore stood that year, and the blue line is where it is now. The bars show what each segment has lost or gained.</p>
+              <label class="timeline">
+                <span>Year <output id="year-out" for="year-range">1950</output></span>
+                <input id="year-range" type="range" min="1950" max="2025" step="5" value="1950" />
+              </label>
+              <p class="note">You can also drag the slider or use the arrow keys.</p>
+            </div>
+          </article>
+
+          <!-- Chapter 6 -->
+          <article class="step" data-state="end">
+            <div class="step__card">
+              <p class="chapter">Chapter 6</p>
+              <h2 data-split="scroll">What the reach asks</h2>
+              <p>Put the chapters together and the reach starts to make sense. A shallow shelf, a big tide and warming water work on a soft shore. Segment {{STAT:WORST_SEG}} has lost <strong>{{STAT:WORST}} m</strong> since 1950.</p>
+              <ul class="stats">
+                <li class="stat" data-pop><span class="stat__v">{{STAT:WORST}} m</span><span>lost at segment {{STAT:WORST_SEG}} since 1950</span></li>
+                <li class="stat" data-pop><span class="stat__v">+{{STAT:ANOM}} °C</span><span>mean sea-surface anomaly</span></li>
+                <li class="stat" data-pop><span class="stat__v">{{STAT:RANGE}} m</span><span>tidal range, sample weekend</span></li>
+              </ul>
+              <p class="note">All figures are synthetic sample data.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ FIELD PRINTS ============ -->
+      <section class="prints wrap" aria-labelledby="prints-title">
+        <h2 id="prints-title" class="section-title" data-split="scroll">Field prints</h2>
+        <div class="prints__grid">
+          <figure class="media" data-slot="field-kessock" data-clip="left" role="img" aria-label="Field print of the Kessock estuary at evening (procedural artwork)" style="--ar: 4 / 5; --dominant: var(--brand-600); --duo-dark: var(--brand-900); --duo-light: var(--brand-100)">
+            <div class="media__art art"><!--FIELD:11:Field print, Kessock Water--></div>
+          </figure>
+          <figure class="media" data-slot="field-brine-holm" data-clip="right" role="img" aria-label="Field print of Brine Holm from the shore (procedural artwork)" style="--ar: 3 / 2; --dominant: var(--brand-600); --duo-dark: var(--brand-900); --duo-light: var(--accent-100)">
+            <div class="media__art art"><!--FIELD:29:Field print, Brine Holm--></div>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ============ METHODS + TABLES ============ -->
+      <section class="methods" aria-labelledby="methods-title">
+        <div class="wrap methods__inner">
+          <div>
+            <h2 id="methods-title" class="section-title" data-split="scroll">How this atlas was made</h2>
+            <p data-fade>The coast is a height field built from layered value noise. Its contours are traced with d3-contour into the land and depth polygons you scrolled past. Tides are a sum of three synthetic harmonics, temperature anomalies follow a smooth gradient plus noise, and shoreline change is a set of invented erosion rates. None of it is measured. The point is the method, not the numbers.</p>
+            <p data-fade>Colour is part of the method. Depth uses one hue from light to dark. Temperature uses two hues with a grey midpoint. Both scales were checked for colour-blind separation, and every chart has a table below.</p>
+          </div>
+          <div class="tables" data-fade>
+            <!--TABLES-->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <p>The Shoalreach Atlas is a fictional design demo. The place, its names, the field prints and every number on this page are synthetic sample data.</p>
+        <p>Contact: atlas@example.com · 555-0100</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
