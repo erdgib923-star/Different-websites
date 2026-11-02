@@ -1,4 +1,4 @@
-import { makeTrack, master, metrics, drawWave } from './wave';
+import { makeTrack, masterToTarget, metrics, drawWave } from './wave';
 
 /** Interactive A/B waveform demo (lazy-loaded when the section approaches the viewport). */
 export function initDemo() {
@@ -19,7 +19,7 @@ export function initDemo() {
   const render = () => {
     queued = false;
     const t = +target.value, w = +warmth.value;
-    const out = master(src, { target: t, warmth: w, amount: 1 });
+    const out = masterToTarget(src, t, w);
     const shown = mode === 'a' ? src : out;
     const m = metrics(shown);
     oT.textContent = `${fmt(t)} LUFS`;

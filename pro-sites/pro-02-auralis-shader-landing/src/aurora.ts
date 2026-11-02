@@ -65,7 +65,7 @@ void main() {
   float f = fbm(p + 3.0 * r);
   // curtains: brighter toward the upper half, warped by the field
   float curtain = smoothstep(0.32, 0.92, f) * (0.55 + 0.45 * smoothstep(-0.6, 0.5, uv.y + q.x * 0.4));
-  float k = clamp(r.x * 1.25 - 0.15 + uScroll * 0.18, 0.0, 1.0);
+  float k = clamp(r.x * 1.35 - 0.38 + uv.x * 0.25 + uScroll * 0.16, 0.0, 1.0);
   vec3 tone = k < 0.5 ? mixLch(uStops[1], uStops[2], k * 2.0) : mixLch(uStops[2], uStops[3], k * 2.0 - 1.0);
   vec3 col = mixLch(uStops[0], tone, clamp(curtain + swirl * 0.25, 0.0, 1.0));
   col.x = min(col.x, 0.62); // contrast guard for text on top

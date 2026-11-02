@@ -32,12 +32,12 @@ export function makeTrack(seed = 7): Float32Array {
   return out;
 }
 
-export type Settings = { target: number; warmth: number; amount: number };
+export type Settings = { target: number; warmth: number; amount: number; makeupDb?: number };
 
 /** Simplified mastering chain. `amount` (0..1) blends from untouched to fully processed. */
-export function master(src: Float32Array, { target, warmth, amount }: Settings): Float32Array {
+export function master(src: Float32Array, { target, warmth, amount, makeupDb }: Settings): Float32Array {
   const out = new Float32Array(src.length);
-  const makeup = Math.pow(10, ((target + 18) * amount) / 20); // louder target → more gain
+  const makeup = Math.pow(10, (makeupDb ?? (target + 18) * amount) / 20); // louder target → more gain
   const thresh = 0.32, ratio = 1 + 3 * amount, ceiling = Math.pow(10, -1 / 20); // −1 dBTP
   let env = 0, low = 0;
   for (let i = 0; i < src.length; i++) {
@@ -51,6 +51,18 @@ export function master(src: Float32Array, { target, warmth, amount }: Settings):
     x = Math.tanh(x * (1 + (warmth / 100) * 0.6 * amount)); // saturation
     x = Math.max(-ceiling, Math.min(ceiling, x)); // brickwall limiter
     out[i] = src[i] * (1 - amount) + x * amount;
+  }
+  return out;
+}
+
+/** Bisect the make-up gain so the simulated loudness lands on the target (as close as the limiter allows). */
+export function masterToTarget(src: Float32Array, target: number, warmth: number): Float32Array {
+  let lo = -12, hi = 36, out = master(src, { target, warmth, amount: 1, makeupDb: lo });
+  for (let i = 0; i < 14; i++) {
+    const mid = (lo + hi) / 2;
+    out = master(src, { target, warmth, amount: 1, makeupDb: mid });
+    if (metrics(out).loud < target) lo = mid;
+    else hi = mid;
   }
   return out;
 }
