@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Auralis — AI mastering that sounds finished (fictional demo)</title>
+    <meta name="description" content="Auralis is a fictional AI audio-mastering tool. A landing-page demo with a WebGL2 aurora shader and synthetic waveform demos." />
+    <meta name="theme-color" content="#080526" />
+    <script>
+      (function (d) {
+        var h = d.documentElement;
+        h.classList.add('js');
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('reduced');
+        setTimeout(function () {
+          if (!h.classList.contains('motion-ready')) h.classList.remove('js');
+        }, 4000);
+      })(document);
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- background: CSS mesh-gradient fallback + WebGL2 aurora on top -->
+    <div class="aurora-fallback" aria-hidden="true"></div>
+    <canvas id="aurora" class="aurora" aria-hidden="true"></canvas>
+
+    <header class="nav">
+      <div class="wrap nav__inner">
+        <a class="logo" href="#top">
+          <svg viewBox="0 0 28 20" width="28" height="20" aria-hidden="true"><path d="M1 10h3M6 5v10M10 2v16M14 6v8M18 3v14M22 7v6M26 10h1" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" /></svg>
+          Auralis
+        </a>
+        <nav aria-label="Primary">
+          <ul class="nav__links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#demo">Demo</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+        <a class="btn btn--sm" href="#pricing">Start free</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ============ HERO ============ -->
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="wrap hero__inner">
+          <p class="eyebrow" data-fade>Auralis 2 · AI mastering</p>
+          <h1 id="hero-title" class="hero__title" data-split="intro">Masters that sound finished everywhere.</h1>
+          <div class="hero__copy scrim" data-fade>
+            <p>Auralis listens to your mix, matches it to the places it will be played, and returns a master in under a minute. You keep the final say on every decision.</p>
+            <div class="hero__ctas">
+              <a class="btn" href="#pricing">Master a track free</a>
+              <a class="btn btn--ghost" href="#demo">See the demo <span aria-hidden="true">↓</span></a>
+            </div>
+            <p class="fine">Three free masters a month · no card needed (sample offer)</p>
+          </div>
+        </div>
+        <!-- HUD callouts: pop in after the intro, parallax at different depths -->
+        <ul class="hud" aria-label="Example readouts (simulated)">
+          <li class="chip glass" data-hud data-speed="-0.6" style="--x: 64%; --y: 22%"><span class="chip__dot"></span>−14.0 LUFS <small>streaming ready</small></li>
+          <li class="chip glass" data-hud data-speed="0.4" style="--x: 78%; --y: 48%"><span class="chip__dot"></span>True peak −1.0 dBTP</li>
+          <li class="chip glass" data-hud data-speed="-0.25" style="--x: 60%; --y: 70%"><span class="chip__dot"></span>Stereo width 108%</li>
+        </ul>
+        <a class="scroll-cue" href="#how" aria-label="Scroll to how it works"><span></span></a>
+      </section>
+
+      <!-- ============ HOW IT WORKS ============ -->
+      <section class="section wrap" id="how" aria-labelledby="how-title">
+        <p class="eyebrow" data-fade>How it works</p>
+        <h2 id="how-title" class="h2" data-split="scroll">Three steps, about a minute.</h2>
+        <ol class="steps">
+          <li class="step glass" data-pop>
+            <span class="step__n">01</span>
+            <h3>Upload your mix</h3>
+            <p>WAV or AIFF up to 32-bit float. Leave a few decibels of headroom and we take it from there.</p>
+          </li>
+          <li class="step glass" data-pop>
+            <span class="step__n">02</span>
+            <h3>Auralis listens</h3>
+            <p>Genre, tonal balance, dynamics and stereo image are analysed, then compared with the platforms you pick.</p>
+          </li>
+          <li class="step glass" data-pop>
+            <span class="step__n">03</span>
+            <h3>You approve</h3>
+            <p>Audition A/B at matched loudness, nudge warmth or punch, then export. Nothing ships without your ears.</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ============ FEATURES (frosted glass cards) ============ -->
+      <section class="section wrap" id="features" aria-labelledby="features-title">
+        <div class="section__head">
+          <p class="eyebrow" data-fade>Features</p>
+          <h2 id="features-title" class="h2" data-split="scroll">Everything a mastering engineer reaches for first.</h2>
+        </div>
+        <ul class="features">
+          <li class="feature glass" data-pop>
+            <svg class="feature__icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 28c6 0 6-16 12-16s6 16 12 16 6-8 8-8" /></svg>
+            <h3>Adaptive loudness</h3>
+            <p>Hits the target for each platform without squashing the transients that make a track feel alive.</p>
+          </li>
+          <li class="feature glass" data-pop>
+            <svg class="feature__icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 30V18M14 30V10M22 30V16M30 30V8M36 30V20" /></svg>
+            <h3>Stem-aware EQ</h3>
+            <p>Detects when the kick and bass fight and carves a little room, rather than tilting the whole mix.</p>
+          </li>
+          <li class="feature glass" data-pop>
+            <svg class="feature__icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 20h8l4-10 8 20 4-10h8" /></svg>
+            <h3>True-peak limiter</h3>
+            <p>Oversampled limiting to −1 dBTP by default, so lossy encoders don't add clipping after upload.</p>
+          </li>
+          <li class="feature glass" data-pop>
+            <svg class="feature__icon" viewBox="0 0 40 40" aria-hidden="true"><circle cx="14" cy="20" r="8" /><circle cx="26" cy="20" r="8" /></svg>
+            <h3>Reference matching</h3>
+            <p>Drop in a reference you love and Auralis matches its tonal curve, not its loudness.</p>
+          </li>
+          <li class="feature glass" data-pop>
+            <svg class="feature__icon" viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="8" width="20" height="14" rx="2" /><rect x="14" y="18" width="20" height="14" rx="2" /></svg>
+            <h3>Album batches</h3>
+            <p>Master a whole record with one shared loudness and tone, so track nine sits beside track two.</p>
+          </li>
+          <li class="feature glass" data-pop>
+            <svg class="feature__icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 6v28M8 12l24 16M32 12L8 28" /></svg>
+            <h3>Stereo field</h3>
+            <p>Widens pads and keeps the low end mono below 120 Hz, so the club system and earbuds both agree.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============ INTERACTIVE DEMO ============ -->
+      <section class="section wrap" id="demo" aria-labelledby="demo-title">
+        <div class="section__head">
+          <p class="eyebrow" data-fade>Interactive demo</p>
+          <h2 id="demo-title" class="h2" data-split="scroll">Before and after, drawn to scale.</h2>
+          <p class="lede" data-fade>Move the sliders and the master redraws. The signal is synthetic and generated in your browser. The figures are simulated, not a real analysis.</p>
+        </div>
+        <div class="demo glass" data-pop>
+          <div class="demo__toolbar">
+            <fieldset class="seg">
+              <legend class="sr-only">Compare</legend>
+              <label><input type="radio" name="ab" value="a" /> <span>A · Original</span></label>
+              <label><input type="radio" name="ab" value="b" checked /> <span>B · Mastered</span></label>
+              <label><input type="radio" name="ab" value="both" /> <span>Overlay</span></label>
+            </fieldset>
+            <dl class="readouts" aria-live="polite">
+              <div><dt>Loudness</dt><dd id="r-loud">—</dd></div>
+              <div><dt>Peak</dt><dd id="r-peak">—</dd></div>
+              <div><dt>Crest</dt><dd id="r-crest">—</dd></div>
+            </dl>
+          </div>
+          <div class="demo__canvas">
+            <canvas id="demo-canvas" role="img" aria-label="Waveform of a synthetic track; the mastered version is louder and its peaks stop at a minus one decibel ceiling."></canvas>
+            <noscript><p class="fine">The interactive waveform needs JavaScript.</p></noscript>
+          </div>
+          <div class="demo__controls">
+            <label class="slider">
+              <span>Loudness target <output id="o-target" for="target">−14 LUFS</output></span>
+              <input id="target" type="range" min="-18" max="-8" step="1" value="-14" />
+            </label>
+            <label class="slider">
+              <span>Warmth <output id="o-warmth" for="warmth">40%</output></span>
+              <input id="warmth" type="range" min="0" max="100" step="5" value="40" />
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PINNED SIGNAL CHAIN (scrubbed) ============ -->
+      <section class="chain" id="chain" aria-labelledby="chain-title">
+        <div class="wrap chain__inner">
+          <div class="chain__text">
+            <p class="eyebrow">Inside one master</p>
+            <h2 id="chain-title" class="h2">Five stages, scrolled.</h2>
+            <ol class="chain__stages">
+              <li data-stage><strong>Analyse</strong><span>Genre, tempo and tonal fingerprint.</span></li>
+              <li data-stage><strong>Tone</strong><span>A gentle tilt toward the reference curve.</span></li>
+              <li data-stage><strong>Dynamics</strong><span>Two-band compression, slow attack.</span></li>
+              <li data-stage><strong>Saturation</strong><span>Harmonics for density, not distortion.</span></li>
+              <li data-stage><strong>Limit</strong><span>True-peak ceiling at −1 dBTP.</span></li>
+            </ol>
+          </div>
+          <div class="chain__viz glass">
+            <canvas id="chain-canvas" role="img" aria-label="Waveform that grows louder and denser as each mastering stage is applied (synthetic)."></canvas>
+            <div class="chain__callouts" aria-hidden="true">
+              <p class="callout glass" data-callout="1">+2.1 dB low shelf</p>
+              <p class="callout glass" data-callout="2">Ratio 3:1 · 30 ms</p>
+              <p class="callout glass" data-callout="3">+1.4% harmonics</p>
+              <p class="callout glass" data-callout="4">Ceiling −1.0 dBTP</p>
+            </div>
+            <p class="fine chain__note">Synthetic signal · simulated values</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ IMAGERY: who it's for ============ -->
+      <section class="section wrap" aria-labelledby="for-title">
+        <div class="section__head">
+          <p class="eyebrow" data-fade>Who it’s for</p>
+          <h2 id="for-title" class="h2" data-split="scroll">Built for bedrooms and big rooms.</h2>
+        </div>
+        <div class="for">
+          <figure class="media for__a" data-slot="for-bedroom" data-clip="up" role="img" aria-label="Abstract ripple artwork standing in for a photo of a bedroom studio" style="--ar: 4 / 5; --dominant: var(--brand-900); --duo-dark: var(--brand-950); --duo-light: var(--aurora-teal)">
+            <div class="media__art art art--rings">
+              <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="var(--neutral-50)"><circle cx="150" cy="170" r="40" stroke-opacity=".7" /><circle cx="150" cy="170" r="80" stroke-opacity=".5" /><circle cx="150" cy="170" r="130" stroke-opacity=".35" /><circle cx="150" cy="170" r="190" stroke-opacity=".22" /><circle cx="150" cy="170" r="260" stroke-opacity=".12" /></g><circle cx="150" cy="170" r="16" fill="var(--amber-hi)" /></svg>
+            </div>
+          </figure>
+          <div class="for__copy">
+            <h3 data-fade>Bedroom producers</h3>
+            <p data-fade>Release-ready loudness without renting a room or learning which of twelve limiters to trust.</p>
+            <h3 data-fade>Mastering engineers</h3>
+            <p data-fade>A fast first pass and a second opinion. Export the settings as a starting point for your own chain.</p>
+          </div>
+          <figure class="media for__b" data-slot="for-control-room" data-clip="left" role="img" aria-label="Abstract spectrum artwork standing in for a photo of a mastering room" style="--ar: 3 / 2; --dominant: var(--brand-900); --duo-dark: var(--brand-950); --duo-light: var(--aurora-magenta)">
+            <div class="media__art art art--spectrum">
+              <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice"><g fill="var(--neutral-50)"><rect x="40" y="240" width="18" height="120" rx="3" opacity=".25" /><rect x="70" y="190" width="18" height="170" rx="3" opacity=".3" /><rect x="100" y="140" width="18" height="220" rx="3" opacity=".4" /><rect x="130" y="110" width="18" height="250" rx="3" opacity=".5" /><rect x="160" y="150" width="18" height="210" rx="3" opacity=".45" /><rect x="190" y="200" width="18" height="160" rx="3" opacity=".4" /><rect x="220" y="170" width="18" height="190" rx="3" opacity=".42" /><rect x="250" y="230" width="18" height="130" rx="3" opacity=".35" /><rect x="280" y="210" width="18" height="150" rx="3" opacity=".33" /><rect x="310" y="250" width="18" height="110" rx="3" opacity=".3" /><rect x="340" y="270" width="18" height="90" rx="3" opacity=".28" /><rect x="370" y="240" width="18" height="120" rx="3" opacity=".3" /><rect x="400" y="280" width="18" height="80" rx="3" opacity=".25" /><rect x="430" y="300" width="18" height="60" rx="3" opacity=".22" /><rect x="460" y="290" width="18" height="70" rx="3" opacity=".2" /><rect x="490" y="310" width="18" height="50" rx="3" opacity=".18" /><rect x="520" y="320" width="18" height="40" rx="3" opacity=".15" /></g><path d="M30 120 C 150 60, 260 90, 330 150 S 520 230, 580 210" fill="none" stroke="var(--amber-hi)" stroke-width="3" /></svg>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ============ PRICING ============ -->
+      <section class="section wrap" id="pricing" aria-labelledby="pricing-title">
+        <div class="section__head pricing__head">
+          <div>
+            <p class="eyebrow" data-fade>Pricing</p>
+            <h2 id="pricing-title" class="h2" data-split="scroll">Pay for masters, not plugins.</h2>
+          </div>
+          <div class="billing" data-fade>
+            <span id="bill-m">Monthly</span>
+            <button class="switch" id="billing" role="switch" aria-checked="false" aria-labelledby="bill-label"><span class="sr-only" id="bill-label">Bill yearly</span><span class="switch__knob"></span></button>
+            <span id="bill-y">Yearly <span class="save" id="save">Save 20%</span></span>
+          </div>
+        </div>
+        <ul class="plans">
+          <li class="plan glass" data-pop>
+            <h3>Free</h3>
+            <p class="price"><span class="price__cur">$</span><span class="price__n" data-m="0" data-y="0">0</span><span class="price__per">/mo</span></p>
+            <p class="plan__desc">Try it on real projects.</p>
+            <ul class="ticks"><li>3 masters a month</li><li>MP3 + WAV 16-bit export</li><li>Streaming loudness preset</li></ul>
+            <a class="btn btn--ghost" href="#top">Start free</a>
+          </li>
+          <li class="plan plan--hot glass" data-pop>
+            <p class="plan__tag">Most picked</p>
+            <h3>Pro</h3>
+            <p class="price"><span class="price__cur">$</span><span class="price__n" data-m="14" data-y="11">14</span><span class="price__per">/mo</span></p>
+            <p class="plan__desc">For people releasing regularly.</p>
+            <ul class="ticks"><li>Unlimited masters</li><li>24-bit WAV, true-peak control</li><li>Reference matching</li><li>A/B at matched loudness</li></ul>
+            <a class="btn" href="#top">Go Pro</a>
+          </li>
+          <li class="plan glass" data-pop>
+            <h3>Studio</h3>
+            <p class="price"><span class="price__cur">$</span><span class="price__n" data-m="32" data-y="26">32</span><span class="price__per">/mo</span></p>
+            <p class="plan__desc">For engineers and labels.</p>
+            <ul class="ticks"><li>Everything in Pro</li><li>Album batches</li><li>Settings export</li><li>Five team seats</li></ul>
+            <a class="btn btn--ghost" href="#top">Talk to us</a>
+          </li>
+        </ul>
+        <p class="fine center" id="billing-note" aria-live="polite">Prices in USD, billed monthly. Sample pricing for a fictional product.</p>
+      </section>
+
+      <!-- ============ FAQ ============ -->
+      <section class="section wrap faq" id="faq" aria-labelledby="faq-title">
+        <h2 id="faq-title" class="h2" data-split="scroll">Questions, answered.</h2>
+        <div class="faq__list">
+          <details data-fade><summary>Does Auralis replace a mastering engineer?</summary><p>No. It gives you a strong first pass and a clear explanation of what it changed. Plenty of engineers use it as a second opinion.</p></details>
+          <details data-fade><summary>What happens to the tracks I upload?</summary><p>In this fictional product, uploads are used only to make your master and are deleted after 30 days. This is a sample policy for a demo site.</p></details>
+          <details data-fade><summary>Which loudness targets are supported?</summary><p>Presets cover common streaming targets from −16 to −8 LUFS integrated, plus a custom value with your own true-peak ceiling.</p></details>
+          <details data-fade><summary>Can I cancel any time?</summary><p>Yes. Monthly plans stop at the end of the billing period, and yearly plans can be refunded pro rata in the first 30 days (sample terms).</p></details>
+        </div>
+      </section>
+
+      <!-- ============ CTA ============ -->
+      <section class="section wrap cta" aria-labelledby="cta-title">
+        <h2 id="cta-title" class="cta__title" data-split="scroll">Your next release, finished.</h2>
+        <div data-fade><a class="btn btn--lg" href="#top">Master a track free</a></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <p class="logo">Auralis</p>
+        <p>hello@example.com · 555-0100 · 9 Harbour Lane, Port Selby</p>
+        <p class="fine">Auralis is a fictional product made for a design demo. The brand, prices, people, address, policies and every figure on this page are sample content. Waveforms are synthetic.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
