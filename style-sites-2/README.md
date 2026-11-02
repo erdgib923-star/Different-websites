@@ -28,3 +28,4 @@ All brands, people, addresses, phone numbers and data are fictional.
 | 4 | `pro2-04-risograph-inkpress` | Inkpress Collective, risograph print studio |
 | 5 | `pro2-05-doodle-scribble-sprout` | Scribble & Sprout, kids' drawing classes |
 | 6 | `pro2-06-wabisabi-yugure-tea` | Yugure Tea Atelier |
+| 7 | `pro2-07-hygge-lumi-and-lind` | Lumi & Lind, Scandinavian home goods |

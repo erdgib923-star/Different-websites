@@ -102,6 +102,19 @@ npm run contrast
 ## Swap in your own photos
 Seven slots: `hero-still-life` (4:5) and six product slots (1:1): `product-throw`, `product-candles`, `product-mug`, `product-cushion`, `product-board`, `product-lamp`. Set `data-photo="assets/images/<file>"`. See [`public/assets/README.md`](public/assets/README.md). The CSS room is part of the interaction, not a photo slot.
 
+## Verification (what was actually run)
+- `npm run build` passes; `npm run contrast`: 17/17 pairs pass, at both the day and evening ends.
+- Headless Chromium at 375, 768 and 1440 px, with screenshots at 0/25/50/75/100%:
+  - no console errors, no failed or external requests, one h1, no horizontal scroll;
+  - axe-core: 0 violations;
+  - reduced-motion, no-JS and `?nosda` passes: nothing left hidden.
+- Room probe: I captured the pinned room at four scroll points (08:45, 12:15, 15:30 and 20:15). The sky went blue, blue, amber, night; the lamp and candles lit; product pins popped and faded at the right times.
+- Bag probe: "Add to bag" updated the count, the bag's accessible name ("Bag, 1 item") and the live announcement.
+- Fixed after the first audit:
+  - The room sky went green between day and dusk, because the shortest OKLCH hue path from 230 to 55 passes through about 140. It now mixes with `longer hue`, through violet and pink like a sunset.
+  - The sky turned to dusk too early; it now stays blue until early afternoon.
+- **Not tested:** Safari and Firefox (Firefox uses the JS `--p` fallback), the cursor glow on a physical mouse, and screen readers.
+
 ## Notes and decisions
 - Built in `style-sites-2/` of `erdgib923-star/different-websites` instead of its own repo: `gh` was not authenticated and repo creation was unavailable. Split later with `publish-repos.sh`.
 - Brand check (web search, 2026-11-02): no "Lumi & Lind" found.
