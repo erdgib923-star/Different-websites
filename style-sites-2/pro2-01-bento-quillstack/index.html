@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quillstack · Notes that stack into finished writing</title>
+  <meta name="description" content="Quillstack is a calm notes app for people who write in fragments. A fictional product for a design demo." />
+  <meta name="theme-color" content="#f6f8fc" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23224a9e'/%3E%3Cpath d='M9 23c5-1 10-6 14-14-6 3-10 7-12 12' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <script>
+    // Theme before paint (saved choice, else system), and the JS flag for motion start states.
+    (function () {
+      var d = document.documentElement, t = null;
+      try { t = localStorage.getItem('qs-theme'); } catch (e) {}
+      if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      d.setAttribute('data-theme', t);
+      d.classList.add('js');
+      // If the module never boots, drop the hidden start states so content still shows.
+      setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js'); }, 4000);
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" data-scrub="progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Quillstack home">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" /><path d="M9 23c5-1 10-6 14-14-6 3-10 7-12 12" /></svg>
+      <span>Quillstack</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
+      <ul id="nav-list" class="site-nav__list">
+        <li><a href="#tiles">Tiles</a></li>
+        <li><a href="#workflow">Workflow</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--primary btn--sm" href="#download">Get Quillstack</a>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__copy">
+        <p class="eyebrow" data-pop="up">Notes · Drafts · Done</p>
+        <h1 id="hero-title" class="hero__title" data-split>Write it down. <em>Stack</em> it&nbsp;up.</h1>
+        <p class="hero__lead" data-pop="up" style="--pop-delay: 380ms">
+          Quillstack is a calm notes app for people who write in fragments. Catch a line on the bus,
+          shape it into an outline at lunch, and publish the finished piece by evening, all from one stack.
+        </p>
+        <div class="hero__ctas" data-pop="up" style="--pop-delay: 520ms">
+          <a class="btn btn--primary" href="#download">Start writing, free</a>
+          <a class="btn btn--ghost" href="#tiles">See the nine tiles</a>
+        </div>
+        <ul class="hero__meta" data-pop-group aria-label="Highlights">
+          <li data-pop="up" style="--pop-delay: 640ms">Works offline</li>
+          <li data-pop="up" style="--pop-delay: 640ms">Plain Markdown files</li>
+          <li data-pop="up" style="--pop-delay: 640ms">Mac, Windows &amp; web</li>
+        </ul>
+      </div>
+
+      <figure class="fig hero__fig grain" data-slot="hero-desk" data-photo="" data-alt="A writing desk seen from above with stacked paper notes" style="--ar: 4 / 5; --fig-radius: 28px">
+        <div class="fig__art desk" role="img" aria-label="Illustration: two sheets of handwritten notes stacked on a desk, with a fountain pen and a coral bookmark tab.">
+          <svg class="desk__sheet desk__sheet--back" data-scrub="parallax" data-speed="-0.18" viewBox="0 0 300 380" aria-hidden="true">
+            <rect x="6" y="6" width="288" height="368" rx="10" class="sheet" />
+            <g class="ink-lines">
+              <path d="M36 70 h180" /><path d="M36 104 h210" /><path d="M36 138 h150" /><path d="M36 172 h196" /><path d="M36 206 h120" />
+            </g>
+          </svg>
+          <svg class="desk__sheet desk__sheet--front" data-scrub="parallax" data-speed="0.14" viewBox="0 0 300 380" aria-hidden="true">
+            <rect x="6" y="6" width="288" height="368" rx="10" class="sheet" />
+            <rect x="232" y="-4" width="34" height="62" rx="4" class="tab" />
+            <text x="36" y="72" class="sheet__title">Ferry scene</text>
+            <g class="scribble">
+              <path d="M36 112c18-6 30 6 48 0s30-6 48 0 30 6 48 0 26-5 40 0" />
+              <path d="M36 146c14-5 28 5 44 0s28-5 44 0 30 5 46 0" />
+              <path d="M36 180c20-6 34 6 52 0s30-6 46 0 24 5 36 0" />
+              <path d="M36 214c16-5 26 5 42 0s26-5 40 0" />
+              <path d="M36 262c22-6 36 6 56 0s34-6 52 0 30 5 44 0" />
+              <path d="M36 296c16-5 30 5 46 0s28-5 40 0" />
+            </g>
+            <circle cx="250" cy="320" r="18" class="stamp" />
+            <path d="M241 320l6 6 12-13" class="stamp__tick" />
+          </svg>
+          <svg class="desk__pen" viewBox="0 0 60 300" aria-hidden="true" data-scrub="parallax" data-speed="0.3">
+            <rect x="18" y="20" width="24" height="200" rx="12" class="pen__body" />
+            <rect x="18" y="20" width="24" height="56" rx="12" class="pen__cap" />
+            <path d="M22 218h16l-8 52z" class="pen__nib" />
+          </svg>
+        </div>
+        <span class="badge badge--save" data-pop="badge" style="--pop-delay: 900ms">Autosaved · just now</span>
+        <span class="badge badge--links" data-pop="badge" style="--pop-delay: 1100ms">3 notes linked</span>
+      </figure>
+    </section>
+
+    <!-- BENTO -->
+    <section class="tiles" id="tiles" aria-labelledby="tiles-title">
+      <div class="section-head">
+        <p class="eyebrow" data-pop="up">The desk</p>
+        <h2 id="tiles-title" data-split>Nine small tools, <em>one</em> quiet desk.</h2>
+        <p class="section-head__lead" data-pop="up">Every tile below is live. Type, drag a card along, start the timer, flip to night mode. Open any tile for the detail.</p>
+      </div>
+
+      <div class="bento" data-pop-group>
+        <!-- 1 Typing -->
+        <article class="tile tile--type" data-tile="type" data-pop aria-labelledby="t-type">
+          <header class="tile__head">
+            <h3 id="t-type">Distraction-free editor</h3>
+            <button class="tile__open" type="button" data-open="type" aria-label="Open details: Distraction-free editor"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" /></svg></button>
+          </header>
+          <div class="editor">
+            <div class="editor__bar" aria-hidden="true"><span></span><span></span><span></span><em>field-notes/tuesday.md</em></div>
+            <p class="editor__title">Field notes, Tuesday</p>
+            <p class="editor__body">
+              <span class="visually-hidden" id="typing-full">The ferry was late again, so I wrote the opening on the back of a receipt. By the second coffee, the receipt had become a scene. Quillstack keeps the scraps in order until they turn into something.</span>
+              <span class="typing" aria-hidden="true" data-typing>The ferry was late again, so I wrote the opening on the back of a receipt. By the second coffee, the receipt had become a scene.</span><span class="caret" aria-hidden="true"></span>
+            </p>
+            <div class="editor__foot">
+              <span><span data-wordcount>27</span> words</span>
+              <button class="chip-btn" type="button" data-typing-toggle aria-pressed="false">Pause typing</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2 Kanban -->
+        <article class="tile tile--kan" data-tile="kan" data-pop aria-labelledby="t-kan">
+          <header class="tile__head">
+            <h3 id="t-kan">Draft board</h3>
+            <button class="tile__open" type="button" data-open="kan" aria-label="Open details: Draft board"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" /></svg></button>
+          </header>
+          <div class="kanban" data-kanban>
+            <div class="kanban__col" data-col="0"><p class="kanban__label">Draft</p>
+              <ul><li><button class="kcard" type="button" data-card="ferry">Ferry scene</button></li><li><button class="kcard" type="button" data-card="grant">Grant letter</button></li></ul></div>
+            <div class="kanban__col" data-col="1"><p class="kanban__label">Editing</p>
+              <ul><li><button class="kcard" type="button" data-card="ch3">Chapter 3 outline</button></li></ul></div>
+            <div class="kanban__col" data-col="2"><p class="kanban__label">Done</p>
+              <ul><li><button class="kcard kcard--done" type="button" data-card="news">Newsletter #14</button></li></ul></div>
+          </div>
+          <p class="tile__hint">Select a card to move it one column right.</p>
+          <p class="visually-hidden" aria-live="polite" data-kanban-status></p>
+        </article>
+
+        <!-- 3 Calendar -->
+        <article class="tile tile--cal" data-tile="cal" data-pop aria-labelledby="t-cal">
+          <header class="tile__head">
+            <h3 id="t-cal">Writing streak</h3>
+            <button class="tile__open" type="button" data-open="cal" aria-label="Open details: Writing streak"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" /></svg></button>
+          </header>
+          <p class="cal__month" data-cal-month>November 2026</p>
+          <div class="cal" data-cal></div>
+          <p class="tile__stat"><strong data-streak>9</strong> days written this month</p>
+        </article>
+
+        <!-- 4 Theme -->
+        <article class="tile tile--theme" data-tile="theme" data-pop aria-labelledby="t-theme">
+          <header class="tile__head">
+            <h3 id="t-theme">Night desk</h3>
+            <button class="tile__open" type="button" data-open="theme" aria-label="Open details: Night desk"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" /></svg></button>
+          </header>
+          <button class="switch" type="button" role="switch" aria-checked="false" data-theme-toggle>
+            <span class="switch__track" aria-hidden="true"><span class="switch__thumb"></span></span>
+            <span class="switch__label">Dark theme</span>
+          </button>
+          <p class="tile__hint">Changes the whole page. Your choice is remembered.</p>
+        </article>
+
+        <!-- 5 Tags -->
+        <article class="tile tile--tags" data-tile="tags" data-pop aria-labelledby="t-tags">
+          <header class="tile__head">
+            <h3 id="t-tags">Tags</h3>
+            <button class="tile__open" type="button" data-open="tags" aria-label="Open details: Tags"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" /></svg></button>
+          </header>
+          <ul class="tagcloud" data-tags>
+            <li><button type="button" class="tag tag--l" aria-pressed="false" data-n="18">#fiction</button></li>
+            <li><button type="button" class="tag" aria-pressed="false" data-n="7">#ferry</button></li>
+            <li><button type="button" class="tag tag--m" aria-pressed="false" data-n="11">#research</button></li>
+            <li><button type="button" class="tag tag--s" aria-pressed="false" data-n="4">#letters</button></li>
+            <li><button type="button" class="tag tag--m" aria-pressed="false" data-n="13">#ideas</button></li>
+            <li><button type="button" class="tag tag--s" aria-pressed="false" data-n="5">#poems</button></li>
+          </ul>
+          <p class="tile__stat" aria-live="polite"><strong data-tag-count>58</strong> <span data-tag-label>notes in total</span></p>
+        </article>
+
+        <!-- 6 Stats -->
+        <article class="tile tile--stat" data-tile="stat" data-pop aria-labelledby="t-stat">
+          <header class="tile__head">
+            <h3 id="t-stat">This week</h3>
+            <button class="tile__open" type="button" data-open="stat" aria-label="Open details: This week"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" /></svg></button>
+          </header>
+          <div class="stats">
+            <p class="stats__big"><span data-count-to="4812">4,812</span><small>words</small></p>
+            <p class="stats__sub"><span class="up">+18%</span> on last week · sample data</p>
+          </div>
+          <svg class="bars" viewBox="0 0 280 96" role="img" aria-labelledby="bars-title">
+            <title id="bars-title">Words per day, Monday to Sunday: 520, 880, 610, 940, 720, 410, 732. Thursday was the best day.</title>
+            <g class="bars__g">
+              <rect x="6" y="49" width="28" height="37" rx="5" /><rect x="46" y="23" width="28" height="63" rx="5" />
+              <rect x="86" y="42" width="28" height="44" rx="5" /><rect class="is-hi" x="126" y="19" width="28" height="67" rx="5" />
+              <rect x="166" y="35" width="28" height="51" rx="5" /><rect x="206" y="57" width="28" height="29" rx="5" />
+              <rect x="246" y="34" width="28" height="52" rx="5" />
+            </g>
+            <g class="bars__x" aria-hidden="true"><text x="20" y="96">M</text><text x="60" y="96">T</text><text x="100" y="96">W</text><text x="140" y="96">T</text><text x="180" y="96">F</text><text x="220" y="96">S</text><text x="260" y="96">S</text></g>
+          </svg>
+        </article>
+
+        <!-- 7 Graph -->
+        <article class="tile tile--graph" data-tile="graph" data-pop aria-labelledby="t-graph">
+          <header class="tile__head">
+            <h3 id="t-graph">Backlinks</h3>
+            <button class="tile__open" type="button" data-open="graph" aria-label="Open details: Backlinks"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" /></svg></button>
+          </header>
+          <svg class="graph" viewBox="0 0 220 240" role="img" aria-labelledby="graph-title">
+            <title id="graph-title">A note graph: “Ferry scene” sits in the middle, linked to five other notes.</title>
+            <g class="graph__edges">
+              <path d="M110 120 L44 52" /><path d="M110 120 L182 46" /><path d="M110 120 L190 150" /><path d="M110 120 L52 190" /><path d="M110 120 L128 214" /><path d="M44 52 L182 46" class="weak" /><path d="M52 190 L128 214" class="weak" />
+            </g>
+            <g class="graph__nodes">
+              <circle cx="44" cy="52" r="9" /><circle cx="182" cy="46" r="11" /><circle cx="190" cy="150" r="8" />
+              <circle cx="52" cy="190" r="10" /><circle cx="128" cy="214" r="7" /><circle class="core" cx="110" cy="120" r="17" />
+            </g>
+            <g class="graph__labels" aria-hidden="true"><text x="110" y="152">Ferry scene</text><text x="44" y="34">Harbour map</text><text x="182" y="26">Ch. 3</text></g>
+          </svg>
+          <p class="tile__stat"><strong>5</strong> notes point here</p>
+        </article>
+
+        <!-- 8 Timer -->
+        <article class="tile tile--timer" data-tile="timer" data-pop aria-labelledby="t-timer">
+          <header class="tile__head">
+            <h3 id="t-timer">Focus timer</h3>
+            <button class="tile__open" type="button" data-open="timer" aria-label="Open details: Focus timer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" /></svg></button>
+          </header>
+          <div class="timer">
+            <svg class="timer__ring" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" class="timer__track" /><circle cx="60" cy="60" r="52" class="timer__fill" data-timer-ring /></svg>
+            <p class="timer__time" data-timer-time>25:00</p>
+          </div>
+          <div class="timer__ctrls">
+            <button class="chip-btn" type="button" data-timer-start>Start</button>
+            <button class="chip-btn" type="button" data-timer-reset>Reset</button>
+          </div>
+          <p class="visually-hidden" aria-live="polite" data-timer-status></p>
+        </article>
+
+        <!-- 9 Capture -->
+        <article class="tile tile--cap" data-tile="cap" data-pop aria-labelledby="t-cap">
+          <header class="tile__head">
+            <h3 id="t-cap">Quick capture</h3>
+            <button class="tile__open" type="button" data-open="cap" aria-label="Open details: Quick capture"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" /></svg></button>
+          </header>
+          <form class="capture" data-capture>
+            <label class="visually-hidden" for="capture-input">New note</label>
+            <input id="capture-input" name="note" type="text" maxlength="80" placeholder="Jot something down…" autocomplete="off" />
+            <button class="btn btn--primary btn--sm" type="submit">Add</button>
+          </form>
+          <ol class="capture__list" data-capture-list aria-label="Recent notes">
+            <li><span>Gulls arguing over a chip, use in ch. 4</span><time>09:12</time></li>
+            <li><span>Ask Mira about the 1950s ferry timetable</span><time>08:40</time></li>
+            <li><span>Title idea: “The Slow Crossing”</span><time>Mon</time></li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <!-- WORKFLOW (pinned, scrubbed) -->
+    <section class="flow" id="workflow" aria-labelledby="flow-title">
+      <div class="section-head">
+        <p class="eyebrow" data-pop="up">Workflow</p>
+        <h2 id="flow-title" data-split>From scrap to <em>stack</em>, in four moves.</h2>
+      </div>
+      <div class="flow__pin" data-flow>
+        <div class="flow__stage" aria-hidden="true">
+          <div class="note">
+            <div class="note__bar"><span></span><span></span><span></span></div>
+            <div class="scrap scrap--a">gulls &amp; chips</div>
+            <div class="scrap scrap--b">late ferry, 07:40</div>
+            <div class="scrap scrap--c">receipt → opening line</div>
+            <div class="outline">
+              <p class="outline__h">The Slow Crossing</p>
+              <p class="outline__l"><i></i>Opening: the receipt</p>
+              <p class="outline__l"><i></i>The ferry, late</p>
+              <p class="outline__l"><i></i>Gulls, a chip, an argument</p>
+            </div>
+            <svg class="links" viewBox="0 0 300 200" preserveAspectRatio="none"><path d="M168 50 C 188 50, 190 44, 206 44" /><path d="M168 80 C 192 80, 186 118, 206 118" /></svg>
+            <span class="linkchip linkchip--a">Harbour map</span>
+            <span class="linkchip linkchip--b">Gull notes</span>
+            <div class="published"><p>thequietcrossing.example.com</p><strong>The Slow Crossing</strong><span>1,204 words · 5 min read</span></div>
+          </div>
+          <span class="badge badge--flow1">+ 3 backlinks</span>
+          <span class="badge badge--flow2">Published ✓</span>
+        </div>
+        <ol class="flow__steps">
+          <li class="step"><span class="step__n">01</span><h3>Capture</h3><p>Scraps land in your inbox from any device, even offline. No folders to choose, no titles required.</p></li>
+          <li class="step"><span class="step__n">02</span><h3>Shape</h3><p>Drag scraps into an outline. Quillstack keeps the original fragment linked, so nothing is lost when you rewrite.</p></li>
+          <li class="step"><span class="step__n">03</span><h3>Link</h3><p>Type two brackets to link notes. Backlinks show where an idea has been before it reaches the page.</p></li>
+          <li class="step"><span class="step__n">04</span><h3>Publish</h3><p>Export clean Markdown, a PDF, or a simple web page with your own domain. The files stay yours.</p></li>
+        </ol>
+        <div class="flow__dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing" aria-labelledby="price-title">
+      <div class="section-head">
+        <p class="eyebrow" data-pop="up">Pricing</p>
+        <h2 id="price-title" data-split>Start free. Pay when it <em>sticks</em>.</h2>
+        <p class="section-head__lead" data-pop="up">Sample pricing for a fictional product, in US dollars.</p>
+      </div>
+      <div class="plans" data-pop-group>
+        <article class="plan" data-pop>
+          <h3>Pocket</h3>
+          <p class="plan__price"><strong>$0</strong> forever</p>
+          <ul><li>Unlimited notes on one device</li><li>Tags, backlinks, focus timer</li><li>Markdown export</li></ul>
+          <a class="btn btn--ghost" href="#download">Start with Pocket</a>
+        </article>
+        <article class="plan plan--pick" data-pop>
+          <span class="badge badge--plan" data-pop="badge" style="--pop-delay: 500ms">Our pick for solo writers</span>
+          <h3>Writer</h3>
+          <p class="plan__price"><strong>$6</strong> per month</p>
+          <ul><li>Sync across every device</li><li>Publish to a web page</li><li>Version history, 1 year</li><li>PDF and EPUB export</li></ul>
+          <a class="btn btn--primary" href="#download">Try Writer for 30 days</a>
+        </article>
+        <article class="plan" data-pop>
+          <h3>Studio</h3>
+          <p class="plan__price"><strong>$14</strong> per seat / month</p>
+          <ul><li>Shared stacks and comments</li><li>Editorial board view</li><li>Custom domains</li></ul>
+          <a class="btn btn--ghost" href="#download">Set up a studio</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section class="cta grain" id="download" aria-labelledby="cta-title">
+      <div class="cta__copy">
+        <h2 id="cta-title" data-split>Your next draft is already in your pocket.</h2>
+        <p data-pop="up">Download Quillstack for your desktop, or open the web app. Pocket is free for as long as you like.</p>
+        <div class="cta__btns" data-pop-group>
+          <a class="btn btn--light" data-pop href="https://example.com/quillstack/mac">Download for macOS</a>
+          <a class="btn btn--light" data-pop href="https://example.com/quillstack/windows">Download for Windows</a>
+          <a class="btn btn--outline-light" data-pop href="https://example.com/quillstack/web">Open the web app</a>
+        </div>
+      </div>
+      <figure class="fig cta__fig" data-slot="download-device" data-photo="" data-alt="Quillstack open on a laptop" style="--ar: 16 / 10; --fig-radius: 18px" data-pop>
+        <div class="fig__art laptop" role="img" aria-label="Illustration: a laptop showing the Quillstack editor with a sidebar of notes.">
+          <div class="laptop__screen">
+            <div class="laptop__side"><i></i><i></i><i class="on"></i><i></i><i></i></div>
+            <div class="laptop__doc"><b></b><i></i><i></i><i class="short"></i><i></i><i class="short"></i></div>
+          </div>
+        </div>
+      </figure>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <p class="brand brand--foot">Quillstack</p>
+      <p class="fine">Quillstack is a fictional product made for a design demo. Pricing, statistics and notes are sample content.</p>
+    </div>
+    <address>hello@example.com · (555) 555-0100<br />12 Pier Lane, Example Harbour</address>
+  </footer>
+
+  <dialog class="detail" data-detail aria-labelledby="detail-title">
+    <div class="detail__inner">
+      <button class="detail__close" type="button" data-close aria-label="Close details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg></button>
+      <p class="eyebrow" data-detail-kicker></p>
+      <h2 id="detail-title" data-detail-title></h2>
+      <p class="detail__lead" data-detail-lead></p>
+      <ul class="detail__list" data-detail-list></ul>
+    </div>
+  </dialog>
+</body>
+</html>
