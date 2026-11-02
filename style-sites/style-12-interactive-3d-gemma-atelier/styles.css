@@ -1,0 +1,106 @@
+/* Gemma Atelier — interactive 3D. Tokens on :root. */
+:root {
+  --velvet: #16120F;
+  --velvet-2: #221C18;
+  --ivory: #F3EDE4;     /* 16:1 */
+  --ivory-2: #B9AE9F;   /* 8.5:1 */
+  --gold: #CDAE6E;      /* 8.8:1 */
+  --emerald: #1F9A78;
+  --sapphire: #2F5FD0;
+  --ruby: #C2203F;
+
+  --serif: "Cormorant Garamond", Garamond, Georgia, serif;
+  --sans: "Jost", "Futura", "Segoe UI", sans-serif;
+  --t-small: 0.9375rem;
+  --t-body: 1.0625rem;
+  --t-h2: clamp(2.25rem, 1.6rem + 2.8vw, 4.25rem);
+  --t-h1: clamp(2.75rem, 1.6rem + 5vw, 6.5rem);
+
+  --gutter: clamp(1rem, 0.5rem + 3vw, 4rem);
+  --s-section: clamp(5rem, 3rem + 8vw, 11rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; }
+body { margin: 0; background: var(--velvet); color: var(--ivory); font: 400 var(--t-body)/1.65 var(--sans); overflow-x: clip; }
+h1, h2, p, ul, figure, fieldset, legend, address { margin: 0; }
+ul { padding: 0; list-style: none; }
+fieldset { border: 0; padding: 0; min-width: 0; }
+a { color: var(--gold); text-underline-offset: 3px; touch-action: manipulation; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+[id] { scroll-margin-top: 5rem; }
+.skip { position: absolute; left: var(--gutter); top: -4rem; background: var(--gold); color: var(--velvet); padding: 0.5rem 1rem; z-index: 50; }
+.skip:focus { top: 1rem; }
+
+.top { position: absolute; inset: 0 0 auto 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.25rem var(--gutter); }
+.brand { font: 500 1.5rem/1 var(--serif); letter-spacing: 0.04em; color: var(--ivory); text-decoration: none; }
+.top nav { display: none; }
+.top ul { display: flex; gap: 2rem; }
+.top nav a { color: var(--ivory-2); text-decoration: none; }
+.top nav a:hover { color: var(--ivory); }
+
+.btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 1.6rem; background: var(--gold); color: var(--velvet); text-decoration: none; font-weight: 500; letter-spacing: 0.02em; transition: transform 0.2s ease, opacity 0.2s ease; }
+.btn:hover { transform: translateY(-2px); }
+
+/* hero */
+.hero { min-height: 100svh; display: grid; gap: 2rem; padding: 6rem var(--gutter) 3rem; align-items: center; background: radial-gradient(60% 50% at 70% 45%, #2a211b 0%, var(--velvet) 70%); }
+h1 { font: 400 var(--t-h1)/0.98 var(--serif); letter-spacing: -0.01em; text-wrap: balance; max-width: 14ch; }
+.lede { max-width: 38ch; margin-top: 1.5rem; color: var(--ivory-2); font-size: 1.125rem; }
+.stone-pick { margin-top: 2rem; }
+.stone-pick legend { font-size: var(--t-small); color: var(--ivory-2); margin-bottom: 0.6rem; }
+.stone-pick__opts { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.stone-pick label { position: relative; }
+.stone-pick input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.stone-pick span { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1rem; min-height: 44px; border: 1px solid rgba(243, 237, 228, 0.35); border-radius: 999px; transition: border-color 0.2s ease; }
+.stone-pick input:checked + span { border-color: var(--gold); color: var(--gold); }
+.stone-pick input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 3px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; flex: none; }
+.dot--emerald { background: var(--emerald); } .dot--sapphire { background: var(--sapphire); } .dot--ruby { background: var(--ruby); }
+.hero__cta { margin-top: 2rem; }
+
+/* stage */
+.stage { position: relative; aspect-ratio: 1; width: min(100%, 38rem); justify-self: center; display: grid; place-items: center; }
+.gem-canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease; touch-action: pan-y; cursor: grab; }
+.gem-canvas:active { cursor: grabbing; }
+.stage.is-3d .gem-canvas { opacity: 1; }
+.stage.is-3d .css-gem { opacity: 0; }
+.stage__cap { position: absolute; bottom: 0; left: 0; right: 0; text-align: center; color: var(--ivory-2); font-size: var(--t-small); }
+.stage__hint { display: none; }
+.stage.is-3d .stage__hint { display: inline; }
+
+/* static CSS gem fallback */
+.css-gem { position: relative; width: 52%; aspect-ratio: 1 / 0.86; transition: opacity 0.6s ease; filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.6)); --g1: #7FE3C4; --g2: var(--emerald); --g3: #0B4A3A; }
+[data-stone="sapphire"] .css-gem { --g1: #9DB8FF; --g2: var(--sapphire); --g3: #12275E; }
+[data-stone="ruby"] .css-gem { --g1: #FF8FA3; --g2: var(--ruby); --g3: #5A0B1B; }
+.css-gem__crown { position: absolute; left: 0; right: 0; top: 0; height: 34%; clip-path: polygon(22% 0, 78% 0, 100% 100%, 0 100%); background: linear-gradient(100deg, var(--g1) 0 20%, var(--g2) 20% 40%, var(--g1) 40% 52%, var(--g3) 52% 70%, var(--g2) 70% 100%); }
+.css-gem__table { position: absolute; left: 30%; right: 30%; top: 0; height: 12%; background: linear-gradient(180deg, #fff9, transparent); clip-path: polygon(0 0, 100% 0, 92% 100%, 8% 100%); }
+.css-gem__pavilion { position: absolute; left: 0; right: 0; top: 34%; bottom: 0; clip-path: polygon(0 0, 100% 0, 50% 100%); background: conic-gradient(from 180deg at 50% 100%, var(--g3), var(--g2) 25%, var(--g1) 45%, var(--g3) 60%, var(--g2) 80%, var(--g3)); }
+
+/* features: alternating asymmetric */
+.feature { padding: var(--s-section) var(--gutter) 0; display: grid; gap: 2rem; align-items: center; }
+.feature__num { font: 400 clamp(5rem, 3rem + 10vw, 12rem)/0.8 var(--serif); color: var(--gold); }
+h2 { font: 400 var(--t-h2)/1.02 var(--serif); text-wrap: balance; max-width: 16ch; }
+.feature__text p { color: var(--ivory-2); max-width: 46ch; margin-top: 1.25rem; }
+.stones { margin-top: 1.5rem; display: grid; gap: 0.75rem; }
+.stones li { display: flex; gap: 0.75rem; align-items: baseline; color: var(--ivory-2); }
+.stones strong { color: var(--ivory); font-weight: 500; }
+address { font-style: normal; margin-top: 1.5rem; color: var(--ivory-2); line-height: 1.8; }
+.feature .btn { margin-top: 1.5rem; }
+.ph { aspect-ratio: 4 / 3; background: repeating-linear-gradient(135deg, rgba(205,174,110,.06) 0 14px, transparent 14px 28px), var(--velvet-2); border: 1px solid rgba(205, 174, 110, 0.35); display: grid; place-items: center; color: var(--ivory-2); font-size: var(--t-small); }
+.ph--tall { aspect-ratio: 3 / 4; }
+
+.foot { padding: var(--s-section) var(--gutter) 2.5rem; color: var(--ivory-2); font-size: var(--t-small); }
+.foot__name { font: 400 clamp(3rem, 1rem + 9vw, 10rem)/0.9 var(--serif); color: var(--ivory); margin-bottom: 1.5rem; }
+
+@media (min-width: 800px) {
+  .top nav { display: block; }
+  .hero { grid-template-columns: 1fr 1.1fr; }
+  .feature { grid-template-columns: auto 1fr 1fr; gap: 3rem; }
+  .feature--flip .ph { order: -1; }
+  .feature--flip { grid-template-columns: 1fr auto 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gem-canvas, .css-gem, .btn, .stone-pick span { transition: none; }
+  .btn:hover { transform: none; }
+}

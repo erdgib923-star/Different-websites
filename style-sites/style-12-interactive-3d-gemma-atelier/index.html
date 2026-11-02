@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gemma Atelier — coloured gemstones, cut and set by hand</title>
+  <meta name="description" content="Gemma Atelier is a fictional jewelry studio: emeralds, sapphires and rubies cut, set and finished by hand, made to measure by appointment.">
+  <meta name="theme-color" content="#16120F">
+  <meta name="color-scheme" content="dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <a class="brand" href="#top" translate="no">Gemma Atelier</a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#cut">The cut</a></li>
+        <li><a href="#stones">Stones</a></li>
+        <li><a href="#measure">Made to measure</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="h-hero">
+      <div class="hero__copy">
+        <h1 id="h-hero">Coloured stones, cut to catch the light</h1>
+        <p class="lede">Gemma Atelier cuts, sets and finishes emeralds, sapphires and rubies in one small workshop. Turn the stone: every facet is placed by hand.</p>
+        <fieldset class="stone-pick">
+          <legend>Choose a stone</legend>
+          <div class="stone-pick__opts">
+            <label><input type="radio" name="stone" value="emerald" checked><span><i class="dot dot--emerald" aria-hidden="true"></i>Emerald</span></label>
+            <label><input type="radio" name="stone" value="sapphire"><span><i class="dot dot--sapphire" aria-hidden="true"></i>Sapphire</span></label>
+            <label><input type="radio" name="stone" value="ruby"><span><i class="dot dot--ruby" aria-hidden="true"></i>Ruby</span></label>
+          </div>
+        </fieldset>
+        <p class="hero__cta"><a class="btn" href="#measure">Book a fitting</a></p>
+      </div>
+
+      <figure class="stage" id="stage" data-stone="emerald">
+        <!-- static CSS gem: shown without WebGL/JS, hidden once the 3D gem renders -->
+        <div class="css-gem" aria-hidden="true">
+          <span class="css-gem__crown"></span><span class="css-gem__table"></span><span class="css-gem__pavilion"></span>
+        </div>
+        <canvas id="gem-canvas" class="gem-canvas" role="img" aria-label="A brilliant-cut gemstone, rotating slowly. Move the pointer or drag to turn it."></canvas>
+        <figcaption class="stage__cap"><span id="stone-name">Emerald</span>, round brilliant cut. <span class="stage__hint">Drag or move to turn.</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="feature" id="cut" aria-labelledby="h-cut">
+      <div class="feature__num" aria-hidden="true">57</div>
+      <div class="feature__text">
+        <h2 id="h-cut">Fifty-seven facets, one pair of hands</h2>
+        <p>A round brilliant has fifty-seven facets. Ours are cut on a wheel in the workshop, one stone at a time, and checked under a loupe after every pass. A single stone can take two days.</p>
+      </div>
+      <div class="ph" role="img" aria-label="Photo placeholder: a gem cutter’s wheel with a stone held in a brass dop"><span>Photo placeholder</span></div>
+    </section>
+
+    <section class="feature feature--flip" id="stones" aria-labelledby="h-stones">
+      <div class="feature__num" aria-hidden="true">3</div>
+      <div class="feature__text">
+        <h2 id="h-stones">Three stones, chosen slowly</h2>
+        <p>We work only with emerald, sapphire and ruby, so we can know them well. Each stone comes with a card that records where it was mined, who cut it and how long it took.</p>
+        <ul class="stones">
+          <li><i class="dot dot--emerald" aria-hidden="true"></i><span><strong>Emerald</strong>, soft green with the inclusions we call its garden.</span></li>
+          <li><i class="dot dot--sapphire" aria-hidden="true"></i><span><strong>Sapphire</strong>, cornflower to midnight blue.</span></li>
+          <li><i class="dot dot--ruby" aria-hidden="true"></i><span><strong>Ruby</strong>, the deep red of pomegranate seeds.</span></li>
+        </ul>
+      </div>
+      <div class="ph ph--tall" role="img" aria-label="Photo placeholder: three loose stones on a folded paper parcel"><span>Photo placeholder</span></div>
+    </section>
+
+    <section class="feature" id="measure" aria-labelledby="h-measure">
+      <div class="feature__num" aria-hidden="true">1:1</div>
+      <div class="feature__text">
+        <h2 id="h-measure">Made to measure, by appointment</h2>
+        <p>Every ring is sized at a fitting in the studio and made for one hand. Rings start at $1,800 for a one-carat stone in recycled gold. Sample price.</p>
+        <address>
+          Gemma Atelier, 9 Sample Mews, Exampleton<br>
+          <a href="mailto:atelier@example.com?subject=Fitting%20appointment">atelier@example.com</a> · <a href="tel:+15550100">555-0100</a>
+        </address>
+        <p><a class="btn" href="mailto:atelier@example.com?subject=Fitting%20appointment">Book a fitting</a></p>
+      </div>
+      <div class="ph" role="img" aria-label="Photo placeholder: a gold ring with an emerald, resting on a ring sizer"><span>Photo placeholder</span></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p class="foot__name" translate="no">Gemma Atelier</p>
+    <p>Gemma Atelier is a fictional studio made for a design demo. Address, prices and process details are invented.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
