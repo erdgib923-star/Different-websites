@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fernfold Journeys · Slow woodland walks through four seasons</title>
+  <meta name="description" content="Small-group guided woodland walks in the Fernfold Valley, in every season. A fictional tour company for a design demo." />
+  <meta name="theme-color" content="#f6f1e2" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3L26 26H6z' fill='%232f5d3e'/%3E%3Cpath d='M16 10l6 16H10z' fill='%23d6b24a'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js'); }, 4000);
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="Fernfold Journeys home">
+      <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4L36 34H4z" class="m1" /><path d="M20 14l10 20H10z" class="m2" /><path d="M20 22l5 12H15z" class="m3" /></svg>
+      <span>Fernfold <em>Journeys</em></span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#walks">Walks</a></li>
+        <li><a href="#how">How it works</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--sm" href="#book">Book a walk</a>
+  </header>
+
+  <nav class="season-nav" aria-label="Seasons" data-season-nav>
+    <ul>
+      <li><a href="#spring" aria-current="true"><span class="leaf" style="--c: var(--spring-leaf)"></span>Spring</a></li>
+      <li><a href="#summer"><span class="leaf" style="--c: var(--summer-leaf)"></span>Summer</a></li>
+      <li><a href="#autumn"><span class="leaf" style="--c: var(--autumn-leaf)"></span>Autumn</a></li>
+      <li><a href="#winter"><span class="leaf" style="--c: var(--winter-front)"></span>Winter</a></li>
+    </ul>
+  </nav>
+
+  <main id="main">
+    <!-- HERO: eight paper layers, pinned "walk in" dive -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="valley grain" data-valley aria-hidden="true"></div>
+      <div class="hero__copy">
+        <p class="eyebrow" data-pop="up">Fernfold Valley · Guided woodland walks</p>
+        <h1 id="hero-title" data-split>Walk into the <em>fold</em>.</h1>
+        <p class="hero__lead" data-pop="up" style="--pop-delay: 420ms">Small-group walks through one quiet valley, in every season. Paper maps, an unhurried pace, and a guide who knows which stone is best for lunch.</p>
+        <div class="hero__ctas" data-pop="up" style="--pop-delay: 560ms">
+          <a class="btn" href="#walks">See the four walks</a>
+          <a class="btn btn--ghost" href="#book">Book a walk</a>
+        </div>
+      </div>
+      <p class="hero__caption" aria-hidden="true">Eight paper layers. Four seasons. <em>One slow path.</em></p>
+    </section>
+
+    <!-- WALKS -->
+    <section class="walks" id="walks" aria-labelledby="walks-title">
+      <header class="section-head">
+        <p class="eyebrow" data-pop="up">The four walks</p>
+        <h2 id="walks-title" data-split>One valley, <em>four</em> ways to see it.</h2>
+        <p class="section-head__lead" data-pop="up">Scroll on and the valley changes with you: fresh green, deep summer, copper, then snow. Prices are in US dollars per walker and, like the company, made up.</p>
+      </header>
+
+      <article class="walk" id="spring" aria-labelledby="w-spring">
+        <figure class="fig walk__fig season-spring" data-slot="walk-spring" data-photo="" data-alt="A creek path through young ferns in spring" style="--ar: 4 / 3; --fig-radius: 6px">
+          <div class="fig__art fold" data-scene="101" role="img" aria-label="Papercut diorama: spring hills, pine rows and unfurling ferns in fresh greens."></div>
+          <span class="tag" data-pop="badge">Ferns unfurling</span>
+        </figure>
+        <div class="walk__text">
+          <p class="eyebrow">Spring · March to May</p>
+          <h3 id="w-spring" data-split>The Fiddlehead Walk</h3>
+          <p data-pop="up">Follow the creek while the ferns are still coiled. Your guide points out the first violets, last year's woodpecker holes and the flattest stone for lunch.</p>
+          <dl class="facts" data-pop-group>
+            <div data-pop><dt>Distance</dt><dd>7 km</dd></div>
+            <div data-pop><dt>Time</dt><dd>4 hours</dd></div>
+            <div data-pop><dt>Level</dt><dd>Easy</dd></div>
+            <div data-pop><dt>Price</dt><dd>$48</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="walk walk--flip" id="summer" aria-labelledby="w-summer">
+        <figure class="fig walk__fig season-summer" data-slot="walk-summer" data-photo="" data-alt="A ridge path under a beech canopy in summer" style="--ar: 4 / 3; --fig-radius: 6px">
+          <div class="fig__art fold" data-scene="202" role="img" aria-label="Papercut diorama: summer ridge with deep green pines and a teal sky."></div>
+          <span class="tag" data-pop="badge">River swim stop</span>
+        </figure>
+        <div class="walk__text">
+          <p class="eyebrow">Summer · June to August</p>
+          <h3 id="w-summer" data-split>The Long Light Canopy Trail</h3>
+          <p data-pop="up">Climb to the ridge under a ceiling of beech leaves, then come down by the river while the evening light lasts until nine.</p>
+          <dl class="facts" data-pop-group>
+            <div data-pop><dt>Distance</dt><dd>11 km</dd></div>
+            <div data-pop><dt>Time</dt><dd>6 hours</dd></div>
+            <div data-pop><dt>Level</dt><dd>Moderate</dd></div>
+            <div data-pop><dt>Price</dt><dd>$64</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="walk" id="autumn" aria-labelledby="w-autumn">
+        <figure class="fig walk__fig season-autumn" data-slot="walk-autumn" data-photo="" data-alt="A copper-coloured ridge in autumn" style="--ar: 4 / 3; --fig-radius: 6px">
+          <div class="fig__art fold" data-scene="303" role="img" aria-label="Papercut diorama: autumn hills in copper and ochre with a warm sky."></div>
+          <span class="tag" data-pop="badge">Hot cider stop</span>
+        </figure>
+        <div class="walk__text">
+          <p class="eyebrow">Autumn · September to November</p>
+          <h3 id="w-autumn" data-split>The Ember Ridge Loop</h3>
+          <p data-pop="up">The valley turns copper from the top down. We walk the ridge first, then drop into the warm hollow for cider and roasted chestnuts.</p>
+          <dl class="facts" data-pop-group>
+            <div data-pop><dt>Distance</dt><dd>9 km</dd></div>
+            <div data-pop><dt>Time</dt><dd>5 hours</dd></div>
+            <div data-pop><dt>Level</dt><dd>Moderate</dd></div>
+            <div data-pop><dt>Price</dt><dd>$58</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="walk walk--flip" id="winter" aria-labelledby="w-winter">
+        <figure class="fig walk__fig season-winter" data-slot="walk-winter" data-photo="" data-alt="A snowy hollow with snowshoe tracks" style="--ar: 4 / 3; --fig-radius: 6px">
+          <div class="fig__art fold" data-scene="404" role="img" aria-label="Papercut diorama: winter valley in pale blue-greys with snow-covered ferns."></div>
+          <span class="tag" data-pop="badge">Snowshoes included</span>
+        </figure>
+        <div class="walk__text">
+          <p class="eyebrow">Winter · December to February</p>
+          <h3 id="w-winter" data-split>The Hush Hollow Snowshoe</h3>
+          <p data-pop="up">Fresh snow, a silent valley and tracks to read. Snowshoes, poles and a flask of something hot are part of the walk.</p>
+          <dl class="facts" data-pop-group>
+            <div data-pop><dt>Distance</dt><dd>6 km</dd></div>
+            <div data-pop><dt>Time</dt><dd>4 hours</dd></div>
+            <div data-pop><dt>Level</dt><dd>Easy</dd></div>
+            <div data-pop><dt>Price</dt><dd>$72</dd></div>
+          </dl>
+        </div>
+      </article>
+    </section>
+
+    <!-- HOW -->
+    <section class="how" id="how" aria-labelledby="how-title">
+      <span class="paper-leaf paper-leaf--a" data-scrub="parallax" data-speed="-0.5" aria-hidden="true"></span>
+      <span class="paper-leaf paper-leaf--b" data-scrub="parallax" data-speed="0.4" aria-hidden="true"></span>
+      <header class="section-head">
+        <p class="eyebrow" data-pop="up">How a walk works</p>
+        <h2 id="how-title" data-split>Slow on purpose.</h2>
+      </header>
+      <ol class="how__steps" data-pop-group>
+        <li class="paper-card" data-pop><span class="num">1</span><h3>Meet at the old mill</h3><p>Park by the water wheel at 9:00. Tea is on, boots are checked, and everyone gets the day's folded paper map.</p></li>
+        <li class="paper-card" data-pop><span class="num">2</span><h3>Walk at the slowest pace</h3><p>Eight walkers at most. We stop whenever someone spots something, which is often the point of the walk.</p></li>
+        <li class="paper-card" data-pop><span class="num">3</span><h3>Keep the map</h3><p>Your map is stamped with the date, the season and anything we found. Many walkers bring theirs back next season.</p></li>
+      </ol>
+    </section>
+
+    <!-- BOOK -->
+    <section class="book" id="book" aria-labelledby="book-title">
+      <div class="book__panel grain">
+        <div class="book__intro">
+          <h2 id="book-title" data-split>Save a place on the path.</h2>
+          <p data-pop="up">This booking form is part of a demo: nothing is sent and no one is charged.</p>
+        </div>
+        <form class="book__form" data-book novalidate>
+          <div class="field"><label for="b-name">Your name</label><input id="b-name" name="name" autocomplete="name" required /></div>
+          <div class="field"><label for="b-email">Email</label><input id="b-email" name="email" type="email" autocomplete="email" required /></div>
+          <div class="field"><label for="b-walk">Walk</label>
+            <select id="b-walk" name="walk" required>
+              <option value="">Choose a walk</option>
+              <option>The Fiddlehead Walk (spring)</option>
+              <option>The Long Light Canopy Trail (summer)</option>
+              <option>The Ember Ridge Loop (autumn)</option>
+              <option>The Hush Hollow Snowshoe (winter)</option>
+            </select>
+          </div>
+          <div class="field"><label for="b-size">Walkers</label><input id="b-size" name="size" type="number" min="1" max="8" value="2" required /></div>
+          <button class="btn btn--light" type="submit">Request a place</button>
+          <p class="form-msg" role="status" data-book-msg></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Fernfold Journeys</strong> is a fictional company, and the Fernfold Valley is an invented place. Walks, prices and details are sample content.</p>
+    <address>walks@example.com · (555) 555-0100 · The Old Mill, 1 Weir Lane, Example Valley</address>
+  </footer>
+</body>
+</html>
