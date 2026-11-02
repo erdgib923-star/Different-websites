@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pixel Hollow · A cozy farming game</title>
+  <meta name="description" content="Pixel Hollow is a cozy pixel-art farming game about a quiet valley, slow seasons and a very busy chicken. A fictional game for a design demo." />
+  <meta name="theme-color" content="#1c1a2e" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Crect width='8' height='8' fill='%231c1a2e'/%3E%3Cpath d='M3 6h2v1H3zM3 2h1v4H3zM2 1h1v2H2zM4 1h2v1H4z' fill='%2366c247'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js'); }, 4000);
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <canvas class="world" data-world aria-hidden="true"></canvas>
+  <noscript><div class="world world--static"></div></noscript>
+
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="Pixel Hollow home"><span class="logo__mark" aria-hidden="true"></span><span>Pixel Hollow</span></a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#season">A season</a></li>
+        <li><a href="#play">Play</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--sun btn--sm" href="#wishlist">Wishlist</a>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="panel hero__panel">
+        <p class="kicker" data-pop>A cozy farming game · Coming spring 2027</p>
+        <h1 id="hero-title" class="title" data-split="chars">Pixel Hollow</h1>
+        <p class="hero__lead" data-pop style="--pop-delay: 520ms">Inherit a tumbledown farm at the bottom of a quiet valley. Plant forty kinds of crops, befriend twelve neighbours and one very busy chicken, and watch the hollow change with every season. Scroll down and the day goes by.</p>
+        <div class="hero__ctas" data-pop style="--pop-delay: 640ms">
+          <a class="btn btn--sun" href="#wishlist">Wishlist the game</a>
+          <a class="btn btn--grass" href="#play">Play the seed game</a>
+        </div>
+        <div class="walker" aria-hidden="true"><span class="walker__sprite" data-walker></span></div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="features" aria-labelledby="feat-title">
+      <div class="panel panel--wide">
+        <h2 id="feat-title" data-split>What you'll do in the hollow</h2>
+        <ul class="feat-list" data-pop-group>
+          <li class="feat" data-pop><canvas class="icon" data-icon="crop" aria-hidden="true"></canvas><h3>Grow forty crops</h3><p>From turnips to moonmelons. Each one has its own season, quirks and favourite neighbour.</p></li>
+          <li class="feat" data-pop><canvas class="icon" data-icon="chicken" aria-hidden="true"></canvas><h3>Raise a flock</h3><p>Chickens with opinions. Feed them, name them, and follow them when they wander off at dusk.</p></li>
+          <li class="feat" data-pop><canvas class="icon" data-icon="farmer" aria-hidden="true"></canvas><h3>No fail states</h3><p>Crops never die from neglect, they just wait. Play for ten minutes or ten hours.</p></li>
+          <li class="feat" data-pop><canvas class="icon" data-icon="house" aria-hidden="true"></canvas><h3>Fix up the farm</h3><p>Patch the roof, paint the door, build a porch big enough for the whole valley.</p></li>
+        </ul>
+        <div class="shots">
+          <figure class="fig shot" data-slot="screenshot-farm" data-photo="" data-alt="Screenshot: the farm at sunset" style="--ar: 16 / 9; --fig-radius: 0" data-pop>
+            <div class="fig__art"><canvas class="shot__canvas" data-shot="dusk" role="img" aria-label="Pixel-art scene: the farmhouse and crop rows at sunset."></canvas></div>
+            <figcaption>The farm at sunset</figcaption>
+          </figure>
+          <figure class="fig shot" data-slot="screenshot-night" data-photo="" data-alt="Screenshot: the orchard at night" style="--ar: 16 / 9; --fig-radius: 0" data-pop>
+            <div class="fig__art"><canvas class="shot__canvas" data-shot="night" role="img" aria-label="Pixel-art scene: the orchard and fence under a night sky."></canvas></div>
+            <figcaption>The orchard at night</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- A SEASON (pinned crop growth) -->
+    <section class="season" id="season" aria-labelledby="season-title">
+      <div class="panel panel--wide season__pin" data-season>
+        <div class="season__head">
+          <h2 id="season-title" data-split>One season, one field</h2>
+          <p class="season__day" aria-hidden="true"><span data-day>Day 1</span></p>
+        </div>
+        <div class="season__stage" aria-hidden="true">
+          <canvas class="field" data-field></canvas>
+          <span class="coin-badge" data-coin="0">+12 coins</span>
+          <span class="coin-badge coin-badge--2" data-coin="1">Level up!</span>
+        </div>
+        <ol class="season__steps">
+          <li class="step"><b>Day 1</b> Seeds go in. The chicken supervises.</li>
+          <li class="step"><b>Day 4</b> First sprouts. Water them in the morning, before the crows.</li>
+          <li class="step"><b>Day 7</b> Leaves everywhere. The neighbours start asking questions.</li>
+          <li class="step"><b>Day 10</b> Harvest! Sell at the Sunday market, or cook something for the mayor.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- PLAY -->
+    <section class="play" id="play" aria-labelledby="play-title">
+      <div class="panel panel--wide game" data-game>
+        <div class="game__head">
+          <h2 id="play-title" data-split>Collect the seeds</h2>
+          <p>You have 30 seconds. Catch falling seeds with the farmer; the ones you miss sprout where they land. Use ← → or A / D, the arrow buttons, or tap either side of the field.</p>
+        </div>
+        <div class="game__hud" aria-hidden="true">
+          <span>Seeds <b data-score>0</b></span><span>Time <b data-time>30</b></span><span>Best <b data-best>0</b></span>
+        </div>
+        <div class="game__stage" tabindex="0" data-stage role="application" aria-label="Seed game. Arrow keys or A and D move the farmer. Space starts or pauses.">
+          <canvas aria-hidden="true"></canvas>
+        </div>
+        <div class="game__controls">
+          <button type="button" class="btn btn--wood pad" data-left aria-label="Move left (press and hold)">◀</button>
+          <button type="button" class="btn btn--sun" data-start>Start</button>
+          <button type="button" class="btn btn--wood pad" data-right aria-label="Move right (press and hold)">▶</button>
+        </div>
+        <p class="visually-hidden" aria-live="polite" data-live></p>
+        <noscript><p class="noscript-note">The seed game needs JavaScript.</p></noscript>
+      </div>
+    </section>
+
+    <!-- WISHLIST -->
+    <section class="wishlist" id="wishlist" aria-labelledby="wish-title">
+      <div class="panel panel--dusk">
+        <h2 id="wish-title" data-split>Save a spot in the valley</h2>
+        <p data-pop>Pixel Hollow is a made-up game for a design demo, so there is no store page. This button writes to a placeholder address instead.</p>
+        <a class="btn btn--sun" href="mailto:hello@example.com?subject=Pixel%20Hollow" data-pop>Email hello@example.com</a>
+        <p class="press-start" aria-hidden="true">PRESS START</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Pixel Hollow is a fictional game by a fictional studio, Lanternbug Games, (555) 555-0100. Every sprite on this page is drawn from code arrays in a 16-colour palette.</p>
+  </footer>
+</body>
+</html>
