@@ -96,6 +96,19 @@ npm run contrast
 ## Swap in your own photos
 The six library tiles are image slots (`pattern-gelato` … `pattern-midnight`, 1:1). Set `data-photo="assets/images/<file>"` to show a photo of a real installation instead of the generated tile. See [`public/assets/README.md`](public/assets/README.md).
 
+## Verification (what was actually run)
+- `npm run build` passes; `npm run contrast`: 13/13 pairs pass.
+- Headless Chromium at 375, 768 and 1440 px, with screenshots at 0/25/50/75/100%:
+  - no console errors, no failed or external requests, one h1, no horizontal scroll;
+  - axe-core: 0 violations;
+  - reduced-motion, no-JS and `?nosda` passes: nothing left hidden.
+- Generator probe:
+  - With "Show tile edges" on, the repeated preview shows chips and squiggles continuing across every seam (checked visually in a screenshot).
+  - "Load in generator" on Disco Lobby set seed 5150 and the Night palette.
+  - Export SVG downloaded `terrazzo-night-5150.svg` (17 KB, 87 paths, hex colours only, no `lab()`/`oklch()`).
+- The audit found nothing that needed fixing.
+- **Not tested:** opening the exported SVG in design software (it is plain SVG 1.1 paths, circles and fills), Safari and Firefox, and screen readers.
+
 ## Notes and decisions
 - Built in `style-sites-2/` of `erdgib923-star/different-websites` instead of its own repo: `gh` was not authenticated and repo creation was unavailable. Split later with `publish-repos.sh`.
 - Brand check (web search, 2026-11-02): no studio called "Terrazzo Lab" found.
