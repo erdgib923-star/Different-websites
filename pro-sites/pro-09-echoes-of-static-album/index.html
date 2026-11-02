@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Echoes of Static — Low Orbit Radio (fictional band, demo)</title>
+    <meta name="description" content="Album microsite for Echoes of Static, a fictional band. The music is generated live in your browser with Web Audio, starting only when you press play." />
+    <meta name="theme-color" content="#1d1416" />
+    <script>
+      (function (d) {
+        var h = d.documentElement;
+        h.classList.add('js');
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('reduced');
+        setTimeout(function () {
+          if (!h.classList.contains('motion-ready')) h.classList.remove('js');
+        }, 4000);
+      })(document);
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <canvas id="viz" class="viz" aria-hidden="true"></canvas>
+
+    <header class="top">
+      <a class="top__logo" href="#top">Echoes of Static</a>
+      <nav aria-label="Primary"><a href="#tracks">Tracks</a> <a href="#tour">Tour</a></nav>
+    </header>
+
+    <main id="main">
+      <!-- ============ HERO ============ -->
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <p class="kicker" data-fade>The new album</p>
+        <h1 id="hero-title" class="hero__title" data-split="intro">Echoes of Static</h1>
+        <p class="hero__album" data-fade><em>Low Orbit Radio</em> · six tracks · out now</p>
+        <div class="hero__cta" data-fade>
+          <button type="button" class="play-big" id="play-big"><span class="play-big__icon" aria-hidden="true">▶</span><span class="play-big__label">Press play</span></button>
+          <p class="hero__note">The music is generated live in your browser with Web Audio oscillators. Nothing streams and nothing plays until you press play. Mute any time from the player bar.</p>
+        </div>
+      </section>
+
+      <!-- ============ PINNED: the album in six colours (scrubbed) ============ -->
+      <section class="spectrum" id="spectrum" aria-labelledby="spectrum-title">
+        <div class="spectrum__inner">
+          <h2 id="spectrum-title" class="h2">Six tracks, six colours</h2>
+          <p class="spectrum__text">Each song has its own colour at the same brightness. As you scroll, the whole page drifts from one to the next.</p>
+          <ol class="swatches" aria-label="Track colours">
+            <li style="--sh: 20"><span>01</span></li>
+            <li style="--sh: 80"><span>02</span></li>
+            <li style="--sh: 140"><span>03</span></li>
+            <li style="--sh: 200"><span>04</span></li>
+            <li style="--sh: 260"><span>05</span></li>
+            <li style="--sh: 320"><span>06</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============ TRACK CHAPTERS ============ -->
+      <section class="tracks" id="tracks" aria-label="Tracklist">
+        <article class="track" data-track="0" data-hue="20">
+          <figure class="media track__art" data-slot="art-carrier-wave" data-clip="center" role="img" aria-label="Generated cover art for Carrier Wave" style="--ar: 1 / 1; --h: 20"><div class="media__art cover" data-seed="3"></div></figure>
+          <div class="track__text">
+            <p class="track__n">01 · 4:12</p>
+            <h2 class="track__title" data-split="scroll">Carrier Wave</h2>
+            <p data-fade>Written on a long drive, with the radio stuck between stations. A slow D-minor pulse under a hiss that never quite resolves.</p>
+            <button type="button" class="track__play" data-play="0" data-fade>Play “Carrier Wave”</button>
+          </div>
+        </article>
+        <article class="track" data-track="1" data-hue="80">
+          <figure class="media track__art" data-slot="art-dial-tone-bloom" data-clip="center" role="img" aria-label="Generated cover art for Dial Tone Bloom" style="--ar: 1 / 1; --h: 80"><div class="media__art cover" data-seed="7"></div></figure>
+          <div class="track__text">
+            <p class="track__n">02 · 3:38</p>
+            <h2 class="track__title" data-split="scroll">Dial Tone Bloom</h2>
+            <p data-fade>The brightest thing we have made. A lydian melody that keeps reaching up a half-step further than you expect.</p>
+            <button type="button" class="track__play" data-play="1" data-fade>Play “Dial Tone Bloom”</button>
+          </div>
+        </article>
+        <article class="track" data-track="2" data-hue="140">
+          <figure class="media track__art" data-slot="art-night-bus-static" data-clip="center" role="img" aria-label="Generated cover art for Night Bus Static" style="--ar: 1 / 1; --h: 140"><div class="media__art cover" data-seed="11"></div></figure>
+          <div class="track__text">
+            <p class="track__n">03 · 5:01</p>
+            <h2 class="track__title" data-split="scroll">Night Bus Static</h2>
+            <p data-fade>Half-time drums and too many hi-hats, like a bus engine idling under sodium lights at the last stop.</p>
+            <button type="button" class="track__play" data-play="2" data-fade>Play “Night Bus Static”</button>
+          </div>
+        </article>
+        <article class="track" data-track="3" data-hue="200">
+          <figure class="media track__art" data-slot="art-glass-antenna" data-clip="center" role="img" aria-label="Generated cover art for Glass Antenna" style="--ar: 1 / 1; --h: 200"><div class="media__art cover" data-seed="17"></div></figure>
+          <div class="track__text">
+            <p class="track__n">04 · 3:56</p>
+            <h2 class="track__title" data-split="scroll">Glass Antenna</h2>
+            <p data-fade>The fast one. Sine-wave arpeggios in dorian, ringing like cold glass tapped with a spoon.</p>
+            <button type="button" class="track__play" data-play="3" data-fade>Play “Glass Antenna”</button>
+          </div>
+        </article>
+        <article class="track" data-track="4" data-hue="260">
+          <figure class="media track__art" data-slot="art-undertow-fm" data-clip="center" role="img" aria-label="Generated cover art for Undertow FM" style="--ar: 1 / 1; --h: 260"><div class="media__art cover" data-seed="23"></div></figure>
+          <div class="track__text">
+            <p class="track__n">05 · 6:20</p>
+            <h2 class="track__title" data-split="scroll">Undertow FM</h2>
+            <p data-fade>No hi-hats at all. Just a heartbeat kick and a wide, slow pad that pulls everything under.</p>
+            <button type="button" class="track__play" data-play="4" data-fade>Play “Undertow FM”</button>
+          </div>
+        </article>
+        <article class="track" data-track="5" data-hue="320">
+          <figure class="media track__art" data-slot="art-last-broadcast" data-clip="center" role="img" aria-label="Generated cover art for Last Broadcast" style="--ar: 1 / 1; --h: 320"><div class="media__art cover" data-seed="29"></div></figure>
+          <div class="track__text">
+            <p class="track__n">06 · 4:44</p>
+            <h2 class="track__title" data-split="scroll">Last Broadcast</h2>
+            <p data-fade>The closing track and the only one in a major key, signing off before the transmitter goes quiet.</p>
+            <button type="button" class="track__play" data-play="5" data-fade>Play “Last Broadcast”</button>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============ TOUR ============ -->
+      <section class="tour" id="tour" aria-labelledby="tour-title">
+        <h2 id="tour-title" class="h2" data-split="scroll">Low Orbit tour</h2>
+        <p class="tour__note" data-fade>Fictional dates at fictional venues. There are no real tickets.</p>
+        <ul class="dates">
+          <li data-pop><time datetime="2027-03-04">04 Mar 2027</time><span class="dates__city">Port Selby</span><span class="dates__venue">The Signal Box</span><span class="dates__state">Sample date</span></li>
+          <li data-pop><time datetime="2027-03-06">06 Mar 2027</time><span class="dates__city">Nordhaven</span><span class="dates__venue">Kaiplatz Hall</span><span class="dates__state">Sample date</span></li>
+          <li data-pop><time datetime="2027-03-09">09 Mar 2027</time><span class="dates__city">Eastwold</span><span class="dates__venue">Foundry Yard</span><span class="dates__state">Sample date</span></li>
+          <li data-pop><time datetime="2027-03-12">12 Mar 2027</time><span class="dates__city">Saltmere</span><span class="dates__venue">Quayside Rooms</span><span class="dates__state">Sample date</span></li>
+          <li data-pop><time datetime="2027-03-15">15 Mar 2027</time><span class="dates__city">Greywater</span><span class="dates__venue">The Old Glasshouse</span><span class="dates__state">Sample date</span></li>
+          <li data-pop><time datetime="2027-03-18">18 Mar 2027</time><span class="dates__city">Port Calder</span><span class="dates__venue">Kiln Row Theatre</span><span class="dates__state">Sample date</span></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Echoes of Static is a fictional band made for a design demo. All music on this page is generated live by code: no samples, recordings, lyrics or copyrighted material. Tour dates, venues and track lengths are sample content. Contact: band@example.com · 555-0100.</p>
+    </footer>
+
+    <!-- ============ PLAYER BAR (always visible) ============ -->
+    <div class="player" role="region" aria-label="Music player">
+      <button type="button" class="player__btn player__play" id="pp" aria-label="Play">▶</button>
+      <button type="button" class="player__btn" id="prev" aria-label="Previous track">⏮</button>
+      <button type="button" class="player__btn" id="next" aria-label="Next track">⏭</button>
+      <p class="player__now" aria-live="polite"><span class="player__n" id="now-n">01</span> <span id="now-title">Carrier Wave</span> <span class="player__state" id="now-state">· stopped</span></p>
+      <label class="player__follow"><input type="checkbox" id="follow" checked /> Follow scroll</label>
+      <button type="button" class="player__btn player__mute" id="mute" aria-pressed="false">Mute</button>
+      <label class="player__vol"><span class="sr-only">Volume</span><input type="range" id="vol" min="0" max="100" value="70" /></label>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
