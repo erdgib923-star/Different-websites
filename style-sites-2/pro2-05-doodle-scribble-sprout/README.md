@@ -110,6 +110,18 @@ npm run contrast
 ## Swap in your own photos
 `hero-drawing` (5:4) is the image slot. Set `data-photo="assets/images/<file>"` and the photo replaces the hand-drawn doodle. See [`public/assets/README.md`](public/assets/README.md). Only use photos of children with their guardians' consent.
 
+## Verification (what was actually run)
+- `npm run build` passes; `npm run contrast`: 22/22 pairs pass.
+- Headless Chromium at 375, 768 and 1440 px, with screenshots at 0/25/50/75/100%:
+  - no console errors, no failed or external requests, one h1, no horizontal scroll;
+  - axe-core: 0 violations;
+  - reduced-motion, no-JS and `?nosda` passes: nothing left hidden.
+- Playground probe: a mouse-drawn line, a red surprise squiggle, arrow-key colour selection (focus and `aria-checked` moved to "Green marker") and undo all worked; the status line updated.
+- Fixed after the first audit:
+  - Marker strokes looked beaded because each segment's round caps multiplied over each other. Strokes now composite once per line.
+  - In the pinned drawing, leaf and flower fills appeared before their outlines; fills now fade in with each stage.
+- **Not tested:** real touch and stylus input (pressure handling is untested on hardware), the PNG download in a real browser, Safari and Firefox, and screen readers.
+
 ## Notes and decisions
 - Built in `style-sites-2/` of `erdgib923-star/different-websites` instead of its own repo: `gh` was not authenticated and repo creation was unavailable. Split later with `publish-repos.sh`.
 - Brand check (web search, 2026-11-02): no "Scribble & Sprout" found. Similar names exist (Scribble & Scribe, Scribbles & Strokes), so the name was kept as is.

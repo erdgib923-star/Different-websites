@@ -35,35 +35,46 @@ export function initPlayground() {
   const say = (msg: string) => { status.textContent = msg; };
   const dims = () => ({ w: canvas.width / dpr, h: canvas.height / dpr });
 
+  // Each stroke is drawn opaque into a scratch buffer, then composited once with multiply, so a
+  // marker line has even colour along its length and only darkens where *different* lines cross.
+  const scratch = document.createElement('canvas');
+  const sctx = scratch.getContext('2d')!;
+
   function drawStroke(s: Stroke, upto = s.pts.length) {
     const { w, h } = dims();
     const pts = s.pts.slice(0, upto);
     if (!pts.length) return;
+    if (scratch.width !== canvas!.width || scratch.height !== canvas!.height) { scratch.width = canvas!.width; scratch.height = canvas!.height; }
+    sctx.setTransform(1, 0, 0, 1, 0, 0);
+    sctx.clearRect(0, 0, scratch.width, scratch.height);
+    sctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     const pencil = s.color === 'graphite';
-    ctx!.save();
-    ctx!.globalCompositeOperation = pencil ? 'source-over' : 'multiply';
-    ctx!.strokeStyle = css(s.color, pencil ? 0.85 : 0.92);
-    ctx!.fillStyle = ctx!.strokeStyle;
-    ctx!.lineCap = 'round';
-    ctx!.lineJoin = 'round';
+    sctx.strokeStyle = sctx.fillStyle = css(s.color);
+    sctx.lineCap = 'round';
+    sctx.lineJoin = 'round';
     const scale = Math.min(w, h) / 600;
     if (pts.length === 1) {
-      ctx!.beginPath();
-      ctx!.arc(pts[0][0] * w, pts[0][1] * h, (s.size * scale * pts[0][2]) / 2, 0, Math.PI * 2);
-      ctx!.fill();
+      sctx.beginPath();
+      sctx.arc(pts[0][0] * w, pts[0][1] * h, (s.size * scale * pts[0][2]) / 2, 0, Math.PI * 2);
+      sctx.fill();
     } else {
       // Quadratic curves through midpoints give a smooth, marker-like line.
       for (let i = 1; i < pts.length; i++) {
         const [x0, y0] = pts[i - 1], [x1, y1, p] = pts[i];
         const mx0 = i > 1 ? (pts[i - 2][0] + x0) / 2 : x0, my0 = i > 1 ? (pts[i - 2][1] + y0) / 2 : y0;
         const mx1 = (x0 + x1) / 2, my1 = (y0 + y1) / 2;
-        ctx!.lineWidth = Math.max(1, s.size * scale * p);
-        ctx!.beginPath();
-        ctx!.moveTo(mx0 * w, my0 * h);
-        ctx!.quadraticCurveTo(x0 * w, y0 * h, mx1 * w, my1 * h);
-        ctx!.stroke();
+        sctx.lineWidth = Math.max(1, s.size * scale * p);
+        sctx.beginPath();
+        sctx.moveTo(mx0 * w, my0 * h);
+        sctx.quadraticCurveTo(x0 * w, y0 * h, mx1 * w, my1 * h);
+        sctx.stroke();
       }
     }
+    ctx!.save();
+    ctx!.setTransform(1, 0, 0, 1, 0, 0);
+    ctx!.globalCompositeOperation = pencil ? 'source-over' : 'multiply';
+    ctx!.globalAlpha = pencil ? 0.85 : 0.92;
+    ctx!.drawImage(scratch, 0, 0);
     ctx!.restore();
   }
 

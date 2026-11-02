@@ -28,7 +28,7 @@ function initJourney() {
     const stages = [1, 2, 3, 4].map((n) => q(`.s${n} path`));
     const steps = q('.step');
     const stickers = q('[data-sticker]');
-    gsap.set(stages.flat(), { strokeDasharray: 1, strokeDashoffset: 1 });
+    gsap.set(stages.flat(), { strokeDasharray: 1, strokeDashoffset: 1, fillOpacity: 0 });
     gsap.set(stickers, { autoAlpha: 0, scale: 0.3, rotation: -20 });
     if (wide) {
       sec.classList.add('is-pinned');
@@ -41,7 +41,8 @@ function initJourney() {
         : { trigger: q('.journey__art')[0], start: 'top 80%', end: 'bottom 20%', scrub: 0.6 },
     });
     stages.forEach((paths, i) => {
-      tl.to(paths, { strokeDashoffset: 0, duration: 0.8, stagger: 0.15 }, i);
+      tl.to(paths, { strokeDashoffset: 0, duration: 0.8, stagger: 0.15 }, i)
+        .to(paths, { fillOpacity: 1, duration: 0.3 }, i + 0.6);
       if (wide && i > 0) {
         tl.to(steps[i - 1], { autoAlpha: 0, y: -24, duration: 0.3 }, i - 0.05)
           .to(steps[i], { autoAlpha: 1, y: 0, duration: 0.3 }, i + 0.15);

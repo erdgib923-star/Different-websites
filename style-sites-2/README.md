@@ -26,3 +26,4 @@ All brands, people, addresses, phone numbers and data are fictional.
 | 2 | `pro2-02-claymorphism-mochi-money` | Mochi Money, kids' savings app |
 | 3 | `pro2-03-papercut-fernfold` | Fernfold Journeys, woodland tours |
 | 4 | `pro2-04-risograph-inkpress` | Inkpress Collective, risograph print studio |
+| 5 | `pro2-05-doodle-scribble-sprout` | Scribble & Sprout, kids' drawing classes |
