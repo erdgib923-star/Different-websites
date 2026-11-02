@@ -57,14 +57,15 @@ export function initBooking() {
       const inRange = checkIn && checkOut && d > checkIn && d < checkOut;
       const booked = isBooked(d) && d >= today;
       const state = d < today ? ', past' : booked ? ', booked (sample)' : sel ? ', selected' : ', available';
-      html += `<td role="gridcell"><button type="button" class="day${inRange ? ' in-range' : ''}" data-date="${key(d)}" tabindex="${same(d, focusDate) ? 0 : -1}" aria-selected="${sel}" aria-label="${label(d)}${state}"${disabled(d) ? ' disabled' : ''}${booked ? ' data-booked' : ''}${same(d, today) ? ' data-today aria-current="date"' : ''}>${day}</button></td>`;
+      // unavailable days use aria-disabled (still focusable, so arrow keys can travel across them)
+      html += `<td role="gridcell" aria-selected="${sel}"><button type="button" class="day${inRange ? ' in-range' : ''}${sel ? ' is-selected' : ''}" data-date="${key(d)}" tabindex="${same(d, focusDate) ? 0 : -1}" aria-label="${label(d)}${state}"${disabled(d) ? ' aria-disabled="true"' : ''}${booked ? ' data-booked' : ''}${same(d, today) ? ' data-today aria-current="date"' : ''}>${day}</button></td>`;
     }
     const tail = (7 - ((lead + daysIn) % 7)) % 7;
     for (let i = 0; i < tail; i++) html += '<td></td>';
     body.innerHTML = html + '</tr>';
-    // disabled buttons can't take focus: keep a focusable day in the tab order
-    if (!body.querySelector('button[tabindex="0"]:not(:disabled)')) {
-      const firstOk = body.querySelector<HTMLButtonElement>('button:not(:disabled)');
+    // the focused date may sit in another month: keep one day of this month in the tab order
+    if (!body.querySelector('button[tabindex="0"]')) {
+      const firstOk = body.querySelector<HTMLButtonElement>('button:not([aria-disabled])') ?? body.querySelector<HTMLButtonElement>('button');
       if (firstOk) {
         firstOk.tabIndex = 0;
         const [y, m, dd] = firstOk.dataset.date!.split('-').map(Number);
@@ -94,12 +95,16 @@ export function initBooking() {
       checkIn = d;
       checkOut = null;
     } else {
-      // a stay may not span a booked-out night
-      for (let x = addDays(checkIn, 1); x < d; x = addDays(x, 1)) {
-        if (isBooked(x)) {
-          msg.textContent = `${short(x)} is booked in this sample calendar. Choose an earlier departure or new dates.`;
-          return;
-        }
+      // a stay may not span a booked-out night: start a new arrival from this date instead
+      let blocked: Date | null = null;
+      for (let x = addDays(checkIn, 1); x < d && !blocked; x = addDays(x, 1)) if (isBooked(x)) blocked = x;
+      if (blocked) {
+        checkIn = d;
+        checkOut = null;
+        focusDate = d;
+        render(true);
+        msg.textContent = `${short(blocked)} is booked in this sample calendar, so ${short(d)} is now your arrival. Pick a departure.`;
+        return;
       }
       checkOut = d;
     }
@@ -122,9 +127,14 @@ export function initBooking() {
 
   body.addEventListener('click', (e) => {
     const b = (e.target as Element).closest<HTMLButtonElement>('button.day');
-    if (!b || b.disabled) return;
+    if (!b) return;
     const [y, m, d] = b.dataset.date!.split('-').map(Number);
-    select(new Date(y, m - 1, d));
+    const date = new Date(y, m - 1, d);
+    if (b.getAttribute('aria-disabled') === 'true') {
+      msg.textContent = `${short(date)} is ${date < today ? 'in the past' : 'booked in this sample calendar'}.`;
+      return;
+    }
+    select(date);
   });
   body.addEventListener('keydown', (e) => {
     const map: Record<string, () => Date> = {
