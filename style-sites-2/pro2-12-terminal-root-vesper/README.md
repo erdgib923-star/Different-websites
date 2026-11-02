@@ -102,6 +102,22 @@ To add a command, add an entry to `COMMANDS` in `src/terminal.ts`; it appears in
 ## Swap in your own photos
 This site has **no image slots** (the brief said imagery was "none needed"). See [`public/assets/README.md`](public/assets/README.md) for how to add a portrait if you want one.
 
+## Verification (what was actually run)
+- `npm run build` passes; `npm run contrast`: 20/20 pairs pass (10 per theme).
+- Headless Chromium at 375, 768 and 1440 px, with screenshots at 0/25/50/75/100%:
+  - no console errors, no failed or external requests, one h1, no horizontal scroll;
+  - axe-core: 0 violations;
+  - reduced-motion, no-JS and `?nosda` passes: nothing left hidden.
+- Terminal probe at 1440 px:
+  - [ skip boot ] enabled the prompt;
+  - Tab completed `proj` → `projects ` and `projects lan` → `projects lanternfish`;
+  - `theme amber` switched the palette (`html[data-theme="amber"]`);
+  - an unknown command printed a red "command not found";
+  - ↑ recalled the last command;
+  - `plain` hid the terminal and moved focus to the readme heading.
+- The audit found nothing that needed fixing.
+- **Not tested:** screen-reader announcement of the `role="log"` output (only the markup was checked), mobile soft keyboards with Tab completion (there is no Tab key on most phones; commands still work by typing them in full), Safari and Firefox.
+
 ## Notes and decisions
 - Built in `style-sites-2/` of `erdgib923-star/different-websites` instead of its own repo: `gh` was not authenticated and repo creation was unavailable. Split later with `publish-repos.sh`.
 - Brand check (web search, 2026-11-02): no "root@vesper" portfolio found; "Vesper" is used by unrelated products (an iOS Python app, a VS Code theme).
