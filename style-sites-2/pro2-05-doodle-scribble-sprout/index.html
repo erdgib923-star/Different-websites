@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scribble &amp; Sprout · Drawing classes for kids</title>
+  <meta name="description" content="Small, messy, joyful drawing classes for kids aged 4 to 11. A fictional studio for a design demo." />
+  <meta name="theme-color" content="#fcfbf6" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 28V14' stroke='%233a9a52' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M16 18c-6-1-9-5-8-9 5 0 8 4 8 9zM16 14c5-1 8-4 8-8-5 0-8 3-8 8z' fill='%233a9a52'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js'); }, 4000);
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
+    <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="n" /><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" /></filter>
+  </svg>
+
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="Scribble and Sprout home">
+      <svg class="logo__mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 42c-1-8 1-15 0-24" class="lm-stem" /><path d="M23 30c-9-1-14-7-12-14 8 0 12 6 12 14z" class="lm-leaf" /><path d="M25 22c8-1 12-7 11-13-8 0-11 6-11 13z" class="lm-leaf" /><path d="M8 44c6-3 10 2 16-1s10 2 16-1" class="lm-ground" /></svg>
+      <span>Scribble <span class="amp">&amp;</span> Sprout</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#playground">Playground</a></li>
+        <li><a href="#grownups">For grown-ups</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--blue btn--sm" href="#signup">Save a spot</a>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__copy">
+        <p class="kicker" data-pop="up">Drawing classes for kids aged 4 to 11</p>
+        <h1 id="hero-title" class="hero__title" data-split>Every scribble is a <span class="hl">start</span>.</h1>
+        <svg class="underline draw-now" viewBox="0 0 320 24" aria-hidden="true"><path pathLength="1" d="M4 14c40-8 80-6 120-3s90 4 130-2c20-3 40-4 60 0" /><path pathLength="1" d="M60 20c50-4 120-3 200-6" style="--i: 1" /></svg>
+        <p class="hero__lead" data-pop="up" style="--pop-delay: 520ms">Small, messy, joyful drawing classes in a sunny room above the bakery. No talent required, no wrong answers, and every child goes home with a sketchbook that's all their own.</p>
+        <div class="hero__ctas" data-pop="up" style="--pop-delay: 640ms">
+          <a class="btn btn--red" href="#classes">See the classes</a>
+          <a class="btn" href="#playground">Doodle with us</a>
+        </div>
+      </div>
+
+      <figure class="fig hero__fig" data-slot="hero-drawing" data-photo="" data-alt="Children drawing together at a big table" style="--ar: 5 / 4; --fig-radius: 14px; --fig-placeholder: var(--paper)">
+        <div class="fig__art doodle-art" role="img" aria-label="A child's marker drawing: a sprout with two leaves and a red flower grows from a blue pot, under a yellow sun and a puffy cloud.">
+          <svg viewBox="0 0 400 320" class="draw-now" aria-hidden="true">
+            <g class="d-graphite"><path pathLength="1" style="--i:0" d="M40 82c4-22 26-26 38-14 8-18 34-18 40 2 20-4 30 14 18 26-6 10-24 10-32 4-12 12-34 12-42 0-20 6-32-6-22-18z" /></g>
+            <g class="d-yellow"><path pathLength="1" style="--i:1" d="M304 62c0-16 12-26 26-26s27 11 27 26-12 27-27 27-26-12-26-27z" />
+              <path pathLength="1" style="--i:2" d="M330 22v-12M366 36l9-8M372 64h12M294 36l-9-8M288 64h-12M330 102v12M362 92l8 9M298 92l-8 9" /></g>
+            <g class="d-blue fill-later"><path pathLength="1" style="--i:3" d="M122 222c2 26 8 52 14 78 42 9 86 9 128 0 7-26 12-52 16-78-52-7-106-7-158 0z" /></g>
+            <g class="d-graphite"><path pathLength="1" style="--i:4" d="M118 222c56-10 110-10 164 0" /></g>
+            <g class="d-green"><path pathLength="1" style="--i:5" d="M200 218c-4-34 8-62 0-112" />
+              <path pathLength="1" style="--i:6" d="M199 168c-36-6-58-30-52-58 28 2 48 26 52 58z" />
+              <path pathLength="1" style="--i:7" d="M202 138c32-8 56-34 52-62-28 0-48 26-52 62z" /></g>
+            <g class="d-red"><path pathLength="1" style="--i:8" d="M200 106c-10-2-20-12-16-22 4-12 22-10 24 0 6-10 22-8 22 4 2 12-14 18-30 18z" />
+              <path pathLength="1" style="--i:9" d="M196 90c3 2 6 2 8 0" /></g>
+            <g class="d-graphite"><path pathLength="1" style="--i:10" d="M26 302c22-8 38 6 60 0s38-8 58 0 40 6 60 0 40-8 60 0 40 6 60-2" /></g>
+          </svg>
+        </div>
+        <span class="sticker sticker--star" data-pop="badge" style="--pop-delay: 1400ms" aria-hidden="true"><svg viewBox="0 0 60 60"><path d="M30 6l7 15 17 2-12 12 3 17-15-8-15 8 3-17L6 23l17-2z" /></svg></span>
+        <span class="sticker sticker--note" data-pop="badge" style="--pop-delay: 1600ms">Ages 4–11 · max 8 per class</span>
+      </figure>
+    </section>
+
+    <!-- CLASSES -->
+    <section class="classes" id="classes" aria-labelledby="classes-title">
+      <header class="section-head">
+        <p class="kicker" data-pop="up">Classes this term</p>
+        <h2 id="classes-title" data-split>Pick a table, grab a marker.</h2>
+        <p class="lead" data-pop="up">Ten-week terms, all materials included. Prices are sample prices, in US dollars, for the whole term.</p>
+      </header>
+      <ul class="notes" data-pop-group>
+        <li class="note note--yellow" data-pop="badge">
+          <svg class="note__icon draw-view" viewBox="0 0 80 60" aria-hidden="true"><path pathLength="1" d="M10 40c10-20 20-20 30 0s20 20 30 0" /><path pathLength="1" d="M14 50c18-6 36-6 52 0" /></svg>
+          <h3>Tiny Scribblers</h3>
+          <p class="note__meta">Ages 4–6 · Saturdays 9:30</p>
+          <p>Big crayons, big paper, big stories. We draw what we hear, smell and dream.</p>
+          <p class="note__price">$140 / term</p>
+        </li>
+        <li class="note note--blue" data-pop="badge">
+          <svg class="note__icon draw-view" viewBox="0 0 80 60" aria-hidden="true"><path pathLength="1" d="M8 8h28v22H8zM44 8h28v22H44zM8 36h64v18H8z" /><path pathLength="1" d="M18 22c4-6 8-6 12 0" /></svg>
+          <h3>Comic Lab</h3>
+          <p class="note__meta">Ages 7–9 · Tuesdays 4:00</p>
+          <p>Panels, speech bubbles and silly heroes. Each child finishes a four-page comic.</p>
+          <p class="note__price">$160 / term</p>
+        </li>
+        <li class="note note--green" data-pop="badge">
+          <svg class="note__icon draw-view" viewBox="0 0 80 60" aria-hidden="true"><path pathLength="1" d="M40 54c-2-14 2-28 0-44" /><path pathLength="1" d="M40 34c-14-2-22-10-20-22 12 2 18 10 20 22zM41 26c12-2 18-10 18-20-12 0-17 9-18 20z" /></svg>
+          <h3>Nature Sketchbook</h3>
+          <p class="note__meta">Ages 8–11 · Wednesdays 4:00</p>
+          <p>We take clipboards to the park next door and draw leaves, bugs and clouds from life.</p>
+          <p class="note__price">$160 / term</p>
+        </li>
+        <li class="note note--pink" data-pop="badge">
+          <svg class="note__icon draw-view" viewBox="0 0 80 60" aria-hidden="true"><path pathLength="1" d="M14 46c6-24 18-34 26-34s20 10 26 34" /><path pathLength="1" d="M30 30c2 2 4 2 6 0M44 30c2 2 4 2 6 0M34 40c4 4 8 4 12 0" /></svg>
+          <h3>Big Draw Saturday</h3>
+          <p class="note__meta">All ages, grown-ups too · Saturdays 1:00</p>
+          <p>One giant roll of paper across the floor. Families draw a whole town together.</p>
+          <p class="note__price">$12 / visit</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- HOW A CLASS GOES (pinned, strokes drawn by scroll) -->
+    <section class="journey" id="journey" aria-labelledby="journey-title">
+      <header class="section-head">
+        <p class="kicker" data-pop="up">How a class goes</p>
+        <h2 id="journey-title" data-split>From squiggle to show-and-tell.</h2>
+      </header>
+      <div class="journey__pin" data-journey>
+        <div class="journey__art" aria-hidden="true">
+          <svg viewBox="0 0 400 420">
+            <g class="stage s1 d-graphite"><path pathLength="1" d="M40 380c10-30 40-30 40 0s30 30 40 0 30-30 40 0 30 30 40 0 30-30 40 0 30 30 40 0" /><path pathLength="1" d="M60 350c20-12 30 12 50 0s30-12 50 0" /></g>
+            <g class="stage s2 d-blue"><path pathLength="1" d="M120 300c2 22 6 44 12 66 46 8 92 8 136 0 6-22 10-44 12-66-54-6-106-6-160 0z" /><path pathLength="1" d="M300 70c0-18 14-30 30-30s31 13 31 30-14 31-31 31-30-13-30-31z" /></g>
+            <g class="stage s3 d-green"><path pathLength="1" d="M200 298c-4-40 8-80 0-150" /><path pathLength="1" d="M199 236c-40-6-64-34-58-66 32 2 54 30 58 66z" /><path pathLength="1" d="M202 196c36-8 62-38 58-70-32 0-54 30-58 70z" /></g>
+            <g class="stage s4 d-red"><path pathLength="1" d="M200 150c-16-2-30-18-24-34 6-18 32-14 36 0 8-16 32-12 32 6 4 18-20 28-44 28z" /><path pathLength="1" d="M120 70c30-10 60-10 90 4" /><path pathLength="1" d="M60 60h44M82 38v44" /></g>
+          </svg>
+          <span class="sticker sticker--gold" data-sticker="1">Gold star!</span>
+          <span class="sticker sticker--wow" data-sticker="2">WOW</span>
+        </div>
+        <ol class="journey__steps">
+          <li class="step"><span class="step__n">1</span><h3>Warm-up squiggles</h3><p>Five minutes of loops, zig-zags and spirals, eyes closed for the brave. It loosens hands and silences the "I can't draw" voice.</p></li>
+          <li class="step"><span class="step__n">2</span><h3>Shapes become things</h3><p>A circle becomes a sun, a box becomes a pot. Kids learn that every drawing is built from shapes they already know.</p></li>
+          <li class="step"><span class="step__n">3</span><h3>Add a story</h3><p>What grows in the pot? Who lives under the leaf? We add details by asking questions, not by correcting lines.</p></li>
+          <li class="step"><span class="step__n">4</span><h3>Show and tell</h3><p>Everyone pins up their page and says one thing they like about a friend's. Then it goes home in the sketchbook.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- PLAYGROUND -->
+    <section class="playground" id="playground" aria-labelledby="pg-title">
+      <header class="section-head">
+        <p class="kicker" data-pop="up">Playground</p>
+        <h2 id="pg-title" data-split>Go on, make a mark.</h2>
+        <p class="lead" data-pop="up">Draw with a mouse, finger or stylus. No keyboard drawing? Press "Surprise squiggle" and we'll draw one for you. Nothing you draw leaves this page.</p>
+      </header>
+      <div class="pg" data-pg>
+        <div class="pg__tools" role="toolbar" aria-label="Drawing tools">
+          <div class="pg__group" role="radiogroup" aria-label="Marker colour">
+            <button type="button" class="swatch" role="radio" aria-checked="true" data-color="marker-blue" aria-label="Blue marker" style="--c: var(--marker-blue)"></button>
+            <button type="button" class="swatch" role="radio" aria-checked="false" data-color="marker-red" aria-label="Red marker" style="--c: var(--marker-red)"></button>
+            <button type="button" class="swatch" role="radio" aria-checked="false" data-color="marker-green" aria-label="Green marker" style="--c: var(--marker-green)"></button>
+            <button type="button" class="swatch" role="radio" aria-checked="false" data-color="marker-yellow" aria-label="Yellow marker" style="--c: var(--marker-yellow)"></button>
+            <button type="button" class="swatch" role="radio" aria-checked="false" data-color="graphite" aria-label="Pencil" style="--c: var(--graphite)"></button>
+          </div>
+          <div class="pg__group" role="radiogroup" aria-label="Marker size">
+            <button type="button" class="size" role="radio" aria-checked="false" data-size="4" aria-label="Thin"><i style="--s: 6px"></i></button>
+            <button type="button" class="size" role="radio" aria-checked="true" data-size="10" aria-label="Medium"><i style="--s: 12px"></i></button>
+            <button type="button" class="size" role="radio" aria-checked="false" data-size="22" aria-label="Chunky"><i style="--s: 20px"></i></button>
+          </div>
+          <div class="pg__group pg__actions">
+            <button type="button" class="tool" data-act="squiggle">Surprise squiggle</button>
+            <button type="button" class="tool" data-act="undo">Undo</button>
+            <button type="button" class="tool" data-act="clear">Clear</button>
+            <button type="button" class="tool tool--save" data-act="save">Save PNG</button>
+          </div>
+        </div>
+        <div class="pg__paper">
+          <canvas data-pg-canvas aria-label="Drawing area. Draw with a pointer, or use the Surprise squiggle button." role="img"></canvas>
+          <p class="pg__hint" data-pg-hint aria-hidden="true">draw here!</p>
+        </div>
+        <p class="visually-hidden" role="status" data-pg-status></p>
+        <noscript><p class="noscript-note">The playground needs JavaScript to draw.</p></noscript>
+      </div>
+    </section>
+
+    <!-- GROWN-UPS -->
+    <section class="grownups" id="grownups" aria-labelledby="gu-title">
+      <svg class="flyer flyer--plane" data-scrub="parallax" data-speed="-0.6" viewBox="0 0 120 80" aria-hidden="true"><path d="M6 40l108-32-40 64-14-22zM60 50l54-42" /><path d="M2 60c14 6 26 2 38-4" class="dash" /></svg>
+      <svg class="flyer flyer--cloud" data-scrub="parallax" data-speed="0.45" viewBox="0 0 140 80" aria-hidden="true"><path d="M20 60c-14-2-16-22 0-26 0-18 24-26 36-12 8-16 34-14 38 4 20-2 30 18 18 30-6 6-16 6-22 4H20z" /></svg>
+      <header class="section-head">
+        <p class="kicker" data-pop="up">For grown-ups</p>
+        <h2 id="gu-title" data-split>Good to know before day one.</h2>
+      </header>
+      <dl class="faq" data-pop-group>
+        <div class="faq__item" data-pop><dt>What should they bring?</dt><dd>Just clothes that can get a little inky. Every marker, crayon and sketchbook is included.</dd></div>
+        <div class="faq__item" data-pop><dt>How big are classes?</dt><dd>Eight children at most, with one teacher and one helper in every class.</dd></div>
+        <div class="faq__item" data-pop><dt>Can I stay and watch?</dt><dd>For Tiny Scribblers, yes, there are grown-up chairs at the back. Older groups tend to draw more freely on their own.</dd></div>
+        <div class="faq__item" data-pop><dt>What if they miss a week?</dt><dd>Drop in to Big Draw Saturday that weekend instead, free of charge.</dd></div>
+      </dl>
+    </section>
+
+    <!-- SIGN UP -->
+    <section class="signup" id="signup" aria-labelledby="su-title">
+      <div class="signup__card">
+        <h2 id="su-title" data-split>Save a spot at the table.</h2>
+        <p data-pop="up">This is a demo studio, so nothing is sent. The form still checks itself.</p>
+        <form class="signup__form" data-signup novalidate>
+          <div class="field"><label for="su-email">Grown-up's email</label><input id="su-email" name="email" type="email" autocomplete="email" required /></div>
+          <div class="field"><label for="su-class">Class</label>
+            <select id="su-class" name="klass" required>
+              <option value="">Choose a class</option>
+              <option>Tiny Scribblers (4–6)</option>
+              <option>Comic Lab (7–9)</option>
+              <option>Nature Sketchbook (8–11)</option>
+              <option>Big Draw Saturday (all ages)</option>
+            </select>
+          </div>
+          <button class="btn btn--red" type="submit">Save my spot</button>
+          <p class="form-msg" role="status" data-signup-msg></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Scribble &amp; Sprout</strong> is a fictional studio made up for a design demo. Classes, prices and the address are invented.</p>
+    <address>hello@example.com · (555) 555-0100 · Upstairs at 9 Bakery Lane, Example Town</address>
+  </footer>
+</body>
+</html>
