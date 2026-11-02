@@ -146,7 +146,7 @@ export function anomalyHexes(r = 22) {
   for (let row = 0, y = r; y < H + r; row++, y += dy) {
     for (let x = (row % 2 ? dx / 2 : 0); x < W + dx; x += dx) {
       if (height(x, y) > -0.25) continue;
-      const v = -0.9 + 2.6 * (x / W) + 0.9 * Math.sin(y / 90) - 0.25 * Math.max(0, -height(x, y) - 1.5) + (rr() - 0.5) * 0.7;
+      const v = 0.2 + 2.2 * (x / W) + 0.9 * Math.sin(y / 90) - 0.25 * Math.max(0, -height(x, y) - 1.5) + (rr() - 0.5) * 0.7;
       out.push({ x, y, v: +v.toFixed(1) });
     }
   }

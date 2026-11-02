@@ -57,9 +57,11 @@
       <section class="scrolly" aria-label="The atlas">
         <div class="panel" aria-live="off">
           <div class="panel__frame">
-            <div class="panel__map"><!--BASEMAP--></div>
-            <div class="panel__legend" id="legend" aria-hidden="true"></div>
-            <div class="panel__year" id="year" aria-hidden="true"></div>
+            <div class="panel__map">
+              <!--BASEMAP-->
+              <div class="panel__legend" id="legend" aria-hidden="true"></div>
+              <div class="panel__year" id="year" aria-hidden="true"></div>
+            </div>
             <div class="panel__inset" id="inset" aria-hidden="true"></div>
           </div>
           <div class="tooltip" id="tooltip" role="status" hidden></div>
@@ -111,7 +113,7 @@
               <p class="chapter">Chapter 4</p>
               <h2 data-split="scroll">Warming water</h2>
               <p>Each hexagon is a patch of sea, coloured by how far its surface temperature sits from a fictional 1991–2020 baseline. Blue is cooler, coral is warmer, and grey is within ±0.3 °C.</p>
-              <p>Across {{STAT:ZONES}} zones, the mean anomaly is <strong>+{{STAT:ANOM}} °C</strong>, highest in the shallow eastern bay.</p>
+              <p>Across {{STAT:ZONES}} zones, the mean anomaly is <strong>{{STAT:ANOM}} °C</strong>, highest in the shallow eastern bay.</p>
             </div>
           </article>
 
@@ -120,7 +122,7 @@
             <div class="step__card step__card--sticky">
               <p class="chapter">Chapter 5</p>
               <h2 data-split="scroll">A shore in retreat</h2>
-              <p>Keep scrolling to move the year from 1950 to 2025. The dashed coral line is where the shore stood that year, and the blue line is where it is now. The bars show what each segment has lost or gained.</p>
+              <p>Keep scrolling to move the year from 1950 to 2025. The dashed coral line is the shore in 1950, and the blue line follows it through time. The bars show what each segment has lost or gained since 1950.</p>
               <label class="timeline">
                 <span>Year <output id="year-out" for="year-range">1950</output></span>
                 <input id="year-range" type="range" min="1950" max="2025" step="5" value="1950" />
@@ -137,7 +139,7 @@
               <p>Put the chapters together and the reach starts to make sense. A shallow shelf, a big tide and warming water work on a soft shore. Segment {{STAT:WORST_SEG}} has lost <strong>{{STAT:WORST}} m</strong> since 1950.</p>
               <ul class="stats">
                 <li class="stat" data-pop><span class="stat__v">{{STAT:WORST}} m</span><span>lost at segment {{STAT:WORST_SEG}} since 1950</span></li>
-                <li class="stat" data-pop><span class="stat__v">+{{STAT:ANOM}} °C</span><span>mean sea-surface anomaly</span></li>
+                <li class="stat" data-pop><span class="stat__v">{{STAT:ANOM}} °C</span><span>mean sea-surface anomaly</span></li>
                 <li class="stat" data-pop><span class="stat__v">{{STAT:RANGE}} m</span><span>tidal range, sample weekend</span></li>
               </ul>
               <p class="note">All figures are synthetic sample data.</p>

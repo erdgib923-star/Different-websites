@@ -15,7 +15,7 @@ function atlasStatic(): Plugin {
       const worst = sc.reduce((a: { m: number }, b: { m: number }) => (b.m > a.m ? b : a));
       const stats: Record<string, string> = {
         RANGE: (Math.max(...t) - Math.min(...t)).toFixed(1),
-        ANOM: (hex.reduce((a: number, b: number) => a + b, 0) / hex.length).toFixed(1),
+        ANOM: (() => { const m = hex.reduce((a: number, b: number) => a + b, 0) / hex.length; return (m >= 0 ? '+' : '−') + Math.abs(m).toFixed(1); })(),
         WORST: String(worst.m),
         WORST_SEG: worst.s,
         ZONES: String(hex.length),

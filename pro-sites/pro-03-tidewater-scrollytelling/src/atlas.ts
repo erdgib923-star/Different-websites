@@ -64,9 +64,9 @@ export function initAtlas() {
   const changes: { segment: string; values: { year: number; m: number }[] }[] = G.shoreChange();
   const segLen = coast.length / changes.length;
   const lineBasis = line<Pt>().curve(curveBasis);
-  const nowLine = shoreG.append('path').attr('d', lineBasis(coast)).attr('fill', 'none').attr('stroke', css('brand-600')).attr('stroke-width', 3);
+  // dashed coral = the 1950 shore (fixed); solid blue = the shore in the selected year
   const pastLine = shoreG.append('path').attr('fill', 'none').attr('stroke', css('accent-500')).attr('stroke-width', 3).attr('stroke-dasharray', '7 6');
-  void nowLine;
+  const nowLine = shoreG.append('path').attr('fill', 'none').attr('stroke', css('brand-600')).attr('stroke-width', 3);
   shoreG
     .selectAll('text')
     .data(changes)
@@ -117,11 +117,12 @@ export function initAtlas() {
   const valueLabels = insetSvg.append('g').attr('font-size', 12).attr('font-family', 'var(--font-sans)').attr('fill', css('text'));
 
   let currentYear = 1950;
+  // (pastLine is drawn once offsetAt() exists, below)
   const yearOut = document.querySelector<HTMLOutputElement>('#year-out')!;
   const range = document.querySelector<HTMLInputElement>('#year-range')!;
   function setYear(year: number) {
     currentYear = year;
-    pastLine.attr('d', lineBasis(offsetAt(year)));
+    nowLine.attr('d', lineBasis(offsetAt(year)));
     yearEl.textContent = String(year);
     yearOut.textContent = String(year);
     range.value = String(year);
@@ -143,6 +144,7 @@ export function initAtlas() {
       .text((v) => `${v.m > 0 ? '−' : '+'}${Math.abs(v.m)} m`);
   }
   range.addEventListener('input', () => setYear(Number(range.value)));
+  pastLine.attr('d', lineBasis(offsetAt(1950)));
   setYear(1950);
 
   // ---------- tide chart (shares the SVG; the coastline morphs into the curve) ----------
@@ -237,18 +239,18 @@ export function initAtlas() {
   const legends: Record<string, string> = {
     depth: `<strong>Water depth</strong><div class="legend__row">${DEPTH_FILLS.map((c: string) => `<span style="background:${c}"></span>`).join('')}</div><div class="legend__ticks"><span>0 m</span><span>29 m+</span></div>`,
     temp: `<strong>Surface temperature anomaly</strong><div class="legend__row">${DIV.map((c) => `<span style="background:${c}"></span>`).join('')}</div><div class="legend__ticks"><span>−1.5 °C</span><span>0</span><span>+1.5 °C</span></div>`,
-    shore: `<strong>Shoreline</strong><div class="legend__ticks" style="gap:1rem;justify-content:flex-start"><span><svg width="26" height="8"><line x1="0" x2="26" y1="4" y2="4" stroke="var(--brand-600)" stroke-width="3"/></svg> 2025</span><span><svg width="26" height="8"><line x1="0" x2="26" y1="4" y2="4" stroke="var(--accent-500)" stroke-width="3" stroke-dasharray="7 6"/></svg> selected year</span></div>`,
+    shore: `<strong>Shoreline</strong><div class="legend__ticks" style="gap:1rem;justify-content:flex-start"><span><svg width="26" height="8"><line x1="0" x2="26" y1="4" y2="4" stroke="var(--brand-600)" stroke-width="3"/></svg> selected year</span><span><svg width="26" height="8"><line x1="0" x2="26" y1="4" y2="4" stroke="var(--accent-500)" stroke-width="3" stroke-dasharray="7 6"/></svg> 1950</span></div>`,
   };
   let currentLegend = '';
   function showLegend(key: string) {
     if (key === currentLegend) return;
     currentLegend = key;
     if (!key) {
-      gsap.to(legend, { autoAlpha: 0, duration: 0.3 * D });
+      gsap.to(legend, { autoAlpha: 0, duration: 0.3 * D, overwrite: true });
       return;
     }
     legend.innerHTML = legends[key];
-    gsap.fromTo(legend, { autoAlpha: 0, y: 12, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.6 * D, ease: EASE.pop });
+    gsap.fromTo(legend, { autoAlpha: 0, y: 12, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.6 * D, ease: EASE.pop, overwrite: true });
   }
 
   // ---------- view box ----------
@@ -257,6 +259,8 @@ export function initAtlas() {
     gsap.to(vb, { ...to, duration: 1.2 * D, ease: EASE.inOut, overwrite: true, onUpdate: () => svgEl.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.w} ${vb.h}`) });
   const FULL = { x: 0, y: 0, w: G.W, h: G.H };
   const ESTUARY = { x: 160, y: 60, w: 400, h: 300 };
+
+  const mobile = () => window.matchMedia('(max-width: 899px)').matches;
 
   // ---------- state machine ----------
   let state: State | '' = '';
@@ -280,7 +284,7 @@ export function initAtlas() {
     hit.style('pointer-events', isTide ? 'all' : 'none');
     // coastline ⇄ tide curve morph
     if (isTide) {
-      gsap.set(morphPath.node(), { opacity: 1 });
+      gsap.to(morphPath.node(), { opacity: 1, duration: 0.2 * D, overwrite: 'auto' });
       gsap.to(morph, { t: 1, duration: 1.4 * D, ease: EASE.inOut, onUpdate: drawMorph, overwrite: true });
     } else if (morph.t > 0) {
       gsap.to(morph, { t: 0, duration: 1 * D, ease: EASE.inOut, onUpdate: drawMorph, overwrite: true, onComplete: () => fade(morphPath.node(), 0, 0.4) });
@@ -291,7 +295,7 @@ export function initAtlas() {
     fade(yearEl, next === 'shore' ? 1 : 0, 0.4);
     inset.classList.toggle('is-on', next === 'shore' || next === 'end');
     fade(inset, next === 'shore' || next === 'end' ? 1 : 0, 0.5);
-    if (next === 'end') setYear(1950);
+    if (next === 'end') setYear(2025);
     hideTip();
     ScrollTrigger.refresh();
   }
@@ -303,8 +307,8 @@ export function initAtlas() {
   document.querySelectorAll<HTMLElement>('.step').forEach((step) => {
     ScrollTrigger.create({
       trigger: step,
-      start: 'top 55%',
-      end: 'bottom 55%',
+      start: () => (mobile() ? 'top 15%' : 'top 55%'),
+      end: () => (mobile() ? 'bottom 15%' : 'bottom 55%'),
       onEnter: () => go(step.dataset.state as State),
       onEnterBack: () => go(step.dataset.state as State),
     });

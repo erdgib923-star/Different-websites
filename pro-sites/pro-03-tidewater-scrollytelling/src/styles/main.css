@@ -219,7 +219,10 @@ h2 {
   width: 100%;
   max-width: 920px;
 }
-.panel__map svg {
+.panel__map {
+  position: relative;
+}
+.panel__map > svg {
   width: 100%;
   height: auto;
   border-radius: 8px;
@@ -289,22 +292,32 @@ h2 {
   }
 }
 @media (max-width: 899px) {
+  /* phone: the map sits at the top of a full-height sticky panel; cards scroll in below it */
   .panel {
-    height: 62svh;
-    padding: 3.5rem 0.75rem 0.5rem;
+    height: 100svh;
+    align-items: flex-start;
+    padding: 3.6rem 0.75rem 0;
   }
   .steps {
-    margin-top: -20svh;
+    margin-top: -100svh;
   }
   .step {
-    align-items: flex-end;
-    min-height: 90svh;
+    min-height: 100svh;
+    align-items: flex-start;
+    padding-top: 60svh;
   }
   .step--long {
     min-height: 240svh;
   }
   .step__card--sticky {
-    top: 64svh;
+    position: static;
+  }
+  .step__card {
+    padding: 1.1rem 1.25rem;
+    font-size: 0.97rem;
+  }
+  .step__card .note {
+    display: none;
   }
 }
 
@@ -392,6 +405,18 @@ h2 {
   font-size: 12px;
   opacity: 0;
 }
+@media (max-width: 560px) {
+  .panel__legend {
+    left: 6px;
+    bottom: 6px;
+    padding: 0.35rem 0.5rem;
+    font-size: 11px;
+  }
+  .legend__row span {
+    width: 18px;
+    height: 9px;
+  }
+}
 .legend__row {
   display: flex;
   gap: 2px;
@@ -416,9 +441,11 @@ h2 {
   font-size: clamp(2rem, 5vw, 3.6rem);
   font-style: italic;
   color: var(--night-text);
+  background: var(--night);
+  padding: 0 0.6rem;
+  border-radius: 6px;
   opacity: 0;
   font-variant-numeric: tabular-nums;
-  text-shadow: 0 1px 12px rgb(13 34 57 / 0.6);
 }
 .panel__inset {
   margin-top: 0.5rem;
