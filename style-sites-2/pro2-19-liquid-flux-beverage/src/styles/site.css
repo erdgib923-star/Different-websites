@@ -145,7 +145,7 @@ html.webgl .goo { display: none; }
 .slice__pith { fill: var(--cream); }
 .slice__seg path { fill: var(--c1); stroke: var(--cream); stroke-width: 2.5; }
 /* Phones: the pair shrinks into the section's top padding so it never sits behind text. */
-@media (max-width: 899px) { .slice { width: 56px; top: 0.25rem; bottom: auto; --speed: 0.12 !important; } .slice--lime { left: 1rem; } .slice--orange { right: 1rem; left: auto; } }
+@media (max-width: 899px) { .slice { width: 56px; top: 0.25rem; bottom: auto; --speed: 0.12 !important; } .slice--lime { left: auto; right: 4.75rem; } .slice--orange { right: 1rem; left: auto; } }
 
 .site-footer { max-width: var(--wrap); margin: 0 auto; padding: 2rem var(--gutter) 3rem; color: var(--text-muted); font-size: 0.95rem; display: grid; gap: 0.25rem; }
 .site-footer strong { color: var(--text); }
