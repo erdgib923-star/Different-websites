@@ -1,0 +1,114 @@
+/* Herbarium Nova: natural-history plates. Parchment, sepia line, verdigris leaves, vermilion
+   labels. Plants draw themselves in growth order; labels appear as the pen arrives. */
+:root {
+  --font-display: 'IM Fell English', 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Cormorant Garamond', Georgia, serif;
+  --wrap: 1180px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --pop-blur: 0px;
+}
+body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 1.22rem; line-height: 1.55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0 0.12 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+h1, h2 { font-family: var(--font-display); font-weight: 400; line-height: 1.1; }
+h2 { font-size: clamp(1.9rem, 4.4vw, 3rem); }
+em { font-style: italic; }
+code { font-family: ui-monospace, 'Cormorant Garamond', monospace; font-size: 0.82em; background: var(--surface-2); padding: 0 0.25em; }
+.lead { margin-top: 0.8rem; color: var(--text-muted); max-width: 38rem; }
+
+.site-header { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; gap: 1rem; padding: 0.5rem var(--gutter); background: color-mix(in oklch, var(--bg) 92%, transparent); border-bottom: 1px solid var(--border); }
+.logo { font-family: var(--font-display); font-size: 1.5rem; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+.logo em { color: var(--brand); }
+.nav { list-style: none; padding: 0; display: flex; gap: 0.2rem; margin-left: auto; }
+.nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 0.6rem; text-decoration: none; font-style: italic; }
+.nav a:hover { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 5px; }
+@media (max-width: 520px) { .nav a { padding: 0 0.35rem; font-size: 1rem; } }
+
+/* Title page */
+.titlepage { max-width: 46rem; margin: 0 auto; padding: clamp(4rem, 12vh, 8rem) var(--gutter) clamp(3rem, 8vh, 6rem); text-align: center; min-height: calc(100svh - 60px); display: grid; align-content: center; justify-items: center; gap: 1rem; }
+.titlepage__vol { letter-spacing: 0.3em; text-transform: uppercase; font-size: 0.9rem; color: var(--accent-text); }
+.titlepage__title { font-size: clamp(3.2rem, 11vw, 7.4rem); letter-spacing: 0.02em; }
+.titlepage__sub { font-family: var(--font-display); font-style: italic; font-size: clamp(1.15rem, 2.4vw, 1.6rem); color: var(--text-muted); }
+.ornament { width: 240px; height: 24px; }
+.ornament path { fill: none; stroke: var(--border); stroke-width: 1.2; }
+.ornament circle { fill: var(--accent); }
+.titlepage__note { max-width: 30rem; color: var(--text-muted); font-size: 1.1rem; }
+
+/* Plates */
+.plate, .drawers, .preface, .site-footer { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+section.plate, section.drawers, section.preface { padding-block: clamp(3.5rem, 9vw, 7rem); position: relative; }
+.plate__inner { display: grid; gap: 2.2rem; align-items: center; }
+@media (min-width: 900px) { .plate__inner { grid-template-columns: 1fr 1fr; gap: 4rem; } .plate__inner--flip .plate__fig { order: 2; } }
+.plate__fig { width: min(100%, 460px); justify-self: center; background: var(--surface); box-shadow: 0 1px 0 var(--border), 0 24px 40px -28px color-mix(in oklch, var(--shadow-color) 55%, transparent); }
+.plate-svg { width: 100%; height: 100%; display: block; }
+.plate-frame { fill: none; stroke: var(--border); stroke-width: 1; }
+.stem { fill: none; stroke: var(--sepia-line); stroke-width: 1.15; stroke-linecap: round; stroke-linejoin: round; }
+.leaf { fill: color-mix(in oklch, var(--verdigris) 75%, var(--parchment)); stroke: var(--sepia-line); stroke-width: 0.5; transform-box: fill-box; transform-origin: 0 50%; }
+.flower { fill: var(--vermilion); stroke: var(--sepia); stroke-width: 0.6; transform-box: fill-box; transform-origin: center; }
+.leader { stroke: var(--sepia-line); stroke-width: 0.9; }
+.leader-dot { fill: var(--sepia); }
+.label-disc { fill: var(--accent); }
+.label-num { fill: var(--accent-contrast); font-family: var(--font-display); font-size: 15px; }
+.label { transform-box: fill-box; transform-origin: center; }
+.plate__no { font-family: var(--font-display); color: var(--accent-text); letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.95rem; margin-bottom: 0.4rem; }
+.plate__text h2 span { display: block; font-family: var(--font-body); font-size: 0.55em; font-style: italic; color: var(--text-muted); margin-top: 0.3rem; }
+.plate__text > p:not(.plate__no) { margin-top: 1rem; max-width: 34rem; }
+.rule { font-size: 1.05rem; color: var(--text-muted); }
+.rule b { color: var(--text); font-weight: 600; }
+.legend { list-style: none; padding: 0; margin-top: 1.2rem; display: grid; gap: 0.5rem; }
+.legend__item { display: flex; align-items: center; gap: 0.7rem; }
+.disc { flex: none; display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: var(--accent-contrast); font-family: var(--font-display); font-size: 0.95rem; }
+
+/* Reveal states. Default (no JS / reduced motion): everything drawn. */
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes sprout { from { opacity: 0; scale: 0.15; } to { opacity: 1; scale: 1; } }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    html.sda .plate:not(.plate--pinned) .plate__fig { view-timeline-name: --plate; }
+    html.sda .plate:not(.plate--pinned) .stem { stroke-dasharray: 1; animation: draw linear both; animation-timeline: --plate; animation-range: cover 4% cover 52%; }
+    html.sda .plate:not(.plate--pinned) :is(.leaf, .flower, .label) {
+      animation: sprout linear both; animation-timeline: --plate;
+      animation-range: cover calc(4% + var(--f) * 48%) cover calc(7% + var(--f) * 48%);
+    }
+  }
+}
+/* JS-driven plates (the pinned plate, and every plate where scroll timelines are unsupported). */
+.is-driven .stem { stroke-dasharray: 1; }
+.is-driven :is(.leaf, .flower, .label) { transition: opacity 0.35s var(--ease-expo), scale 0.5s var(--ease-expo); }
+.is-driven :is(.leaf, .flower, .label):not(.is-on) { opacity: 0; scale: 0.15; }
+.is-driven ~ .plate__text .legend__item, .plate--pinned.is-pinned .legend__item { transition: opacity 0.4s, translate 0.4s var(--ease-expo); }
+.plate--pinned.is-pinned .legend__item:not(.is-on) { opacity: 0.3; translate: -8px 0; }
+.plate--pinned.is-pinned .plate__inner { min-height: calc(100svh - 80px); }
+
+/* Drawer cabinet */
+.section-head { max-width: 42rem; margin-bottom: 2.5rem; }
+.cabinet { display: grid; gap: 14px; padding: 14px; background: color-mix(in oklch, var(--sepia) 85%, var(--parchment)); border-radius: 6px; box-shadow: inset 0 0 0 6px color-mix(in oklch, var(--sepia) 70%, var(--parchment)), 0 30px 50px -30px color-mix(in oklch, var(--shadow-color) 70%, transparent); }
+@media (min-width: 640px) { .cabinet { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .cabinet { grid-template-columns: repeat(3, 1fr); } }
+.drawer { perspective: 900px; }
+.drawer__front { width: 100%; min-height: 120px; display: grid; place-items: center; gap: 0.4rem; padding: 1rem; border: 0; border-radius: 3px; background: var(--surface-2); color: var(--text); font: inherit; text-align: center;
+  box-shadow: inset 0 0 0 1px var(--border), inset 0 -10px 18px -12px color-mix(in oklch, var(--shadow-color) 30%, transparent); transform-origin: 50% 100%; transition: transform 0.5s var(--ease-expo), box-shadow 0.4s; }
+.drawer__front:hover { transform: translateZ(14px); }
+.drawer__front[aria-expanded='true'] { transform: translateZ(26px) translateY(-4px); box-shadow: inset 0 0 0 2px var(--accent), 0 16px 24px -14px color-mix(in oklch, var(--shadow-color) 60%, transparent); }
+.drawer__label { padding: 0.25rem 1rem; border: 2px solid var(--brass); border-radius: 2px; background: var(--parchment); font-family: var(--font-display); font-size: 1.05rem; }
+.drawer__label small { display: block; font-family: var(--font-body); font-size: 0.85rem; color: var(--text-muted); font-style: italic; }
+.drawer__handle { width: 46px; height: 10px; border-radius: 0 0 20px 20px; background: var(--brass); box-shadow: inset 0 -2px 0 color-mix(in oklch, var(--sepia) 40%, transparent); }
+.drawer__body { display: grid; grid-template-columns: 110px 1fr; gap: 0.9rem; align-items: center; margin-top: 8px; padding: 0.8rem; background: var(--parchment-3); border-radius: 3px; }
+.drawer__body[hidden] { display: none; }
+.drawer__body.is-opening { animation: drawer-in 0.5s var(--ease-expo) both; }
+@keyframes drawer-in { from { opacity: 0; transform: translateY(-14px) scaleY(0.9); transform-origin: top; } to { opacity: 1; transform: none; } }
+.drawer__thumb { aspect-ratio: 400 / 520; background: var(--parchment); }
+.drawer__body dl { display: grid; gap: 0.2rem; font-size: 1.02rem; }
+.drawer__body dt { font-style: italic; color: var(--text-muted); font-size: 0.9rem; }
+.drawer__body dd { margin: 0 0 0.3rem; }
+.drawer__body a { color: var(--brand); }
+
+/* Preface */
+.preface { overflow: clip; }
+.preface__body { display: grid; gap: 1.1rem; max-width: 40rem; margin-top: 1rem; }
+.pressed { position: absolute; z-index: -1; fill: none; stroke: color-mix(in oklch, var(--verdigris) 60%, var(--parchment)); stroke-width: 2; opacity: 0.7; }
+.pressed--a { width: clamp(60px, 9vw, 110px); right: 10%; top: 8%; rotate: 14deg; }
+.pressed--b { width: clamp(70px, 10vw, 130px); right: 26%; bottom: 6%; }
+.pressed--b circle { fill: var(--vermilion); stroke: none; opacity: 0.8; }
+
+.site-footer { padding-block: 2rem 3.5rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 1.02rem; }
+.site-footer strong { color: var(--text); }

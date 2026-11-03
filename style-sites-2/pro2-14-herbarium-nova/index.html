@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Herbarium Nova · Plants that never were, drawn by rule</title>
+  <meta name="description" content="A natural-history collection of imaginary plants, each grown from a rule and drawn stroke by stroke as you scroll. Every species is fictional." />
+  <meta name="theme-color" content="#efe6d2" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23efe6d2'/%3E%3Cpath d='M16 29V8M16 20l-6-6M16 15l6-6M16 24l5-4' stroke='%23543f2b' stroke-width='1.6' fill='none'/%3E%3Ccircle cx='16' cy='7' r='2.4' fill='%23b8452b'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js'); }, 4000);
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="logo" href="#top">Herbarium <em>Nova</em></a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#plates">Plates</a></li>
+        <li><a href="#drawers">The drawers</a></li>
+        <li><a href="#preface">Preface</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- TITLE PAGE -->
+    <section class="titlepage" id="top" aria-labelledby="hero-title">
+      <p class="titlepage__vol" data-pop="up">Volume the First · MMXXVI</p>
+      <h1 id="hero-title" class="titlepage__title" data-split>Herbarium Nova</h1>
+      <p class="titlepage__sub" data-pop="up" style="--pop-delay: 500ms">Being a Collection of Plants that Never Were,<br />Grown by Rule and Drawn Stroke by Stroke</p>
+      <svg class="ornament" viewBox="0 0 240 24" aria-hidden="true"><path d="M0 12h96M144 12h96" /><circle cx="120" cy="12" r="6" /><path d="M108 12c4-8 20-8 24 0-4 8-20 8-24 0z" /></svg>
+      <p class="titlepage__note" data-pop="up" style="--pop-delay: 700ms">Scroll, and each plate draws itself in the order its plant grows. Numbered labels appear as the pen reaches them.</p>
+    </section>
+
+    <!-- PLATE I (pinned) -->
+    <section class="plate plate--pinned" id="plates" aria-labelledby="p1-title" data-plate-pin>
+      <div class="plate__inner">
+        <figure class="fig plate__fig" data-slot="plate-i" data-photo="" data-alt="Pressed specimen: a fern" style="--ar: 400 / 520; --fig-radius: 2px; --fig-placeholder: var(--parchment-2)">
+          <div class="fig__art" data-species="filix" data-labels role="img" aria-label="Plate I: a fern-like plant drawn in sepia line, with verdigris fronds and three numbered labels."></div>
+        </figure>
+        <div class="plate__text">
+          <p class="plate__no">Plate I</p>
+          <h2 id="p1-title"><em>Nova filix</em> <span>Common lantern-fern</span></h2>
+          <p>A creeping fern of damp limestone. Each frond divides twice, then rests; the old fronds stay on the plant as a brown skirt through winter.</p>
+          <ol class="legend" aria-label="Labels on Plate I">
+            <li class="legend__item" data-legend="0"><span class="disc" aria-hidden="true">1</span>Terminal frond, uncurled</li>
+            <li class="legend__item" data-legend="1"><span class="disc" aria-hidden="true">2</span>Lateral node, where the frond divides</li>
+            <li class="legend__item" data-legend="2"><span class="disc" aria-hidden="true">3</span>Rhizome, the creeping root-stem</li>
+          </ol>
+          <p class="rule"><b>Grown by rule.</b> <code>X → F+[[X]−X]−F[−FX]+X</code>, <code>F → FF</code>, angle 25°, five generations.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLATES II–IV (drawn on scroll) -->
+    <section class="plate" aria-labelledby="p2-title">
+      <div class="plate__inner plate__inner--flip">
+        <figure class="fig plate__fig" data-slot="plate-ii" data-photo="" data-alt="Pressed specimen: a flowering shrub" style="--ar: 400 / 520; --fig-radius: 2px; --fig-placeholder: var(--parchment-2)">
+          <div class="fig__art" data-species="cordata" data-labels role="img" aria-label="Plate II: a dense bushy plant with vermilion flowers at its tips."></div>
+        </figure>
+        <div class="plate__text">
+          <p class="plate__no">Plate II</p>
+          <h2 id="p2-title"><em>Lumen cordata</em> <span>Hearth bush</span></h2>
+          <p>A low, many-stemmed shrub of sunny banks. It flowers on the outermost tips only, in small vermilion clusters that close at dusk.</p>
+          <p class="rule"><b>Grown by rule.</b> <code>F → FF−[−F+F+F]+[+F−F−F]</code>, angle 22.5°, four generations.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="plate" aria-labelledby="p3-title">
+      <div class="plate__inner">
+        <figure class="fig plate__fig" data-slot="plate-iii" data-photo="" data-alt="Pressed specimen: a sapling" style="--ar: 400 / 520; --fig-radius: 2px; --fig-placeholder: var(--parchment-2)">
+          <div class="fig__art" data-species="arborea" data-labels role="img" aria-label="Plate III: a young tree with a single trunk dividing into fine branches."></div>
+        </figure>
+        <div class="plate__text">
+          <p class="plate__no">Plate III</p>
+          <h2 id="p3-title"><em>Sepia arborea</em> <span>Ink tree</span></h2>
+          <p>A slender tree whose bark yields a brown dye. Each branch splits left, then right, then continues; it is the most orderly plant in the collection.</p>
+          <p class="rule"><b>Grown by rule.</b> <code>X → F[+X]F[−X]+X</code>, <code>F → FF</code>, angle 20°, six generations.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="plate" aria-labelledby="p4-title">
+      <div class="plate__inner plate__inner--flip">
+        <figure class="fig plate__fig" data-slot="plate-iv" data-photo="" data-alt="Pressed specimen: a climbing plant" style="--ar: 400 / 520; --fig-radius: 2px; --fig-placeholder: var(--parchment-2)">
+          <div class="fig__art" data-species="spiralis" data-labels role="img" aria-label="Plate IV: an airy plant branching symmetrically in both directions."></div>
+        </figure>
+        <div class="plate__text">
+          <p class="plate__no">Plate IV</p>
+          <h2 id="p4-title"><em>Verdigris spiralis</em> <span>Copper-weed</span></h2>
+          <p>Named for the blue-green bloom on its leaves, which rubs off on fingers like old copper. Branches in perfect pairs.</p>
+          <p class="rule"><b>Grown by rule.</b> <code>X → F[+X][−X]FX</code>, <code>F → FF</code>, angle 25.7°, six generations.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPECIMEN DRAWERS -->
+    <section class="drawers" id="drawers" aria-labelledby="drawers-title">
+      <header class="section-head">
+        <p class="plate__no" data-pop="up">Index</p>
+        <h2 id="drawers-title" data-split>The specimen drawers</h2>
+        <p class="lead" data-pop="up">Open a drawer to see its specimen. All six species, numbers and collecting notes are invented.</p>
+      </header>
+      <div class="cabinet" data-cabinet data-pop-group>
+        <div class="drawer" data-pop data-drawer="filix" data-no="014" data-where="Damp limestone, north face" data-when="12 March 2026" data-plate="#plates"></div>
+        <div class="drawer" data-pop data-drawer="cordata" data-no="027" data-where="Sunny bank above the river" data-when="3 June 2026" data-plate="#p2-title"></div>
+        <div class="drawer" data-pop data-drawer="arborea" data-no="031" data-where="Old orchard wall" data-when="19 April 2026" data-plate="#p3-title"></div>
+        <div class="drawer" data-pop data-drawer="spiralis" data-no="046" data-where="Copper-mine spoil heap" data-when="8 August 2026" data-plate="#p4-title"></div>
+        <div class="drawer" data-pop data-drawer="ventosa" data-no="052" data-where="Windy cliff top" data-when="22 May 2026"></div>
+        <div class="drawer" data-pop data-drawer="candela" data-no="068" data-where="Shaded lane, under hazel" data-when="30 September 2026"></div>
+      </div>
+    </section>
+
+    <!-- PREFACE -->
+    <section class="preface" id="preface" aria-labelledby="preface-title">
+      <svg class="pressed pressed--a" data-scrub="parallax" data-speed="-0.4" viewBox="0 0 60 160" aria-hidden="true"><path d="M30 158V10M30 40l-16-14M30 40l16-14M30 70l-20-16M30 70l20-16M30 100l-22-16M30 100l22-16M30 130l-18-14M30 130l18-14" /></svg>
+      <svg class="pressed pressed--b" data-scrub="parallax" data-speed="0.35" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="6" /><path d="M40 34c-6-14 6-22 0-30M46 40c14-6 22 6 30 0M40 46c6 14-6 22 0 30M34 40c-14 6-22-6-30 0" /></svg>
+      <h2 id="preface-title" data-split>Preface</h2>
+      <div class="preface__body" data-pop="up">
+        <p>Every plant in this book was grown, not found. Each begins as a single letter and a handful of rules: replace this letter with that string, five or six times over. A turtle with a pen then walks the result. <i>F</i> means step forward and draw, <i>+</i> and <i>−</i> mean turn, and the brackets mean remember this place and come back to it.</p>
+        <p>The method is borrowed from the study of real plant growth, but the species are entirely imaginary, as are their habitats, collectors and dates. If a plate reminds you of something in a hedgerow, that is the rules doing what living things do.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Herbarium Nova</strong> is a fictional collection made for a design demo. Every species, specimen number, place and date is invented. Correspondence: curator@example.com · (555) 555-0100.</p>
+  </footer>
+</body>
+</html>
