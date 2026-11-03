@@ -56,11 +56,28 @@ export function renderPlate(host: HTMLElement, spec: Spec, opts: { labels?: bool
   return svg;
 }
 
-/** Reveal a plate to progress p (0..1): stem dashoffset, leaves/flowers/labels by their --f. */
+/** Reveal a plate to progress p (0..1): stem dashoffset, leaves/flowers/labels by their --f.
+ * Nodes and their --f values are cached per plate and kept sorted, so each scroll update only
+ * touches the elements whose state actually changes between the previous and current progress. */
+const cache = new WeakMap<SVGSVGElement, { stem: SVGPathElement | null; items: { el: SVGElement; f: number }[]; p: number }>();
 export function setProgress(svg: SVGSVGElement, p: number) {
-  const stem = svg.querySelector<SVGPathElement>('.stem');
-  if (stem) { stem.style.strokeDasharray = '1'; stem.style.strokeDashoffset = String(1 - p); }
-  svg.querySelectorAll<SVGElement>('.leaf, .flower, .label').forEach((n) => {
-    n.classList.toggle('is-on', p >= parseFloat(n.style.getPropertyValue('--f')));
-  });
+  let c = cache.get(svg);
+  if (!c) {
+    const items = [...svg.querySelectorAll<SVGElement>('.leaf, .flower, .label')]
+      .map((el) => ({ el, f: parseFloat(el.style.getPropertyValue('--f')) }))
+      .sort((a, b) => a.f - b.f);
+    c = { stem: svg.querySelector<SVGPathElement>('.stem'), items, p: -1 };
+    if (c.stem) c.stem.style.strokeDasharray = '1';
+    items.forEach(({ el }) => el.classList.remove('is-on'));
+    c.p = 0;
+    cache.set(svg, c);
+  }
+  if (c.stem) c.stem.style.strokeDashoffset = String(1 - p);
+  const lo = Math.min(c.p, p), hi = Math.max(c.p, p);
+  for (const it of c.items) {
+    if (it.f < lo) continue;
+    if (it.f > hi) break;
+    it.el.classList.toggle('is-on', p >= it.f);
+  }
+  c.p = p;
 }

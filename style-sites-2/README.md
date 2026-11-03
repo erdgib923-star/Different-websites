@@ -35,3 +35,4 @@ All brands, people, addresses, phone numbers and data are fictional.
 | 11 | `pro2-11-pixel-hollow-game` | Pixel Hollow, cozy farming game |
 | 12 | `pro2-12-terminal-root-vesper` | root@vesper, developer portfolio |
 | 13 | `pro2-13-broadsheet-harbor-gazette` | The Harbor Gazette, fictional newspaper |
+| 14 | `pro2-14-herbarium-nova` | Herbarium Nova, natural-history plates |

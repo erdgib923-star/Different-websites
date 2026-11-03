@@ -95,6 +95,22 @@ To add a species, add an entry to `SPECIES` in `src/lsystem.ts` and a `data-spec
 ## Swap in your own photos
 Four plate slots (`plate-i` … `plate-iv`, 400:520 portrait). Set `data-photo="assets/images/<file>"` to show a scan of a real herbarium sheet instead of the generated drawing. See [`public/assets/README.md`](public/assets/README.md).
 
+## Verification (what was actually run)
+- `npm run build` passes; `npm run contrast`: 12/12 pairs pass.
+- Headless Chromium at 375, 768 and 1440 px, with screenshots at 0/25/50/75/100%:
+  - no console errors, no failed or external requests, one h1, no horizontal scroll;
+  - axe-core: 0 violations;
+  - reduced-motion and no-JS passes: nothing left hidden.
+- Probes at 1440 px:
+  - halfway through the Plate I pin, the fern was partly drawn, labels 2 and 3 were lit, and label 1 (the top frond, drawn last) was not yet;
+  - Plate III was drawn by the CSS view timeline as it crossed the viewport;
+  - drawer No. 052 opened (`aria-expanded="true"`, body shown) with a freshly grown thumbnail.
+- `?nosda` (forced JS fallback) pass:
+  - after an instant jump to the page bottom, the preface text revealed about 1.5 s late, then finished;
+  - I traced the delay to Lenis easing toward the jumped-to position;
+  - I also made the fallback cheaper: plate nodes are cached and only changed elements are touched per scroll update.
+- **Not tested:** Safari and Firefox (Firefox uses the GSAP fallback), real devices, and screen readers.
+
 ## Notes and decisions
 - Built in `style-sites-2/` of `erdgib923-star/different-websites` instead of its own repo: `gh` was not authenticated and repo creation was unavailable. Split later with `publish-repos.sh`.
 - Brand check (web search, 2026-11-02): no herbarium called "Herbarium Nova" found (results were Nova Scotia herbaria).
