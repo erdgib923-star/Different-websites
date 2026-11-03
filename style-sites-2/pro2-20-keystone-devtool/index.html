@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Springline · See every deploy before it ships</title>
+  <meta name="description" content="Springline, a fictional developer tool that shows you the exact infrastructure change a commit will make, before it ships. Press Ctrl+K (or ⌘K) to navigate." />
+  <meta name="theme-color" content="#16141c" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2316141c'/%3E%3Cpath d='M7 25V15a9 9 0 0 1 18 0v10' fill='none' stroke='%23a98bf5' stroke-width='3'/%3E%3Cpath d='M13.5 9.5L16 6l2.5 3.5Z' fill='%2389d7f0'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      try { var t = localStorage.getItem('springline-theme'); if (t === 'light' || t === 'dark') d.dataset.theme = t; else if (t === 'system' && matchMedia('(prefers-color-scheme: light)').matches) d.dataset.theme = 'light'; } catch (e) {}
+      setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js'); }, 4000);
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="logo" href="#top"><svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M7 25V15a9 9 0 0 1 18 0v10" /><path class="logo__key" d="M13.5 9.5L16 6l2.5 3.5Z" /></svg>Springline</a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#diff">How it works</a></li>
+        <li><a href="#changelog">Changelog</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+    </nav>
+    <button class="kbd-btn" type="button" data-open-palette aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K">
+      <span class="kbd-btn__label">Search</span><kbd data-kbd>Ctrl K</kbd>
+    </button>
+    <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch to light theme">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" class="sun" /><path class="rays" d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" /></svg>
+    </button>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="hero__text">
+        <p class="pill-note" data-pop="up"><span class="dot" aria-hidden="true"></span>v2.6 is out: plan comments on every pull request</p>
+        <h1 id="hero-title" class="hero__title" data-split>Ship the change you meant to ship.</h1>
+        <p class="hero__lead" data-pop="up" style="--pop-delay: 450ms">Springline reads your commit, works out exactly what your infrastructure will do, and shows it as a diff before anything deploys. No surprises in production.</p>
+        <div class="hero__ctas" data-pop="up" style="--pop-delay: 600ms">
+          <a class="btn btn--primary" href="#pricing">Start free</a>
+          <a class="btn btn--ghost" href="https://example.com/docs">Read the docs</a>
+        </div>
+        <div class="install" data-pop="up" style="--pop-delay: 720ms">
+          <code><span class="install__p" aria-hidden="true">$</span> npx springline plan</code>
+          <button class="copy" type="button" data-copy="npx springline plan">Copy</button>
+          <span class="sr-only" role="status" data-copy-status></span>
+        </div>
+      </div>
+      <div class="hero__stack" aria-hidden="true">
+        <div class="float-card float-card--a glow-border" data-scrub="parallax" data-speed="-0.35">
+          <p class="fc__k">plan · main → prod</p>
+          <p class="fc__v"><span class="add">+2</span> <span class="chg">~1</span> <span class="del">−0</span></p>
+          <p class="fc__s">3 resources · 14 s</p>
+        </div>
+        <div class="float-card float-card--b" data-scrub="parallax" data-speed="0.4">
+          <p class="fc__k">checks</p>
+          <ul class="fc__checks"><li><span class="ok" aria-hidden="true">✓</span> policy</li><li><span class="ok" aria-hidden="true">✓</span> drift</li><li><span class="ok" aria-hidden="true">✓</span> cost +$4/mo</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIFF: pinned; the diff applies line by line as you scroll, then the plan summary pops -->
+    <section class="diff" id="diff" aria-labelledby="diff-title" data-diff>
+      <div class="diff__inner">
+        <div class="diff__text">
+          <p class="kicker" data-pop="up">How it works</p>
+          <h2 id="diff-title" data-split>One commit in, one honest diff out.</h2>
+          <ol class="diff__steps">
+            <li data-step="0.15"><b>Read.</b> Springline parses the config you changed.</li>
+            <li data-step="0.5"><b>Plan.</b> It asks each provider what would actually happen.</li>
+            <li data-step="0.85"><b>Show.</b> You get the result as a diff, on the pull request.</li>
+          </ol>
+          <p class="legend"><span class="lg lg--add">+ added</span> <span class="lg lg--del">− removed</span> <span class="lg lg--ctx">unchanged</span></p>
+        </div>
+        <figure class="code glow-border" data-code>
+          <figcaption class="code__bar"><span class="code__dots" aria-hidden="true"><i></i><i></i><i></i></span>infra/service.sl <span class="code__tag">PR #482</span></figcaption>
+          <pre class="code__body"><code><span class="ln ctx" data-ln><i>1</i>service "checkout" {</span>
+<span class="ln ctx" data-ln><i>2</i>  region   = "eu-example-1"</span>
+<span class="ln del" data-ln><i>3</i>  replicas = 2</span>
+<span class="ln add" data-ln><i>3</i>  replicas = 4</span>
+<span class="ln ctx" data-ln><i>4</i>  memory   = "512mb"</span>
+<span class="ln add" data-ln><i>5</i>  autoscale {</span>
+<span class="ln add" data-ln><i>6</i>    min = 4</span>
+<span class="ln add" data-ln><i>7</i>    max = 12</span>
+<span class="ln add" data-ln><i>8</i>  }</span>
+<span class="ln del" data-ln><i>6</i>  public   = true</span>
+<span class="ln add" data-ln><i>9</i>  public   = false</span>
+<span class="ln ctx" data-ln><i>10</i>}</span></code></pre>
+          <div class="plan" data-plan>
+            <span class="plan__chip plan__chip--add" data-at="0.88">+2 to create</span>
+            <span class="plan__chip plan__chip--chg" data-at="0.92">~1 to change</span>
+            <span class="plan__chip plan__chip--ok" data-at="0.96">0 to destroy</span>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- CHANGELOG: timeline, line draws with scroll -->
+    <section class="changelog" id="changelog" aria-labelledby="changelog-title">
+      <p class="kicker" data-pop="up">Changelog</p>
+      <h2 id="changelog-title" data-split>Shipped lately</h2>
+      <ol class="timeline" data-timeline>
+        <li class="tl" data-pop="left"><p class="tl__v"><span class="tag">v2.6.0</span> <time datetime="2026-10-21">21 Oct 2026</time></p><h3>Plan comments on pull requests</h3><p>Every pull request gets a plan comment that updates in place when you push again.</p></li>
+        <li class="tl" data-pop="left"><p class="tl__v"><span class="tag">v2.5.2</span> <time datetime="2026-09-30">30 Sep 2026</time></p><h3>Faster plans for big monorepos</h3><p>Only the services a commit touches are planned. A 300-service repo went from 4 min to 22 s in our tests.</p></li>
+        <li class="tl" data-pop="left"><p class="tl__v"><span class="tag">v2.5.0</span> <time datetime="2026-09-02">2 Sep 2026</time></p><h3>Cost line on every plan</h3><p>Each plan shows the expected monthly cost change next to the diff.</p></li>
+        <li class="tl" data-pop="left"><p class="tl__v"><span class="tag">v2.4.0</span> <time datetime="2026-08-05">5 Aug 2026</time></p><h3>Policy checks</h3><p>Write rules like "nothing public in prod" and Springline blocks plans that break them.</p></li>
+      </ol>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing" aria-labelledby="pricing-title">
+      <p class="kicker" data-pop="up">Pricing</p>
+      <h2 id="pricing-title" data-split>Free for small teams. Fair after that.</h2>
+      <fieldset class="billing" data-pop="up">
+        <legend class="sr-only">Billing period</legend>
+        <label><input type="radio" name="billing" value="monthly" checked /> Monthly</label>
+        <label><input type="radio" name="billing" value="yearly" /> Yearly <span class="save">2 months free</span></label>
+      </fieldset>
+      <div class="plans" data-pop-group>
+        <article class="plan-card" data-pop>
+          <h3>Hobby</h3>
+          <p class="price"><span data-price data-m="0" data-y="0">$0</span><small>/ month</small></p>
+          <p>For side projects and trying things out.</p>
+          <ul><li>3 services</li><li>Plans on main</li><li>Community support</li></ul>
+          <a class="btn btn--ghost" href="https://example.com/signup">Start free</a>
+        </article>
+        <article class="plan-card plan-card--featured glow-border" data-pop>
+          <p class="plan-card__badge" data-pop="badge" style="--pop-delay: 350ms">Most teams</p>
+          <h3>Team</h3>
+          <p class="price"><span data-price data-m="24" data-y="20">$24</span><small>/ seat / month</small></p>
+          <p>Plans on every pull request, with policy and cost checks.</p>
+          <ul><li>Unlimited services</li><li>PR plan comments</li><li>Policy checks</li><li>Email support</li></ul>
+          <a class="btn btn--primary" href="https://example.com/signup?plan=team">Start a 14-day trial</a>
+        </article>
+        <article class="plan-card" data-pop>
+          <h3>Scale</h3>
+          <p class="price"><span data-price data-m="48" data-y="40">$48</span><small>/ seat / month</small></p>
+          <p>For organisations with many repos and strict rules.</p>
+          <ul><li>Everything in Team</li><li>SSO and audit log</li><li>Private runners</li><li>Named support engineer</li></ul>
+          <a class="btn btn--ghost" href="mailto:sales@example.com">Talk to us</a>
+        </article>
+      </div>
+      <p class="pricing__note">Prices are in US dollars and fictional. Questions: <a href="mailto:sales@example.com">sales@example.com</a> · <a href="tel:+15555550100">(555) 555-0100</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Springline</strong> is a fictional product. The plans, changelog, numbers and pull request are invented for this demo.</p>
+    <p>Tip: press <kbd data-kbd>Ctrl K</kbd> anywhere to jump to a section or switch theme.</p>
+  </footer>
+
+  <!-- COMMAND PALETTE -->
+  <dialog class="palette" data-palette aria-label="Command palette" data-lenis-prevent>
+    <div class="palette__search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="M16 16l4.5 4.5" /></svg>
+      <input type="text" data-palette-input role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" aria-label="Type a command or section" placeholder="Type a command or section…" autocomplete="off" spellcheck="false" />
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="palette__list" id="palette-list" role="listbox" aria-label="Commands" data-palette-list></ul>
+    <p class="palette__empty" data-palette-empty hidden>No matches. Try “pricing” or “theme”.</p>
+    <p class="palette__foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>Enter</kbd> run</span><span><kbd>Esc</kbd> close</span></p>
+  </dialog>
+</body>
+</html>

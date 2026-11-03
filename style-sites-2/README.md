@@ -44,3 +44,4 @@ All brands, people, addresses, phone numbers and data are fictional.
 
 ## Build note (applies to every site)
 All sites share a `vite.config.ts` that sets `build.cssTarget: ['chrome111', 'edge111', 'firefox113', 'safari16.4']`. Without it, Vite 8's CSS minifier (Lightning CSS) rewrites oklch() tokens to lab(). Chromium then loses the hue in `color-mix(in oklch, <lab>, transparent)`, which tints translucent surfaces pink. I found this while building site 19, applied the fix to all sites, rebuilt them, and re-audited sites 1–18 at 1440 px; each site's README notes it.
+| 20 | `pro2-20-keystone-devtool` | Springline (renamed from Keystone), developer tool with Cmd/Ctrl+K palette |
