@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flux · Sparkling juice that changes shape</title>
+  <meta name="description" content="Flux, a fictional sparkling juice in four flavours. Pick a flavour and the whole page changes colour; scroll to see a glass fill." />
+  <meta name="theme-color" content="#fbfbef" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23b8e34a'/%3E%3Cstop offset='1' stop-color='%23f5a65b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='13' cy='14' r='9' fill='url(%23g)'/%3E%3Ccircle cx='21' cy='20' r='7' fill='url(%23g)'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js'); }, 4000);
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="logo" href="#top">flux</a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#flavours">Flavours</a></li>
+        <li><a href="#lineup">Line-up</a></li>
+        <li><a href="#facts">Facts</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- HERO: metaball shader (WebGL) with an SVG goo-filter fallback -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true">
+        <svg class="goo" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="18" result="b" /><feColorMatrix in="b" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 28 -12" /></filter>
+            <linearGradient id="goo-g" x1="0" y1="1" x2="0.6" y2="0"><stop offset="0" class="stop-a" /><stop offset="1" class="stop-b" /></linearGradient>
+          </defs>
+          <g filter="url(#goo)" fill="url(#goo-g)">
+            <circle class="gb gb1" cx="180" cy="420" r="90" /><circle class="gb gb2" cx="320" cy="330" r="70" /><circle class="gb gb3" cx="470" cy="450" r="100" />
+            <circle class="gb gb4" cx="640" cy="300" r="80" /><circle class="gb gb5" cx="780" cy="420" r="95" /><circle class="gb gb6" cx="900" cy="260" r="60" />
+          </g>
+        </svg>
+        <canvas class="hero__canvas" data-blobs></canvas>
+      </div>
+      <div class="hero__content">
+        <p class="kicker" data-pop="up">Sparkling juice · four flavours · 330 ml</p>
+        <h1 id="hero-title" class="hero__title" data-split>Fizz that changes shape.</h1>
+        <p class="hero__lead" data-pop="up" style="--pop-delay: 450ms">Pressed fruit, a little sparkle, nothing else. Pick a flavour below and watch the whole page pour into a new colour.</p>
+        <a class="btn" href="#flavours" data-pop="up" style="--pop-delay: 600ms">Pick a flavour</a>
+      </div>
+    </section>
+
+    <!-- FLAVOUR SELECTOR: radio group; the choice morphs the page palette and the shader -->
+    <section class="flavours" id="flavours" aria-labelledby="flavours-title">
+      <div class="flavours__inner">
+        <div class="flavours__pick">
+          <p class="kicker" data-pop="up">Flavours</p>
+          <h2 id="flavours-title" data-split>Pick one. The page will follow.</h2>
+          <fieldset class="pills" data-pills>
+            <legend class="sr-only">Choose a flavour</legend>
+          <label class="pill" style="--fa: var(--f1a); --fb: var(--f1b)"><input type="radio" name="flavour" value="citrus" data-flavour="1" data-name="Citrus Spark" data-fruit="Lime and blood orange" data-desc="Sharp lime up front, a round orange finish. The original." checked /><span class="pill__swatch" aria-hidden="true"></span>Citrus Spark</label>
+          <label class="pill" style="--fa: var(--f2a); --fb: var(--f2b)"><input type="radio" name="flavour" value="berry" data-flavour="2" data-name="Berry Lift" data-fruit="Raspberry and blackcurrant" data-desc="Tart raspberry with a dark, jammy blackcurrant end." /><span class="pill__swatch" aria-hidden="true"></span>Berry Lift</label>
+          <label class="pill" style="--fa: var(--f3a); --fb: var(--f3b)"><input type="radio" name="flavour" value="peach" data-flavour="3" data-name="Peach Drift" data-fruit="White peach and mango" data-desc="Soft and floral; the sweetest of the four, still only 9 g of sugar." /><span class="pill__swatch" aria-hidden="true"></span>Peach Drift</label>
+          <label class="pill" style="--fa: var(--f4a); --fb: var(--f4b)"><input type="radio" name="flavour" value="cucumber" data-flavour="4" data-name="Cucumber Cool" data-fruit="Cucumber, mint and lime" data-desc="Green and very dry. Best with ice and a long afternoon." /><span class="pill__swatch" aria-hidden="true"></span>Cucumber Cool</label>
+          </fieldset>
+          <div class="flavour-now" aria-live="polite">
+            <p class="flavour-now__name" data-now-name>Citrus Spark</p>
+            <p class="flavour-now__fruit" data-now-fruit>Lime and blood orange</p>
+            <p class="flavour-now__desc" data-now-desc>Sharp lime up front, a round orange finish. The original.</p>
+          </div>
+        </div>
+        <div class="flavours__can" data-pop="badge">
+          <svg class="can can--big" viewBox="0 0 120 220" aria-hidden="true">
+            <defs><linearGradient id="g-hero" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" class="stop-a" /><stop offset="1" class="stop-b" /></linearGradient></defs>
+            <rect class="can__body" x="10" y="18" width="100" height="184" rx="14" fill="url(#g-hero)" />
+            <ellipse class="can__base" cx="60" cy="202" rx="50" ry="8" />
+            <ellipse class="can__lid" cx="60" cy="18" rx="50" ry="9" /><ellipse class="can__tab" cx="60" cy="16" rx="12" ry="3.5" />
+            <g class="can__bubbles"><circle cx="40" cy="160" r="3"/><circle cx="78" cy="140" r="2"/><circle cx="58" cy="176" r="2.5"/><circle cx="88" cy="168" r="1.6"/></g>
+            <rect class="can__shine" x="22" y="26" width="9" height="168" rx="4.5" />
+            <text class="can__logo" x="60" y="104" text-anchor="middle">flux</text>
+            <text class="can__name" x="60" y="124" text-anchor="middle">Citrus Spark</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- POUR: pinned; a glass fills as you scroll and three steps pop in at fixed points -->
+    <section class="pour" aria-labelledby="pour-title" data-pour>
+      <div class="pour__inner">
+        <div class="pour__text">
+          <p class="kicker" data-pop="up">How it's made</p>
+          <h2 id="pour-title" data-split>From fruit to fizz in three steps.</h2>
+          <ol class="steps" data-steps>
+            <li class="step" data-at="0.18"><span class="step__n">1</span><div><h3>Press</h3><p>Whole fruit, cold-pressed the same day it arrives.</p></div></li>
+            <li class="step" data-at="0.5"><span class="step__n">2</span><div><h3>Blend</h3><p>Juice meets spring water, about one part to two.</p></div></li>
+            <li class="step" data-at="0.8"><span class="step__n">3</span><div><h3>Sparkle</h3><p>Lightly carbonated and canned within the hour.</p></div></li>
+          </ol>
+        </div>
+        <div class="pour__glass" aria-hidden="true">
+          <svg class="glass" viewBox="0 0 200 300">
+            <defs>
+              <clipPath id="glass-in"><path d="M38 40L54 270Q56 282 70 282H130Q144 282 146 270L162 40Z" /></clipPath>
+              <linearGradient id="liquid-g" x1="0" y1="1" x2="0" y2="0"><stop offset="0" class="stop-b" /><stop offset="1" class="stop-a" /></linearGradient>
+            </defs>
+            <g clip-path="url(#glass-in)">
+              <rect class="liquid" x="0" y="40" width="200" height="245" fill="url(#liquid-g)" />
+              <g class="fizz"><circle cx="80" cy="250" r="4" /><circle cx="110" cy="230" r="3" /><circle cx="95" cy="200" r="2.5" /><circle cx="125" cy="180" r="3.5" /><circle cx="72" cy="160" r="2" /><circle cx="104" cy="130" r="3" /></g>
+            </g>
+            <path class="glass__outline" d="M34 34L50 272Q53 290 70 290H130Q147 290 150 272L166 34" />
+            <ellipse class="glass__rim" cx="100" cy="34" rx="66" ry="7" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- LINE-UP -->
+    <section class="lineup" id="lineup" aria-labelledby="lineup-title">
+      <p class="kicker" data-pop="up">The line-up</p>
+      <h2 id="lineup-title" data-split>Four cans, one rule: fruit first.</h2>
+      <ul class="cards" data-pop-group>
+        <li class="card" data-pop style="--fa: var(--f1a); --fb: var(--f1b)">
+          
+          <svg class="can" viewBox="0 0 120 220" aria-hidden="true">
+            <defs><linearGradient id="g-citrus-card" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" class="stop-a" /><stop offset="1" class="stop-b" /></linearGradient></defs>
+            <rect class="can__body" x="10" y="18" width="100" height="184" rx="14" fill="url(#g-citrus-card)" />
+            <ellipse class="can__base" cx="60" cy="202" rx="50" ry="8" />
+            <ellipse class="can__lid" cx="60" cy="18" rx="50" ry="9" /><ellipse class="can__tab" cx="60" cy="16" rx="12" ry="3.5" />
+            <g class="can__bubbles"><circle cx="40" cy="160" r="3"/><circle cx="78" cy="140" r="2"/><circle cx="58" cy="176" r="2.5"/><circle cx="88" cy="168" r="1.6"/></g>
+            <rect class="can__shine" x="22" y="26" width="9" height="168" rx="4.5" />
+            <text class="can__logo" x="60" y="104" text-anchor="middle">flux</text>
+            <text class="can__name" x="60" y="124" text-anchor="middle">Citrus Spark</text>
+          </svg>
+          <h3>Citrus Spark</h3>
+          <p class="card__fruit">Lime and blood orange</p>
+          <p class="card__desc">Sharp lime up front, a round orange finish. The original.</p>
+          <dl class="card__facts"><div><dt>Juice</dt><dd>32%</dd></div><div><dt>Sugar</dt><dd>8 g</dd></div><div><dt>Can</dt><dd>330 ml</dd></div></dl>
+        </li>
+        <li class="card" data-pop style="--fa: var(--f2a); --fb: var(--f2b)">
+          
+          <svg class="can" viewBox="0 0 120 220" aria-hidden="true">
+            <defs><linearGradient id="g-berry-card" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" class="stop-a" /><stop offset="1" class="stop-b" /></linearGradient></defs>
+            <rect class="can__body" x="10" y="18" width="100" height="184" rx="14" fill="url(#g-berry-card)" />
+            <ellipse class="can__base" cx="60" cy="202" rx="50" ry="8" />
+            <ellipse class="can__lid" cx="60" cy="18" rx="50" ry="9" /><ellipse class="can__tab" cx="60" cy="16" rx="12" ry="3.5" />
+            <g class="can__bubbles"><circle cx="40" cy="160" r="3"/><circle cx="78" cy="140" r="2"/><circle cx="58" cy="176" r="2.5"/><circle cx="88" cy="168" r="1.6"/></g>
+            <rect class="can__shine" x="22" y="26" width="9" height="168" rx="4.5" />
+            <text class="can__logo" x="60" y="104" text-anchor="middle">flux</text>
+            <text class="can__name" x="60" y="124" text-anchor="middle">Berry Lift</text>
+          </svg>
+          <h3>Berry Lift</h3>
+          <p class="card__fruit">Raspberry and blackcurrant</p>
+          <p class="card__desc">Tart raspberry with a dark, jammy blackcurrant end.</p>
+          <dl class="card__facts"><div><dt>Juice</dt><dd>28%</dd></div><div><dt>Sugar</dt><dd>9 g</dd></div><div><dt>Can</dt><dd>330 ml</dd></div></dl>
+        </li>
+        <li class="card" data-pop style="--fa: var(--f3a); --fb: var(--f3b)">
+          
+          <svg class="can" viewBox="0 0 120 220" aria-hidden="true">
+            <defs><linearGradient id="g-peach-card" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" class="stop-a" /><stop offset="1" class="stop-b" /></linearGradient></defs>
+            <rect class="can__body" x="10" y="18" width="100" height="184" rx="14" fill="url(#g-peach-card)" />
+            <ellipse class="can__base" cx="60" cy="202" rx="50" ry="8" />
+            <ellipse class="can__lid" cx="60" cy="18" rx="50" ry="9" /><ellipse class="can__tab" cx="60" cy="16" rx="12" ry="3.5" />
+            <g class="can__bubbles"><circle cx="40" cy="160" r="3"/><circle cx="78" cy="140" r="2"/><circle cx="58" cy="176" r="2.5"/><circle cx="88" cy="168" r="1.6"/></g>
+            <rect class="can__shine" x="22" y="26" width="9" height="168" rx="4.5" />
+            <text class="can__logo" x="60" y="104" text-anchor="middle">flux</text>
+            <text class="can__name" x="60" y="124" text-anchor="middle">Peach Drift</text>
+          </svg>
+          <h3>Peach Drift</h3>
+          <p class="card__fruit">White peach and mango</p>
+          <p class="card__desc">Soft and floral; the sweetest of the four, still only 9 g of sugar.</p>
+          <dl class="card__facts"><div><dt>Juice</dt><dd>35%</dd></div><div><dt>Sugar</dt><dd>9 g</dd></div><div><dt>Can</dt><dd>330 ml</dd></div></dl>
+        </li>
+        <li class="card" data-pop style="--fa: var(--f4a); --fb: var(--f4b)">
+          <span class="card__badge" data-pop="badge" style="--pop-delay: 450ms">New</span>
+          <svg class="can" viewBox="0 0 120 220" aria-hidden="true">
+            <defs><linearGradient id="g-cucumber-card" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" class="stop-a" /><stop offset="1" class="stop-b" /></linearGradient></defs>
+            <rect class="can__body" x="10" y="18" width="100" height="184" rx="14" fill="url(#g-cucumber-card)" />
+            <ellipse class="can__base" cx="60" cy="202" rx="50" ry="8" />
+            <ellipse class="can__lid" cx="60" cy="18" rx="50" ry="9" /><ellipse class="can__tab" cx="60" cy="16" rx="12" ry="3.5" />
+            <g class="can__bubbles"><circle cx="40" cy="160" r="3"/><circle cx="78" cy="140" r="2"/><circle cx="58" cy="176" r="2.5"/><circle cx="88" cy="168" r="1.6"/></g>
+            <rect class="can__shine" x="22" y="26" width="9" height="168" rx="4.5" />
+            <text class="can__logo" x="60" y="104" text-anchor="middle">flux</text>
+            <text class="can__name" x="60" y="124" text-anchor="middle">Cucumber Cool</text>
+          </svg>
+          <h3>Cucumber Cool</h3>
+          <p class="card__fruit">Cucumber, mint and lime</p>
+          <p class="card__desc">Green and very dry. Best with ice and a long afternoon.</p>
+          <dl class="card__facts"><div><dt>Juice</dt><dd>24%</dd></div><div><dt>Sugar</dt><dd>6 g</dd></div><div><dt>Can</dt><dd>330 ml</dd></div></dl>
+        </li>
+      </ul>
+    </section>
+
+    <!-- FACTS + parallax pair of fruit slices -->
+    <section class="facts" id="facts" aria-labelledby="facts-title">
+      <svg class="slice slice--lime" data-scrub="parallax" data-speed="-0.45" viewBox="-50 -50 100 100" aria-hidden="true"><circle r="46" class="slice__rind" /><circle r="40" class="slice__pith" /><g class="slice__seg"><path d="M0 0L0-36A36 36 0 0 1 31-18Z" /><path d="M0 0L31-18A36 36 0 0 1 31 18Z" /><path d="M0 0L31 18A36 36 0 0 1 0 36Z" /><path d="M0 0L0 36A36 36 0 0 1-31 18Z" /><path d="M0 0L-31 18A36 36 0 0 1-31-18Z" /><path d="M0 0L-31-18A36 36 0 0 1 0-36Z" /></g></svg>
+      <svg class="slice slice--orange" data-scrub="parallax" data-speed="0.4" viewBox="-50 -50 100 100" aria-hidden="true"><circle r="46" class="slice__rind" /><circle r="40" class="slice__pith" /><g class="slice__seg"><path d="M0 0L0-36A36 36 0 0 1 31-18Z" /><path d="M0 0L31-18A36 36 0 0 1 31 18Z" /><path d="M0 0L31 18A36 36 0 0 1 0 36Z" /><path d="M0 0L0 36A36 36 0 0 1-31 18Z" /><path d="M0 0L-31 18A36 36 0 0 1-31-18Z" /><path d="M0 0L-31-18A36 36 0 0 1 0-36Z" /></g></svg>
+      <div class="facts__inner">
+        <p class="kicker" data-pop="up">Per 330 ml can</p>
+        <h2 id="facts-title" data-split>Short ingredient list. Shorter sugar list.</h2>
+        <dl class="numbers" data-pop-group>
+          <div data-pop><dt>Calories</dt><dd><span data-count-to="45">45</span></dd></div>
+          <div data-pop><dt>Sugar, all from fruit</dt><dd><span data-count-to="8">8</span> g</dd></div>
+          <div data-pop><dt>Real juice</dt><dd><span data-count-to="30">30</span>%</dd></div>
+          <div data-pop><dt>Added anything</dt><dd>0</dd></div>
+        </dl>
+        <figure class="juice" data-pop="up">
+          <figcaption>Juice content by flavour</figcaption>
+          <ul class="juice__bars">
+            <li style="--v: 32; --fa: var(--f1a); --fb: var(--f1b)"><span class="juice__label">Citrus Spark</span><span class="juice__bar"><span></span></span><span class="juice__v">32%</span></li>
+            <li style="--v: 28; --fa: var(--f2a); --fb: var(--f2b)"><span class="juice__label">Berry Lift</span><span class="juice__bar"><span></span></span><span class="juice__v">28%</span></li>
+            <li style="--v: 35; --fa: var(--f3a); --fb: var(--f3b)"><span class="juice__label">Peach Drift</span><span class="juice__bar"><span></span></span><span class="juice__v">35%</span></li>
+            <li style="--v: 24; --fa: var(--f4a); --fb: var(--f4b)"><span class="juice__label">Cucumber Cool</span><span class="juice__bar"><span></span></span><span class="juice__v">24%</span></li>
+          </ul>
+        </figure>
+        <p class="facts__contact">Stockist and wholesale questions: <a href="mailto:hello@example.com">hello@example.com</a> · <a href="tel:+15555550100">(555) 555-0100</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Flux</strong> is a fictional drink. The flavours, nutrition figures and contact details are invented for this demo.</p>
+    <p>No product photos are used: the cans are SVG and the hero is a shader.</p>
+  </footer>
+</body>
+</html>
