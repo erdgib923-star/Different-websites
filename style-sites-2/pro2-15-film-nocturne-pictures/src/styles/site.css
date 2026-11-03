@@ -1,0 +1,164 @@
+/* Nocturne Pictures: "The Long Hallway". Near-black base, teal shadows, amber highlights.
+   Letterboxed 2.39:1 frames, film grain, slow scrubbed title sequence. No strobing. */
+:root {
+  --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --font-body: 'Cormorant Garamond', Georgia, serif;
+  --wrap: 1240px;
+  --gutter: clamp(16px, 4vw, 56px);
+  --header-h: 64px;
+  --pop-blur: 0px;
+}
+body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 1.24rem; line-height: 1.55; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 0.95; letter-spacing: 0.03em; }
+h2 { font-size: clamp(2.4rem, 6vw, 4.6rem); }
+a { color: var(--brand); text-underline-offset: 4px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.kicker { font-family: var(--font-body); font-style: italic; color: var(--accent); font-size: 1.1rem; letter-spacing: 0.04em; margin-bottom: 0.6rem; }
+
+/* Header: sits in the top letterbox bar */
+.site-header { position: fixed; inset: 0 0 auto; z-index: 40; height: var(--header-h); display: flex; align-items: center; gap: 1rem; padding: 0 var(--gutter);
+  background: linear-gradient(in oklch to bottom, color-mix(in oklch, var(--black) 92%, transparent), color-mix(in oklch, var(--black) 0%, transparent)); }
+.logo { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 44px; font-family: var(--font-display); font-size: 1.45rem; letter-spacing: 0.12em; color: var(--text); text-decoration: none; }
+.logo span:not(.logo__mark) { color: var(--brand); }
+.logo__mark { width: 26px; height: 14px; border: 1.5px solid var(--text); border-radius: 1px; position: relative; flex: none; }
+.logo__mark::after { content: ""; position: absolute; left: 50%; top: 2px; bottom: 2px; width: 4px; translate: -50% 0; background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+.nav { list-style: none; padding: 0; margin: 0 0 0 auto; display: flex; gap: 0.2rem; }
+.nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 0.7rem; color: var(--text); text-decoration: none; font-family: var(--font-display); letter-spacing: 0.14em; font-size: 1.05rem; }
+.nav a:hover { color: var(--brand); }
+@media (max-width: 560px) { .logo span:not(.logo__mark) { display: none; } .nav a { padding: 0 0.45rem; font-size: 0.98rem; letter-spacing: 0.1em; } }
+
+/* ---------------------------------------------------------------------------------------- */
+/* Title sequence                                                                            */
+.sequence { background: var(--black); }
+.stage { position: relative; min-height: 100svh; display: grid; align-content: center; justify-items: center; gap: clamp(1.2rem, 3vh, 2.4rem); padding: calc(var(--header-h) + 1rem) 0 clamp(1.5rem, 4vh, 3rem); background: var(--black); overflow: hidden; }
+.screen-wrap { position: relative; width: min(100%, calc((100svh - var(--header-h) - 300px) * 2.39)); min-width: min(100%, 340px); }
+.screen { --shut: 0; position: relative; aspect-ratio: 2.39 / 1; overflow: hidden; background: var(--black);
+  box-shadow: 0 0 0 1px color-mix(in oklch, var(--amber) 18%, transparent), 0 40px 120px -40px color-mix(in oklch, var(--amber-deep) 45%, transparent); }
+@media (min-width: 760px) { .screen-wrap { width: min(calc(100% - 2 * var(--gutter)), calc((100svh - var(--header-h) - 300px) * 2.39)); } }
+.screen__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; }
+html.webgl .screen__canvas { opacity: 1; }
+.screen .grain { position: absolute; inset: 0; z-index: 2; --grain-opacity: 0.16; }
+html.webgl .screen .grain { display: none; } /* the shader draws its own grain */
+/* Letterbox bars: each covers half the frame when fully shut (--shut: 1). */
+.bar { position: absolute; left: 0; right: 0; height: 50.5%; z-index: 3; background: var(--black); transform: scaleY(var(--shut)); }
+.bar--top { top: 0; transform-origin: 50% 0; }
+.bar--bottom { bottom: 0; transform-origin: 50% 100%; }
+
+/* CSS corridor: shown without JS or WebGL, and behind each still until it renders.
+   A one-point-perspective conic: ceiling, right wall, floor, left wall, plus the door of light. */
+.corridor-fallback { position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 5% 15% at 50% 52%, var(--amber) 0 40%, color-mix(in oklch, var(--amber) 0%, transparent) 100%),
+    radial-gradient(ellipse 40% 60% at 50% 52%, color-mix(in oklch, var(--amber-deep) 55%, transparent), color-mix(in oklch, var(--amber-deep) 0%, transparent) 70%),
+    radial-gradient(ellipse 80% 100% at 50% 50%, color-mix(in oklch, var(--black) 0%, transparent) 30%, var(--black) 100%),
+    conic-gradient(in oklch from 0deg at 50% 52%,
+      var(--night-2) 0deg 62deg, var(--teal-deep) 62deg 118deg,
+      color-mix(in oklch, var(--amber-deep) 30%, var(--night-3)) 118deg 242deg,
+      var(--teal-deep) 242deg 298deg, var(--night-2) 298deg 360deg);
+}
+@supports not (color: oklch(0 0 0)) {
+  .corridor-fallback { background: radial-gradient(ellipse 5% 15% at 50% 52%, #e8b25c 0 40%, transparent 100%), radial-gradient(ellipse 80% 100% at 50% 50%, transparent 30%, #050708 100%), conic-gradient(from 0deg at 50% 52%, #1a2024 0deg 62deg, #21393f 62deg 118deg, #3a3024 118deg 242deg, #21393f 242deg 298deg, #1a2024 298deg 360deg); }
+}
+
+/* Title cards. Static (no JS / reduced motion): a stacked credit block. Driven: one grid cell. */
+.cards { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; text-align: center; padding-inline: var(--gutter); }
+.card { margin: 0; }
+.card--small { font-style: italic; font-size: clamp(1.15rem, 2.2vw, 1.6rem); color: var(--text-muted); letter-spacing: 0.04em; }
+.card__name { font-family: var(--font-display); font-style: normal; color: var(--text); letter-spacing: 0.14em; font-size: 1.12em; margin-left: 0.3em; }
+.card--cast { font-style: italic; color: var(--text-muted); font-size: clamp(1.1rem, 2vw, 1.45rem); }
+.card--cast .card__name { display: inline-block; margin: 0 0.35em; }
+.card--title { order: -1; margin-bottom: 0.4rem; }
+.title { font-size: clamp(3.4rem, 9.5vw, 8rem); letter-spacing: 0.06em; color: var(--text); text-shadow: 0 0 40px color-mix(in oklch, var(--amber) 35%, transparent); }
+.title__date { margin-top: 0.5rem; font-family: var(--font-display); letter-spacing: 0.32em; color: var(--accent); font-size: clamp(1rem, 1.8vw, 1.3rem); }
+.sequence.is-driven .cards { display: grid; place-items: center; min-height: clamp(9rem, 22vh, 13rem); }
+.sequence.is-driven .card { grid-area: 1 / 1; }
+.sequence.is-driven .card--title { order: 0; margin: 0; }
+.sequence.is-driven .cards { animation: seq-intro var(--dur-cinematic) var(--ease-expo) both 0.2s; }
+@keyframes seq-intro { from { opacity: 0; } to { opacity: 1; } }
+
+/* Premiere badge: overlaps the frame's lower right corner; pops at 88% of the sequence. */
+.badge { position: absolute; right: clamp(8px, 2vw, 24px); bottom: 0; translate: 0 50%; z-index: 5; margin: 0; display: grid; gap: 0.1rem; max-width: 15rem;
+  padding: 0.55rem 0.9rem 0.6rem; border: 1px solid var(--brand); border-radius: 4px; background: var(--night); color: var(--text); font-size: 0.98rem; line-height: 1.25;
+  box-shadow: 0 14px 30px -12px color-mix(in oklch, var(--shadow-color) 80%, transparent); }
+.badge__k { font-family: var(--font-display); letter-spacing: 0.2em; color: var(--brand); font-size: 1.05rem; }
+@media (max-width: 559px) { .badge { position: static; translate: none; margin: 0.9rem auto 0; text-align: center; } }
+html.js .sequence.is-driven .badge:not(.is-in) { opacity: 0; transform: scale(0.4) rotate(-12deg); }
+html.js .sequence.is-driven .badge.is-in { animation: pop-badge var(--dur-slow) var(--ease-power3) both; }
+
+.hint { position: absolute; left: 50%; bottom: clamp(0.8rem, 2.5vh, 1.6rem); translate: -50% 0; margin: 0; font-family: var(--font-display); letter-spacing: 0.3em; font-size: 0.95rem; color: var(--text-muted); display: none; transition: opacity var(--dur-base); }
+.sequence.is-driven .hint { display: block; }
+.hint.is-gone { opacity: 0; }
+
+/* ---------------------------------------------------------------------------------------- */
+.synopsis, .stills, .premiere, .site-footer { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+section.synopsis, section.stills, section.premiere { padding-block: clamp(4rem, 11vw, 8rem); position: relative; }
+
+/* Synopsis + parallax pair of film strips */
+.synopsis { display: grid; gap: 2.5rem; overflow: clip; }
+@media (min-width: 900px) { .synopsis { grid-template-columns: 0.7fr 1.3fr; gap: 4rem; align-items: center; } }
+.synopsis__strips { position: relative; height: clamp(220px, 34vw, 440px); }
+.strip { position: absolute; width: clamp(56px, 7vw, 92px); height: auto; aspect-ratio: 70 / 300; filter: drop-shadow(0 20px 30px color-mix(in oklch, var(--shadow-color) 70%, transparent)); }
+.strip--a { left: 18%; top: 0; rotate: -8deg; }
+.strip--b { left: 52%; top: 12%; rotate: 6deg; }
+.strip__base { fill: var(--night-3); }
+.strip__holes rect { fill: var(--black); }
+.strip__frames rect { fill: color-mix(in oklch, var(--teal-deep) 75%, var(--amber)); }
+.strip--b .strip__frames rect { fill: color-mix(in oklch, var(--amber-deep) 70%, var(--night)); }
+.synopsis__text { display: grid; gap: 1.1rem; margin-top: 1.4rem; max-width: 40rem; }
+.facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 2.2rem; max-width: 40rem; background: var(--border); border: 1px solid var(--border); }
+@media (min-width: 640px) { .facts { grid-template-columns: repeat(4, 1fr); } }
+.facts > div { background: var(--bg); padding: 0.8rem 1rem; }
+.facts dt { font-style: italic; color: var(--text-muted); font-size: 1rem; }
+.facts dd { margin: 0; font-family: var(--font-display); letter-spacing: 0.08em; font-size: 1.35rem; }
+
+/* Stills */
+.section-head { margin-bottom: 2.4rem; }
+.stills__grid { display: grid; gap: clamp(16px, 2.4vw, 28px); }
+@media (min-width: 760px) { .stills__grid { grid-template-columns: repeat(2, 1fr); } .still:nth-child(even) { translate: 0 clamp(20px, 4vw, 56px); } }
+.still { --fig-radius: 2px; --fig-placeholder: var(--night-2); --fig-shadow: var(--teal-deep); --fig-highlight: var(--amber); box-shadow: 0 30px 60px -30px color-mix(in oklch, var(--shadow-color) 90%, transparent); }
+.still canvas { display: block; position: relative; opacity: 0; transition: opacity var(--dur-slow) var(--ease-expo); }
+.still.is-rendered canvas { opacity: 1; }
+.still figcaption { left: 0; bottom: 0; padding: 0.35rem 0.8rem 0.4rem; background: var(--black); color: var(--text); font-size: 1rem; }
+.still figcaption span { font-family: var(--font-display); color: var(--brand); letter-spacing: 0.14em; margin-right: 0.4rem; }
+
+/* Premiere */
+.premiere { display: grid; place-items: center; }
+.premiere__card { max-width: 42rem; text-align: center; padding: clamp(1.6rem, 4vw, 3rem); border: 1px solid color-mix(in oklch, var(--brand) 55%, transparent); background: var(--surface);
+  background-image: radial-gradient(in oklch ellipse 70% 90% at 50% 0%, color-mix(in oklch, var(--amber-deep) 18%, transparent), color-mix(in oklch, var(--amber-deep) 0%, transparent)); }
+.premiere__card > * + * { margin-top: 0.8rem; }
+.premiere__when { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.4rem 1.4rem; font-family: var(--font-display); letter-spacing: 0.14em; font-size: 1.5rem; color: var(--brand); }
+.premiere__contact { color: var(--text-muted); font-size: 1.05rem; }
+
+/* Credits roll */
+.credits { position: relative; background: var(--black); }
+.credits__window { padding: clamp(4rem, 10vw, 7rem) var(--gutter); }
+.credits__list { max-width: 34rem; margin: 0 auto; text-align: center; }
+.credits__head { font-size: clamp(2.6rem, 7vw, 4.4rem); letter-spacing: 0.08em; margin-bottom: 2.5rem; }
+.credits__sub { font-size: 1.6rem; letter-spacing: 0.3em; color: var(--accent); margin: 3rem 0 1.2rem; }
+.credit { margin: 0 0 2.4rem; display: grid; gap: 0.15rem; }
+.credit dt { font-style: italic; color: var(--text-muted); font-size: 1.05rem; margin-top: 1.1rem; }
+.credit dt:first-child { margin-top: 0; }
+.credit dd { margin: 0; font-family: var(--font-display); letter-spacing: 0.12em; font-size: 1.55rem; }
+.credit--lead dd { font-size: 2.2rem; color: var(--brand); }
+.credits__note { color: var(--text-muted); font-style: italic; margin-top: 2rem; }
+.credits__end { margin-top: 5rem; display: grid; justify-items: center; gap: 0.9rem; }
+.logo__mark--big { width: 64px; height: 34px; border-width: 2px; }
+.logo__mark--big::after { width: 9px; top: 4px; bottom: 4px; box-shadow: 0 0 22px var(--amber); }
+.credits__studio { font-family: var(--font-display); letter-spacing: 0.3em; font-size: 2rem; }
+.credits__fiction { color: var(--text-muted); font-size: 1.05rem; max-width: 26rem; }
+/* Rolling: a sticky window, faded at top and bottom; the list moves 1px per scrolled px. */
+.credits.is-rolling { height: calc(var(--roll-dist, 2000px) + 100svh); }
+.credits.is-rolling .credits__window { position: sticky; top: 0; height: 100svh; overflow: hidden; padding-block: 0;
+  mask-image: linear-gradient(to bottom, transparent 0, #000 calc(var(--header-h) + 8%), #000 86%, transparent 100%); }
+.credits.is-rolling .credits__list { translate: 0 var(--roll-from, 60svh); will-change: transform; }
+@keyframes credits-roll { from { translate: 0 var(--roll-from); } to { translate: 0 var(--roll-to); } }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    html.sda .credits.is-rolling { view-timeline-name: --credits; }
+    html.sda .credits.is-rolling .credits__list { animation: credits-roll linear both; animation-timeline: --credits; animation-range: contain 0% contain 100%; }
+  }
+}
+html:not(.sda) .credits.is-rolling .credits__list { translate: none; } /* GSAP drives y instead */
+
+.site-footer { padding-block: 2rem 3rem; color: var(--text-muted); font-size: 1.05rem; display: grid; gap: 0.4rem; border-top: 1px solid var(--border); }
+.site-footer strong { color: var(--text); }

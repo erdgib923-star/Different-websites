@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Long Hallway · A Nocturne Pictures short film</title>
+  <meta name="description" content="The Long Hallway, a fictional short film from Nocturne Pictures. A title sequence you scroll through, a synopsis, stills and the full credits. Every name is invented." />
+  <meta name="theme-color" content="#0e1215" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230e1215'/%3E%3Crect x='3' y='9' width='26' height='14' fill='%23233a40'/%3E%3Crect x='14' y='12' width='4' height='8' fill='%23e8b25c'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js'); }, 4000);
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="logo" href="#top"><span class="logo__mark" aria-hidden="true"></span>Nocturne <span>Pictures</span></a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#synopsis">Synopsis</a></li>
+        <li><a href="#stills">Stills</a></li>
+        <li><a href="#credits">Credits</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- TITLE SEQUENCE: pinned and scrubbed. Letterbox opens, camera dollies, cards fade, the door opens. -->
+    <section class="sequence" id="top" aria-labelledby="film-title" data-sequence>
+      <div class="stage">
+        <div class="screen-wrap">
+        <div class="screen" data-screen>
+          <div class="corridor-fallback" aria-hidden="true"></div>
+          <canvas class="screen__canvas" data-corridor aria-hidden="true"></canvas>
+          <div class="grain" aria-hidden="true"></div>
+          <span class="bar bar--top" aria-hidden="true"></span>
+          <span class="bar bar--bottom" aria-hidden="true"></span>
+        </div>
+          <p class="badge" data-badge><span class="badge__k">World premiere</span> <span>Example City Film Week</span> <span>14 April 2027</span></p>
+        </div>
+        <p class="sr-only">A slow camera moves down a dim corridor lined with closed doors and wall lamps. At the far end a door of warm light slowly opens.</p>
+        <div class="cards" data-cards>
+          <p class="card card--small" data-card="0">Nocturne Pictures presents</p>
+          <p class="card card--small" data-card="1">a film by <span class="card__name">Odile Brannoch</span></p>
+          <p class="card card--cast" data-card="2">with <span class="card__name">Juno Ashgrove</span> <span class="card__name">Pell Marchetti</span> <span class="card__name">Rafe Dunmore</span></p>
+          <div class="card card--title" data-card="3">
+            <h1 id="film-title" class="title">The Long Hallway</h1>
+            <p class="title__date" data-card-date>Coming spring 2027</p>
+          </div>
+        </div>
+        <p class="hint" data-hint aria-hidden="true">Scroll to roll film</p>
+      </div>
+    </section>
+
+    <!-- SYNOPSIS -->
+    <section class="synopsis" id="synopsis" aria-labelledby="synopsis-title">
+      <div class="synopsis__strips" aria-hidden="true">
+        <svg class="strip strip--a" data-scrub="parallax" data-speed="-0.45" viewBox="0 0 70 300"><use href="#strip" /></svg>
+        <svg class="strip strip--b" data-scrub="parallax" data-speed="0.35" viewBox="0 0 70 300"><use href="#strip" /></svg>
+      </div>
+      <div class="synopsis__body">
+        <p class="kicker" data-pop="up">Synopsis · 19 minutes</p>
+        <h2 id="synopsis-title" data-split>One corridor. Eleven doors. One of them is open.</h2>
+        <div class="synopsis__text">
+          <p data-pop="up">The night porter of a shuttered hotel walks the third-floor corridor at two every morning. Tonight the door at the far end, the one that has been locked for nine years, is standing open. Light is spilling onto the boards.</p>
+          <p data-pop="up">Over one long walk, told almost entirely in a single moving shot, she passes the rooms of the people she used to know. Each door holds a sound, a smell, a voice through the wood. None of them hold the answer. That is behind the last door.</p>
+          <p data-pop="up">The film is about the distance between deciding to go and arriving.</p>
+        </div>
+        <dl class="facts" data-pop-group>
+          <div data-pop><dt>Running time</dt><dd>19 min</dd></div>
+          <div data-pop><dt>Format</dt><dd>2.39 : 1, colour</dd></div>
+          <div data-pop><dt>Language</dt><dd>English</dd></div>
+          <div data-pop><dt>Premiere</dt><dd>14 April 2027</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- STILLS: rendered once from the same shader into 2D canvases. Swap in real frames via data-photo. -->
+    <section class="stills" id="stills" aria-labelledby="stills-title">
+      <div class="section-head">
+        <p class="kicker" data-pop="up">Frames</p>
+        <h2 id="stills-title" data-split>Stills from the film</h2>
+      </div>
+      <div class="stills__grid" data-pop-group>
+        <figure class="fig still" data-pop="clip" data-slot="still-1" data-photo="" data-alt="Still: the corridor at two in the morning" data-still='{"cam":1.5,"door":0.05,"lamp":1,"off":0,"warm":0.3}' style="--ar: 2.39 / 1">
+          <div class="fig__art corridor-fallback"><canvas aria-hidden="true"></canvas></div>
+          <figcaption><span>01</span> Two in the morning</figcaption>
+        </figure>
+        <figure class="fig still" data-pop="clip" data-slot="still-2" data-photo="" data-alt="Still: close to the wall, passing room 304" data-still='{"cam":4.2,"door":0.2,"lamp":1.3,"off":0.32,"warm":0.6}' style="--ar: 2.39 / 1">
+          <div class="fig__art corridor-fallback"><canvas aria-hidden="true"></canvas></div>
+          <figcaption><span>02</span> Room 304</figcaption>
+        </figure>
+        <figure class="fig still" data-pop="clip" data-slot="still-3" data-photo="" data-alt="Still: the lamps dim halfway down" data-still='{"cam":8.6,"door":0.45,"lamp":0.35,"off":-0.22,"warm":0.2}' style="--ar: 2.39 / 1">
+          <div class="fig__art corridor-fallback"><canvas aria-hidden="true"></canvas></div>
+          <figcaption><span>03</span> Halfway</figcaption>
+        </figure>
+        <figure class="fig still" data-pop="clip" data-slot="still-4" data-photo="" data-alt="Still: the last door, wide open" data-still='{"cam":13,"door":1,"lamp":0.6,"off":0,"warm":1}' style="--ar: 2.39 / 1">
+          <div class="fig__art corridor-fallback"><canvas aria-hidden="true"></canvas></div>
+          <figcaption><span>04</span> The last door</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- PREMIERE -->
+    <section class="premiere" aria-labelledby="premiere-title">
+      <div class="premiere__card" data-pop="up">
+        <p class="kicker">Screening</p>
+        <h2 id="premiere-title">World premiere</h2>
+        <p class="premiere__when"><span>14 April 2027</span> <span>Screen 2, 21:30</span></p>
+        <p>Example City Film Week, short film competition. The director and cast will take questions after the screening.</p>
+        <p class="premiere__contact">Festival and press enquiries: <a href="mailto:press@example.com">press@example.com</a> · <a href="tel:+15555550100">(555) 555-0100</a></p>
+      </div>
+    </section>
+
+    <!-- CREDITS ROLL: a sticky window; the list scrolls up through it, scrubbed by the page scroll. -->
+    <section class="credits" id="credits" aria-label="Full credits" data-credits>
+      <div class="credits__window">
+        <div class="credits__list" data-roll>
+          <h2 id="credits-title" class="credits__head">The Long Hallway</h2>
+          <dl class="credit credit--lead">
+            <dt>Written and directed by</dt><dd>Odile Brannoch</dd>
+          </dl>
+          <dl class="credit">
+            <dt>Produced by</dt><dd>Sefa Lindqvist-Oduya</dd><dd>Marten Holloway</dd>
+            <dt>Director of photography</dt><dd>Ilse Varga-Penhaligon</dd>
+            <dt>Production design</dt><dd>Corran Westmacott</dd>
+            <dt>Editor</dt><dd>Bettany Achterberg</dd>
+            <dt>Original score</dt><dd>Lio Farrant-Kask</dd>
+            <dt>Sound design</dt><dd>Nnedi Halvorsen</dd>
+            <dt>Colourist</dt><dd>Tamsin Rook-Abara</dd>
+            <dt>Costume</dt><dd>Agathe Mbeki-Strand</dd>
+          </dl>
+          <h3 class="credits__sub">Cast</h3>
+          <dl class="credit credit--cast">
+            <dt>The porter</dt><dd>Juno Ashgrove</dd>
+            <dt>The guest in 304</dt><dd>Pell Marchetti</dd>
+            <dt>The manager</dt><dd>Rafe Dunmore</dd>
+            <dt>The voice behind 311</dt><dd>Wilhelmina Oyelaran</dd>
+          </dl>
+          <h3 class="credits__sub">Crew</h3>
+          <dl class="credit">
+            <dt>First assistant director</dt><dd>Kit Szabo-Renwick</dd>
+            <dt>Focus puller</dt><dd>Ottilie Prenderghast</dd>
+            <dt>Gaffer</dt><dd>Dara Quillfeather</dd>
+            <dt>Key grip</dt><dd>Ambrose Tull</dd>
+            <dt>Steadicam operator</dt><dd>Haruki Bellweather</dd>
+            <dt>Production sound mixer</dt><dd>Femi Castellane</dd>
+            <dt>Art director</dt><dd>Ines Moorcroft</dd>
+            <dt>Props</dt><dd>Lowen Achebe-Frost</dd>
+            <dt>Hair and make-up</dt><dd>Sunniva Okeke</dd>
+            <dt>Runner</dt><dd>Pip Galloway-Nakamura</dd>
+          </dl>
+          <p class="credits__note">Filmed on a closed set built for the production. No hotel was harmed.</p>
+          <div class="credits__end">
+            <span class="logo__mark logo__mark--big" aria-hidden="true"></span>
+            <p class="credits__studio">Nocturne Pictures</p>
+            <p class="credits__fiction">The Long Hallway is a fictional film. Nocturne Pictures, every person in these credits and the festival are invented for this demo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Nocturne Pictures</strong> · a fictional studio · <a href="mailto:hello@example.com">hello@example.com</a></p>
+    <p>Every frame on this page is drawn live by a shader. No footage, photos or press quotes are used.</p>
+  </footer>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="strip" viewBox="0 0 70 300">
+        <rect width="70" height="300" rx="3" class="strip__base" />
+        <g class="strip__holes">
+          <rect x="5" y="8" width="7" height="10" rx="1.5" /><rect x="5" y="40" width="7" height="10" rx="1.5" /><rect x="5" y="72" width="7" height="10" rx="1.5" /><rect x="5" y="104" width="7" height="10" rx="1.5" /><rect x="5" y="136" width="7" height="10" rx="1.5" /><rect x="5" y="168" width="7" height="10" rx="1.5" /><rect x="5" y="200" width="7" height="10" rx="1.5" /><rect x="5" y="232" width="7" height="10" rx="1.5" /><rect x="5" y="264" width="7" height="10" rx="1.5" />
+          <rect x="58" y="8" width="7" height="10" rx="1.5" /><rect x="58" y="40" width="7" height="10" rx="1.5" /><rect x="58" y="72" width="7" height="10" rx="1.5" /><rect x="58" y="104" width="7" height="10" rx="1.5" /><rect x="58" y="136" width="7" height="10" rx="1.5" /><rect x="58" y="168" width="7" height="10" rx="1.5" /><rect x="58" y="200" width="7" height="10" rx="1.5" /><rect x="58" y="232" width="7" height="10" rx="1.5" /><rect x="58" y="264" width="7" height="10" rx="1.5" />
+        </g>
+        <g class="strip__frames">
+          <rect x="16" y="10" width="38" height="62" /><rect x="16" y="82" width="38" height="62" /><rect x="16" y="154" width="38" height="62" /><rect x="16" y="226" width="38" height="62" />
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+</body>
+</html>
