@@ -231,6 +231,8 @@ export function initToybox(fig: HTMLElement, reduced: boolean) {
     build();
     fig.classList.add('is-live');
     shakeBtn.hidden = tidyBtn.hidden = false;
+    fig.querySelector<HTMLElement>('.toybox__how')!.hidden = false;
+    fig.querySelector<HTMLElement>('.toybox__how-off')!.hidden = true;
     onBtn.hidden = true;
     document.fonts?.ready.then(draw);
     play();
@@ -238,6 +240,7 @@ export function initToybox(fig: HTMLElement, reduced: boolean) {
 
   if (reduced) {
     onBtn.hidden = false;
+    fig.querySelector<HTMLElement>('.toybox__how-off')!.hidden = false;
     onBtn.addEventListener('click', start, { once: true });
   } else {
     start();
