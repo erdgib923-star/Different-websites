@@ -18,7 +18,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to the stories</a>
-  <p class="fiction-banner">Every story, name and place in this newspaper is fictional. It is a design demo.</p>
+  <aside aria-label="Notice"><p class="fiction-banner">Every story, name and place in this newspaper is fictional. It is a design demo.</p></aside>
 
   <header class="masthead" id="top">
     <div class="masthead__top">
@@ -42,7 +42,7 @@
     </nav>
   </header>
 
-  <div class="ticker" data-ticker>
+  <aside class="ticker" data-ticker aria-label="Latest headlines">
     <p class="ticker__label">Latest</p>
     <div class="ticker__viewport">
       <ul class="ticker__track" data-track>
@@ -55,7 +55,7 @@
       </ul>
     </div>
     <button type="button" class="ticker__toggle" data-ticker-toggle aria-pressed="false">Pause ticker</button>
-  </div>
+  </aside>
 
   <main id="main">
     <!-- FRONT PAGE -->

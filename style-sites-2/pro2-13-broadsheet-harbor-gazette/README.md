@@ -92,6 +92,20 @@ npm run contrast
 ## Swap in your own photos
 Two slots: `lead-lighthouse` (16:9) and `ferry-fog` (4:3). Set `data-photo="assets/images/<file>"`; the default duotone (`--fig-duo: 1`) turns photos into ink on newsprint. See [`public/assets/README.md`](public/assets/README.md). The pinned EXTRA plate is part of the animation and stays generated.
 
+## Verification (what was actually run)
+- `npm run build` passes; `npm run contrast`: 10/10 pairs pass.
+- Headless Chromium at 375, 768 and 1440 px, with screenshots at 0/25/50/75/100%:
+  - no console errors, no failed or external requests, one h1, no horizontal scroll (the ticker track is wider than the screen but clipped inside its bar);
+  - axe-core: 0 violations after fixes;
+  - reduced-motion, no-JS and `?nosda` passes: nothing left hidden.
+- Probes:
+  - the pinned extra at 1440 px showed the typeset headline, a mid-step halftone plate and the EXTRA stamp;
+  - the ticker's Pause button set `animation-play-state: paused`, `aria-pressed="true"` and the label "Play ticker".
+- Fixed after the first audit:
+  - axe "region": the fictional-content banner and the ticker sat outside any landmark; they are now labelled `<aside>` elements;
+  - the letter-by-letter headline could break mid-word ("wil / l"); letters are now grouped in no-wrap words.
+- **Not tested:** Safari and Firefox, printing the page, and screen readers.
+
 ## Notes and decisions
 - Built in `style-sites-2/` of `erdgib923-star/different-websites` instead of its own repo: `gh` was not authenticated and repo creation was unavailable. Split later with `publish-repos.sh`.
 - Brand check (web search, 2026-11-02): no newspaper named "The Harbor Gazette" found (similar: South County Gazette, Harbor Country News).

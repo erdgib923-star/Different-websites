@@ -77,6 +77,7 @@ main > section { max-width: var(--wrap); margin-inline: auto; padding: clamp(2re
 .extra__pin { display: grid; gap: 2rem; align-items: center; }
 @media (min-width: 900px) { .extra__pin { grid-template-columns: 1fr 1fr; gap: 3rem; } }
 .extra__hed { min-height: 2.1em; }
+.typeset .word { display: inline-block; white-space: nowrap; }
 .typeset .ch { display: inline-block; }
 .press-steps { list-style: none; padding: 0; margin-top: 1.4rem; display: grid; gap: 0.6rem; font-family: var(--font-sans); font-size: 0.95rem; }
 .press-steps b { display: inline-block; min-width: 6.5em; color: var(--accent); }

@@ -90,7 +90,14 @@ function initExtra() {
   const plates = pitches.map((p) => halftone('lighthouse', 480, 300, p, ink));
   plate.innerHTML = plates[plates.length - 1];
   const text = type.textContent ?? '';
-  type.replaceChildren(...[...text].map((ch) => { const s = document.createElement('span'); s.className = 'ch'; s.textContent = ch === ' ' ? ' ' : ch; return s; }));
+  // Letters are grouped into no-wrap words so a line can only break between words.
+  const words = text.split(' ').map((word) => {
+    const w = document.createElement('span');
+    w.className = 'word';
+    w.append(...[...word].map((ch) => { const s = document.createElement('span'); s.className = 'ch'; s.textContent = ch; return s; }));
+    return w;
+  });
+  type.replaceChildren(...words.flatMap((w, i) => (i < words.length - 1 ? [w, document.createTextNode(' ')] : [w])));
   const chars = [...type.querySelectorAll<HTMLElement>('.ch')];
   const mm = gsap.matchMedia();
   mm.add({ wide: '(min-width: 900px)', motion: '(prefers-reduced-motion: no-preference)' }, (c) => {

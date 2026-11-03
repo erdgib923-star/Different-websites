@@ -34,3 +34,4 @@ All brands, people, addresses, phone numbers and data are fictional.
 | 10 | `pro2-10-memphis-terrazzo-lab` | Terrazzo Lab, pattern studio |
 | 11 | `pro2-11-pixel-hollow-game` | Pixel Hollow, cozy farming game |
 | 12 | `pro2-12-terminal-root-vesper` | root@vesper, developer portfolio |
+| 13 | `pro2-13-broadsheet-harbor-gazette` | The Harbor Gazette, fictional newspaper |
