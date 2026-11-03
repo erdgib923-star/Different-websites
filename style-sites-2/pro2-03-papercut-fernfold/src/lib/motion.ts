@@ -64,19 +64,28 @@ export function initPopIns(root: ParentNode = document) {
     targets.forEach(reveal);
     return;
   }
+  const pending = new Set<Element>(targets);
+  const done = (el: Element) => { reveal(el); io.unobserve(el); pending.delete(el); };
   const io = new IntersectionObserver(
     (entries) => {
       for (const e of entries) {
         // Reveal on entry, or if the element is already above the viewport (anchor jumps).
-        if (e.isIntersecting || e.boundingClientRect.bottom < 0) {
-          reveal(e.target);
-          io.unobserve(e.target);
-        }
+        if (e.isIntersecting || e.boundingClientRect.bottom < 0) done(e.target);
       }
     },
     { rootMargin: '0px 0px -8% 0px', threshold: 0.12 },
   );
   targets.forEach((el) => io.observe(el));
+  // IntersectionObserver only reports threshold changes. If the main thread is busy while an
+  // element passes from below the viewport to above it, no callback fires; sweep those up.
+  let raf = 0;
+  const sweep = () => {
+    raf = 0;
+    for (const el of pending) if (el.getBoundingClientRect().bottom < 0) done(el);
+    if (!pending.size) removeEventListener('scroll', onScroll);
+  };
+  const onScroll = () => { if (!raf) raf = requestAnimationFrame(sweep); };
+  addEventListener('scroll', onScroll, { passive: true });
 }
 
 /**
