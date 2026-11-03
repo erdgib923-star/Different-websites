@@ -77,9 +77,9 @@ Shared tokens (0.4/0.7/1.0/1.2 s, expo and power3 easing, 75 ms stagger, a pop p
 - **No JS:** the CSS corridor gradient replaces the shader. All text, stills (as gradients) and credits are visible.
 
 ## Skills actually used
+These skills were loaded earlier in this build session (sites 1–5) and applied again here:
 - `frontend-design` (julianoczkowski designer-skills): committed direction, typographic pairing, and one dominant image.
 - `css-animation-patterns` (oakoss): named view timelines and `animation-range: contain` for the credits roll.
-- `design-style` / `dramatic` (bergside): theatrical composition and high contrast.
 - `motion-and-interaction-system` (read manually).
 - **Not available**, so not used: gsap, shadertoy, epic-design, color-expert, accesslint, web-design-guidelines. The shader is my own; the audit used axe-core.
 
