@@ -26,8 +26,9 @@
 html {
   background: var(--c-bg);
 }
+/* the root paints the page colour; body stays transparent so the fixed canvas (z-index -1) shows */
 body {
-  background: var(--c-bg);
+  background: transparent;
   color: var(--text);
   font-family: var(--mono);
   font-size: 0.98rem;
@@ -75,7 +76,8 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem var(--gutter);
+  padding: 0.8rem var(--gutter) 1.6rem;
+  background: linear-gradient(var(--c-bg) 55%, transparent);
 }
 .top__logo {
   font-family: var(--display);
@@ -180,17 +182,34 @@ h2 {
   grid-template-columns: repeat(6, 1fr);
   gap: 0.5rem;
 }
+.swatches li:nth-child(1) {
+  --sw-hex: var(--t1-accent);
+}
+.swatches li:nth-child(2) {
+  --sw-hex: var(--t2-accent);
+}
+.swatches li:nth-child(3) {
+  --sw-hex: var(--t3-accent);
+}
+.swatches li:nth-child(4) {
+  --sw-hex: var(--t4-accent);
+}
+.swatches li:nth-child(5) {
+  --sw-hex: var(--t5-accent);
+}
+.swatches li:nth-child(6) {
+  --sw-hex: var(--t6-accent);
+}
 .swatches li {
   aspect-ratio: 3 / 5;
   border-radius: 14px;
-  background: var(--t1-accent);
+  background: var(--sw-hex);
   background: oklch(80% 0.13 var(--sh));
   display: flex;
   align-items: flex-end;
   padding: 0.8rem;
   color: var(--accent-contrast);
   font-weight: 700;
-  transform-origin: bottom;
 }
 
 /* ---------- tracks ---------- */
@@ -210,11 +229,22 @@ h2 {
   }
 }
 .track__art {
+  /* duotone for dropped-in photos, in this cover's own track hue (the figure sets --h) */
+  --dominant: var(--t1-surface);
+  --duo-dark: var(--t1-bg);
+  --duo-light: var(--t1-accent);
   border-radius: 18px;
   overflow: hidden;
   max-width: 560px;
   width: 100%;
   justify-self: center;
+}
+@supports (color: oklch(0% 0 0)) {
+  .track__art {
+    --dominant: oklch(23.5% 0.045 var(--h));
+    --duo-dark: oklch(14% 0.04 var(--h));
+    --duo-light: oklch(90% 0.09 var(--h));
+  }
 }
 .cover {
   background:
@@ -334,13 +364,14 @@ h2 {
   border-radius: 999px;
   background: var(--c-surface);
   border: 1px solid var(--border);
-  box-shadow: 0 20px 40px -20px rgb(0 0 0 / 0.6);
+  box-shadow: 0 20px 40px -20px rgb(20 6 8 / 0.6);
+  box-shadow: 0 20px 40px -20px oklch(10% 0.04 var(--h) / 0.7);
 }
 .player__btn {
   min-width: 44px;
   min-height: 44px;
   border-radius: 999px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
   background: transparent;
   color: var(--text);
   font: inherit;

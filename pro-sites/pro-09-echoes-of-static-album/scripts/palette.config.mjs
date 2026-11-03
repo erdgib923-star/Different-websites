@@ -27,6 +27,7 @@ export default {
     accent: 't1-accent',
     'accent-contrast': 'neutral-950',
     border: 'neutral-600',
+    'border-strong': 'neutral-400',
     focus: 'neutral-50',
   },
   pairs: TRACK_HUES.flatMap((h, i) => {
@@ -38,6 +39,8 @@ export default {
       ['neutral-50', `t${n}-surface`, 4.5, `Track ${n} · text on card`],
       [`t${n}-muted`, `t${n}-surface`, 4.5, `Track ${n} · muted on card`],
       ['neutral-950', `t${n}-accent`, 4.5, `Track ${n} · label on accent button`],
+      [`t${n}-accent`, `t${n}-surface`, 4.5, `Track ${n} · accent text on card / player`],
+      ['neutral-400', `t${n}-surface`, 3, `Track ${n} · control outline on player (UI)`],
     ];
   }).concat([['neutral-600', 't1-bg', 1.5, 'Hairline borders (decorative)']]),
 };

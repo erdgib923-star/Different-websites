@@ -121,5 +121,6 @@
   --accent: var(--t1-accent);
   --accent-contrast: var(--neutral-950);
   --border: var(--neutral-600);
+  --border-strong: var(--neutral-400);
   --focus: var(--neutral-50);
 }

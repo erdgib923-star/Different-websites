@@ -71,7 +71,17 @@ const updateHue = () => {
 
 /* ---------- the pinned "six colours" sequence (scrubbed) ---------- */
 if (!RM) {
-  gsap.fromTo('.swatches li', { scaleY: 0.35, opacity: 0.3 }, { scaleY: 1, opacity: 1, ease: 'none', stagger: 0.5, scrollTrigger: { trigger: '#spectrum', start: 'top top', end: '+=180%', scrub: 0.5 } });
+  // clip from the bottom up: the number label (bottom-aligned) stays fully legible and undistorted
+  gsap.fromTo('.swatches li', { clipPath: 'inset(62% 0% 0% 0% round 14px)' }, { clipPath: 'inset(0% 0% 0% 0% round 14px)', ease: 'none', stagger: 0.5, scrollTrigger: { trigger: '#spectrum', start: 'top top', end: '+=180%', scrub: 0.5 } });
+}
+
+/* ---------- parallax pair per chapter: cover art drifts up while the text card drifts down ---------- */
+if (!RM) {
+  chapters.forEach((c) => {
+    const st = { trigger: c, start: 'top bottom', end: 'bottom top', scrub: true };
+    gsap.fromTo(c.querySelector('.track__art'), { y: 60 }, { y: -60, ease: 'none', scrollTrigger: st });
+    gsap.fromTo(c.querySelector('.track__text'), { y: -24 }, { y: 24, ease: 'none', scrollTrigger: { ...st } });
+  });
 }
 
 /* ---------- audio ---------- */
