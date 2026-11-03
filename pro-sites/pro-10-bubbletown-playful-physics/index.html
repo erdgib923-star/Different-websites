@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bubbletown — soft toys that bounce back (fictional demo)</title>
+    <meta name="description" content="Bubbletown is a fictional soft-toy studio. Drag the letter bubbles, peel the stickers, flip the toy cards, build your own bubble and catch some stars." />
+    <meta name="theme-color" content="#fdf5e3" />
+    <script>
+      (function (d) {
+        var h = d.documentElement;
+        h.classList.add('js');
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('reduced');
+        setTimeout(function () {
+          if (!h.classList.contains('motion-ready')) h.classList.remove('js');
+        }, 4000);
+      })(document);
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="top">
+      <a class="top__logo" href="#top"><span class="top__dot" aria-hidden="true"></span>Bubbletown</a>
+      <nav aria-label="Primary">
+        <a href="#toys">Toys</a>
+        <a href="#build">Build</a>
+        <a href="#play">Play</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- ============ HERO: draggable physics letters ============ -->
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero__copy">
+          <p class="kicker" data-fade>Soft toys · small studio · est. 2019</p>
+          <h1 id="hero-title" class="hero__title" data-split="intro">Toys that bounce back.</h1>
+          <p class="hero__lede" data-fade>Squishy, washable bubble friends in six pastel colours. Go on, grab a letter and fling it.</p>
+          <div class="hero__cta" data-fade>
+            <a class="btn" href="#toys">Meet the toys</a>
+            <a class="btn btn--ghost" href="#play">Catch some stars</a>
+          </div>
+        </div>
+        <figure class="toybox" aria-labelledby="toybox-cap">
+          <div class="toybox__stage">
+            <!--TOYBOX-->
+            <canvas class="toybox__canvas" aria-hidden="true"></canvas>
+          </div>
+          <figcaption class="toybox__bar">
+            <span id="toybox-cap" class="toybox__cap">A toy box of letter bubbles spelling BUBBLETOWN. Drag and fling them, or use the buttons.</span>
+            <span class="toybox__btns">
+              <button type="button" class="chip" id="shake" hidden>Shake</button>
+              <button type="button" class="chip" id="tidy" hidden>Tidy up</button>
+              <button type="button" class="chip" id="physics-on" hidden>Turn physics on</button>
+            </span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <!-- ============ PINNED + SCRUBBED: how a toy is made ============ -->
+      <section class="made" id="made" aria-labelledby="made-title">
+        <div class="made__inner">
+          <div class="made__text">
+            <h2 id="made-title" class="h2" data-split="scroll">How a bubble is made</h2>
+            <ol class="steps">
+              <li class="steps__item" data-step="0"><strong>Sketch.</strong> Every toy starts as one wobbly pencil line.</li>
+              <li class="steps__item" data-step="1"><strong>Colour.</strong> We pick one of six pastels, all equally bright, so none of them shouts.</li>
+              <li class="steps__item" data-step="2"><strong>Face.</strong> Two dots, a smile and a little blush.</li>
+              <li class="steps__item" data-step="3"><strong>Squish test.</strong> Each toy gets squashed and must spring back.</li>
+            </ol>
+          </div>
+          <div class="made__art" aria-hidden="true">
+            <svg class="maker" viewBox="0 0 200 200">
+              <circle class="maker__fill" cx="100" cy="106" r="80" />
+              <circle class="maker__line" cx="100" cy="106" r="80" pathLength="1" />
+              <ellipse class="maker__shine" cx="70" cy="72" rx="16" ry="10" transform="rotate(-30 70 72)" />
+              <g class="maker__face">
+                <circle cx="62" cy="118" r="8" class="maker__cheek" /><circle cx="138" cy="118" r="8" class="maker__cheek" />
+                <circle cx="78" cy="102" r="7" class="maker__ink" /><circle cx="122" cy="102" r="7" class="maker__ink" />
+                <path d="M88 120q12 12 24 0" class="maker__mouth" />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ STICKERS: spring pop-ins ============ -->
+      <section class="stickers" id="stickers" aria-labelledby="stickers-title">
+        <div class="float-bubbles" aria-hidden="true">
+          <span class="fb fb--1" data-speed="0.5"></span><span class="fb fb--2" data-speed="-0.3"></span><span class="fb fb--3" data-speed="0.8"></span>
+        </div>
+        <h2 id="stickers-title" class="h2" data-split="scroll">Free sticker sheet</h2>
+        <p class="section-lede" data-fade>One comes in every parcel. Hover a sticker to peel up its corner.</p>
+        <ul class="sheet" role="list">
+          <li class="sticker" data-sticker><span class="sticker__art" role="img" aria-label="POP! sticker"><!--STICKER:pop--></span></li>
+          <li class="sticker" data-sticker><span class="sticker__art" role="img" aria-label="Smiling star sticker"><!--STICKER:star--></span></li>
+          <li class="sticker" data-sticker><span class="sticker__art" role="img" aria-label="Sleepy cloud sticker"><!--STICKER:cloud--></span></li>
+          <li class="sticker" data-sticker><span class="sticker__art" role="img" aria-label="BOING sticker"><!--STICKER:boing--></span></li>
+          <li class="sticker" data-sticker><span class="sticker__art" role="img" aria-label="Moon sticker"><!--STICKER:moon--></span></li>
+          <li class="sticker" data-sticker><span class="sticker__art" role="img" aria-label="Bubble heart sticker"><!--STICKER:heart--></span></li>
+          <li class="sticker" data-sticker><span class="sticker__art" role="img" aria-label="Squish me sticker"><!--STICKER:squish--></span></li>
+          <li class="sticker" data-sticker><span class="sticker__art" role="img" aria-label="Three bubbles sticker"><!--STICKER:bubbles--></span></li>
+        </ul>
+        <p class="callout" data-pop>Stickers are printed on paper backing, with no plastic film.</p>
+      </section>
+
+      <!-- ============ TOYS: flip cards ============ -->
+      <section class="toys" id="toys" aria-labelledby="toys-title">
+        <div class="float-bubbles" aria-hidden="true">
+          <span class="fb fb--4" data-speed="-0.4"></span><span class="fb fb--5" data-speed="0.6"></span>
+        </div>
+        <h2 id="toys-title" class="h2" data-split="scroll">Meet the toys</h2>
+        <p class="section-lede" data-fade>Flip a card to see what is inside. Prices are sample prices; this shop does not sell anything.</p>
+        <ul class="cards" role="list">
+          <li class="card" data-card>
+            <div class="card__inner">
+              <article class="card__face card__front" aria-labelledby="c1">
+                <figure class="media card__media" data-slot="toy-pip" data-clip="up" role="img" aria-label="Pip, a peach bubble bear" style="--ar: 1 / 1; --duo-light: var(--p-peach)"><div class="media__art"><!--TOY:bear:peach:smile--></div></figure>
+                <h3 id="c1" class="card__title">Pip the Bear</h3>
+                <p class="card__price"><span class="sr-only">Sample price </span>€24</p>
+              </article>
+              <div class="card__face card__back">
+                <h3 class="card__title">Pip the Bear</h3>
+                <dl class="spec"><dt>Size</dt><dd>22 cm, fits a backpack</dd><dt>Feel</dt><dd>Extra squish, slow spring-back</dd><dt>Care</dt><dd>Machine-wash at 30 °C</dd></dl>
+              </div>
+            </div>
+            <button type="button" class="card__flip" aria-pressed="false">Flip <span class="sr-only">Pip the Bear</span></button>
+          </li>
+          <li class="card" data-card>
+            <div class="card__inner">
+              <article class="card__face card__front" aria-labelledby="c2">
+                <figure class="media card__media" data-slot="toy-juniper" data-clip="up" role="img" aria-label="Juniper, a sky-blue sleepy cloud" style="--ar: 1 / 1; --duo-light: var(--p-sky)"><div class="media__art"><!--TOY:cloud:sky:sleepy--></div></figure>
+                <h3 id="c2" class="card__title">Juniper Cloud</h3>
+                <p class="card__price"><span class="sr-only">Sample price </span>€28</p>
+              </article>
+              <div class="card__face card__back">
+                <h3 class="card__title">Juniper Cloud</h3>
+                <dl class="spec"><dt>Size</dt><dd>30 cm wide, a good pillow</dd><dt>Feel</dt><dd>Soft and flat, very quiet</dd><dt>Care</dt><dd>Machine-wash at 30 °C</dd></dl>
+              </div>
+            </div>
+            <button type="button" class="card__flip" aria-pressed="false">Flip <span class="sr-only">Juniper Cloud</span></button>
+          </li>
+          <li class="card" data-card>
+            <div class="card__inner">
+              <article class="card__face card__front" aria-labelledby="c3">
+                <figure class="media card__media" data-slot="toy-bo" data-clip="up" role="img" aria-label="Bo, a rose bubble bunny" style="--ar: 1 / 1; --duo-light: var(--p-rose)"><div class="media__art"><!--TOY:bunny:rose:smile--></div></figure>
+                <h3 id="c3" class="card__title">Bo Bunny</h3>
+                <p class="card__price"><span class="sr-only">Sample price </span>€26</p>
+              </article>
+              <div class="card__face card__back">
+                <h3 class="card__title">Bo Bunny</h3>
+                <dl class="spec"><dt>Size</dt><dd>26 cm with ears up</dd><dt>Feel</dt><dd>Bendy ears, squishy middle</dd><dt>Care</dt><dd>Hand-wash, dry flat</dd></dl>
+              </div>
+            </div>
+            <button type="button" class="card__flip" aria-pressed="false">Flip <span class="sr-only">Bo Bunny</span></button>
+          </li>
+          <li class="card" data-card>
+            <div class="card__inner">
+              <article class="card__face card__front" aria-labelledby="c4">
+                <figure class="media card__media" data-slot="toy-tilly" data-clip="up" role="img" aria-label="Tilly, a tall mint bubble with a surprised face" style="--ar: 1 / 1; --duo-light: var(--p-mint)"><div class="media__art"><!--TOY:tall:mint:wow--></div></figure>
+                <h3 id="c4" class="card__title">Tall Tilly</h3>
+                <p class="card__price"><span class="sr-only">Sample price </span>€22</p>
+              </article>
+              <div class="card__face card__back">
+                <h3 class="card__title">Tall Tilly</h3>
+                <dl class="spec"><dt>Size</dt><dd>34 cm, stands on her own</dd><dt>Feel</dt><dd>Firm bottom, wobbly top</dd><dt>Care</dt><dd>Machine-wash at 30 °C</dd></dl>
+              </div>
+            </div>
+            <button type="button" class="card__flip" aria-pressed="false">Flip <span class="sr-only">Tall Tilly</span></button>
+          </li>
+          <li class="card" data-card>
+            <div class="card__inner">
+              <article class="card__face card__front" aria-labelledby="c5">
+                <figure class="media card__media" data-slot="toy-nova" data-clip="up" role="img" aria-label="Nova, a butter-yellow bubble star" style="--ar: 1 / 1; --duo-light: var(--p-butter)"><div class="media__art"><!--TOY:star:butter:smile--></div></figure>
+                <h3 id="c5" class="card__title">Nova Star</h3>
+                <p class="card__price"><span class="sr-only">Sample price </span>€19</p>
+              </article>
+              <div class="card__face card__back">
+                <h3 class="card__title">Nova Star</h3>
+                <dl class="spec"><dt>Size</dt><dd>18 cm point to point</dd><dt>Feel</dt><dd>Light, good for throwing</dd><dt>Care</dt><dd>Machine-wash at 30 °C</dd></dl>
+              </div>
+            </div>
+            <button type="button" class="card__flip" aria-pressed="false">Flip <span class="sr-only">Nova Star</span></button>
+          </li>
+          <li class="card" data-card>
+            <div class="card__inner">
+              <article class="card__face card__front" aria-labelledby="c6">
+                <figure class="media card__media" data-slot="toy-remy" data-clip="up" role="img" aria-label="Remy, a round, sleepy lilac bubble" style="--ar: 1 / 1; --duo-light: var(--p-lilac)"><div class="media__art"><!--TOY:round:lilac:sleepy--></div></figure>
+                <h3 id="c6" class="card__title">Round Remy</h3>
+                <p class="card__price"><span class="sr-only">Sample price </span>€21</p>
+              </article>
+              <div class="card__face card__back">
+                <h3 class="card__title">Round Remy</h3>
+                <dl class="spec"><dt>Size</dt><dd>20 cm round</dd><dt>Feel</dt><dd>Heavy and calm, a lap toy</dd><dt>Care</dt><dd>Machine-wash at 30 °C</dd></dl>
+              </div>
+            </div>
+            <button type="button" class="card__flip" aria-pressed="false">Flip <span class="sr-only">Round Remy</span></button>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============ BUILD A BUBBLE ============ -->
+      <section class="build" id="build" aria-labelledby="build-title">
+        <h2 id="build-title" class="h2" data-split="scroll">Build a bubble</h2>
+        <p class="section-lede" data-fade>Pick a colour, a shape, a face and a name. Nothing is ordered or sent anywhere; this is just for fun.</p>
+        <div class="builder">
+          <form class="builder__form" id="builder" data-pop>
+            <fieldset>
+              <legend>Colour</legend>
+              <div class="swatches">
+                <label class="swatch" style="--sw: var(--p-peach)"><input type="radio" name="color" value="peach" checked /><span>Peach</span></label>
+                <label class="swatch" style="--sw: var(--p-butter)"><input type="radio" name="color" value="butter" /><span>Butter</span></label>
+                <label class="swatch" style="--sw: var(--p-mint)"><input type="radio" name="color" value="mint" /><span>Mint</span></label>
+                <label class="swatch" style="--sw: var(--p-sky)"><input type="radio" name="color" value="sky" /><span>Sky</span></label>
+                <label class="swatch" style="--sw: var(--p-lilac)"><input type="radio" name="color" value="lilac" /><span>Lilac</span></label>
+                <label class="swatch" style="--sw: var(--p-rose)"><input type="radio" name="color" value="rose" /><span>Rose</span></label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Shape</legend>
+              <div class="pills">
+                <label class="pill"><input type="radio" name="shape" value="round" checked /><span>Round</span></label>
+                <label class="pill"><input type="radio" name="shape" value="bear" /><span>Bear</span></label>
+                <label class="pill"><input type="radio" name="shape" value="bunny" /><span>Bunny</span></label>
+                <label class="pill"><input type="radio" name="shape" value="cloud" /><span>Cloud</span></label>
+                <label class="pill"><input type="radio" name="shape" value="tall" /><span>Tall</span></label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Face</legend>
+              <div class="pills">
+                <label class="pill"><input type="radio" name="face" value="smile" checked /><span>Smile</span></label>
+                <label class="pill"><input type="radio" name="face" value="sleepy" /><span>Sleepy</span></label>
+                <label class="pill"><input type="radio" name="face" value="wow" /><span>Wow</span></label>
+              </div>
+            </fieldset>
+            <label class="field">
+              <span>Name</span>
+              <input type="text" name="name" maxlength="14" value="Pebble" autocomplete="off" spellcheck="false" />
+            </label>
+          </form>
+          <figure class="builder__preview" data-pop>
+            <div class="builder__art" id="preview-art"><!--TOY:round:peach:smile--></div>
+            <figcaption class="builder__cap" id="preview-cap" aria-live="polite">Pebble: a peach, round bubble with a smile.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ============ MINI-GAME ============ -->
+      <section class="play" id="play" aria-labelledby="play-title">
+        <h2 id="play-title" class="h2" data-split="scroll">Catch the stars</h2>
+        <p class="section-lede" data-fade>Move the bubble cup to catch falling stars for 30 seconds. Use the mouse, drag with a finger, or press the arrow keys when the game is focused.</p>
+        <div class="game" data-pop>
+          <canvas class="game__canvas" id="game" tabindex="0" role="application" aria-label="Catch the stars game. Press Start, then use the left and right arrow keys to move the cup."></canvas>
+          <div class="game__hud">
+            <p class="game__stat">Score <strong id="score">0</strong></p>
+            <p class="game__stat">Time <strong id="time">30</strong></p>
+            <p class="game__stat">Best <strong id="best">0</strong></p>
+            <button type="button" class="btn btn--light" id="start">Start</button>
+          </div>
+          <p class="game__msg" id="game-msg" aria-live="polite"></p>
+          <noscript><p class="game__noscript">The game needs JavaScript. Everything else on this page works without it.</p></noscript>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__brand">Bubbletown</p>
+      <p>Bubbletown is a fictional toy studio made for a design demo. The toys, names, prices and specs are sample content, and nothing on this page is for sale. Say hi at hello@example.com or 555-0100.</p>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
