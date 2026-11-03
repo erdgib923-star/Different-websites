@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Museum of Small Things · Small Rules, eight drawings by eight short programs</title>
+  <meta name="description" content="A fictional museum's exhibition of eight generative drawings, hung along one long corridor. Walk it by scrolling; open any work to see it larger, with its rule." />
+  <meta name="theme-color" content="#f8f6f2" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f8f6f2'/%3E%3Crect x='8' y='7' width='16' height='18' fill='none' stroke='%232b2926' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23d0453b'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js'); }, 4000);
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="logo" href="#top"><span class="logo__mark" aria-hidden="true"></span><span>Museum of <b>Small Things</b></span></a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#corridor">The corridor</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__text">
+        <p class="kicker" data-pop="up">Now showing · Gallery 2 · until 30 May 2027</p>
+        <h1 id="hero-title" class="hero__title" data-split>Small Rules</h1>
+        <p class="hero__sub" data-pop="up" style="--pop-delay: 400ms">Eight drawings by eight short programs, hung along one corridor.</p>
+        <p class="hero__lead" data-pop="up" style="--pop-delay: 520ms">Every work on these walls was made by a rule you could write on a postcard. Walk the corridor by scrolling. Select any frame to see the work larger, with its rule.</p>
+        <a class="btn" href="#corridor" data-pop="up" style="--pop-delay: 640ms">Enter the corridor</a>
+      </div>
+      <figure class="hero__work" data-pop="clip" style="--pop-delay: 300ms">
+        <span class="frame__mat"><canvas data-hero-work aria-hidden="true"></canvas></span>
+        <figcaption><span class="dot" style="--ex: var(--ex-6)" aria-hidden="true"></span>From the series, <em>Drift Lines</em> (study)</figcaption>
+      </figure>
+    </section>
+
+    <!-- CORRIDOR: pinned horizontal walk on wide screens; a swipe strip on phones. -->
+    <section class="corridor" id="corridor" aria-labelledby="corridor-title" data-corridor>
+      <div class="corridor__pin">
+        <div class="corridor__head">
+          <h2 id="corridor-title">The corridor</h2>
+          <p class="corridor__count" aria-hidden="true"><span data-cur>1</span> / 8</p>
+        </div>
+        <div class="corridor__viewport" tabindex="0" role="region" aria-label="Eight works on the corridor wall, scroll sideways">
+          <ol class="corridor__track" data-track>
+            <li class="exhibit" style="--ex: var(--ex-1); --ar: 4 / 5; --arn: 0.800" data-ex="0" data-work="flow" data-seed="11" data-hue="--ex-1">
+              <button class="frame" type="button" aria-haspopup="dialog" data-open="0">
+                <span class="frame__mat"><canvas aria-hidden="true"></canvas></span>
+                <span class="sr-only">View “Drift Lines” in detail</span>
+              </button>
+              <div class="label">
+                <p class="label__no" data-pop="badge"><span class="dot" aria-hidden="true"></span>No. 1</p>
+                <h3 class="label__title">Drift Lines</h3>
+                <p class="label__artist">Maren Oyelowo-Strand</p>
+                <p class="label__meta">2025 · Canvas, 520 strokes</p>
+                <p class="label__rule">Each stroke follows the slope of an invisible landscape for forty steps, then lifts.</p>
+              </div>
+            </li>
+            <li class="exhibit" style="--ex: var(--ex-2); --ar: 1 / 1; --arn: 1.000" data-ex="1" data-work="packing" data-seed="23" data-hue="--ex-2">
+              <button class="frame" type="button" aria-haspopup="dialog" data-open="1">
+                <span class="frame__mat"><canvas aria-hidden="true"></canvas></span>
+                <span class="sr-only">View “Room for Everyone” in detail</span>
+              </button>
+              <div class="label">
+                <p class="label__no" data-pop="badge"><span class="dot" aria-hidden="true"></span>No. 2</p>
+                <h3 class="label__title">Room for Everyone</h3>
+                <p class="label__artist">Teodor Valbrand</p>
+                <p class="label__meta">2024 · Canvas, 260 circles</p>
+                <p class="label__rule">Drop a circle anywhere and grow it until it touches a neighbour. Repeat until nothing more fits.</p>
+              </div>
+            </li>
+            <li class="exhibit" style="--ex: var(--ex-3); --ar: 1 / 1; --arn: 1.000" data-ex="2" data-work="truchet" data-seed="37" data-hue="--ex-3">
+              <button class="frame" type="button" aria-haspopup="dialog" data-open="2">
+                <span class="frame__mat"><canvas aria-hidden="true"></canvas></span>
+                <span class="sr-only">View “Nine by Nine” in detail</span>
+              </button>
+              <div class="label">
+                <p class="label__no" data-pop="badge"><span class="dot" aria-hidden="true"></span>No. 3</p>
+                <h3 class="label__title">Nine by Nine</h3>
+                <p class="label__artist">Ines Okonkwo-Lund</p>
+                <p class="label__meta">2026 · Canvas, 81 tiles</p>
+                <p class="label__rule">Every tile holds two quarter-circles, turned one of two ways by a coin toss.</p>
+              </div>
+            </li>
+            <li class="exhibit" style="--ex: var(--ex-4); --ar: 4 / 5; --arn: 0.800" data-ex="3" data-work="subdivide" data-seed="41" data-hue="--ex-4">
+              <button class="frame" type="button" aria-haspopup="dialog" data-open="3">
+                <span class="frame__mat"><canvas aria-hidden="true"></canvas></span>
+                <span class="sr-only">View “Floor Plan for a Small House” in detail</span>
+              </button>
+              <div class="label">
+                <p class="label__no" data-pop="badge"><span class="dot" aria-hidden="true"></span>No. 4</p>
+                <h3 class="label__title">Floor Plan for a Small House</h3>
+                <p class="label__artist">Arvid Castellanos</p>
+                <p class="label__meta">2023 · Canvas, ink and one colour</p>
+                <p class="label__rule">Split the longer side somewhere near the middle. Stop at random, or when a room gets too small.</p>
+              </div>
+            </li>
+            <li class="exhibit" style="--ex: var(--ex-5); --ar: 5 / 4; --arn: 1.250" data-ex="4" data-work="moire" data-seed="5" data-hue="--ex-5">
+              <button class="frame" type="button" aria-haspopup="dialog" data-open="4">
+                <span class="frame__mat"><canvas aria-hidden="true"></canvas></span>
+                <span class="sr-only">View “Two Stones, One Pond” in detail</span>
+              </button>
+              <div class="label">
+                <p class="label__no" data-pop="badge"><span class="dot" aria-hidden="true"></span>No. 5</p>
+                <h3 class="label__title">Two Stones, One Pond</h3>
+                <p class="label__artist">Sun-hee Marchetti</p>
+                <p class="label__meta">2025 · Canvas, two ring sets</p>
+                <p class="label__rule">Two sets of rings, a little apart. The pattern you see is in neither of them.</p>
+              </div>
+            </li>
+            <li class="exhibit" style="--ex: var(--ex-6); --ar: 1 / 1; --arn: 1.000" data-ex="5" data-work="contour" data-seed="67" data-hue="--ex-6">
+              <button class="frame" type="button" aria-haspopup="dialog" data-open="5">
+                <span class="frame__mat"><canvas aria-hidden="true"></canvas></span>
+                <span class="sr-only">View “Survey of an Imagined Hill” in detail</span>
+              </button>
+              <div class="label">
+                <p class="label__no" data-pop="badge"><span class="dot" aria-hidden="true"></span>No. 6</p>
+                <h3 class="label__title">Survey of an Imagined Hill</h3>
+                <p class="label__artist">Elsbeth Narváez</p>
+                <p class="label__meta">2026 · Canvas, 30 contours</p>
+                <p class="label__rule">Thirty rings, each pushed in or out by the same slow noise. Every sixth one is in colour.</p>
+              </div>
+            </li>
+            <li class="exhibit" style="--ex: var(--ex-7); --ar: 4 / 5; --arn: 0.800" data-ex="6" data-work="walkers" data-seed="71" data-hue="--ex-7">
+              <button class="frame" type="button" aria-haspopup="dialog" data-open="6">
+                <span class="frame__mat"><canvas aria-hidden="true"></canvas></span>
+                <span class="sr-only">View “Seven Errands” in detail</span>
+              </button>
+              <div class="label">
+                <p class="label__no" data-pop="badge"><span class="dot" aria-hidden="true"></span>No. 7</p>
+                <h3 class="label__title">Seven Errands</h3>
+                <p class="label__artist">Kofi Lindqvist</p>
+                <p class="label__meta">2024 · Canvas, 1,820 steps</p>
+                <p class="label__rule">Seven walkers start in the centre and take 260 random steps each on a grid. One is in colour.</p>
+              </div>
+            </li>
+            <li class="exhibit" style="--ex: var(--ex-8); --ar: 1 / 1; --arn: 1.000" data-ex="7" data-work="stipple" data-seed="83" data-hue="--ex-8">
+              <button class="frame" type="button" aria-haspopup="dialog" data-open="7">
+                <span class="frame__mat"><canvas aria-hidden="true"></canvas></span>
+                <span class="sr-only">View “Moon, Nine Thousand Tries” in detail</span>
+              </button>
+              <div class="label">
+                <p class="label__no" data-pop="badge"><span class="dot" aria-hidden="true"></span>No. 8</p>
+                <h3 class="label__title">Moon, Nine Thousand Tries</h3>
+                <p class="label__artist">Paz Ellery-Moore</p>
+                <p class="label__meta">2025 · Canvas, 9,000 attempts</p>
+                <p class="label__rule">Throw nine thousand dots. Keep each one with the chance that the sphere is dark at that spot.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="corridor__floor" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT with a parallax pair of miniatures -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="about__minis" aria-hidden="true">
+        <span class="mini mini--a" data-scrub="parallax" data-speed="-0.4"><span class="frame__mat"><canvas data-mini="truchet" data-seed="99" data-hue="--ex-3"></canvas></span></span>
+        <span class="mini mini--b" data-scrub="parallax" data-speed="0.35"><span class="frame__mat"><canvas data-mini="moire" data-seed="7" data-hue="--ex-7"></canvas></span></span>
+      </div>
+      <div class="about__text">
+        <p class="kicker" data-pop="up">Why small</p>
+        <h2 id="about-title" data-split>A museum for things you could hold in one hand.</h2>
+        <p data-pop="up">We collect small objects, small books and, this season, small programs. None of the eight rules on show is longer than a few lines, yet each draws something you would not have guessed from reading it.</p>
+        <p data-pop="up">The works are drawn fresh on your screen each time you visit, from the same rule and the same seed, so you see exactly what the artists saw.</p>
+      </div>
+    </section>
+
+    <!-- VISIT -->
+    <section class="visit" id="visit" aria-labelledby="visit-title">
+      <h2 id="visit-title" data-split>Visit</h2>
+      <div class="visit__grid" data-pop-group>
+        <div class="visit__card" data-pop>
+          <h3>Opening hours</h3>
+          <dl class="hours"><dt>Wednesday–Friday</dt><dd>10:00–17:00</dd><dt>Saturday–Sunday</dt><dd>10:00–18:00</dd><dt>Monday–Tuesday</dt><dd>Closed</dd></dl>
+        </div>
+        <div class="visit__card" data-pop>
+          <h3>Where</h3>
+          <p>12 Example Lane<br />Example City</p>
+          <p><a href="tel:+15555550100">(555) 555-0100</a><br /><a href="mailto:visit@example.com">visit@example.com</a></p>
+        </div>
+        <div class="visit__card" data-pop>
+          <h3>Entry</h3>
+          <p>Free. The corridor is step-free, with benches every two works.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Museum of Small Things</strong> on this page is a fictional museum. The exhibition, the eight artists, the address and the dates are invented.</p>
+    <p>All eight works are generated in your browser by the code in this site.</p>
+  </footer>
+
+  <!-- DETAIL VIEW -->
+  <dialog class="detail" data-detail data-lenis-prevent aria-labelledby="detail-title">
+    <div class="detail__inner">
+      <div class="detail__art"><span class="frame__mat"><canvas data-detail-canvas aria-hidden="true"></canvas></span></div>
+      <div class="detail__text">
+        <p class="label__no"><span class="dot" aria-hidden="true"></span><span data-d-no></span></p>
+        <h2 id="detail-title" class="detail__title" data-d-title></h2>
+        <p class="label__artist" data-d-artist></p>
+        <p class="label__meta" data-d-meta></p>
+        <h3 class="detail__rule-h">The rule</h3>
+        <p class="detail__rule" data-d-rule></p>
+        <div class="detail__nav">
+          <button class="btn btn--ghost" type="button" data-prev>Previous work</button>
+          <button class="btn btn--ghost" type="button" data-next>Next work</button>
+        </div>
+      </div>
+      <button class="detail__close" type="button" data-close aria-label="Close detail view" autofocus>×</button>
+    </div>
+  </dialog>
+</body>
+</html>
