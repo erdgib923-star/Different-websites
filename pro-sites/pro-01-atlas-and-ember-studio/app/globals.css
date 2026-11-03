@@ -283,7 +283,7 @@ a {
 }
 .media.has-photo::after {
   background: var(--duo-light, var(--accent-200));
-  mix-blend-mode: darken;
+  mix-blend-mode: multiply; /* max(photo, dark) × light = duotone */
 }
 .media.has-photo .media__art {
   display: none;

@@ -119,7 +119,7 @@ canvas {
 }
 .media.has-photo::after {
   background: var(--duo-light);
-  mix-blend-mode: darken;
+  mix-blend-mode: multiply; /* max(photo, dark) × light = duotone */
 }
 .media.has-photo .media__art {
   display: none;

@@ -111,7 +111,7 @@ There are no photos, generated images or hotlinks. Every image slot is a reusabl
 
 - fixed `aspect-ratio`, `object-fit: cover` and a dominant-colour background
 - blur-up and lazy loading
-- a CSS duotone (`lighten`/`darken` blend layers driven by `--duo-dark`, `--duo-light` and `--tint-strength`)
+- a CSS duotone (a `lighten` layer, then a `multiply` layer driven by `--duo-dark`, `--duo-light` and `--tint-strength`)
 
 When no photo is supplied, a slot renders a `ProjectArt` composition. There are five variants: orbit, contour, monolith, weave and flare.
 
