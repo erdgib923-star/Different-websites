@@ -77,7 +77,7 @@ This site uses the same engine as the other flow sites (`src/engine`). The one t
 | mid | 1.5 | 6 | 8,192 | 4,500 | bloom, ACES, vignette |
 | low | 1 | 5 (343 segments) | 2,048 | 2,000 | none |
 
-Leaves are shuffled, so adaptive downgrades (fewer instances drawn) thin the crown evenly. Main-scene draw calls are 7 on every tier: sky, ground, branches, leaves, seed, weather and the composer. Tier adaptation, `AdaptiveDpr`, the hidden-tab pause, disposal and the lazily loaded 3D chunk all work the same as in flow-01.
+Leaves are shuffled, so adaptive downgrades (fewer instances drawn) thin the crown evenly. Main-scene draw calls: 6 on the low tier as measured (sky, ground, branches, leaves, seed, weather), plus the composer passes on mid and high. Tier adaptation, `AdaptiveDpr`, the hidden-tab pause, disposal and the lazily loaded 3D chunk all work the same as in flow-01.
 
 ## Fallbacks and accessibility
 
