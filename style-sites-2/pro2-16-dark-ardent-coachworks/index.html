@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ardent Type One · A concept grand tourer from Ardent Coachworks</title>
+  <meta name="description" content="The Ardent Type One, a fictional concept grand tourer: hand-formed aluminium, a forged ten-spoke wheel you can turn by scrolling, and the full specification." />
+  <meta name="theme-color" content="#121418" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23121418'/%3E%3Cpath d='M6 25L16 6l10 19' fill='none' stroke='%23e9ecf0' stroke-width='2.4'/%3E%3Cpath d='M10 19h12' stroke='%23d7262f' stroke-width='2.4'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js'); }, 4000);
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" data-scrub="progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="Ardent Coachworks, home">ARDENT<span>Coachworks</span></a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#coachwork">Coachwork</a></li>
+        <li><a href="#wheel">Wheel</a></li>
+        <li><a href="#specs">Specs</a></li>
+        <li><a class="nav__cta" href="#viewing">Viewing</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- HERO: SVG silhouette, outline draws in, then a slow light sweep travels along the body. -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__text">
+        <p class="kicker" data-pop="up">Concept · 2027 · one of twelve</p>
+        <h1 id="hero-title" class="hero__title" data-split="chars">Type One</h1>
+        <p class="hero__lead" data-pop="up" style="--pop-delay: 450ms">A front-engined grand tourer, its body formed by hand from aluminium sheet. Twelve will be built, one a month, at the coachworks.</p>
+      </div>
+      <figure class="car" data-car>
+        <svg class="car__svg" viewBox="0 0 1000 340" role="img" aria-labelledby="car-title">
+          <title id="car-title">Side profile of the Ardent Type One: a long bonnet, a low fastback roof and a red light bar across the tail.</title>
+          <defs>
+            <linearGradient id="body-fill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" class="stop-hi" />
+              <stop offset="0.55" class="stop-mid" />
+              <stop offset="1" class="stop-lo" />
+            </linearGradient>
+            <linearGradient id="sweep-fill" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#fff" stop-opacity="0" />
+              <stop offset="0.5" stop-color="#fff" stop-opacity="0.55" />
+              <stop offset="1" stop-color="#fff" stop-opacity="0" />
+            </linearGradient>
+            <clipPath id="body-clip"><path d="M70 262C60 250 58 232 70 220C100 200 160 188 240 182C330 176 390 170 430 160C480 120 540 98 600 96C680 94 740 108 800 140C850 166 900 180 935 196C950 204 955 222 948 240L940 262L842 262A72 72 0 0 0 698 262L302 262A72 72 0 0 0 158 262Z" /></clipPath>
+          </defs>
+          <ellipse class="car__shadow" cx="500" cy="318" rx="430" ry="14" />
+          <path class="car__body" d="M70 262C60 250 58 232 70 220C100 200 160 188 240 182C330 176 390 170 430 160C480 120 540 98 600 96C680 94 740 108 800 140C850 166 900 180 935 196C950 204 955 222 948 240L940 262L842 262A72 72 0 0 0 698 262L302 262A72 72 0 0 0 158 262Z" />
+          <path class="car__glass" d="M458 160C505 124 550 109 602 107C666 106 720 119 768 146C700 154 560 158 458 160Z" />
+          <path class="car__line" d="M640 108L632 158M300 214C460 206 640 204 820 210M480 166L470 250M190 226L232 222" />
+          <path class="car__vent" d="M330 226h48M336 234h40" />
+          <g clip-path="url(#body-clip)"><rect class="car__sweep" x="-260" y="80" width="220" height="200" /></g>
+          <path class="car__outline" pathLength="1" d="M70 262C60 250 58 232 70 220C100 200 160 188 240 182C330 176 390 170 430 160C480 120 540 98 600 96C680 94 740 108 800 140C850 166 900 180 935 196C950 204 955 222 948 240L940 262L842 262A72 72 0 0 0 698 262L302 262A72 72 0 0 0 158 262Z" />
+          <path class="car__head" d="M78 214C96 206 122 202 150 200" />
+          <path class="car__tail" d="M936 200L951 214" />
+          <g class="car__wheel" transform="translate(230 262)"><circle r="60" class="tyre" /><circle r="42" class="rim" /><g class="spokes"><path d="M0-40V-12M38-12L11-4M24 32L7 10M-24 32L-7 10M-38-12L-11-4" /></g><circle r="10" class="nut" /></g>
+          <g class="car__wheel" transform="translate(770 262)"><circle r="62" class="tyre" /><circle r="44" class="rim" /><g class="spokes"><path d="M0-42V-12M40-13L11-4M25 34L7 10M-25 34L-7 10M-40-13L-11-4" /></g><circle r="10" class="nut" /></g>
+        </svg>
+        <span class="car__badge" data-pop="badge" style="--pop-delay: 1300ms">No. 01 / 12</span>
+      </figure>
+    </section>
+
+    <!-- COACHWORK: parallax pair of material swatches -->
+    <section class="coachwork" id="coachwork" aria-labelledby="coach-title">
+      <div class="coachwork__text">
+        <p class="kicker" data-pop="up">Coachwork</p>
+        <h2 id="coach-title" data-split>Formed by hand, one panel at a time.</h2>
+        <p data-pop="up">Each wing is shaped on an English wheel from a flat sheet of aluminium: 38 hours of rolling, checking against the buck and rolling again. The roof and the floor are carbon fibre, laid in a twill weave and left visible inside the cabin.</p>
+        <p data-pop="up">Nothing on the body is stamped. Two cars from the same year will differ by the width of a pencil line, and the coachworks keeps a drawing of every one.</p>
+      </div>
+      <div class="coachwork__media">
+        <figure class="fig swatch swatch--metal" data-slot="workshop" data-photo="" data-alt="An aluminium wing on the English wheel" data-scrub="parallax" data-speed="-0.35" style="--ar: 4 / 5">
+          <div class="fig__art"><canvas data-art="brushed" aria-hidden="true"></canvas></div>
+          <figcaption>Aluminium, rolled</figcaption>
+        </figure>
+        <figure class="fig swatch swatch--carbon" data-slot="weave" data-photo="" data-alt="Close-up of the twill carbon-fibre roof" data-scrub="parallax" data-speed="0.4" style="--ar: 1 / 1">
+          <div class="fig__art"><canvas data-art="carbon" aria-hidden="true"></canvas></div>
+          <figcaption>Carbon, 2×2 twill</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- WHEEL: Three.js, pinned; the wheel turns with scroll and the camera swings to three-quarters. -->
+    <section class="wheel" id="wheel" aria-labelledby="wheel-title" data-wheel-sec>
+      <div class="wheel__inner">
+        <div class="wheel__text">
+          <p class="kicker" data-pop="up">The wheel</p>
+          <h2 id="wheel-title" data-split>Ten spokes, forged from one billet.</h2>
+          <p data-pop="up">Scroll to turn it. The caliper stays put; everything else rolls.</p>
+          <ol class="callouts" data-callouts>
+            <li class="callout" data-at="0.15"><span class="callout__n">01</span><span><b>21 / 22 in</b> staggered front and rear</span></li>
+            <li class="callout" data-at="0.42"><span class="callout__n">02</span><span><b>Centre-lock</b> single nut, signal red</span></li>
+            <li class="callout" data-at="0.7"><span class="callout__n">03</span><span><b>410 mm</b> carbon-ceramic discs</span></li>
+          </ol>
+        </div>
+        <div class="wheel__stage">
+          <canvas class="wheel__canvas" data-wheel aria-hidden="true"></canvas>
+          <svg class="wheel__fallback" viewBox="-110 -110 220 220" aria-hidden="true">
+            <circle r="100" class="tyre" /><circle r="78" class="rim" />
+            <g class="spokes"><path d="M-6-74L-4-16M6-74L4-16" transform="rotate(0)" /><path d="M-6-74L-4-16M6-74L4-16" transform="rotate(72)" /><path d="M-6-74L-4-16M6-74L4-16" transform="rotate(144)" /><path d="M-6-74L-4-16M6-74L4-16" transform="rotate(216)" /><path d="M-6-74L-4-16M6-74L4-16" transform="rotate(288)" /></g>
+            <circle r="16" class="hub" /><circle r="8" class="nut" />
+          </svg>
+          <p class="sr-only">A three-dimensional forged ten-spoke wheel with a red centre-lock nut and a red brake caliper. It rotates as the page scrolls.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPECS: counters + weight distribution -->
+    <section class="specs" id="specs" aria-labelledby="specs-title">
+      <div class="section-head">
+        <p class="kicker" data-pop="up">Specification</p>
+        <h2 id="specs-title" data-split>The numbers</h2>
+      </div>
+      <dl class="figures" data-pop-group>
+        <div class="figure" data-pop><dt>Power</dt><dd><span data-count-to="588">588</span><small>kW</small></dd></div>
+        <div class="figure" data-pop><dt>Torque</dt><dd><span data-count-to="720">720</span><small>Nm</small></dd></div>
+        <div class="figure" data-pop><dt>0–100 km/h</dt><dd><span data-count-to="3.1" data-decimals="1">3.1</span><small>s</small></dd></div>
+        <div class="figure" data-pop><dt>Top speed</dt><dd><span data-count-to="330">330</span><small>km/h</small></dd></div>
+        <div class="figure" data-pop><dt>Dry weight</dt><dd><span data-count-to="1420">1,420</span><small>kg</small></dd></div>
+      </dl>
+      <div class="dist" data-pop="up">
+        <p class="dist__label" id="dist-label">Weight distribution, front to rear</p>
+        <div class="dist__bar" role="img" aria-labelledby="dist-label" aria-describedby="dist-desc">
+          <span class="dist__front" style="--w: 48%"></span><span class="dist__rear" style="--w: 52%"></span>
+        </div>
+        <p class="dist__legend" id="dist-desc"><span class="key key--front"></span>Front 48% <span class="key key--rear"></span>Rear 52%</p>
+      </div>
+    </section>
+
+    <!-- SPEC REEL: horizontal. Pinned and scrubbed on wide screens; swipeable strip on phones. -->
+    <section class="reel" aria-labelledby="reel-title" data-reel>
+      <div class="reel__head">
+        <p class="kicker">In detail</p>
+        <h2 id="reel-title">Six systems</h2>
+        <div class="reel__progress" aria-hidden="true"><span data-reel-progress></span></div>
+      </div>
+      <div class="reel__viewport" tabindex="0" role="region" aria-label="Six systems, scroll sideways">
+        <ol class="reel__track" data-reel-track>
+          <li class="spec"><span class="spec__n">01</span><h3>Chassis</h3><p class="spec__big">Bonded aluminium tub</p><p>Extruded sills, a carbon roof structure and a torsional stiffness of 41,000 Nm per degree.</p></li>
+          <li class="spec"><span class="spec__n">02</span><h3>Body</h3><p class="spec__big">38 hours per wing</p><p>1.2 mm aluminium sheet, wheeled by hand and gas-welded at the seams, then finished without filler.</p></li>
+          <li class="spec"><span class="spec__n">03</span><h3>Engine</h3><p class="spec__big">6.5 L V12, front-mid</p><p>Naturally aspirated, mounted behind the front axle line. Redline 9,200 rpm.</p></li>
+          <li class="spec"><span class="spec__n">04</span><h3>Gearbox</h3><p class="spec__big">8-speed transaxle</p><p>Dual-clutch, mounted at the rear for balance, with a mechanical limited-slip differential.</p></li>
+          <li class="spec"><span class="spec__n">05</span><h3>Brakes</h3><p class="spec__big">410 / 390 mm</p><p>Carbon-ceramic discs, six-piston calipers front and four-piston rear, painted signal red.</p></li>
+          <li class="spec"><span class="spec__n">06</span><h3>Cabin</h3><p class="spec__big">Two seats, no screens</p><p>Wool upholstery, a machined aluminium switch bank and analogue dials lit from behind.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- VIEWING: demo form, nothing is sent -->
+    <section class="viewing" id="viewing" aria-labelledby="viewing-title">
+      <div class="viewing__card" data-pop="up">
+        <p class="kicker">By appointment</p>
+        <h2 id="viewing-title">See it at the coachworks</h2>
+        <p>Private viewings of car No. 01 run on Thursdays. Tell us when suits you and we will write back.</p>
+        <form class="form" data-form novalidate>
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="f-email-err" />
+            <p class="field__err" id="f-email-err" hidden>Enter an email address like name@example.com.</p>
+          </div>
+          <div class="field">
+            <label for="f-month">Preferred month</label>
+            <select id="f-month" name="month">
+              <option>January 2027</option><option>February 2027</option><option>March 2027</option><option>April 2027</option>
+            </select>
+          </div>
+          <button class="btn" type="submit">Request a viewing</button>
+          <p class="form__status" role="status" data-status></p>
+        </form>
+        <p class="viewing__contact">Or call <a href="tel:+15555550100">(555) 555-0100</a> · <a href="mailto:viewings@example.com">viewings@example.com</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Ardent Coachworks</strong> is fictional. The Type One, its specification and the coachworks are invented for this demo.</p>
+    <p>No car photos are used. The car is an SVG drawing; the wheel is built from primitives in Three.js.</p>
+  </footer>
+</body>
+</html>
