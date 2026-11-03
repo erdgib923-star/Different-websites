@@ -141,11 +141,10 @@ The glitter on the rock changes only when the camera moves. Glows breathe slower
 Skills loaded and read in this session:
 
 - **r3f-fundamentals, r3f-shaders, r3f-postprocessing, r3f-animation, r3f-best-practices**
-- **drei** (TerminalSkills; for `MeshTransmissionMaterial` usage)
 - **motion-system**
 - the bOpen **shaders** skill
 
-**Not available** in this session: three-best-practices, color-expert. Neither is claimed as used.
+**Not available** in this session: three-best-practices and color-expert, so neither is claimed as used. The TerminalSkills **drei** skill was installed but its file was **not read**. The `MeshTransmissionMaterial` props were taken from the installed `@react-three/drei` type declarations.
 
 Assumptions:
 
