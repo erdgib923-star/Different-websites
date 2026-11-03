@@ -41,3 +41,6 @@ All brands, people, addresses, phone numbers and data are fictional.
 | 17 | `pro2-17-atlas-wayfinder` | Atlas Wayfinder, voyage on a hand-built SVG chart |
 | 18 | `pro2-18-gallery-small-things` | Museum of Small Things, generative-art corridor |
 | 19 | `pro2-19-liquid-flux-beverage` | Flux, sparkling juice with metaballs |
+
+## Build note (applies to every site)
+All sites share a `vite.config.ts` that sets `build.cssTarget: ['chrome111', 'edge111', 'firefox113', 'safari16.4']`. Without it, Vite 8's CSS minifier (Lightning CSS) rewrites oklch() tokens to lab(). Chromium then loses the hue in `color-mix(in oklch, <lab>, transparent)`, which tints translucent surfaces pink. I found this while building site 19, applied the fix to all sites, rebuilt them, and re-audited sites 1–18 at 1440 px; each site's README notes it.

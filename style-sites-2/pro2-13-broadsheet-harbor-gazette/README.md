@@ -111,3 +111,4 @@ Two slots: `lead-lighthouse` (16:9) and `ferry-fog` (4:3). Set `data-photo="asse
 - Brand check (web search, 2026-11-02): no newspaper named "The Harbor Gazette" found (similar: South County Gazette, Harbor Country News).
 - The h1 is the lead headline, as on a newspaper front page; the flag is a paragraph styled as the masthead.
 - Fonts are self-hosted via `@fontsource` (`font-display: swap`).
+- **Build fix (2026-11-03, after site 19):** `vite.config.ts` now sets `build.cssTarget` to oklch-capable browsers (Chrome/Edge 111, Firefox 113, Safari 16.4). Before this, Vite's CSS minifier rewrote every oklch() token to lab(). Chromium then dropped the hue in `color-mix(in oklch, <lab colour>, transparent)` and tinted translucent surfaces (headers, shadows, glows) slightly pink. Older browsers still use the hex fallbacks. After the change I rebuilt and re-audited at 1440 px (axe, console, reduced motion, no-JS, `?nosda`); new screenshots were not taken.

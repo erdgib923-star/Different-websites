@@ -287,7 +287,7 @@ html:not(.vt) .detail[open] { animation: detail-in 0.55s var(--ease-expo) both; 
 .linkchip--a { top: 31%; }
 .linkchip--b { top: 66%; }
 .published { position: absolute; inset: auto 8% 8% 8%; padding: 1rem 1.2rem; border-radius: 16px; background: var(--brand); color: var(--brand-contrast); display: grid; gap: 0.15rem; box-shadow: var(--shadow-2); }
-.published p { font-size: 0.75rem; opacity: 0.9; }
+.published p { font-size: 0.75rem; } /* full opacity: at 0.9 it fell to 4.47:1 on brand */
 .published strong { font-family: var(--font-serif); font-weight: 400; font-size: clamp(1.2rem, 2.8vw, 1.7rem); }
 .published span { font-size: 0.85rem; }
 .flow__stage .badge { position: absolute; z-index: 2; }

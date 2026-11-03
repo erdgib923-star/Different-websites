@@ -134,3 +134,4 @@ Two material slots (`workshop` 4:5, `weave` 1:1). Set `data-photo="assets/images
   - "Type One" is a generic model name.
 - Narrow phones show only the "Viewing" link in the header, to keep tap targets at 44px; the other sections are reached by scrolling.
 - Fonts are self-hosted via `@fontsource` (`font-display: swap`).
+- **Build fix (2026-11-03, after site 19):** `vite.config.ts` now sets `build.cssTarget` to oklch-capable browsers (Chrome/Edge 111, Firefox 113, Safari 16.4). Before this, Vite's CSS minifier rewrote every oklch() token to lab(). Chromium then dropped the hue in `color-mix(in oklch, <lab colour>, transparent)` and tinted translucent surfaces (headers, shadows, glows) slightly pink. Older browsers still use the hex fallbacks. After the change I rebuilt and re-audited at 1440 px (axe, console, reduced motion, no-JS, `?nosda`); new screenshots were not taken.

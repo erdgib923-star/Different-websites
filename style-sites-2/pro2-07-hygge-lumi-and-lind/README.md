@@ -120,3 +120,4 @@ Seven slots: `hero-still-life` (4:5) and six product slots (1:1): `product-throw
 - Brand check (web search, 2026-11-02): no "Lumi & Lind" found.
 - Product names use Swedish-style compound words. They were checked only against the brand name, not against every real product catalogue; rename them before any commercial use.
 - Fonts are self-hosted via `@fontsource` (`font-display: swap`).
+- **Build fix (2026-11-03, after site 19):** `vite.config.ts` now sets `build.cssTarget` to oklch-capable browsers (Chrome/Edge 111, Firefox 113, Safari 16.4). Before this, Vite's CSS minifier rewrote every oklch() token to lab(). Chromium then dropped the hue in `color-mix(in oklch, <lab colour>, transparent)` and tinted translucent surfaces (headers, shadows, glows) slightly pink. Older browsers still use the hex fallbacks. After the change I rebuilt and re-audited at 1440 px (axe, console, reduced motion, no-JS, `?nosda`); new screenshots were not taken.

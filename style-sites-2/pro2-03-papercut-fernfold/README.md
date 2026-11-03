@@ -115,3 +115,4 @@ Each walk card is an image slot (`data-slot="walk-spring"` and so on). Put a pho
 - Brand check (web search, 2026-11-02): no company called Fernfold found.
 - You named both teal and mustard. I treated mustard as the single accent and kept teal for illustration (sky, water) and the focus ring, so the one-accent rule holds for UI colour.
 - Fonts are self-hosted via `@fontsource` (`font-display: swap`).
+- **Build fix (2026-11-03, after site 19):** `vite.config.ts` now sets `build.cssTarget` to oklch-capable browsers (Chrome/Edge 111, Firefox 113, Safari 16.4). Before this, Vite's CSS minifier rewrote every oklch() token to lab(). Chromium then dropped the hue in `color-mix(in oklch, <lab colour>, transparent)` and tinted translucent surfaces (headers, shadows, glows) slightly pink. Older browsers still use the hex fallbacks. After the change I rebuilt and re-audited at 1440 px (axe, console, reduced motion, no-JS, `?nosda`); new screenshots were not taken.
